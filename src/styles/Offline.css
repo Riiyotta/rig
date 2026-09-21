@@ -1,0 +1,217 @@
+/* Work offline — CLONE_SPEC.md §5.
+   `.offline-section` base rules are re-declared here, scoped to .offline-work. */
+.offline-work.offline-section {
+  padding: 8rem 0; /* overridden by the inline padding:0, kept for parity */
+  position: relative;
+  overflow: hidden;
+}
+.offline-work.offline-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--border);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.offline-work .offline-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.offline-work .offline-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+  margin-left: -3rem;
+}
+.offline-work .globe-svg {
+  width: 900px;
+  height: 900px;
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(-40%, -50%);
+}
+
+/* 3-card flow (inline styles in the original) */
+.offline-work .offline-flow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.offline-work .offline-card {
+  font-family: 'Chivo Mono', monospace;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: rgba(10, 10, 10, 0.95);
+  transition: border-color 0.1s ease, color 0.1s ease;
+}
+.offline-work .offline-card--edge {
+  font-size: 0.7rem;
+  color: rgba(240, 237, 230, 0.4);
+  padding: 0.75rem 1.5rem;
+  border: 1px solid rgba(240, 237, 230, 0.1);
+}
+.offline-work .offline-card--main {
+  padding: 1.25rem 2rem;
+  border: 1px solid rgba(240, 237, 230, 0.2);
+  text-align: center;
+}
+.offline-work .offline-card-title {
+  font-size: 0.8rem;
+  color: var(--paper);
+  margin-bottom: 0.4rem;
+}
+.offline-work .offline-card-accent {
+  font-size: 0.55rem;
+  color: #22c55e;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+.offline-work .offline-card .offline-card-title,
+.offline-work .offline-card .offline-card-accent {
+  transition: color 0.1s ease, opacity 0.1s ease;
+}
+.offline-work .offline-card:hover {
+  border-color: #f0ede647 !important;
+  color: #fff !important;
+  transition: border-color 0s, color 0s;
+}
+.offline-work .offline-card:hover .offline-card-accent {
+  opacity: 1 !important;
+  color: #4ade80 !important;
+  transition: color 0s, opacity 0s;
+}
+
+.offline-work .offline-severed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.25rem 0;
+}
+.offline-work .offline-severed-label {
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 2px 0;
+}
+
+/* Copy column */
+.offline-work .offline-badge {
+  margin: 0 0 1.5rem;
+}
+.offline-work .offline-content h2 {
+  font-family: Chalet, sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+}
+.offline-work .offline-content > p {
+  color: var(--paper-dim);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 440px;
+  margin-bottom: 2.5rem;
+}
+
+/* Globe animations */
+.offline-work .globe-line-left {
+  animation: disconnect-drift-left 6s ease-in-out infinite;
+}
+.offline-work .globe-line-right {
+  animation: disconnect-drift-right 6s ease-in-out infinite;
+}
+.offline-work:not(.is-visible) .globe-line-left,
+.offline-work:not(.is-visible) .globe-line-right {
+  animation-play-state: paused;
+}
+/* Wi-Fi-off icon animates via an inline style; !important beats it. */
+.offline-work:not(.is-visible) .globe-svg [style*='signal-flicker'] {
+  animation-play-state: paused !important;
+}
+
+@media (max-width: 1280px) {
+  .offline-work .container {
+    max-width: 90%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .offline-work .offline-visual {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+@media (max-width: 1024px) and (min-width: 769px) {
+  .offline-work .offline-layout {
+    gap: 2rem;
+  }
+  .offline-work .offline-visual {
+    margin-left: 0;
+  }
+}
+@media (max-width: 768px) {
+  .offline-work.offline-section {
+    padding: 4rem 0;
+  }
+  .offline-work.offline-section::before {
+    display: none;
+  }
+  .offline-work .offline-visual::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: var(--border);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .offline-work .offline-visual {
+    border-bottom: 1px solid var(--border);
+    min-height: 300px;
+    margin-left: 0;
+  }
+  .offline-work .offline-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .offline-work .globe-svg {
+    width: 700px;
+    height: 700px;
+  }
+  .offline-work .wifi-center {
+    transform: scale(1.3);
+    transform-origin: 160px 160px;
+  }
+  .offline-work .offline-content {
+    text-align: center;
+  }
+  .offline-work .offline-content .offline-badge {
+    justify-content: center;
+  }
+  .offline-work .offline-content > p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

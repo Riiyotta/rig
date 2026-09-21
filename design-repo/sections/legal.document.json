@@ -1,0 +1,972 @@
+{
+  "id": "legal.document",
+  "kind": "section",
+  "category": "article",
+  "purpose": "Privacy / Terms document: 960px box with a grid header (h1 in the first column, empty second column constraining the wrap) and one .prose column of typed CMS blocks (bold-paragraph headings, justified text, nested numbered lists).",
+  "implementedBy": [
+    {
+      "citation": "src/pages/Legal.jsx:77-97",
+      "quote": "payload-page"
+    },
+    {
+      "citation": "src/styles/Legal.css:5-88",
+      "quote": ".payload-page"
+    }
+  ],
+  "usedOnRoutes": [
+    "/privacy",
+    "/terms"
+  ],
+  "constraints": {
+    "onePerPage": true
+  },
+  "content": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 3,
+        "evidence": {
+          "longestObserved": "Terms of Service",
+          "citation": "src/legal.js:246"
+        }
+      },
+      "blocks": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "p"
+                },
+                "align": {
+                  "type": "string",
+                  "enum": [
+                    "center",
+                    "justify"
+                  ]
+                },
+                "runs": {
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "const": "text"
+                          },
+                          "text": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxWords": 315,
+                            "evidence": {
+                              "longestObserved": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in.",
+                              "citation": "src/legal.js:108-338",
+                              "observedVia": "runtime evaluation of the module (the string is assembled in code, so it does not appear literally at the cited lines)"
+                            }
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "text"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "const": "bold"
+                          },
+                          "text": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxWords": 315,
+                            "evidence": {
+                              "longestObserved": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in.",
+                              "citation": "src/legal.js:108-338",
+                              "observedVia": "runtime evaluation of the module (the string is assembled in code, so it does not appear literally at the cited lines)"
+                            }
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "text"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "const": "underline"
+                          },
+                          "text": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxWords": 315,
+                            "evidence": {
+                              "longestObserved": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in.",
+                              "citation": "src/legal.js:108-338",
+                              "observedVia": "runtime evaluation of the module (the string is assembled in code, so it does not appear literally at the cited lines)"
+                            }
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "text"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "const": "link"
+                          },
+                          "text": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxWords": 315,
+                            "evidence": {
+                              "longestObserved": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in.",
+                              "citation": "src/legal.js:108-338",
+                              "observedVia": "runtime evaluation of the module (the string is assembled in code, so it does not appear literally at the cited lines)"
+                            }
+                          },
+                          "target": {
+                            "oneOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "const": "route"
+                                  },
+                                  "route": {
+                                    "type": "string",
+                                    "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "route"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "const": "email-placeholder"
+                                  },
+                                  "address": {
+                                    "type": "string",
+                                    "pattern": "^[a-z0-9._%+-]+@example\\.(com|org|net)$"
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "address"
+                                ],
+                                "additionalProperties": false,
+                                "description": "rendered as a mailto: link to a RESERVED placeholder domain only (legal copy); never a real inbox"
+                              }
+                            ],
+                            "x-allowedKinds": [
+                              "route",
+                              "email-placeholder"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "text",
+                          "target"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "const": "break"
+                          }
+                        },
+                        "required": [
+                          "kind"
+                        ],
+                        "additionalProperties": false
+                      }
+                    ]
+                  },
+                  "minItems": 1,
+                  "maxItems": 40
+                }
+              },
+              "required": [
+                "kind",
+                "runs"
+              ],
+              "additionalProperties": false,
+              "description": "bold-only paragraphs act as section headings; per-block text-align preserved"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "ul"
+                },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "kind": {
+                              "const": "text"
+                            },
+                            "text": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxWords": 315,
+                              "evidence": {
+                                "longestObserved": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in.",
+                                "citation": "src/legal.js:108-338",
+                                "observedVia": "runtime evaluation of the module (the string is assembled in code, so it does not appear literally at the cited lines)"
+                              }
+                            }
+                          },
+                          "required": [
+                            "kind",
+                            "text"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "kind": {
+                              "const": "bold"
+                            },
+                            "text": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxWords": 315,
+                              "evidence": {
+                                "longestObserved": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in.",
+                                "citation": "src/legal.js:108-338",
+                                "observedVia": "runtime evaluation of the module (the string is assembled in code, so it does not appear literally at the cited lines)"
+                              }
+                            }
+                          },
+                          "required": [
+                            "kind",
+                            "text"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "kind": {
+                              "const": "underline"
+                            },
+                            "text": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxWords": 315,
+                              "evidence": {
+                                "longestObserved": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in.",
+                                "citation": "src/legal.js:108-338",
+                                "observedVia": "runtime evaluation of the module (the string is assembled in code, so it does not appear literally at the cited lines)"
+                              }
+                            }
+                          },
+                          "required": [
+                            "kind",
+                            "text"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "kind": {
+                              "const": "link"
+                            },
+                            "text": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxWords": 315,
+                              "evidence": {
+                                "longestObserved": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in.",
+                                "citation": "src/legal.js:108-338",
+                                "observedVia": "runtime evaluation of the module (the string is assembled in code, so it does not appear literally at the cited lines)"
+                              }
+                            },
+                            "target": {
+                              "oneOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "kind": {
+                                      "const": "route"
+                                    },
+                                    "route": {
+                                      "type": "string",
+                                      "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                                    }
+                                  },
+                                  "required": [
+                                    "kind",
+                                    "route"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "kind": {
+                                      "const": "email-placeholder"
+                                    },
+                                    "address": {
+                                      "type": "string",
+                                      "pattern": "^[a-z0-9._%+-]+@example\\.(com|org|net)$"
+                                    }
+                                  },
+                                  "required": [
+                                    "kind",
+                                    "address"
+                                  ],
+                                  "additionalProperties": false,
+                                  "description": "rendered as a mailto: link to a RESERVED placeholder domain only (legal copy); never a real inbox"
+                                }
+                              ],
+                              "x-allowedKinds": [
+                                "route",
+                                "email-placeholder"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "kind",
+                            "text",
+                            "target"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "kind": {
+                              "const": "break"
+                            }
+                          },
+                          "required": [
+                            "kind"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 40
+                  },
+                  "minItems": 1,
+                  "maxItems": 30
+                }
+              },
+              "required": [
+                "kind",
+                "items"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "ol"
+                },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "nestedOnly": {
+                        "type": "boolean"
+                      },
+                      "value": {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      "runs": {
+                        "type": "array",
+                        "items": {
+                          "oneOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "kind": {
+                                  "const": "text"
+                                },
+                                "text": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxWords": 315,
+                                  "evidence": {
+                                    "longestObserved": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in.",
+                                    "citation": "src/legal.js:108-338",
+                                    "observedVia": "runtime evaluation of the module (the string is assembled in code, so it does not appear literally at the cited lines)"
+                                  }
+                                }
+                              },
+                              "required": [
+                                "kind",
+                                "text"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "kind": {
+                                  "const": "bold"
+                                },
+                                "text": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxWords": 315,
+                                  "evidence": {
+                                    "longestObserved": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in.",
+                                    "citation": "src/legal.js:108-338",
+                                    "observedVia": "runtime evaluation of the module (the string is assembled in code, so it does not appear literally at the cited lines)"
+                                  }
+                                }
+                              },
+                              "required": [
+                                "kind",
+                                "text"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "kind": {
+                                  "const": "underline"
+                                },
+                                "text": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxWords": 315,
+                                  "evidence": {
+                                    "longestObserved": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in.",
+                                    "citation": "src/legal.js:108-338",
+                                    "observedVia": "runtime evaluation of the module (the string is assembled in code, so it does not appear literally at the cited lines)"
+                                  }
+                                }
+                              },
+                              "required": [
+                                "kind",
+                                "text"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "kind": {
+                                  "const": "link"
+                                },
+                                "text": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxWords": 315,
+                                  "evidence": {
+                                    "longestObserved": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in.",
+                                    "citation": "src/legal.js:108-338",
+                                    "observedVia": "runtime evaluation of the module (the string is assembled in code, so it does not appear literally at the cited lines)"
+                                  }
+                                },
+                                "target": {
+                                  "oneOf": [
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "kind": {
+                                          "const": "route"
+                                        },
+                                        "route": {
+                                          "type": "string",
+                                          "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                                        }
+                                      },
+                                      "required": [
+                                        "kind",
+                                        "route"
+                                      ],
+                                      "additionalProperties": false
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "kind": {
+                                          "const": "email-placeholder"
+                                        },
+                                        "address": {
+                                          "type": "string",
+                                          "pattern": "^[a-z0-9._%+-]+@example\\.(com|org|net)$"
+                                        }
+                                      },
+                                      "required": [
+                                        "kind",
+                                        "address"
+                                      ],
+                                      "additionalProperties": false,
+                                      "description": "rendered as a mailto: link to a RESERVED placeholder domain only (legal copy); never a real inbox"
+                                    }
+                                  ],
+                                  "x-allowedKinds": [
+                                    "route",
+                                    "email-placeholder"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "kind",
+                                "text",
+                                "target"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "kind": {
+                                  "const": "break"
+                                }
+                              },
+                              "required": [
+                                "kind"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ]
+                        },
+                        "minItems": 1,
+                        "maxItems": 40
+                      },
+                      "sub": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "nestedOnly": {
+                              "type": "boolean"
+                            },
+                            "value": {
+                              "type": "integer",
+                              "minimum": 1
+                            },
+                            "runs": {
+                              "type": "array",
+                              "items": {
+                                "oneOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "kind": {
+                                        "const": "text"
+                                      },
+                                      "text": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxWords": 315,
+                                        "evidence": {
+                                          "longestObserved": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in.",
+                                          "citation": "src/legal.js:108-338",
+                                          "observedVia": "runtime evaluation of the module (the string is assembled in code, so it does not appear literally at the cited lines)"
+                                        }
+                                      }
+                                    },
+                                    "required": [
+                                      "kind",
+                                      "text"
+                                    ],
+                                    "additionalProperties": false
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "kind": {
+                                        "const": "bold"
+                                      },
+                                      "text": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxWords": 315,
+                                        "evidence": {
+                                          "longestObserved": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in.",
+                                          "citation": "src/legal.js:108-338",
+                                          "observedVia": "runtime evaluation of the module (the string is assembled in code, so it does not appear literally at the cited lines)"
+                                        }
+                                      }
+                                    },
+                                    "required": [
+                                      "kind",
+                                      "text"
+                                    ],
+                                    "additionalProperties": false
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "kind": {
+                                        "const": "underline"
+                                      },
+                                      "text": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxWords": 315,
+                                        "evidence": {
+                                          "longestObserved": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in.",
+                                          "citation": "src/legal.js:108-338",
+                                          "observedVia": "runtime evaluation of the module (the string is assembled in code, so it does not appear literally at the cited lines)"
+                                        }
+                                      }
+                                    },
+                                    "required": [
+                                      "kind",
+                                      "text"
+                                    ],
+                                    "additionalProperties": false
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "kind": {
+                                        "const": "link"
+                                      },
+                                      "text": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxWords": 315,
+                                        "evidence": {
+                                          "longestObserved": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in.",
+                                          "citation": "src/legal.js:108-338",
+                                          "observedVia": "runtime evaluation of the module (the string is assembled in code, so it does not appear literally at the cited lines)"
+                                        }
+                                      },
+                                      "target": {
+                                        "oneOf": [
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "kind": {
+                                                "const": "route"
+                                              },
+                                              "route": {
+                                                "type": "string",
+                                                "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                                              }
+                                            },
+                                            "required": [
+                                              "kind",
+                                              "route"
+                                            ],
+                                            "additionalProperties": false
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "kind": {
+                                                "const": "email-placeholder"
+                                              },
+                                              "address": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9._%+-]+@example\\.(com|org|net)$"
+                                              }
+                                            },
+                                            "required": [
+                                              "kind",
+                                              "address"
+                                            ],
+                                            "additionalProperties": false,
+                                            "description": "rendered as a mailto: link to a RESERVED placeholder domain only (legal copy); never a real inbox"
+                                          }
+                                        ],
+                                        "x-allowedKinds": [
+                                          "route",
+                                          "email-placeholder"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "kind",
+                                      "text",
+                                      "target"
+                                    ],
+                                    "additionalProperties": false
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "kind": {
+                                        "const": "break"
+                                      }
+                                    },
+                                    "required": [
+                                      "kind"
+                                    ],
+                                    "additionalProperties": false
+                                  }
+                                ]
+                              },
+                              "minItems": 1,
+                              "maxItems": 40
+                            },
+                            "sub": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "nestedOnly": {
+                                    "type": "boolean"
+                                  },
+                                  "value": {
+                                    "type": "integer",
+                                    "minimum": 1
+                                  },
+                                  "runs": {
+                                    "type": "array",
+                                    "items": {
+                                      "oneOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "kind": {
+                                              "const": "text"
+                                            },
+                                            "text": {
+                                              "type": "string",
+                                              "minLength": 1,
+                                              "maxWords": 315,
+                                              "evidence": {
+                                                "longestObserved": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in.",
+                                                "citation": "src/legal.js:108-338",
+                                                "observedVia": "runtime evaluation of the module (the string is assembled in code, so it does not appear literally at the cited lines)"
+                                              }
+                                            }
+                                          },
+                                          "required": [
+                                            "kind",
+                                            "text"
+                                          ],
+                                          "additionalProperties": false
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "kind": {
+                                              "const": "bold"
+                                            },
+                                            "text": {
+                                              "type": "string",
+                                              "minLength": 1,
+                                              "maxWords": 315,
+                                              "evidence": {
+                                                "longestObserved": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in.",
+                                                "citation": "src/legal.js:108-338",
+                                                "observedVia": "runtime evaluation of the module (the string is assembled in code, so it does not appear literally at the cited lines)"
+                                              }
+                                            }
+                                          },
+                                          "required": [
+                                            "kind",
+                                            "text"
+                                          ],
+                                          "additionalProperties": false
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "kind": {
+                                              "const": "underline"
+                                            },
+                                            "text": {
+                                              "type": "string",
+                                              "minLength": 1,
+                                              "maxWords": 315,
+                                              "evidence": {
+                                                "longestObserved": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in.",
+                                                "citation": "src/legal.js:108-338",
+                                                "observedVia": "runtime evaluation of the module (the string is assembled in code, so it does not appear literally at the cited lines)"
+                                              }
+                                            }
+                                          },
+                                          "required": [
+                                            "kind",
+                                            "text"
+                                          ],
+                                          "additionalProperties": false
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "kind": {
+                                              "const": "link"
+                                            },
+                                            "text": {
+                                              "type": "string",
+                                              "minLength": 1,
+                                              "maxWords": 315,
+                                              "evidence": {
+                                                "longestObserved": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in.",
+                                                "citation": "src/legal.js:108-338",
+                                                "observedVia": "runtime evaluation of the module (the string is assembled in code, so it does not appear literally at the cited lines)"
+                                              }
+                                            },
+                                            "target": {
+                                              "oneOf": [
+                                                {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "kind": {
+                                                      "const": "route"
+                                                    },
+                                                    "route": {
+                                                      "type": "string",
+                                                      "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "kind",
+                                                    "route"
+                                                  ],
+                                                  "additionalProperties": false
+                                                },
+                                                {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "kind": {
+                                                      "const": "email-placeholder"
+                                                    },
+                                                    "address": {
+                                                      "type": "string",
+                                                      "pattern": "^[a-z0-9._%+-]+@example\\.(com|org|net)$"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "kind",
+                                                    "address"
+                                                  ],
+                                                  "additionalProperties": false,
+                                                  "description": "rendered as a mailto: link to a RESERVED placeholder domain only (legal copy); never a real inbox"
+                                                }
+                                              ],
+                                              "x-allowedKinds": [
+                                                "route",
+                                                "email-placeholder"
+                                              ]
+                                            }
+                                          },
+                                          "required": [
+                                            "kind",
+                                            "text",
+                                            "target"
+                                          ],
+                                          "additionalProperties": false
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "kind": {
+                                              "const": "break"
+                                            }
+                                          },
+                                          "required": [
+                                            "kind"
+                                          ],
+                                          "additionalProperties": false
+                                        }
+                                      ]
+                                    },
+                                    "minItems": 1,
+                                    "maxItems": 40
+                                  }
+                                },
+                                "required": [],
+                                "additionalProperties": false
+                              },
+                              "minItems": 1,
+                              "maxItems": 30
+                            }
+                          },
+                          "required": [],
+                          "additionalProperties": false
+                        },
+                        "minItems": 1,
+                        "maxItems": 30
+                      }
+                    },
+                    "required": [],
+                    "additionalProperties": false
+                  },
+                  "minItems": 1,
+                  "maxItems": 30
+                }
+              },
+              "required": [
+                "kind",
+                "items"
+              ],
+              "additionalProperties": false,
+              "description": "CMS-style numbered lists; nested sub-lists up to 3 levels"
+            }
+          ]
+        },
+        "minItems": 1,
+        "maxItems": 108
+      }
+    },
+    "required": [
+      "title",
+      "blocks"
+    ],
+    "additionalProperties": false,
+    "description": "No TOC, anchors or h2/h3 - headings are bold paragraphs (spec P4)"
+  },
+  "motion": {
+    "allowed": [
+      {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoints": [
+      {
+        "query": "(max-width: 720px)",
+        "citation": "src/styles/Legal.css:79-88",
+        "quote": "@media (max-width: 720px)",
+        "changes": [
+          "box width min(100% - 2rem, 960px), padding 3rem 0 4rem",
+          "header grid 1 column, gap 2rem"
+        ]
+      }
+    ]
+  },
+  "assetRoles": [],
+  "composedOf": [
+    "component.prose"
+  ]
+}

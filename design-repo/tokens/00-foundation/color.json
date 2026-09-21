@@ -1,0 +1,533 @@
+{
+  "$description": "Foundation colours. The 26 CSS custom properties are copied verbatim from src/index.css :root (declared in oklch, the spec's sRGB equivalents in $description); every other entry is a literal that really occurs in src/index.css or src/styles/*.css (usageCount = occurrences across those files, i.e. the implemented colour histogram). No colour exists here that is not in the source.",
+  "color": {
+    "red": {
+      "$type": "color",
+      "$value": "oklch(0.6329 0.2075 31.49)",
+      "measuredFrom": "src/index.css:63",
+      "evidenceQuote": "oklch(0.6329 0.2075 31.49)",
+      "$description": "brand red; sRGB #ed462d",
+      "usageCount": 49
+    },
+    "red-glow": {
+      "$type": "color",
+      "$value": "oklch(0.6329 0.2075 31.49 / 40%)",
+      "measuredFrom": "src/index.css:64",
+      "evidenceQuote": "oklch(0.6329 0.2075 31.49 / 40%)",
+      "$description": "red at 40% (glows)",
+      "usageCount": 3
+    },
+    "blue": {
+      "$type": "color",
+      "$value": "oklch(0.5312 0.260273 266.7713)",
+      "measuredFrom": "src/index.css:65",
+      "evidenceQuote": "oklch(0.5312 0.260273 266.7713)",
+      "$description": "sRGB #2b4fff; hover offset shadow + glitch fringe",
+      "usageCount": 2
+    },
+    "blue-dim": {
+      "$type": "color",
+      "$value": "oklch(0.5312 0.260273 266.7713 / 15%)",
+      "measuredFrom": "src/index.css:66",
+      "evidenceQuote": "oklch(0.5312 0.260273 266.7713 / 15%)",
+      "$description": "blue at 15%",
+      "usageCount": 0
+    },
+    "green": {
+      "$type": "color",
+      "$value": "oklch(0.8003 0.1821 151.71)",
+      "measuredFrom": "src/index.css:67",
+      "evidenceQuote": "oklch(0.8003 0.1821 151.71)",
+      "$description": "sRGB #4ade80",
+      "usageCount": 1
+    },
+    "green-dim": {
+      "$type": "color",
+      "$value": "oklch(0.8003 0.1821 151.71 / 75%)",
+      "measuredFrom": "src/index.css:68",
+      "evidenceQuote": "oklch(0.8003 0.1821 151.71 / 75%)",
+      "$description": "green at 75%",
+      "usageCount": 0
+    },
+    "ink": {
+      "$type": "color",
+      "$value": "oklch(0.1448 0 0)",
+      "measuredFrom": "src/index.css:69",
+      "evidenceQuote": "oklch(0.1448 0 0)",
+      "$description": "page background; sRGB #0a0a0a",
+      "usageCount": 28
+    },
+    "paper": {
+      "$type": "color",
+      "$value": "oklch(0.9465 0.0099 87.47)",
+      "measuredFrom": "src/index.css:70",
+      "evidenceQuote": "oklch(0.9465 0.0099 87.47)",
+      "$description": "primary text; sRGB #f0ede6",
+      "usageCount": 41
+    },
+    "paper-dim": {
+      "$type": "color",
+      "$value": "oklch(0.9465 0.0099 87.47 / 75%)",
+      "measuredFrom": "src/index.css:71",
+      "evidenceQuote": "oklch(0.9465 0.0099 87.47 / 75%)",
+      "$description": "body copy",
+      "usageCount": 11
+    },
+    "paper-faint": {
+      "$type": "color",
+      "$value": "oklch(0.9465 0.0099 87.47 / 8%)",
+      "measuredFrom": "src/index.css:72",
+      "evidenceQuote": "oklch(0.9465 0.0099 87.47 / 8%)",
+      "$description": "ghost fills, progress rail",
+      "usageCount": 3
+    },
+    "border": {
+      "$type": "color",
+      "$value": "oklch(0.9465 0.0099 87.47 / 14%)",
+      "measuredFrom": "src/index.css:73",
+      "evidenceQuote": "oklch(0.9465 0.0099 87.47 / 14%)",
+      "$description": "frame lines, dividers, borders",
+      "usageCount": 35
+    },
+    "border-dim": {
+      "$type": "color",
+      "$value": "oklch(0.9465 0.0099 87.47 / 10%)",
+      "measuredFrom": "src/index.css:74",
+      "evidenceQuote": "oklch(0.9465 0.0099 87.47 / 10%)",
+      "$description": "prose rules, terminal dots",
+      "usageCount": 10
+    },
+    "paper-70": {
+      "$type": "color",
+      "$value": "rgba(240, 237, 230, 0.7)",
+      "measuredFrom": "src/index.css:75",
+      "evidenceQuote": "rgba(240, 237, 230, 0.7)",
+      "$description": "paper at .70",
+      "usageCount": 1
+    },
+    "paper-60": {
+      "$type": "color",
+      "$value": "rgba(240, 237, 230, 0.6)",
+      "measuredFrom": "src/index.css:76",
+      "evidenceQuote": "rgba(240, 237, 230, 0.6)",
+      "$description": "paper at .60",
+      "usageCount": 4
+    },
+    "paper-50": {
+      "$type": "color",
+      "$value": "rgba(240, 237, 230, 0.5)",
+      "measuredFrom": "src/index.css:77",
+      "evidenceQuote": "rgba(240, 237, 230, 0.5)",
+      "$description": "paper at .50",
+      "usageCount": 7
+    },
+    "paper-45": {
+      "$type": "color",
+      "$value": "rgba(240, 237, 230, 0.45)",
+      "measuredFrom": "src/index.css:78",
+      "evidenceQuote": "rgba(240, 237, 230, 0.45)",
+      "$description": "paper at .45",
+      "usageCount": 4
+    },
+    "paper-40": {
+      "$type": "color",
+      "$value": "rgba(240, 237, 230, 0.4)",
+      "measuredFrom": "src/index.css:79",
+      "evidenceQuote": "rgba(240, 237, 230, 0.4)",
+      "$description": "paper at .40",
+      "usageCount": 3
+    },
+    "paper-35": {
+      "$type": "color",
+      "$value": "rgba(240, 237, 230, 0.35)",
+      "measuredFrom": "src/index.css:80",
+      "evidenceQuote": "rgba(240, 237, 230, 0.35)",
+      "$description": "paper at .35",
+      "usageCount": 4
+    },
+    "paper-30": {
+      "$type": "color",
+      "$value": "rgba(240, 237, 230, 0.3)",
+      "measuredFrom": "src/index.css:81",
+      "evidenceQuote": "rgba(240, 237, 230, 0.3)",
+      "$description": "paper at .30",
+      "usageCount": 4
+    },
+    "paper-25": {
+      "$type": "color",
+      "$value": "rgba(240, 237, 230, 0.25)",
+      "measuredFrom": "src/index.css:82",
+      "evidenceQuote": "rgba(240, 237, 230, 0.25)",
+      "$description": "paper at .25",
+      "usageCount": 1
+    },
+    "paper-20": {
+      "$type": "color",
+      "$value": "rgba(240, 237, 230, 0.2)",
+      "measuredFrom": "src/index.css:83",
+      "evidenceQuote": "rgba(240, 237, 230, 0.2)",
+      "$description": "paper at .20",
+      "usageCount": 2
+    },
+    "paper-15": {
+      "$type": "color",
+      "$value": "rgba(240, 237, 230, 0.15)",
+      "measuredFrom": "src/index.css:84",
+      "evidenceQuote": "rgba(240, 237, 230, 0.15)",
+      "$description": "paper at .15",
+      "usageCount": 6
+    },
+    "paper-12": {
+      "$type": "color",
+      "$value": "rgba(240, 237, 230, 0.12)",
+      "measuredFrom": "src/index.css:85",
+      "evidenceQuote": "rgba(240, 237, 230, 0.12)",
+      "$description": "paper at .12",
+      "usageCount": 0
+    },
+    "paper-06": {
+      "$type": "color",
+      "$value": "rgba(240, 237, 230, 0.06)",
+      "measuredFrom": "src/index.css:86",
+      "evidenceQuote": "rgba(240, 237, 230, 0.06)",
+      "$description": "paper at .06",
+      "usageCount": 5
+    },
+    "paper-04": {
+      "$type": "color",
+      "$value": "rgba(240, 237, 230, 0.04)",
+      "measuredFrom": "src/index.css:87",
+      "evidenceQuote": "rgba(240, 237, 230, 0.04)",
+      "$description": "paper at .04",
+      "usageCount": 9
+    },
+    "paper-02": {
+      "$type": "color",
+      "$value": "rgba(240, 237, 230, 0.02)",
+      "measuredFrom": "src/index.css:88",
+      "evidenceQuote": "rgba(240, 237, 230, 0.02)",
+      "$description": "paper at .02",
+      "usageCount": 2
+    },
+    "ink-solid": {
+      "$type": "color",
+      "$value": "#0a0a0a",
+      "measuredFrom": "src/styles/Footer.css:9",
+      "evidenceQuote": "#0a0a0a",
+      "$description": "footer background (literal sRGB of --ink)",
+      "usageCount": 1
+    },
+    "ink-glass": {
+      "$type": "color",
+      "$value": "#0a0a0ae0",
+      "measuredFrom": "src/index.css:333",
+      "evidenceQuote": "#0a0a0ae0",
+      "$description": "badge + how-card glass background",
+      "usageCount": 2
+    },
+    "ink-95": {
+      "$type": "color",
+      "$value": "rgba(10, 10, 10, 0.95)",
+      "measuredFrom": "src/styles/Offline.css:60",
+      "evidenceQuote": "rgba(10, 10, 10, 0.95)",
+      "$description": "offline cards / SVG cards",
+      "usageCount": 1
+    },
+    "ink-15": {
+      "$type": "color",
+      "$value": "rgba(10, 10, 10, 0.15)",
+      "measuredFrom": "src/styles/Hero.css:64",
+      "evidenceQuote": "rgba(10, 10, 10, 0.15)",
+      "$description": "hero ticker top border",
+      "usageCount": 1
+    },
+    "terminal": {
+      "$type": "color",
+      "$value": "#050505",
+      "measuredFrom": "src/styles/Terminal.css:157",
+      "evidenceQuote": "#050505",
+      "$description": "terminal window",
+      "usageCount": 1
+    },
+    "monitor-1": {
+      "$type": "color",
+      "$value": "#1a1a1a",
+      "measuredFrom": "src/styles/Terminal.css:101",
+      "evidenceQuote": "#1a1a1a",
+      "$description": "monitor casing gradient stop 1",
+      "usageCount": 1
+    },
+    "monitor-2": {
+      "$type": "color",
+      "$value": "#111",
+      "measuredFrom": "src/styles/Terminal.css:101",
+      "evidenceQuote": "#111",
+      "$description": "monitor casing gradient stop 2",
+      "usageCount": 1
+    },
+    "monitor-3": {
+      "$type": "color",
+      "$value": "#0d0d0d",
+      "measuredFrom": "src/styles/Terminal.css:101",
+      "evidenceQuote": "#0d0d0d",
+      "$description": "monitor casing gradient stop 3",
+      "usageCount": 1
+    },
+    "white": {
+      "$type": "color",
+      "$value": "#fff",
+      "measuredFrom": "src/styles/Terminal.css:75",
+      "evidenceQuote": "#fff",
+      "$description": "blueprint/anno titles, share + hw-submit text",
+      "usageCount": 5
+    },
+    "black": {
+      "$type": "color",
+      "$value": "#000",
+      "measuredFrom": "src/styles/Waitlist.css:474",
+      "evidenceQuote": "#000",
+      "$description": "share-on-X button (third-party brand colour)",
+      "usageCount": 1
+    },
+    "green-accent": {
+      "$type": "color",
+      "$value": "#22c55e",
+      "measuredFrom": "src/styles/HowItWorks.css:186",
+      "evidenceQuote": "#22c55e",
+      "$description": "'model active' accent, status green",
+      "usageCount": 2
+    },
+    "green-hex": {
+      "$type": "color",
+      "$value": "#4ade80",
+      "measuredFrom": "src/styles/Offline.css:99",
+      "evidenceQuote": "#4ade80",
+      "$description": "offline card accent on hover (literal sRGB of --green)",
+      "usageCount": 1
+    },
+    "red-hex": {
+      "$type": "color",
+      "$value": "#ed462d",
+      "measuredFrom": "src/styles/HowItWorks.css:158",
+      "evidenceQuote": "#ed462d",
+      "$description": "how overlay card border (literal sRGB of --red)",
+      "usageCount": 1
+    },
+    "red-hover": {
+      "$type": "color",
+      "$value": "#d93d26",
+      "measuredFrom": "src/styles/Waitlist.css:140",
+      "evidenceQuote": "#d93d26",
+      "$description": "submit button hover",
+      "usageCount": 2
+    },
+    "error": {
+      "$type": "color",
+      "$value": "#ff6b6b",
+      "measuredFrom": "src/styles/Waitlist.css:159",
+      "evidenceQuote": "#ff6b6b",
+      "$description": "form error text",
+      "usageCount": 2
+    },
+    "white-02": {
+      "$type": "color",
+      "$value": "#ffffff05",
+      "measuredFrom": "src/styles/Capabilities.css:16",
+      "evidenceQuote": "#ffffff05",
+      "$description": "capabilities card background",
+      "usageCount": 1
+    },
+    "paper-hex-02": {
+      "$type": "color",
+      "$value": "#f0ede604",
+      "measuredFrom": "src/styles/HowItWorks.css:141",
+      "evidenceQuote": "#f0ede604",
+      "$description": "how illustration panel background",
+      "usageCount": 1
+    },
+    "paper-hex-04": {
+      "$type": "color",
+      "$value": "#f0ede60a",
+      "measuredFrom": "src/styles/Waitlist.css:47",
+      "evidenceQuote": "#f0ede60a",
+      "$description": ".card / stat-card / features-preview background",
+      "usageCount": 7
+    },
+    "paper-hex-05": {
+      "$type": "color",
+      "$value": "#f0ede60d",
+      "measuredFrom": "src/index.css:312",
+      "evidenceQuote": "#f0ede60d",
+      "$description": "btn-outline hover background",
+      "usageCount": 1
+    },
+    "paper-hex-18": {
+      "$type": "color",
+      "$value": "#f0ede62e",
+      "measuredFrom": "src/styles/Intro.css:116",
+      "evidenceQuote": "#f0ede62e",
+      "$description": "svg-card divider hover",
+      "usageCount": 1
+    },
+    "paper-hex-25": {
+      "$type": "color",
+      "$value": "#f0ede640",
+      "measuredFrom": "src/styles/Waitlist.css:358",
+      "evidenceQuote": "#f0ede640",
+      "$description": "hw-input placeholder",
+      "usageCount": 1
+    },
+    "paper-hex-28": {
+      "$type": "color",
+      "$value": "#f0ede647",
+      "measuredFrom": "src/styles/Offline.css:93",
+      "evidenceQuote": "#f0ede647",
+      "$description": "offline card hover border",
+      "usageCount": 1
+    },
+    "paper-hex-30": {
+      "$type": "color",
+      "$value": "#f0ede64d",
+      "measuredFrom": "src/styles/Waitlist.css:484",
+      "evidenceQuote": "#f0ede64d",
+      "$description": "joined-date / dev-reset text",
+      "usageCount": 2
+    },
+    "paper-hex-40": {
+      "$type": "color",
+      "$value": "#f0ede666",
+      "measuredFrom": "src/styles/Waitlist.css:270",
+      "evidenceQuote": "#f0ede666",
+      "$description": "stat/hw/referral labels",
+      "usageCount": 2
+    },
+    "paper-hex-50": {
+      "$type": "color",
+      "$value": "#f0ede680",
+      "measuredFrom": "src/styles/Intro.css:110",
+      "evidenceQuote": "#f0ede680",
+      "$description": "waitlist descriptions, feature items",
+      "usageCount": 9
+    },
+    "paper-hex-60": {
+      "$type": "color",
+      "$value": "#f0ede699",
+      "measuredFrom": "src/styles/Waitlist.css:58",
+      "evidenceQuote": "#f0ede699",
+      "$description": "features heading",
+      "usageCount": 1
+    },
+    "paper-a10": {
+      "$type": "color",
+      "$value": "rgba(240, 237, 230, 0.1)",
+      "measuredFrom": "src/styles/Offline.css:67",
+      "evidenceQuote": "rgba(240, 237, 230, 0.1)",
+      "$description": "waitlist card/input borders",
+      "usageCount": 10
+    },
+    "red-a20": {
+      "$type": "color",
+      "$value": "rgba(237, 70, 45, 0.2)",
+      "measuredFrom": "src/index.css:334",
+      "evidenceQuote": "rgba(237, 70, 45, 0.2)",
+      "$description": "badge border",
+      "usageCount": 2
+    },
+    "red-a12": {
+      "$type": "color",
+      "$value": "rgba(237, 70, 45, 0.12)",
+      "measuredFrom": "src/styles/HowItWorks.css:180",
+      "evidenceQuote": "rgba(237, 70, 45, 0.12)",
+      "$description": "how-card title rule",
+      "usageCount": 1
+    },
+    "red-hex-03": {
+      "$type": "color",
+      "$value": "#ed462d08",
+      "measuredFrom": "src/styles/Capabilities.css:31",
+      "evidenceQuote": "#ed462d08",
+      "$description": "capabilities card hover background",
+      "usageCount": 1
+    },
+    "red-hex-10": {
+      "$type": "color",
+      "$value": "#ed462d1a",
+      "measuredFrom": "src/styles/Waitlist.css:224",
+      "evidenceQuote": "#ed462d1a",
+      "$description": "dashboard status-badge background",
+      "usageCount": 1
+    },
+    "red-hex-20": {
+      "$type": "color",
+      "$value": "#ed462d33",
+      "measuredFrom": "src/styles/Capabilities.css:30",
+      "evidenceQuote": "#ed462d33",
+      "$description": "capabilities card hover border",
+      "usageCount": 1
+    },
+    "selection": {
+      "$type": "color",
+      "$value": "#ed462de5",
+      "measuredFrom": "src/index.css:124",
+      "evidenceQuote": "#ed462de5",
+      "$description": "::selection background",
+      "usageCount": 1
+    },
+    "selection-fg": {
+      "$type": "color",
+      "$value": "#fffde0",
+      "measuredFrom": "src/index.css:125",
+      "evidenceQuote": "#fffde0",
+      "$description": "::selection text",
+      "usageCount": 1
+    },
+    "fringe-red": {
+      "$type": "color",
+      "$value": "#e5332a05",
+      "measuredFrom": "src/index.css:205",
+      "evidenceQuote": "#e5332a05",
+      "$description": "rgb-fringe overlay stop",
+      "usageCount": 2
+    },
+    "fringe-blue": {
+      "$type": "color",
+      "$value": "#2b4fff04",
+      "measuredFrom": "src/index.css:205",
+      "evidenceQuote": "#2b4fff04",
+      "$description": "rgb-fringe overlay stop",
+      "usageCount": 1
+    },
+    "linkedin": {
+      "$type": "color",
+      "$value": "#0077b5",
+      "measuredFrom": "src/styles/Waitlist.css:478",
+      "evidenceQuote": "#0077b5",
+      "$description": "share-on-LinkedIn button (third-party brand colour)",
+      "usageCount": 1
+    },
+    "black-50": {
+      "$type": "color",
+      "$value": "#00000080",
+      "measuredFrom": "src/styles/Terminal.css:104",
+      "evidenceQuote": "#00000080",
+      "$description": "monitor shadows",
+      "usageCount": 2
+    },
+    "black-40": {
+      "$type": "color",
+      "$value": "#0006",
+      "measuredFrom": "src/styles/Terminal.css:104",
+      "evidenceQuote": "#0006",
+      "$description": "monitor drop shadow",
+      "usageCount": 1
+    },
+    "scanline": {
+      "$type": "color",
+      "$value": "rgba(0, 0, 0, 0.08)",
+      "measuredFrom": "src/index.css:184",
+      "evidenceQuote": "rgba(0, 0, 0, 0.08)",
+      "$description": "scanline stripes",
+      "usageCount": 2
+    }
+  }
+}

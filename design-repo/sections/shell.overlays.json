@@ -1,0 +1,74 @@
+{
+  "id": "shell.overlays",
+  "kind": "section",
+  "category": "shell",
+  "purpose": "Fixed full-viewport texture: scanlines, SVG grain (#grainy) and RGB fringe above everything (z 10001-10003). First child of every page.",
+  "implementedBy": [
+    {
+      "citation": "src/components/Overlays.jsx:4-11",
+      "quote": "scanlines"
+    },
+    {
+      "citation": "src/index.css:176-209",
+      "quote": "z-index: 10002;"
+    }
+  ],
+  "usedOnRoutes": [
+    "/",
+    "/blog",
+    "/blog/manifesto",
+    "/blog/building-inference-engine",
+    "/blog/compressing-a-model-to-run-locally",
+    "/blog/teaching-a-model-to-code",
+    "/blog/:unknown-slug",
+    "/waitlist",
+    "/privacy",
+    "/terms"
+  ],
+  "constraints": {
+    "onePerPage": true,
+    "mustBeFirst": true
+  },
+  "content": {
+    "type": "object",
+    "properties": {
+      "grainFilter": {
+        "type": "object",
+        "properties": {
+          "assetRole": {
+            "type": "string",
+            "enum": [
+              "effect.svg-filter"
+            ]
+          }
+        },
+        "required": [
+          "assetRole"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "grainFilter"
+    ],
+    "additionalProperties": false
+  },
+  "motion": {
+    "allowed": [
+      {
+        "pattern": "grain-overlay-smil",
+        "reducedMotionFallback": "static-grain-frame"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoints": [],
+    "note": "Fixed 100vw x 100vh at every width; no @media rule."
+  },
+  "assetRoles": [
+    "effect.svg-filter"
+  ],
+  "composedOf": [
+    "primitive.inline-svg"
+  ]
+}

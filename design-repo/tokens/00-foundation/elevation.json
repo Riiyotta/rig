@@ -1,0 +1,79 @@
+{
+  "$description": "Every box-shadow / text-shadow / backdrop blur in the source. Note: shadows on chamfered elements are clipped by clip-path (spec gotcha §18.4) - a faithful quirk, not a bug.",
+  "shadow": {
+    "btn-offset-blue": {
+      "$type": "shadow",
+      "$value": "4px 4px 0 var(--blue)",
+      "measuredFrom": "src/index.css:305",
+      "evidenceQuote": "4px 4px 0 var(--blue)",
+      "$description": ".btn-red/.btn-cta hover (clipped by the chamfer; invisible)"
+    },
+    "btn-offset-red": {
+      "$type": "shadow",
+      "$value": "4px 4px 0 var(--red)",
+      "measuredFrom": "src/index.css:308",
+      "evidenceQuote": "4px 4px 0 var(--red)",
+      "$description": ".btn-dark hover (clipped)"
+    },
+    "blink-dot-glow": {
+      "$type": "shadow",
+      "$value": "0 0 8px var(--red-glow)",
+      "measuredFrom": "src/index.css:377",
+      "evidenceQuote": "0 0 8px var(--red-glow)",
+      "$description": "blink dot"
+    },
+    "cta-glow": {
+      "$type": "shadow",
+      "$value": "0 0 40px var(--red-glow)",
+      "measuredFrom": "src/styles/Cta.css:133",
+      "evidenceQuote": "0 0 40px var(--red-glow)",
+      "$description": "CTA button glow (clipped)"
+    },
+    "led-glow": {
+      "$type": "shadow",
+      "$value": "0 0 6px var(--red-glow)",
+      "measuredFrom": "src/styles/Terminal.css:151",
+      "evidenceQuote": "0 0 6px var(--red-glow)",
+      "$description": "monitor LED"
+    },
+    "monitor-casing": {
+      "$type": "shadow",
+      "$value": "0 2px 0 var(--paper-04), 0 -1px #00000080, 0 20px 60px #0006",
+      "measuredFrom": "src/styles/Terminal.css:104",
+      "evidenceQuote": "0 2px 0 var(--paper-04), 0 -1px #00000080, 0 20px 60px #0006",
+      "$description": "monitor casing"
+    },
+    "bezel-inset": {
+      "$type": "shadow",
+      "$value": "inset 0 2px 8px #00000080",
+      "measuredFrom": "src/styles/Terminal.css:123",
+      "evidenceQuote": "inset 0 2px 8px #00000080",
+      "$description": "screen bezel"
+    }
+  },
+  "textShadow": {
+    "headline-halo": {
+      "$type": "shadow",
+      "$value": "0 0 8px var(--ink), 0 0 16px var(--ink), 0 0 32px var(--ink), 0 0 60px var(--ink), 0 0 100px var(--ink)",
+      "measuredFrom": "src/styles/EarlyAccess.css:56",
+      "evidenceQuote": "0 0 8px var(--ink), 0 0 16px var(--ink), 0 0 32px var(--ink), 0 0 60px var(--ink), 0 0 100px var(--ink)",
+      "$description": "5-layer ink halo keeping headlines readable over the shader streaks"
+    },
+    "btn-rgb": {
+      "$type": "shadow",
+      "$value": "-1px 0 rgba(43, 79, 255, 0.35), 1px 0 rgba(237, 70, 45, 0.35)",
+      "measuredFrom": "src/index.css:322",
+      "evidenceQuote": "-1px 0 rgba(43, 79, 255, 0.35), 1px 0 rgba(237, 70, 45, 0.35)",
+      "$description": "button hover RGB split"
+    }
+  },
+  "backdrop": {
+    "glass-blur": {
+      "$type": "filter",
+      "$value": "blur(8px)",
+      "measuredFrom": "src/index.css:340",
+      "evidenceQuote": "blur(8px)",
+      "$description": "badge / how card"
+    }
+  }
+}

@@ -1,0 +1,177 @@
+/* §14 CTA (section.cta-section, outside <main>). */
+
+.cta-section {
+  padding: 12rem 0 16rem;
+  text-align: center;
+  position: relative;
+  z-index: 10000;
+  border-top: 1px solid var(--border);
+  clip-path: inset(0 -100vw -100vw -100vw);
+}
+
+.cta-section .cta-vortex-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+  width: 105vw;
+  pointer-events: none;
+}
+.cta-section .cta-vortex-img {
+  width: 100%;
+  display: block;
+}
+
+.cta-section .cta-oversized-svg {
+  position: absolute;
+  bottom: -120px;
+  right: -100px;
+  width: 900px;
+  height: 900px;
+  pointer-events: none;
+  opacity: 0.04;
+}
+
+.cta-section .cta-container {
+  position: relative;
+  z-index: 2;
+}
+.cta-section .cta-bloom-filter {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.cta-section .cta-logo-wrap {
+  position: relative;
+  display: block;
+  width: 65px;
+  height: 64px;
+  margin: 0 auto 3rem;
+}
+.cta-section .cta-logo-glow {
+  height: 64px;
+  width: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: url(#bloom);
+  animation: hdr-glow-pulse 3s ease-in-out infinite;
+}
+.cta-section .cta-logo {
+  height: 64px;
+  width: auto;
+  position: relative;
+}
+
+.cta-section .cta-heading-wrap {
+  position: relative;
+  display: inline-block;
+}
+.cta-section .cta-heading-blur {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 375%;
+  height: 600%;
+  background: radial-gradient(ellipse, var(--ink) 25%, transparent 60%);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.6;
+  filter: blur(8px);
+}
+.cta-section h2 {
+  font-family: Chalet, Inter, sans-serif;
+  font-size: clamp(4rem, 8vw, 7rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Glitch heading. Neither .hero nor .content applies here, so the pseudos stay transparent. */
+.cta-section .glitch-text {
+  position: relative;
+  display: inline-block;
+}
+.cta-section .glitch-text::before,
+.cta-section .glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.cta-section .glitch-text::before {
+  left: 0.5px;
+  text-shadow: -0.5px 0 rgba(43, 79, 255, 0.2);
+  clip: rect(24px, 9999px, 90px, 0);
+  animation: glitch-subtle-1 5s infinite linear alternate-reverse;
+  opacity: 0.6;
+}
+.cta-section .glitch-text::after {
+  left: -0.5px;
+  text-shadow: 0.5px 0 rgba(237, 70, 45, 0.2);
+  clip: rect(85px, 9999px, 140px, 0);
+  animation: glitch-subtle-2 4.5s infinite linear alternate-reverse;
+  opacity: 0.6;
+}
+
+.cta-section .cta-btn-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.cta-section .cta-btn {
+  padding: 2rem 3rem;
+  font-size: 1.3rem;
+  box-shadow: 0 0 40px var(--red-glow);
+  width: 100%;
+  max-width: 500px;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.cta-fine-print {
+  /* kept at (0,1,0) so `.cta-section p` below wins, as on the original */
+  margin-top: 0.75rem;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+/* Original's more specific `.cta-section p` wins on font/colour (§14). */
+.cta-section p {
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--paper-50);
+  margin-bottom: 3rem;
+}
+
+.cta-section:not(.is-visible) svg {
+  animation-play-state: paused !important;
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .cta-section {
+    padding: 8rem 0 10rem;
+  }
+}
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 6rem 0 8rem;
+  }
+  .cta-section h2 {
+    font-size: clamp(2.5rem, 8vw, 7rem);
+  }
+  .cta-section .cta-oversized-svg {
+    display: none;
+  }
+  .cta-section .btn-chamfer {
+    padding: 1.25rem 2rem !important;
+    font-size: 1rem !important;
+  }
+}

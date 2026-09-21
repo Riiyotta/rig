@@ -1,0 +1,24 @@
+{
+  "id": "component.glitch-heading",
+  "kind": "component",
+  "purpose": "Chalet h2 with data-text pseudo copies (transparent here) animated through clip rects (glitch-subtle-1/-2) behind a radial ink halo.",
+  "implementedBy": [
+    {
+      "citation": "src/components/Cta.jsx:32-36",
+      "quote": "<div className=\"cta-heading-wrap\">"
+    },
+    {
+      "citation": "src/styles/Cta.css:96-125",
+      "quote": "glitch-subtle-1"
+    }
+  ],
+  "tokensUsed": [
+    "typeRole.cta-h2",
+    "duration.glitch-1",
+    "duration.glitch-2"
+  ],
+  "usedBySections": [
+    "cta.vortex"
+  ],
+  "composes": []
+}

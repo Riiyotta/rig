@@ -1,0 +1,767 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Privacy | Rig</title><meta name="description" content><!-- OG Meta --><meta property="og:title" content="Privacy | Rig"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://rig.ai/privacy"><meta property="og:image" content="https://rig.ai/rig-graph.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Privacy | Rig"><meta name="twitter:description" content><meta name="twitter:image" content="https://rig.ai/rig-graph.png"><!-- Canonical --><link rel="canonical" href="https://rig.ai/privacy"><!-- Favicon (inline SVG) --><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' rx='48' fill='%230a0a0a'/%3E%3Cg transform='translate(60 61) scale(0.835)'%3E%3Cpath d='M162.809 89.412H82.684c-7.9 0-15.478 3.14-21.063 8.73-5.577 5.583-8.71 13.152-8.71 21.043v40.811h19.26v-33.546c0-9.638.173-18.449.173-18.449h90.465V89.412z' fill='%23ed462d'/%3E%3Cpath d='M162.808 118.61h-50.993c-7.9 0-15.478 3.14-21.063 8.73-5.577 5.583-8.71 13.152-8.71 21.044v11.613h22.867v-15.945c0-9.638 0-9.97 0-9.97h57.899v-15.472z' fill='%23ed462d'/%3E%3Cpath d='M162.809 146.002c-18.103 0-28.242-.006-46.345.002V160h46.345v-13.998z' fill='%23ed462d'/%3E%3Cpath d='M162.809.003H70.886C52.08.003 34.045 7.476 20.75 20.777 7.464 34.07 0 52.095 0 70.889c0 28.397 0 69.878 0 89.108h15.785V67.714c0-14.457 0-26.177 0-26.177h147.027V0l-.003.003z' fill='%23ed462d'/%3E%3Cpath d='M162.809 51.87H56.804c-7.9 0-15.478 3.141-21.063 8.73-5.577 5.583-8.71 13.152-8.71 21.044v78.353h14.785V96.318c0-9.638 0-17.449 0-17.449h120.993V51.867v.003z' fill='%23ed462d'/%3E%3C/g%3E%3C/svg%3E"><!-- Font Preloads --><link rel="preload" href="/fonts/chalet_londonnineteensixty.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/InstrumentSans-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/ChivoMono-latin.woff2" as="font" type="font/woff2" crossorigin><!-- Global Styles --><!-- Additional head content --><!-- PostHog Analytics --><script>
+      !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init rs ls yi ns us ts ss capture calculateEventProperties vs register register_once register_for_session unregister unregister_for_session gs getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty fs ds createPersonProfile setInternalOrTestUser ps Qr opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing hs debug M cs getPageViewId captureTraceFeedback captureTraceMetric Kr".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+      posthog.init('phc_gawX5E1IIBFtn3NhrElji4a7OhDvxprwI8Www69zQgv', {
+        api_host: 'https://d.rig.ai',
+        ui_host: 'https://us.i.posthog.com',
+        defaults: '2026-01-30',
+        person_profiles: 'always',
+      })
+
+      // Capture referral code from URL on first visit
+      // register_once only sets if not already set, so it captures the original referrer
+      ;(function() {
+        var params = new URLSearchParams(window.location.search)
+        var referralCode = params.get('rc')
+        if (referralCode) {
+          posthog.register_once({ referred_by: referralCode })
+        }
+      })()
+    </script><link rel="stylesheet" href="/_astro/_slug_.syMwFS_H.css">
+<style>.site-header[data-astro-cid-3ef6ksr2]{display:flex}.site-nav[data-astro-cid-3ef6ksr2]{max-width:calc(1200px + 6rem);margin:0 auto;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;position:relative;width:100%}.site-logo[data-astro-cid-3ef6ksr2] img[data-astro-cid-3ef6ksr2]{height:22px;filter:invert(1) brightness(2)}.site-nav-links[data-astro-cid-3ef6ksr2]{display:flex;align-items:center;gap:2rem;list-style:none;margin:0;padding:0}.site-nav-links[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{font-family:Chivo Mono,monospace;font-size:.75rem;font-weight:700;color:var(--paper);text-decoration:none;opacity:.7;letter-spacing:.05em;transition:opacity .2s}.site-nav-links[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]:hover{opacity:1}.site-nav-links[data-astro-cid-3ef6ksr2] .site-nav-cta[data-astro-cid-3ef6ksr2]{color:var(--ink);height:22px;padding:1.2rem;opacity:1}.site-header[data-astro-cid-3ef6ksr2][data-variant=hero] .site-logo[data-astro-cid-3ef6ksr2] img[data-astro-cid-3ef6ksr2]{filter:brightness(0)}.site-header[data-astro-cid-3ef6ksr2][data-variant=hero] .site-nav-links[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{color:var(--ink)}.site-header[data-astro-cid-3ef6ksr2][data-variant=hero] .site-nav-links[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2].btn-dark{color:var(--paper)}.site-header[data-astro-cid-3ef6ksr2][data-variant=hero] .nav-toggle-bar[data-astro-cid-3ef6ksr2]{background:var(--ink)}.nav-toggle[data-astro-cid-3ef6ksr2]{display:none;background:none;border:none;cursor:pointer;padding:.5rem;flex-direction:column;gap:5px;z-index:20}.nav-toggle-bar[data-astro-cid-3ef6ksr2]{display:block;width:24px;height:2px;background:var(--paper);transition:transform .3s,opacity .3s;transform-origin:center}.nav-toggle[data-astro-cid-3ef6ksr2][aria-expanded=true] .nav-toggle-bar[data-astro-cid-3ef6ksr2]:nth-child(1){transform:translateY(7px) rotate(45deg)}.nav-toggle[data-astro-cid-3ef6ksr2][aria-expanded=true] .nav-toggle-bar[data-astro-cid-3ef6ksr2]:nth-child(2){opacity:0}.nav-toggle[data-astro-cid-3ef6ksr2][aria-expanded=true] .nav-toggle-bar[data-astro-cid-3ef6ksr2]:nth-child(3){transform:translateY(-7px) rotate(-45deg)}@media(max-width:768px){.site-nav[data-astro-cid-3ef6ksr2]{padding:1rem 1.25rem}.nav-toggle[data-astro-cid-3ef6ksr2]{display:flex}.nav-toggle[data-astro-cid-3ef6ksr2][aria-expanded=true]{position:fixed;top:1rem;right:1.25rem;z-index:10002}.site-nav-links[data-astro-cid-3ef6ksr2]{position:fixed;inset:0;flex-direction:column;justify-content:center;gap:2.5rem;background:var(--ink);padding:2rem;z-index:10001;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}.site-nav-links[data-astro-cid-3ef6ksr2][data-open=true]{opacity:1;visibility:visible}.site-nav-links[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{font-size:1.25rem;opacity:1}.site-header[data-astro-cid-3ef6ksr2][data-variant=hero] .nav-toggle[data-astro-cid-3ef6ksr2][aria-expanded=true] .nav-toggle-bar[data-astro-cid-3ef6ksr2]{background:var(--paper)}.site-header[data-astro-cid-3ef6ksr2][data-variant=hero] .site-nav-links[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{color:var(--paper)}.site-header[data-astro-cid-3ef6ksr2][data-variant=hero] .site-nav-links[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2].btn-dark{background-color:var(--red);color:var(--ink)}}
+footer[data-astro-cid-sz7xmlte]{border-top:1px solid var(--border);padding:4rem 0 10rem;position:relative;overflow:hidden;z-index:10000;background:#0a0a0a}.footer-grid[data-astro-cid-sz7xmlte]{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem;position:relative;z-index:2}.footer-logo[data-astro-cid-sz7xmlte]{height:18px;filter:invert(1) brightness(2)}.footer-brand[data-astro-cid-sz7xmlte] p[data-astro-cid-sz7xmlte]{color:var(--text-muted);font-size:.85rem;max-width:280px;line-height:1.6;margin-top:1rem}.footer-col[data-astro-cid-sz7xmlte] h3[data-astro-cid-sz7xmlte]{color:var(--text-muted);margin-bottom:1.25rem}.footer-col[data-astro-cid-sz7xmlte] ul[data-astro-cid-sz7xmlte]{list-style:none}.footer-col[data-astro-cid-sz7xmlte] li[data-astro-cid-sz7xmlte]{margin-bottom:.6rem}.footer-col[data-astro-cid-sz7xmlte] a[data-astro-cid-sz7xmlte]{color:var(--paper-50);text-decoration:none;font-size:.85rem;transition:color .2s}.footer-col[data-astro-cid-sz7xmlte] a[data-astro-cid-sz7xmlte]:hover{color:var(--red)}.footer-bottom[data-astro-cid-sz7xmlte]{display:flex;justify-content:space-between;align-items:center;margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border);position:relative;z-index:2}.footer-bottom[data-astro-cid-sz7xmlte] span[data-astro-cid-sz7xmlte]{color:var(--text-tertiary);letter-spacing:.1em}.footer-status[data-astro-cid-sz7xmlte]{color:var(--paper-50);gap:.6rem}.footer-status-dot[data-astro-cid-sz7xmlte]{width:6px;height:6px;background:var(--red);animation:blink 1.5s step-end infinite;flex-shrink:0}.footer-bottom[data-astro-cid-sz7xmlte] .status-dot[data-astro-cid-sz7xmlte],.footer-bottom[data-astro-cid-sz7xmlte] .status-dot[data-astro-cid-sz7xmlte]:after{border-radius:0}.footer-watermark[data-astro-cid-sz7xmlte]{color:var(--paper-06);position:absolute;bottom:-80px;right:-60px;width:600px;opacity:.03;pointer-events:none}@media(max-width:1024px){.footer-grid[data-astro-cid-sz7xmlte]{grid-template-columns:1fr 1fr;gap:2rem}.footer-brand[data-astro-cid-sz7xmlte]{grid-column:1 / -1}}@media(max-width:768px){footer[data-astro-cid-sz7xmlte]{padding:3rem 0 6rem}.footer-grid[data-astro-cid-sz7xmlte]{grid-template-columns:1fr;gap:2rem}.footer-brand[data-astro-cid-sz7xmlte]{grid-column:auto}.footer-bottom[data-astro-cid-sz7xmlte]{flex-direction:column;gap:1rem;align-items:flex-start}.footer-watermark[data-astro-cid-sz7xmlte]{display:none}}
+.payload-page[data-astro-cid-yvbahnfj]{width:min(100% - 3rem,960px);margin:0 auto;padding:4rem 0 6rem;color:var(--paper)}.page-heading[data-astro-cid-yvbahnfj],.page-hero[data-astro-cid-yvbahnfj]{margin-bottom:3rem}.page-heading[data-astro-cid-yvbahnfj] h1[data-astro-cid-yvbahnfj],.page-hero[data-astro-cid-yvbahnfj] h1[data-astro-cid-yvbahnfj]{margin:0;font-family:Chalet,sans-serif;font-size:clamp(2.25rem,7vw,4.5rem);line-height:1.05;letter-spacing:-.03em}.page-hero[data-astro-cid-yvbahnfj]{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,.7fr);gap:3rem;align-items:center}.page-hero-copy[data-astro-cid-yvbahnfj]>p[data-astro-cid-yvbahnfj]{max-width:680px;margin:1.25rem 0 2rem;color:var(--paper-60);font-size:1.125rem;line-height:1.7}.page-hero-image[data-astro-cid-yvbahnfj]{display:block;width:100%;height:auto;border-radius:6px}.page-layout[data-astro-cid-yvbahnfj]{display:grid;gap:4rem}.content-block[data-astro-cid-yvbahnfj]{max-width:720px}.features-block[data-astro-cid-yvbahnfj]>h2[data-astro-cid-yvbahnfj],.cta-block[data-astro-cid-yvbahnfj] h2[data-astro-cid-yvbahnfj],.testimonials-block[data-astro-cid-yvbahnfj]>h2[data-astro-cid-yvbahnfj]{margin:0 0 2rem;font-family:Chalet,sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);line-height:1.15}.feature-grid[data-astro-cid-yvbahnfj],.testimonial-grid[data-astro-cid-yvbahnfj]{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.feature-card[data-astro-cid-yvbahnfj],.testimonial-card[data-astro-cid-yvbahnfj],.cta-block[data-astro-cid-yvbahnfj]{margin:0;padding:2rem;border:1px solid var(--border-dim);background:var(--paper-04)}.feature-icon[data-astro-cid-yvbahnfj]{display:block;margin-bottom:1rem;color:var(--red);font-family:Chivo Mono,monospace}.feature-card[data-astro-cid-yvbahnfj] h3[data-astro-cid-yvbahnfj]{margin:0 0 .75rem;font-family:Chalet,sans-serif;font-size:1.3rem}.feature-card[data-astro-cid-yvbahnfj] p[data-astro-cid-yvbahnfj],.cta-block[data-astro-cid-yvbahnfj] p[data-astro-cid-yvbahnfj],.testimonial-card[data-astro-cid-yvbahnfj] blockquote[data-astro-cid-yvbahnfj]{margin:0;color:var(--paper-60);line-height:1.7}.cta-actions[data-astro-cid-yvbahnfj]{display:flex;align-items:center;gap:1.5rem;margin-top:2rem}.secondary-link[data-astro-cid-yvbahnfj]{color:var(--paper);text-underline-offset:.25rem}.testimonial-card[data-astro-cid-yvbahnfj] blockquote[data-astro-cid-yvbahnfj]{font-size:1.1rem}.testimonial-card[data-astro-cid-yvbahnfj] figcaption[data-astro-cid-yvbahnfj]{display:flex;gap:.75rem;align-items:center;margin-top:1.5rem}.testimonial-card[data-astro-cid-yvbahnfj] figcaption[data-astro-cid-yvbahnfj] img[data-astro-cid-yvbahnfj]{width:3rem;height:3rem;border-radius:50%;object-fit:cover}.testimonial-card[data-astro-cid-yvbahnfj] figcaption[data-astro-cid-yvbahnfj] span[data-astro-cid-yvbahnfj]{display:grid;gap:.2rem}.testimonial-card[data-astro-cid-yvbahnfj] small[data-astro-cid-yvbahnfj]{color:var(--paper-50)}@media(max-width:720px){.payload-page[data-astro-cid-yvbahnfj]{width:min(100% - 2rem,960px);padding:3rem 0 4rem}.page-hero[data-astro-cid-yvbahnfj],.feature-grid[data-astro-cid-yvbahnfj],.testimonial-grid[data-astro-cid-yvbahnfj]{grid-template-columns:1fr}.page-hero[data-astro-cid-yvbahnfj]{gap:2rem}.cta-actions[data-astro-cid-yvbahnfj]{align-items:flex-start;flex-direction:column}}
+</style><script type="module" src="/_astro/page.sJrt8mpm.js"></script></head> <body> <!-- Overlays --> <svg width="0" height="0" aria-hidden="true" style="display: none;"> <filter id="grainy" x="0" y="0" width="100%" height="100%"> <feTurbulence type="fractalNoise" baseFrequency="0.4" numOctaves="4" stitchTiles="stitch" seed="0"> <animate attributeName="seed" from="0" to="100" dur="10s" repeatCount="indefinite"></animate> </feTurbulence> <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  1 0 0 0 0"></feColorMatrix> </filter> </svg> <div class="scanlines" aria-hidden="true"></div> <div class="noise" aria-hidden="true"></div> <div class="rgb-fringe" aria-hidden="true"></div>  <header class="site-header" role="banner" data-variant="default" data-astro-cid-3ef6ksr2> <nav class="site-nav" aria-label="Main navigation" data-astro-cid-3ef6ksr2> <a href="/" class="site-logo" aria-label="Rig — Home" data-astro-cid-3ef6ksr2> <img src="/assets/rig-wordmark.svg" alt="" width="60" height="22" data-astro-cid-3ef6ksr2> </a> <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation" type="button" data-astro-cid-3ef6ksr2> <span class="nav-toggle-bar" data-astro-cid-3ef6ksr2></span> <span class="nav-toggle-bar" data-astro-cid-3ef6ksr2></span> <span class="nav-toggle-bar" data-astro-cid-3ef6ksr2></span> </button> <ul class="site-nav-links" id="nav-menu" role="list" data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2><a href="/blog" data-astro-cid-3ef6ksr2>Blog</a></li> <li data-astro-cid-3ef6ksr2><a id="nav-join-btn" href="/waitlist" class="btn-chamfer site-nav-cta btn-cta" data-astro-cid-3ef6ksr2>Get Early Access</a></li> </ul> </nav> </header>  <script type="module" src="/_astro/Header.astro_astro_type_script_index_0_lang.BGuAL9A7.js"></script> <main class="payload-page" data-astro-cid-yvbahnfj> <header class="page-hero" data-astro-cid-yvbahnfj> <div class="page-hero-copy" data-astro-cid-yvbahnfj> <h1 data-astro-cid-yvbahnfj>Privacy Policy</h1>   </div>  </header> <div class="page-layout" data-astro-cid-yvbahnfj> <section class="content-block prose" data-astro-cid-yvbahnfj><p style="text-align: center;"><strong>PRIVACY POLICY</strong></p><p style="text-align: justify;"><strong>Last Revised: 5/1/26</strong></p><p style="text-align: justify;">Your privacy is important to us. This Privacy Policy (“<strong>Privacy Policy</strong>”) describes how Cortex Coding, Corp. DBA Rig AI (“<strong>Rig</strong>”, “<strong>we</strong>”, “<strong>us</strong>”, or “<strong>our</strong>”) may collect, use, store, disclose, process, and transfer your personal information through your access to or use of Rig products and services, including those at <a href="https://rig.ai/"><span style="text-decoration: underline;">https://rig.ai/</span></a> as well as any subdomains, website of ours that links to this Privacy Policy, related websites, and other offerings (collectively, the “<strong>Services</strong>”). By using the Services or, if required by laws applicable to you, opting into this Privacy Policy, you signify your acceptance of this Privacy Policy. If you do not agree to this Privacy Policy, please do not use the Services. Rig may change this Privacy Policy from time to time by posting changes at <a href="https://rig.ai/privacy"><span style="text-decoration: underline;">https://rig.ai/privacy</span></a> and [may send notification emails regarding such changes]. Your continued use of the Services following the posting of such changes will be deemed your acceptance of those changes, unless additional consent is required.</p><p style="text-align: justify;"><strong>Privacy Policy Applicability</strong></p><p style="text-align: justify;">This Privacy Policy applies when you use or access the Services or share information with Rig. By accessing or using the Services, you consent to this Privacy Policy. Rig may update this Privacy Policy at any time. If you do not consent to this Privacy Policy for any reason, please do not access or use the Services or share your information with us. Please note that this Privacy Policy applies only to the Services and not to any other third-party website linked to or from it, or any third-party website in which Rig’s content or functionality is embedded. We do not control the privacy policies or practices of others.</p><p style="text-align: justify;"><strong>Information We Collect from You</strong></p><p style="text-align: justify;">In general, we receive and collect all information you provide via the Services, including through website input fields[[, advertisements]], phone, email [[(including email campaigns)]], or other such ways. This includes personal information that can identify or relates to you, including, but not limited to:</p><p style="text-align: center;"><strong>Category of Personal Information</strong></p><p style="text-align: center;"><strong>Examples of Personal Information We Collect</strong></p><p style="text-align: center;"><strong>Sources from which such Personal Information is Collected</strong></p><p style="text-align: center;"><strong>Third Parties to whom we share such Personal Information</strong></p><p>Profile or Contact Data</p><p>Examples may include: </p><ul class="list-bullet"><li
+          class=""
+          style=""
+          value="1"
+        >First and last name</li><li
+          class=""
+          style=""
+          value="2"
+        >Telephone number </li><li
+          class=""
+          style=""
+          value="3"
+        >Email address </li><li
+          class=""
+          style=""
+          value="4"
+        >Unique identifiers, such as usernames and passwords</li><li
+          class=""
+          style=""
+          value="5"
+        >Information or other similar identifiers</li><li
+          class=""
+          style=""
+          value="6"
+        >You</li><li
+          class=""
+          style=""
+          value="7"
+        >Service providers </li><li
+          class=""
+          style=""
+          value="8"
+        >Rig’s customers</li><li
+          class=""
+          style=""
+          value="9"
+        >Rig’s affiliated entities, partners, etc.</li><li
+          class=""
+          style=""
+          value="10"
+        >Other independent third-party sources</li><li
+          class=""
+          style=""
+          value="11"
+        >Advertising networks</li><li
+          class=""
+          style=""
+          value="12"
+        >Data analytics providers </li><li
+          class=""
+          style=""
+          value="13"
+        >Service providers </li><li
+          class=""
+          style=""
+          value="14"
+        >Rig’s customers </li><li
+          class=""
+          style=""
+          value="15"
+        >Partners you authorize, access, or authenticate</li></ul><p>Commercial Data</p><p>Examples may include: </p><ul class="list-bullet"><li
+          class=""
+          style=""
+          value="1"
+        >Consumer profiles</li><li
+          class=""
+          style=""
+          value="2"
+        >Records of products or services sold, used, or purchased</li><li
+          class=""
+          style=""
+          value="3"
+        >Other purchasing histories or tendencies</li><li
+          class=""
+          style=""
+          value="4"
+        >You</li><li
+          class=""
+          style=""
+          value="5"
+        >Service providers </li><li
+          class=""
+          style=""
+          value="6"
+        >Rig’s customers</li><li
+          class=""
+          style=""
+          value="7"
+        >Rig’s affiliated entities, partners, etc.</li><li
+          class=""
+          style=""
+          value="8"
+        >Other independent third-party sources</li><li
+          class=""
+          style=""
+          value="9"
+        >Advertising networks</li><li
+          class=""
+          style=""
+          value="10"
+        >Data analytics providers </li><li
+          class=""
+          style=""
+          value="11"
+        >Service providers </li><li
+          class=""
+          style=""
+          value="12"
+        >Rig’s customers</li><li
+          class=""
+          style=""
+          value="13"
+        >Partners you authorize, access, or authenticate</li></ul><p>Device/IP Data</p><p>Examples may include: </p><ul class="list-bullet"><li
+          class=""
+          style=""
+          value="1"
+        >IP address</li><li
+          class=""
+          style=""
+          value="2"
+        >Device ID</li><li
+          class=""
+          style=""
+          value="3"
+        >Domain server</li><li
+          class=""
+          style=""
+          value="4"
+        >Browser type</li><li
+          class=""
+          style=""
+          value="5"
+        >Search history </li><li
+          class=""
+          style=""
+          value="6"
+        >Type of device</li><li
+          class=""
+          style=""
+          value="7"
+        >Information regarding your interaction with the Services or any advertisement</li><li
+          class=""
+          style=""
+          value="8"
+        >Information collected automatically through cookies and similar technology, device type, domain names, and access time/logs </li><li
+          class=""
+          style=""
+          value="9"
+        >You</li><li
+          class=""
+          style=""
+          value="10"
+        >Service providers </li><li
+          class=""
+          style=""
+          value="11"
+        >Rig’s customers</li><li
+          class=""
+          style=""
+          value="12"
+        >Rig’s affiliated entities, partners, etc.</li><li
+          class=""
+          style=""
+          value="13"
+        >Other independent third-party sources</li><li
+          class=""
+          style=""
+          value="14"
+        >Advertising networks</li><li
+          class=""
+          style=""
+          value="15"
+        >Data analytics providers </li><li
+          class=""
+          style=""
+          value="16"
+        >Service providers </li><li
+          class=""
+          style=""
+          value="17"
+        >Rig’s customers</li><li
+          class=""
+          style=""
+          value="18"
+        >Partners you authorize, access, or authenticate</li></ul><p>Web Analytics</p><p>Examples may include: </p><ul class="list-bullet"><li
+          class=""
+          style=""
+          value="1"
+        >Web page interactions</li><li
+          class=""
+          style=""
+          value="2"
+        >Referring webpage/source through which you accessed the Services</li><li
+          class=""
+          style=""
+          value="3"
+        >Browsing activity, including the addresses of websites that you visit</li><li
+          class=""
+          style=""
+          value="4"
+        >Non-identifiable request IDs</li><li
+          class=""
+          style=""
+          value="5"
+        >Statistics associated with the interaction between device or browser and the Services</li><li
+          class=""
+          style=""
+          value="6"
+        >You</li><li
+          class=""
+          style=""
+          value="7"
+        >Service providers </li><li
+          class=""
+          style=""
+          value="8"
+        >Rig’s customers</li><li
+          class=""
+          style=""
+          value="9"
+        >Rig’s affiliated entities, partners, etc.</li><li
+          class=""
+          style=""
+          value="10"
+        >Other independent third-party sources</li><li
+          class=""
+          style=""
+          value="11"
+        >Advertising networks</li><li
+          class=""
+          style=""
+          value="12"
+        >Data analytics providers </li><li
+          class=""
+          style=""
+          value="13"
+        >Service providers </li><li
+          class=""
+          style=""
+          value="14"
+        >Rig’s customers</li><li
+          class=""
+          style=""
+          value="15"
+        >Partners you authorize, access, or authenticate</li></ul><p>Geolocation Data</p><p>Examples may include: </p><ul class="list-bullet"><li
+          class=""
+          style=""
+          value="1"
+        >IP-address-based location information</li><li
+          class=""
+          style=""
+          value="2"
+        >Cookie ID</li><li
+          class=""
+          style=""
+          value="3"
+        >You</li><li
+          class=""
+          style=""
+          value="4"
+        >Service providers </li><li
+          class=""
+          style=""
+          value="5"
+        >Rig’s customers</li><li
+          class=""
+          style=""
+          value="6"
+        >Rig’s affiliated entities, partners, etc.</li><li
+          class=""
+          style=""
+          value="7"
+        >Other independent third-party sources</li><li
+          class=""
+          style=""
+          value="8"
+        >Advertising networks</li><li
+          class=""
+          style=""
+          value="9"
+        >Data analytics providers </li><li
+          class=""
+          style=""
+          value="10"
+        >Service providers </li><li
+          class=""
+          style=""
+          value="11"
+        >Rig’s customers</li><li
+          class=""
+          style=""
+          value="12"
+        >Partners you authorize, access, or authenticate</li></ul><p>Professional or Employment-Related Data</p><p>Examples may include:</p><ul class="list-bullet"><li
+          class=""
+          style=""
+          value="1"
+        >Employer</li><li
+          class=""
+          style=""
+          value="2"
+        >Job title</li><li
+          class=""
+          style=""
+          value="3"
+        >Job history</li><li
+          class=""
+          style=""
+          value="4"
+        >Resume</li><li
+          class=""
+          style=""
+          value="5"
+        >Education history</li><li
+          class=""
+          style=""
+          value="6"
+        >You</li><li
+          class=""
+          style=""
+          value="7"
+        >Service providers </li><li
+          class=""
+          style=""
+          value="8"
+        >Rig’s customers</li><li
+          class=""
+          style=""
+          value="9"
+        >Rig’s affiliated entities, partners, etc.</li><li
+          class=""
+          style=""
+          value="10"
+        >Other independent third-party sources</li><li
+          class=""
+          style=""
+          value="11"
+        >Advertising networks</li><li
+          class=""
+          style=""
+          value="12"
+        >Data analytics providers </li><li
+          class=""
+          style=""
+          value="13"
+        >Service providers </li><li
+          class=""
+          style=""
+          value="14"
+        >Rig’s customers</li><li
+          class=""
+          style=""
+          value="15"
+        >Partners you authorize, access, or authenticate</li></ul><p>Financial and Payment Data</p><p>Examples may include:</p><ul class="list-bullet"><li
+          class=""
+          style=""
+          value="1"
+        >Payment card type</li><li
+          class=""
+          style=""
+          value="2"
+        >Last 4 digits of payment card and expiration date</li><li
+          class=""
+          style=""
+          value="3"
+        >Billing address</li><li
+          class=""
+          style=""
+          value="4"
+        >Account number</li><li
+          class=""
+          style=""
+          value="5"
+        >You</li><li
+          class=""
+          style=""
+          value="6"
+        >Service providers </li><li
+          class=""
+          style=""
+          value="7"
+        >Rig’s customers</li><li
+          class=""
+          style=""
+          value="8"
+        >Rig’s affiliated entities, partners, etc.</li><li
+          class=""
+          style=""
+          value="9"
+        >Other independent third-party sources</li><li
+          class=""
+          style=""
+          value="10"
+        >Advertising networks</li><li
+          class=""
+          style=""
+          value="11"
+        >Data analytics providers </li><li
+          class=""
+          style=""
+          value="12"
+        >Service providers </li><li
+          class=""
+          style=""
+          value="13"
+        >Rig’s customers</li><li
+          class=""
+          style=""
+          value="14"
+        >Partners you authorize, access, or authenticate</li></ul><p>Social Network Data</p><p>Examples may include:</p><ul class="list-bullet"><li
+          class=""
+          style=""
+          value="1"
+        >Usernames and passwords</li><li
+          class=""
+          style=""
+          value="2"
+        >Data, information, or materials accessible through your social media</li><li
+          class=""
+          style=""
+          value="3"
+        >Email, phone number, and social media ID associated with your social media accounts</li><li
+          class=""
+          style=""
+          value="4"
+        >You</li><li
+          class=""
+          style=""
+          value="5"
+        >Service providers </li><li
+          class=""
+          style=""
+          value="6"
+        >Rig’s customers</li><li
+          class=""
+          style=""
+          value="7"
+        >Rig’s affiliated entities, partners, etc.</li><li
+          class=""
+          style=""
+          value="8"
+        >Other independent third-party sources</li><li
+          class=""
+          style=""
+          value="9"
+        >Advertising networks</li><li
+          class=""
+          style=""
+          value="10"
+        >Data analytics providers </li><li
+          class=""
+          style=""
+          value="11"
+        >Service providers </li><li
+          class=""
+          style=""
+          value="12"
+        >Rig’s customers</li><li
+          class=""
+          style=""
+          value="13"
+        >Partners you authorize, access, or authenticate</li></ul><p>Inferences Drawn from Other Personal Data Collected</p><p>Examples may include:</p><ul class="list-bullet"><li
+          class=""
+          style=""
+          value="1"
+        >Profiles reflecting user attributes</li><li
+          class=""
+          style=""
+          value="2"
+        >Profiles reflecting user behavior</li><li
+          class=""
+          style=""
+          value="3"
+        >You</li><li
+          class=""
+          style=""
+          value="4"
+        >Service providers </li><li
+          class=""
+          style=""
+          value="5"
+        >Rig’s customers</li><li
+          class=""
+          style=""
+          value="6"
+        >Rig’s affiliated entities, partners, etc.</li><li
+          class=""
+          style=""
+          value="7"
+        >Other independent third-party sources</li><li
+          class=""
+          style=""
+          value="8"
+        >Advertising networks</li><li
+          class=""
+          style=""
+          value="9"
+        >Data analytics providers </li><li
+          class=""
+          style=""
+          value="10"
+        >Service providers </li><li
+          class=""
+          style=""
+          value="11"
+        >Rig’s customers</li><li
+          class=""
+          style=""
+          value="12"
+        >Partners you authorize, access, or authenticate</li></ul><p>Other Identifying Information that You Voluntarily Decide to Provide</p><p>Examples may include:</p><ul class="list-bullet"><li
+          class=""
+          style=""
+          value="1"
+        >Identifying information in emails, phone calls, texts, letters, or other communications you send us</li><li
+          class=""
+          style=""
+          value="2"
+        >Identifying information you post to blogs, competitions, live chats, forums, or message boards</li><li
+          class=""
+          style=""
+          value="3"
+        >You</li><li
+          class=""
+          style=""
+          value="4"
+        >Service providers </li><li
+          class=""
+          style=""
+          value="5"
+        >Rig’s customers</li><li
+          class=""
+          style=""
+          value="6"
+        >Rig’s affiliated entities, partners, etc.</li><li
+          class=""
+          style=""
+          value="7"
+        >Other independent third-party sources</li><li
+          class=""
+          style=""
+          value="8"
+        >Advertising networks</li><li
+          class=""
+          style=""
+          value="9"
+        >Data analytics providers </li><li
+          class=""
+          style=""
+          value="10"
+        >Service providers </li><li
+          class=""
+          style=""
+          value="11"
+        >Rig’s customers</li><li
+          class=""
+          style=""
+          value="12"
+        >Partners you authorize, access, or authenticate</li></ul><p style="text-align: justify;">You have the choice regarding what information you share and the Services you want to engage. You can choose not to provide information to us, but in general, some information about you is required in order for you to access certain functionalities of the Services.</p><p style="text-align: justify;">We may periodically obtain information about you from customers, affiliated entities, partners and other independent third-party sources and will add it to our database of information, including any information that you provide to third parties that are associated with or whose products or services are integrated with the Services. </p><p style="text-align: justify;">Additionally, you may provide personal information to us to facilitate your access to and interaction with a third-party provider, such as analytics or authentication providers (each, a “<strong>Rig Provider</strong>”). If you direct us to provide personal information to such Rig Provider, any usage of that information will be subject to the agreement(s) in place between you and such Rig Provider.</p><p style="text-align: justify;">We may use cookies, heat mapping, log files, web beacons, device identifiers, advertising identifiers, session replay technologies, and similar tracking technologies, including those from third-party service providers like Google Analytics, Google Tag Manager, Posthog, HubSpot, and other cloud-based tools, to automatically collect your preferences, performance data, and information about your web usage when you visit the Services. By collecting and using this information, we may operate and personalize the Services for you and may also combine this data with other information we have collected about you.  For more information on how we use cookies, please see the “Cookies” section below.</p><p style="text-align: justify;">The Services are designed to recognize or respond to “do not track” signals received from browsers. You can control the information collected by such tracking technologies or be alerted when cookies are sent by adjusting the settings on your Internet browser or devices, but such adjustments may affect or disable certain functionality of the Services.  You can learn more about targeted ads and your ability to opt out of receiving interest-based ads at <a href="https://optout.aboutads.info/?c=2&lang=EN"><span style="text-decoration: underline;">optout.aboutads.info</span></a> and <a href="http://www.networkadvertising.org/choices"><span style="text-decoration: underline;">www.networkadvertising.org/choices</span></a>.</p><p style="text-align: justify;"><span style="text-decoration: underline;">Sensitive Information</span>. Rig only collects limited sensitive personal information solely for the purposes of providing the Services to you, such as financial information that may include account numbers or other billing information. Otherwise, Rig does <strong>not</strong> collect other sensitive personal information through our Services and does not sell or monetize any sensitive personal information or use it for advertising purposes. Sensitive personal information, as defined by applicable data protection laws, includes information relating to your race, ethnicity, religious beliefs, moral beliefs, philosophical beliefs, sex life, sexual orientation, gender identity, political opinions, trade union membership, citizenship status, national origin, medical information (including mental health), genetic data, biometric data, or financial information (such as account numbers). We also do not collect any information about criminal convictions or offenses.</p><p style="text-align: justify;"><span style="text-decoration: underline;">Cookies</span></p><p style="text-align: justify;">Cookies, also known as tracking cookies or browser cookies, and similar technologies such as web beacons, clear GIFs, pixel tags, and JavaScript (collectively, “<strong>Cookies</strong>”) are small pieces of data, usually text files, placed on a computer, tablet, phone, or similar device when you use that device to access the Services. We use the following types of Cookies:</p><ul class="list-bullet"><li
+          class=""
+          style=""
+          value="1"
+        ><strong>Essential Cookies.</strong> Essential Cookies are necessary for providing you with the Services and features that you requested. For example, these Cookies allow you to log into and stay logged into secure areas of the Services, save language preferences, and more. These Cookies are required to make the Services available to you, so they cannot be disabled.</li><li
+          class=""
+          style=""
+          value="2"
+        ><strong>Functional Cookies.</strong> Functional Cookies are utilized to record your choices and settings, maintain your preferences over time, and recognize you when you return to our Services. These Cookies help us personalize our content for you, greet you by name, and remember your preferences. </li><li
+          class=""
+          style=""
+          value="3"
+        ><strong>Performance/Analytical Cookies.</strong> Performance/Analytical Cookies allow us to understand how visitors (like you) use the Services. These Cookies accomplish this by collecting information about the number of visitors to the Services, what pages visitors view the most, and how long visitors view specific pages. These Cookies also help us measure and manage the performance of our advertising campaigns in order to help us improve the campaigns and the Services’ content. </li></ul><p style="text-align: justify;">You have the option to decide through your internet browser’s settings whether or not to accept Cookies. Most browsers allow users to choose whether to turn off the Cookie feature, which will prevent your browser from accepting new Cookies, as well as (depending on the browser) allow you to toggle whether to accept each new Cookie. You can also clear all Cookies that are already on your device. If you do this, however, you may have to manually adjust some preferences every time you visit the Services and some functionalities may not work. To explore what Cookie settings are available to you, look in the “settings”, “preferences” or “options” section of your browser’s menu. </p><p style="text-align: justify;">To find out more information about Cookies, including information about how to manage and delete Cookies generally, please visit <a href="http://www.allaboutcookies.org/"><span style="text-decoration: underline;">http://www.allaboutcookies.org/</span></a>.</p><p style="text-align: justify;"><strong>How We Use Your Information</strong></p><p style="text-align: justify;">We process your personal information with your consent or as needed to provide you the Services. We may also use your personal information to comply with legal obligations, operate our business, protect the vital interests of you, our customers, or the public, or for other legitimate interests of Rig as described in this Privacy Policy.</p><p style="text-align: justify;">More specifically, we may use your personal information to: </p><ul class="list-bullet"><li
+          class=""
+          style=""
+          value="1"
+        ><strong>Optimize and improve the Services.</strong> We continually try to improve the Services based on the information and feedback we receive from you and our other users, including by optimizing the content on or functionalities of the Services.</li><li
+          class=""
+          style=""
+          value="2"
+        ><strong>Personalize the user experience.</strong> We may use your information to measure and optimize engagement with the Services and to understand how you and our other users interact with and use the Services and other resources we provide.</li><li
+          class=""
+          style=""
+          value="3"
+        ><strong>Improve customer service.</strong> Your information helps us to more effectively develop the Services and respond to your support needs.</li><li
+          class=""
+          style=""
+          value="4"
+        ><strong>Process transactions.</strong> We may use the information you provide to fulfill your requests. We do not share this information with outside parties except to the extent necessary to provide the Services and related activities.</li><li
+          class=""
+          style=""
+          value="5"
+        ><strong>To send periodic communications.</strong> The communication methods you provide through our contact forms will be used to send information and updates pertaining to the Services. It may also be used to respond to your inquiries or other requests. If you opt into our mailing list, you may receive emails that include Rig news, updates, product offerings and service information, and marketing material. If at any time you would like to unsubscribe from receiving future emails, we include detailed unsubscribe instructions at the bottom of each email or you may contact us via the contact information below. Please note that if you unsubscribe from promotional emails, you may still receive communications related to your subscription, your purchase, or other necessary functionalities of the Services.</li><li
+          class=""
+          style=""
+          value="6"
+        ><strong>Carry out other legitimate business interests.</strong> We may use the information you provide to carry out other legitimate business purposes, as well as other lawful purposes. </li></ul><p style="text-align: justify;">We may use any aggregated information (as described below) for any purpose. For the avoidance of doubt (and as described below), Rig does not collect, use, or make available your personal information to any Generative AI Products, including for the purpose of training any generative AI model.</p><p style="text-align: justify;"><strong>How We Share Your Information</strong></p><p style="text-align: justify;">We share your information with our partners, service providers, contractors, agents, and third-party vendors indicted in the “<span style="text-decoration: underline;">Information We Collect from You</span>” section as needed to fulfill Services, including Generative AI Products as further discussed below. Please note that our partners may contact you as necessary to obtain additional information about you, facilitate any use of the Services, or respond to a request you submit.</p><p style="text-align: justify;">Third-party vendors who provide products, services or functions on our behalf may include cloud database providers, data analytics companies, customer service vendors, communications service vendors, logistics service providers, marketing vendors, and security vendors. Third-party vendors have access to and may collect personal information only as needed to perform their functions, may only use personal information consistent with this Privacy Policy and other appropriate confidentiality and security measures, and are not permitted to share or use the information for any other purpose.</p><p style="text-align: justify;">We also may share your information:</p><ul class="list-bullet"><li
+          class=""
+          style=""
+          value="1"
+        >In response to subpoenas, court orders, or other legal process; to establish or exercise our legal rights; to defend against legal claims; or as otherwise required by law. In such cases we reserve the right to raise or waive any legal objection or right available to us.</li><li
+          class=""
+          style=""
+          value="2"
+        >When we believe it is appropriate to investigate, prevent, or take action regarding illegal or suspected illegal activities; to protect and defend the rights, interests, or safety of our company or the Services, our customers, or others; or in connection with our Terms of Service and other agreements with customers of which you may be affiliated.</li><li
+          class=""
+          style=""
+          value="3"
+        >In connection with a corporate transaction, such as a divestiture, merger, consolidation, or asset sale, or in the unlikely event of bankruptcy.</li></ul><p style="text-align: justify;">Other than as set out above, we will attempt to notify you when your personal information will be shared with third parties.</p><p style="text-align: justify;"><span style="text-decoration: underline;">Aggregated Information</span>.  We may use, publish, share, distribute, or disclose personal information that has been aggregated with information from other users and otherwise anonymized and de-identified in a manner that does not allow third parties, including Rig partners, customers, and vendors, to de-identify the data or identify it as originating from you. Such information may help Rig identify and analyze training, demographic, and psychographic trends and information and report to third parties how many people saw, visited, or clicked on certain content, areas of the Services, or other materials. We may also use such data for research purposes and optimizing the Services’ functionality.</p><p style="text-align: justify;"><strong>How We Store and Secure Your Information</strong></p><p style="text-align: justify;">Personal information collected by Rig may be stored and processed in your region, in the United States, and in any other country where Rig or its affiliates, subsidiaries, or service providers operate facilities. These countries may have data protection laws that are different to the laws of your country (and, in some cases, may not be as protective). However, we have taken appropriate safeguards to require that your personal information will remain protected in accordance with this Privacy Policy.</p><p style="text-align: justify;">Rig takes technological and organizational measures designed to protect your personal information against loss, theft, and unauthorized access, use, disclosure, or modification. For example:</p><ul class="list-bullet"><li
+          class=""
+          style=""
+          value="1"
+        >We transmit data over secured communication channels using SSL Login credentials;</li><li
+          class=""
+          style=""
+          value="2"
+        >All personal information is stored by trusted third party providers (<em>e.g.</em>, Google Cloud Platform (GCP));</li><li
+          class=""
+          style=""
+          value="3"
+        >All systems used to provide the Services are password protected;</li><li
+          class=""
+          style=""
+          value="4"
+        >All Services usage is restricted on a per-user basis on the principle of least privilege; and</li><li
+          class=""
+          style=""
+          value="5"
+        >All data is encrypted during transfer and while at rest.</li></ul><p style="text-align: justify;">We rely on the security policies of  GCP to protect personal information while stored in their respective controlled facilities.  For more information on GCP’s security practices and processes, please see <a href="https://cloud.google.com/security"><span style="text-decoration: underline;">https://cloud.google.com/security</span></a>.</p><p style="text-align: justify;">Rig currently uses Stripe, LLC (“<strong>Stripe</strong>”) for payment, analytics, and other business services. Stripe collects identifying information about the devices that connect to each of their services. Stripe uses this information to operate and improve the services they provide to Rig, including for fraud detection. You can learn more about Stripe and read its privacy policy at <a href="https://stripe.com/privacy"><span style="text-decoration: underline;">https://stripe.com/privacy</span></a>. As with all third-party providers, Rig is not a party to any agreement between you and Stripe, and Rig  does not control Stripe’s privacy and data security policies. Rig reserves the right to change payment processors at any time.</p><p style="text-align: justify;">Rig complies with applicable data protection laws, including applicable security breach notification requirements.</p><p style="text-align: justify;"><span style="text-decoration: underline;">Data Retention</span></p><p style="text-align: justify;">Rig will retain your information as long as necessary for the purposes outlined in this Privacy Policy, in a manner consistent with our data retention policy discussed in this section, and for a commercially reasonable time thereafter for backup, archival, fraud prevention or detection or audit purposes or as permitted by applicable law. Rig will retain your personal information consistent with the original purpose of collection or as long as necessary to comply with our legal obligations; maintain accurate accounting, financial and other operational records; resolve disputes; and enforce our agreements. We will never retain your information for a period longer than permitted by law.</p><p style="text-align: justify;">We determine the appropriate retention period for personal information on the basis of the amount, nature, and sensitivity of the personal information being processed; the purpose for which it was collected; the potential risk of harm from unauthorized use or disclosure of the personal information; whether we can achieve the purposes of the processing through other means; and applicable legal requirements.</p><p style="text-align: justify;">After expiration of the applicable retention periods, your personal information will be deleted. As discussed below, you may have the right to request we delete this information earlier.</p><p style="text-align: justify;"><strong>Accessing and Updating Your Information</strong></p><p style="text-align: justify;">To the extent provided by the law of your jurisdiction, you may: </p><ul class="list-bullet"><li
+          class=""
+          style=""
+          value="1"
+        >Have the right to access certain personal information we maintain about you and request details about how we process it; </li><li
+          class=""
+          style=""
+          value="2"
+        >Request certain information regarding our disclosure of personal information to third parties; </li><li
+          class=""
+          style=""
+          value="3"
+        >Request that we update or correct inaccuracies regarding your personal information; </li><li
+          class=""
+          style=""
+          value="4"
+        >Object to our use of your personal information; </li><li
+          class=""
+          style=""
+          value="5"
+        >Ask us to block or delete your personal information from our database; </li><li
+          class=""
+          style=""
+          value="6"
+        >Request to download the information you have shared on the Services; and </li><li
+          class=""
+          style=""
+          value="7"
+        >Confirm whether Rig stores your data in the United States. </li></ul><p style="text-align: justify;">You may make these requests and any other inquiries about this Privacy Policy by emailing <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d7a7a5bea1b6b4ae97a5beb0f9b6be">[email&#160;protected]</a>] or calling us at +1 302-265-4350. Any such requests are subject to the protection of other individuals’ rights and applicable law. Additionally, to help protect your privacy and maintain security, we may take steps to verify your identity before granting you access to the requested information. To the extent permitted by applicable law, a charge may apply before we provide you with a copy of any of your personal information that we maintain.</p><p style="text-align: justify;"><strong>Additional Privacy Information</strong></p><p style="text-align: justify;"><span style="text-decoration: underline;">Data Transfer</span>. Our databases are currently located in the United States. Rig makes no claim that its Services are appropriate or lawful for use or access outside the United States. If you access the Services from outside the United States, you are consenting to the transfer of your personal information from your location to the United States. You are solely responsible for complying with all local laws, rules and regulations regarding online conduct and access to the Services. By providing us your information, you further consent to its storage within the United States.</p><p style="text-align: justify;"><span style="text-decoration: underline;">Collection of Data from Children</span>. The Services are not directed to children, and you may not use the Services or provide any personal information to Rig if you are under the age of 18 (or the lowest age permitted by applicable law) or if you are not old enough to consent to the processing of your personal information in your country. We do not collect or process personal information of individuals under the age of 18 or the lowest age permitted by applicable law unless we receive all necessary consents from the individual’s parent or guardian.</p><p style="text-align: justify;"><span style="text-decoration: underline;">California Resident Privacy Rights</span>. California Civil Code Section 1798.83 permits our customers who are California residents to request certain information regarding our disclosure of personal information to third parties for their direct marketing purposes. To make such a request, please e-mail us or contact us through the methods stated above. </p><p style="text-align: justify;"><strong>European Union, United Kingdom, and Swiss Data Subject Rights</strong></p><p style="text-align: justify;">If you are a resident of the European Union (“<strong>EU</strong>”), Lichtenstein, Norway, Iceland (collectively with the EU, the “<strong>EEA</strong>”), United Kingdom (“<strong>UK</strong>”), or Switzerland, you may have additional rights under the EU or UK General Data Protection Regulation (the “<strong>GDPR</strong>”) or the Swiss Federal Act on Data Projection (“<strong>FADP</strong>”), as applicable, with respect to your Personal Data. The following discusses these rights.</p><p style="text-align: justify;">For this section, the GDPR definition of “Personal Data” and “processing” are used. Generally, “Personal Data” means information that can be used to individually identify a person, and “processing” relates to actions that can be performed in connection with collecting, using, storing, and disclosing such data. Rig is the controller of your Personal Data processed in connection with the Services.</p><p style="text-align: justify;">If a conflict exists between this this section and any other provision of this Privacy Policy, the more protective policy or portion shall govern to resolve such conflict. If you have any questions about this section or whether any of the following applies to you, please contact us at <a href="/cdn-cgi/l/email-protection#79090b100f181a00390b101e571810"><span class="__cf_email__" data-cfemail="1c6c6e756a7d7f655c6e757b327d75">[email&#160;protected]</span></a>. </p><p style="text-align: justify;">We may also process Personal Data of our customers’ end users in connection with our provision of services to our customers. In this case, we are the processor of Personal Data. If you have any questions regarding Personal Data when Rig is the data processor, please contact the controller party in the first instance to address your rights with respect to such data.</p><p style="text-align: justify;"><span style="text-decoration: underline;">Personal Data We Collect</span>. The “<span style="text-decoration: underline;">Information We Collect from You</span>” section above details the Personal Data that we collect from you.</p><p style="text-align: justify;"><span style="text-decoration: underline;">Personal Data Use and Processing Grounds</span>. The “<span style="text-decoration: underline;">How We Use Your Information</span>” section above explains how we use your Personal Data. We will only process your Personal Data as explained in this Privacy Policy and if we have a lawful basis for doing so. The lawful bases include receiving your consent, having a contractual necessity, and furthering our legitimate interests or the legitimate interest of others. The following sections describe these in greater detail.</p><p style="text-align: justify;"><em>Consent</em><em><strong> </strong></em></p><p style="text-align: justify;">We process Personal Data based on the consent you expressly grant to us at the time we collect the data. When we process Personal Data based on your consent, it will be expressly indicated to you at the point and time of collection.</p><p style="text-align: justify;"><em>Contractual Necessity</em></p><p style="text-align: justify;">We may process the Personal Data as a matter of “contractual necessity”. This means that we need to process the data to perform under our agreement with you and enable us to provide you with the Services. When we process data due to contractual necessity, failure to provide such Personal Data will result in your inability to use some or all portions of the Services.</p><p style="text-align: justify;"><em>Legitimate Interest  </em></p><p style="text-align: justify;">We process the following categories of Personal Data when we believe it furthers the legitimate interest of us or third parties providing products or services in connection with the Services:</p><ul class="list-bullet"><li
+          class=""
+          style=""
+          value="1"
+        >Profile or Contact Data</li><li
+          class=""
+          style=""
+          value="2"
+        >Commercial Data</li><li
+          class=""
+          style=""
+          value="3"
+        >Device/IP Data</li><li
+          class=""
+          style=""
+          value="4"
+        >Web Analytics</li><li
+          class=""
+          style=""
+          value="5"
+        >Geolocation Data</li><li
+          class=""
+          style=""
+          value="6"
+        >Professional or Employment-Related Data</li><li
+          class=""
+          style=""
+          value="7"
+        >Financial and Payment Data</li><li
+          class=""
+          style=""
+          value="8"
+        >Social Network Data</li><li
+          class=""
+          style=""
+          value="9"
+        >Inferences Drawn from Other Personal Data Collected</li><li
+          class=""
+          style=""
+          value="10"
+        >Other Identifying Information that You Choose to Provide</li></ul><p style="text-align: justify;">We may also de-identify and anonymize Personal Data to further our legitimate interests.</p><p style="text-align: justify;">Examples of these legitimate interests include (as described in more detail above in the “<span style="text-decoration: underline;">How We Use Your Information</span>” section):</p><ul class="list-bullet"><li
+          class=""
+          style=""
+          value="1"
+        >Providing, customizing, and improving the Services.</li><li
+          class=""
+          style=""
+          value="2"
+        >Marketing the Services.</li><li
+          class=""
+          style=""
+          value="3"
+        >Corresponding with you.</li><li
+          class=""
+          style=""
+          value="4"
+        >Meeting legal requirements and enforcing legal terms.</li><li
+          class=""
+          style=""
+          value="5"
+        >Completing corporate transactions.</li></ul><p style="text-align: justify;"><em>Other Processing Grounds</em></p><p style="text-align: justify;">Occasionally, we may also need to process Personal Data to comply with legal obligations, to protect the vital interests of you or other data subjects, or to carry out a task necessary for the public’s interest.</p><p style="text-align: justify;"><span style="text-decoration: underline;">Sharing Personal Data</span>. The “<span style="text-decoration: underline;">How We Share Your Information</span>” section above details how we share your Personal Data with third parties.</p><p style="text-align: justify;"><span style="text-decoration: underline;">EEA and UK and Swiss Data Subject Rights</span></p><p style="text-align: justify;">EEA and UK and Swiss data subjects have certain rights with respect to Personal Data. This is further set forth below. For more information about these rights or to submit a request, please email us at <a href="/cdn-cgi/l/email-protection#1e6e6c77687f7d675e6c7779307f77"><span class="__cf_email__" data-cfemail="93e3e1fae5f2f0ead3e1faf4bdf2fa">[email&#160;protected]</span></a>. Please note that in some circumstances, Rig may be unable to fully comply with your request, including if the request is frivolous, extremely impractical, jeopardizes other’s rights, or not required by law. In those circumstances, we will still notify you of such a decision. Generally, we may also need you to provide us additional information, which may include Personal Data, if necessary to verify your identity and the nature of your request. Your rights include:</p><ul class="list-bullet"><li
+          class=""
+          style=""
+          value="1"
+        ><strong>Access:</strong> You can request information related to the Personal Data we store about you and request a copy of such Personal Data.</li><li
+          class=""
+          style=""
+          value="2"
+        ><strong>Rectification:</strong> If you believe that any Personal Data we store about you is incorrect or incomplete, you can request we supplement or correct such Personal Data.</li><li
+          class=""
+          style=""
+          value="3"
+        ><strong>Erasure:</strong> You can request we erase part or all of your Personal Data from our systems.</li><li
+          class=""
+          style=""
+          value="4"
+        ><strong>Withdrawal of Consent:</strong> If we are processing your Personal Data based upon your consent (as indicated at the time of collection of such data), you have the right to withdraw consent at any time. However, please note that if you change or withdraw consent, you may have to then provide express consent on a case-by-case basis if use or disclosure is necessary to enable you to use the Services.</li><li
+          class=""
+          style=""
+          value="5"
+        ><strong>Portability:</strong> You can request for a copy of your Personal Data in a machine-readable format. You can also request we transmit the Personal Data to another controller to the extent such transmission is technically feasible.</li><li
+          class=""
+          style=""
+          value="6"
+        ><strong>Objection:</strong> You can contact us to object to our further use or disclosure of your Personal Data for certain purposes, such as for direct marketing purposes, by contacting us as described above.</li><li
+          class=""
+          style=""
+          value="7"
+        ><strong>Restriction of Processing:</strong> You can request Rig restrict further processing your Personal Data.</li><li
+          class=""
+          style=""
+          value="8"
+        ><strong>Right to File Complaint:</strong> You have the right to submit a complaint about Rig’s practices with respect to your Personal Data to the supervisory authority of your country or EU Member State. A list of Supervisory Authorities is available here: <a href="https://www.edpb.europa.eu/about-edpb/about-edpb/members_en"><span style="text-decoration: underline;">https://edpb.europa.eu/about-edpb/board/members_en</span></a>.</li></ul><p style="text-align: justify;"><span style="text-decoration: underline;">Transfers of Personal Data</span>. The “<span style="text-decoration: underline;">Data Transfer</span>” information in the “<span style="text-decoration: underline;">Additional Privacy Information</span>” section above details how and where we transfer your data. Most significantly, our databases are currently located in the United States, and you are consenting to Rig transferring your Personal Data to the United States. When we transfer your Personal Data from the EEA, UK, or Switzerland to the United States or other countries that may not provide an equivalent level of data protection, we implement appropriate safeguards to protect your Personal Data. These safeguards include Standard Contractual Clauses approved by the European Commission and/or reliance on adequacy decisions where applicable. You may obtain a copy of these safeguards or further information about where they have been made available by contacting us at <a href="/cdn-cgi/l/email-protection#3444465d4255574d74465d531a555d"><span class="__cf_email__" data-cfemail="6616140f1007051f26140f0148070f">[email&#160;protected]</span></a>.</p></section> </div> </main> <!-- ═══ FOOTER ═══ --><footer data-astro-cid-sz7xmlte> <div class="container" data-astro-cid-sz7xmlte> <div class="footer-grid" data-astro-cid-sz7xmlte> <div class="footer-brand" data-astro-cid-sz7xmlte> <a href="/" data-astro-cid-sz7xmlte><img class="footer-logo" src="/assets/rig-wordmark.svg" alt="Rig" data-astro-cid-sz7xmlte></a> <p data-astro-cid-sz7xmlte>Local-first AI for developers who refuse to be dependent on the cloud.</p> </div> <div class="footer-col" data-astro-cid-sz7xmlte> <h3 class="mono-label" data-astro-cid-sz7xmlte>Connect</h3> <ul data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="https://x.com/rig_code" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>Twitter</a></li> <li data-astro-cid-sz7xmlte><a href="https://www.linkedin.com/company/get-rig/" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>LinkedIn</a></li> </ul> </div> <div class="footer-col" data-astro-cid-sz7xmlte> <h3 class="mono-label" data-astro-cid-sz7xmlte>Legal</h3> <ul data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="/terms" data-astro-cid-sz7xmlte>Terms of Service</a></li> <li data-astro-cid-sz7xmlte><a href="/privacy" data-astro-cid-sz7xmlte>Privacy Policy</a></li> </ul> </div> </div> <div class="footer-bottom" data-astro-cid-sz7xmlte> <span class="mono-label" data-astro-cid-sz7xmlte>&copy; 2026 Rig AI Inc. All rights reserved.</span> <div class="status footer-status" data-astro-cid-sz7xmlte> <span class="footer-status-dot" data-astro-cid-sz7xmlte></span> <span data-astro-cid-sz7xmlte>All systems local</span> </div> </div> </div> <!-- Giant logo watermark --> <svg class="footer-watermark" viewBox="0 0 163 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-astro-cid-sz7xmlte> <path d="M162.809 89.4121H82.6844C74.7832 89.4121 67.2059 92.5528 61.6216 98.1424C56.0441 103.725 52.9111 111.294 52.9111 119.185V159.996H72.1703V126.45C72.1703 116.812 72.3437 108.001 72.3437 108.001H162.809V89.4121Z" stroke="currentColor" stroke-width="0.5" fill="none" data-astro-cid-sz7xmlte></path> <path d="M162.808 118.61H111.815C103.914 118.61 96.3368 121.751 90.7524 127.341C85.1749 132.923 82.042 140.492 82.042 148.384V159.997H104.909V144.052C104.909 134.414 104.909 134.082 104.909 134.082H162.808V118.61Z" stroke="currentColor" stroke-width="0.5" fill="none" data-astro-cid-sz7xmlte></path> <path d="M162.809 146.002C144.706 146.002 134.567 145.996 116.464 146.004V160H162.809V146.002Z" stroke="currentColor" stroke-width="0.5" fill="none" data-astro-cid-sz7xmlte></path> <path d="M162.809 0.00304711H70.8863C52.0802 0.00304711 34.0448 7.47609 20.7501 20.7772C7.46368 34.07 0 52.0946 0 70.8889C0 99.2859 0 140.767 0 159.997H15.7849V67.7138C15.7849 53.2572 15.7849 41.5373 15.7849 41.5373H162.812V0L162.809 0.00304711Z" stroke="currentColor" stroke-width="0.5" fill="none" data-astro-cid-sz7xmlte></path> <path d="M162.809 51.8704H56.8042C48.903 51.8704 41.3258 55.0111 35.7414 60.6008C30.1639 66.1835 27.031 73.7522 27.031 81.6437V159.997H41.8159V96.3178C41.8159 86.6801 41.8159 78.8688 41.8159 78.8688H162.809V51.8674V51.8704Z" stroke="currentColor" stroke-width="0.5" fill="none" data-astro-cid-sz7xmlte></path> </svg> </footer>   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body></html> 

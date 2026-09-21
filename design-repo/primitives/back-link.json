@@ -1,0 +1,22 @@
+{
+  "id": "primitive.back-link",
+  "kind": "primitive",
+  "purpose": "Article footer 'All Posts' link: 24px pixel return arrow scaled .75 + uppercase Chivo text, muted -> paper on hover.",
+  "implementedBy": [
+    {
+      "citation": "src/pages/BlogPost.jsx:73",
+      "quote": "const BackArrow = () => ("
+    },
+    {
+      "citation": "src/styles/BlogPost.css:209",
+      "quote": ".blog-post > footer a {"
+    }
+  ],
+  "tokensUsed": [
+    "color.text.muted",
+    "color.text.primary"
+  ],
+  "usedBySections": [
+    "post.article"
+  ]
+}

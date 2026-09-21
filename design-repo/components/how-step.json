@@ -1,0 +1,42 @@
+{
+  "id": "component.how-step",
+  "kind": "component",
+  "purpose": "Stepper button: 2px progress rail (fill 6s linear when active), 'Step 0N' + Chalet h3 (inactive = text-tertiary), collapsible two-paragraph body.",
+  "implementedBy": [
+    {
+      "citation": "src/components/HowItWorks.jsx:225-247",
+      "quote": "<button"
+    },
+    {
+      "citation": "src/styles/HowItWorks.css:39-131",
+      "quote": "animation: howProgressFill 6s linear forwards;"
+    }
+  ],
+  "tokensUsed": [
+    "typeRole.how-step-h3",
+    "typeRole.how-step-num",
+    "typeRole.step-body",
+    "duration.how-progress",
+    "duration.how-body-rows",
+    "color.paper-faint",
+    "color.accent.primary"
+  ],
+  "usedBySections": [
+    "how.stepper"
+  ],
+  "states": [
+    {
+      "state": "active",
+      "change": "fill animates, body grid-rows 1fr + opacity 1, num red, h3 paper",
+      "measuredFrom": "src/styles/HowItWorks.css:118",
+      "evidenceQuote": ".how-section .how-step.active .how-step-body {"
+    },
+    {
+      "state": "focus-visible",
+      "change": "2px red outline, offset -2px",
+      "measuredFrom": "src/styles/HowItWorks.css:56",
+      "evidenceQuote": ".how-section .how-step:focus-visible {"
+    }
+  ],
+  "composes": []
+}

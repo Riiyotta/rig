@@ -1,0 +1,1 @@
+function s(t=3e3){return new Promise((o,n)=>{const r=Date.now();function e(){if(window.posthog?.__loaded){o(window.posthog);return}if(Date.now()-r>t){n(new Error("PostHog did not load"));return}requestAnimationFrame(e)}e()})}async function a(){try{return(await s()).get_property?.("referral_code")??null}catch{return null}}export{a as g};

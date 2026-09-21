@@ -1,0 +1,18 @@
+{
+  "id": "component.grid-bg",
+  "kind": "component",
+  "purpose": "Perspective floor grid (::after, 80px cells, rotateX(55deg), radial mask) clipped to the frame by the section clip-path.",
+  "implementedBy": [
+    {
+      "citation": "src/index.css:386-404",
+      "quote": "rotateX(55deg)"
+    }
+  ],
+  "tokensUsed": [
+    "color.border.default"
+  ],
+  "usedBySections": [
+    "terminal.monitor"
+  ],
+  "composes": []
+}

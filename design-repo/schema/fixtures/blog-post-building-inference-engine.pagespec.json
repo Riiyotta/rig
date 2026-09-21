@@ -1,0 +1,404 @@
+{
+  "pageSpecVersion": "1.0.0",
+  "id": "blog-post-building-inference-engine",
+  "route": "/blog/building-inference-engine",
+  "template": "tpl.blog-post",
+  "theme": "dark",
+  "nodes": [
+    {
+      "type": "shell.overlays",
+      "content": {
+        "grainFilter": {
+          "assetRole": "effect.svg-filter"
+        }
+      },
+      "motion": {
+        "pattern": "grain-overlay-smil",
+        "reducedMotionFallback": "static-grain-frame"
+      }
+    },
+    {
+      "type": "shell.header",
+      "variant": "default",
+      "content": {
+        "logo": {
+          "assetRole": "brand.wordmark"
+        },
+        "links": [
+          {
+            "label": "Blog",
+            "target": {
+              "kind": "route",
+              "route": "/blog"
+            }
+          }
+        ],
+        "cta": {
+          "label": "Get Early Access",
+          "target": {
+            "kind": "route",
+            "route": "/waitlist"
+          }
+        }
+      },
+      "motion": {
+        "pattern": "mobile-menu-fade",
+        "reducedMotionFallback": "instant-toggle"
+      }
+    },
+    {
+      "type": "post.article",
+      "variant": "post",
+      "content": {
+        "title": "What it takes to build a fast local inference engine",
+        "author": "Rig Engineers",
+        "byPrefix": "By",
+        "date": "2026-04-16",
+        "excerpt": "A tour of the runtime that turns a file of weights into a responsive coding agent on an ordinary laptop, one layer at a time.",
+        "blocks": [
+          {
+            "kind": "p",
+            "text": "Most talk about local AI is about the model. The part that decides whether it feels usable is the runtime. We covered how we [shrink the weights](/blog/compressing-a-model-to-run-locally) and how we [train for code](/blog/teaching-a-model-to-code) elsewhere; this post is about what runs them."
+          },
+          {
+            "kind": "p",
+            "text": "An inference engine has one job. It takes a prompt, runs the network forward as fast as the hardware allows, and hands back tokens without stalling everything else on the machine. Doing that well on a laptop, next to an editor, a browser and a build, is a very different problem from doing it on a rack of dedicated servers."
+          },
+          {
+            "kind": "h2",
+            "text": "Why not use an existing runtime"
+          },
+          {
+            "kind": "p",
+            "text": "We started where everyone starts, with the popular open runtimes. They are impressive pieces of work and we learned a great deal from reading them. They are also general by design, which means they carry support for dozens of architectures, file formats and hardware backends that we will never touch. Each of those paths is code that has to be loaded, tested and kept working."
+          },
+          {
+            "kind": "p",
+            "text": "Generality has a cost, and we did not need it."
+          },
+          {
+            "kind": "ul",
+            "items": [
+              "**Fixed architecture.** We know the shape of every layer ahead of time, so kernels are specialized, not dispatched.",
+              "**Fixed formats.** Weights arrive in one packed layout, designed with the compression work, with nothing to convert."
+            ]
+          },
+          {
+            "kind": "p",
+            "text": "Being narrow let us delete a surprising amount of code before we wrote any of our own. What remained was small enough that a single engineer could hold the whole hot path in their head."
+          },
+          {
+            "kind": "h2",
+            "text": "The shape of the problem"
+          },
+          {
+            "kind": "p",
+            "text": "A coding agent does not look like a chatbot from the runtime’s point of view. Prompts are long, because they include files, diffs and tool output, and replies are often short."
+          },
+          {
+            "kind": "ul",
+            "items": [
+              "**Prefill dominates.** Reading a large context takes far longer than writing the answer, so time to first token is the number users feel most. A request that carries three open files and a test log can spend most of its life in prefill before a single visible character appears.",
+              "**Idle is the common case.** Between requests the engine should cost close to nothing, since the laptop has other work to do. Most of a working day is spent reading and typing, not waiting on the agent."
+            ]
+          },
+          {
+            "kind": "p",
+            "text": "Those two facts pull in different directions. Fast prefill wants large buffers held ready, while idle wants memory handed back."
+          },
+          {
+            "kind": "p",
+            "text": "Most of the design decisions below come from trying to satisfy both at once. Wherever the two conflict, we lean toward keeping the machine responsive for the person using it, and accept a slightly slower start on the occasional long request. That trade shows up again and again in the sections that follow."
+          },
+          {
+            "kind": "h2",
+            "text": "Memory is the real budget"
+          },
+          {
+            "kind": "p",
+            "text": "On a server you think about compute first. On a laptop you think about memory first, because it is shared with the browser, the editor, the compiler and everything else the developer has open."
+          },
+          {
+            "kind": "p",
+            "text": "The weights are the largest fixed cost, and we map them straight from disk rather than copying them into a private allocation. The operating system can then share and page them like any other file, and a cold start does not need to read the whole model before the first request. If the machine comes under pressure, the system can drop clean pages and read them back later without the engine doing anything special. It never holds a second copy of the weights."
+          },
+          {
+            "kind": "p",
+            "text": "The second cost is the key-value cache, which grows with context length. A naive cache sized for the maximum context would claim gigabytes the moment the engine starts, so we allocate it in fixed pages and commit them only as a conversation grows."
+          },
+          {
+            "kind": "p",
+            "text": "Pages that belong to a finished request go back into a free list. If the list grows past a threshold while the engine is idle, we release it to the system entirely. The effect is that memory use tracks what the user is doing rather than what the configuration allows. A short question costs a few pages; a long refactor across many files costs more, and gives it back when it is done. Nothing is reserved just in case."
+          },
+          {
+            "kind": "p",
+            "text": "We also keep a small budget of headroom that the engine will never spend, no matter how large the request. When the machine is under pressure, it is better for us to slow down than for the editor to start swapping. The headroom is measured, not guessed: on start-up the engine checks how much memory the system can spare and sizes its limits from that, then rechecks periodically. If another application grows, the engine shrinks its ceiling to match rather than competing for the same space."
+          },
+          {
+            "kind": "h2",
+            "text": "Kernels written for one model"
+          },
+          {
+            "kind": "p",
+            "text": "The core of any engine is a handful of operations repeated millions of times: matrix multiplies, attention, normalization and a few element-wise steps in between. Nearly all of the time goes to the first two, and nearly all of that time is spent moving weights from memory rather than doing arithmetic on them."
+          },
+          {
+            "kind": "p",
+            "text": "Fixed layer shapes mean each kernel is compiled for its exact sizes."
+          },
+          {
+            "kind": "ul",
+            "items": [
+              "**Fused dequantization.** Packed weights are expanded inside the multiply rather than in a separate pass, so the full-precision values never touch main memory and the bandwidth saved by compression is not spent again on unpacking.",
+              "**Fused attention.** Scores, softmax and the weighted sum run in one kernel that streams through the cache pages in order.",
+              "**Merged norms.** Normalization is folded into the neighbouring projection wherever the math allows it, which removes a full read and write of the activations per layer.",
+              "**Few launches.** A full forward pass issues a small, fixed number of dispatches, which keeps scheduling overhead flat as context grows.",
+              "**One path per backend.** Each supported chip family gets its own tuned variant instead of a portable fallback that is slow everywhere."
+            ]
+          },
+          {
+            "kind": "p",
+            "text": "None of these ideas are new on their own. The gain came from applying all of them to a single, known model, where every one of them could be pushed further than a general runtime would dare. A general engine has to leave room for layers it has never seen; ours only has to be right about one network, and it can be tested against that network on every change. When a kernel regresses, we know within a single build."
+          },
+          {
+            "kind": "h2",
+            "text": "Scheduling requests"
+          },
+          {
+            "kind": "p",
+            "text": "An agent rarely sends one request at a time. While it is drafting an edit it may also be summarizing a file or checking a command."
+          },
+          {
+            "kind": "ol",
+            "items": [
+              "**Classify.** Every request is tagged as interactive or background when it enters the queue.",
+              "**Prefill in chunks.** Long prompts are split into slices so a short interactive request is never stuck behind a huge background read.",
+              "**Batch the decode.** Generating requests share one forward pass per step.",
+              "**Preempt politely.** Background work yields at slice boundaries when something interactive arrives.",
+              "**Reuse prefixes.** Requests that start with the same files share their cached pages instead of recomputing them."
+            ]
+          },
+          {
+            "kind": "p",
+            "text": "Prefix reuse deserves a note of its own. Agents send the same project context again and again with small changes at the end, as they read a file, try an edit, run a test and read the file again. Keeping those shared pages warm is often worth more than any kernel optimization."
+          },
+          {
+            "kind": "p",
+            "text": "The scheduler itself is intentionally simple. It is a priority queue with a time slice, and it fits on one screen. Every clever variant we tried was harder to reason about and not measurably faster for real workloads. We tried fair queues, deadlines and a learned length predictor; each looked better on synthetic traces and no better on recordings of real sessions, so the simple version stayed."
+          },
+          {
+            "kind": "h2",
+            "text": "Measuring what users feel"
+          },
+          {
+            "kind": "p",
+            "text": "Throughput numbers are easy to collect and easy to make look good. They also say little about whether the tool feels fast in daily use, so we stopped leading with them early in the project. A runtime can post a high tokens-per-second figure and still feel sluggish if it pauses before the first token or stutters halfway through."
+          },
+          {
+            "kind": "p",
+            "text": "We track the time from a keystroke to the first visible token, the steadiness of the token stream once it starts, and the memory the engine holds while idle. Each is recorded on real laptops running a real editor, a browser and a build in the background, across several generations of hardware. The oldest machines in the lab set the bar; if it feels good there, it feels good everywhere else."
+          },
+          {
+            "kind": "p",
+            "text": "Regressions in any of these block a release. A change that improves throughput but adds a visible pause before the first token is treated as a bug."
+          },
+          {
+            "kind": "ul",
+            "items": [
+              "**First token** is time from queueing to the first visible token.",
+              "**Stream jitter** is the spread between gaps in a reply.",
+              "**Idle footprint** is resident memory after a quiet minute.",
+              "**Thermal drift** is slowdown after twenty minutes of use."
+            ]
+          },
+          {
+            "kind": "h2",
+            "text": "How the pieces fit"
+          },
+          {
+            "kind": "p",
+            "text": "The full request path, from the editor to the tokens:"
+          },
+          {
+            "kind": "figure",
+            "alt": "Inference request flow",
+            "asset": {
+              "assetRole": "placeholder.blog-diagram"
+            }
+          },
+          {
+            "kind": "p",
+            "text": "A request enters the local socket, gets classified and queued, has its prefix matched against warm cache pages, runs prefill in slices, and then joins the shared decode batch until it finishes. Nothing in that path leaves the machine."
+          },
+          {
+            "kind": "h2",
+            "text": "Working on many chips"
+          },
+          {
+            "kind": "p",
+            "text": "Laptops vary far more than servers do, and one release must run on all of them."
+          },
+          {
+            "kind": "ul",
+            "items": [
+              "**Probe on first run.** The engine measures memory bandwidth and compute throughput on the actual device before picking kernel variants, rather than trusting a table of model numbers that is always slightly out of date.",
+              "**Prefer unified memory.** Where the chip shares memory between processor and graphics, we skip copies entirely and let both sides read the same pages.",
+              "**Fall back gracefully.** When no fast path exists, a plain processor path keeps everything working, just slower. It is tested on every release so the fallback never quietly rots.",
+              "**Remember the result.** Probe results are cached, so later launches start immediately and only re-probe after a driver or system update."
+            ]
+          },
+          {
+            "kind": "h2",
+            "text": "Keeping it quiet"
+          },
+          {
+            "kind": "p",
+            "text": "A tool that runs on your machine should behave like a good neighbour: low power when idle and no network beyond the local socket."
+          },
+          {
+            "kind": "ul",
+            "items": [
+              "**No background downloads.** Updates happen only when the user asks for them, and they are verified locally before anything is replaced.",
+              "**No telemetry.** The engine does not report usage, prompts, timings or crashes anywhere. Diagnostics stay in a local log that you can read, share or delete.",
+              "**Loopback only.** The socket binds to the local interface and refuses anything else, including other machines on the same network.",
+              "**Power aware.** On battery, background jobs run at a lower priority and batch more aggressively, so short interactive requests still feel instant while long summaries wait for a better moment.",
+              "**Easy to stop.** Quitting the engine returns every byte of memory it held and removes its socket, leaving nothing running in the background afterwards."
+            ]
+          },
+          {
+            "kind": "h2",
+            "text": "Where it goes next"
+          },
+          {
+            "kind": "p",
+            "text": "The model, not the runtime, is now the usual limit."
+          },
+          {
+            "kind": "ol",
+            "items": [
+              "**Speculative decoding** with a tiny draft model, to cut the cost of predictable tokens such as closing brackets, repeated identifiers and boilerplate imports that the main model would otherwise generate one expensive step at a time.",
+              "**Smarter prefix caching** that survives restarts, so reopening a project is as fast as never having closed it.",
+              "**Finer power control** that lets users trade speed for battery life with a single setting, instead of relying on the defaults we picked for everyone."
+            ]
+          },
+          {
+            "kind": "p",
+            "text": "Each of these is a small change to a small codebase. That was the point of building narrow in the first place: when the whole engine fits in your head, improving it stays cheap."
+          },
+          {
+            "kind": "p",
+            "text": "If you want to see it running on your own hardware, the waitlist is below. We are adding people in small groups so we can watch how the engine behaves on machines we have not tested ourselves, and fix what we find before the next group joins."
+          },
+          {
+            "kind": "hr"
+          },
+          {
+            "kind": "p",
+            "text": "*This post is one part of an ongoing series about how Rig works under the hood. The other entries cover [model compression](/blog/compressing-a-model-to-run-locally) and [training for code](/blog/teaching-a-model-to-code). Each post stands on its own, but they read best in order.*"
+          },
+          {
+            "kind": "p",
+            "text": "*Questions or corrections are welcome.*"
+          }
+        ],
+        "backLabel": "All Posts",
+        "backTarget": {
+          "kind": "route",
+          "route": "/blog"
+        }
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "post.cta-aside",
+      "content": {
+        "title": "Want to try it for real?",
+        "lines": [
+          "We’re inviting engineers in small batches every single week.",
+          "Grab your spot in line."
+        ],
+        "form": {
+          "placeholder": "you@company.com",
+          "button": "Join Waitlist",
+          "errorEmpty": "Enter your email to join.",
+          "errorInvalid": "That email doesn’t look right.",
+          "successHeading": "Your spot is saved.",
+          "successPosition": "Queue position: ",
+          "referralLabel": "Share to jump the queue",
+          "copyLabel": "Copy referral link",
+          "dashboardLink": "Track your place in line →",
+          "dashboardTarget": {
+            "kind": "route",
+            "route": "/waitlist"
+          },
+          "submission": {
+            "mode": "local-only"
+          }
+        }
+      },
+      "motion": {
+        "pattern": "form-submit-spinner",
+        "reducedMotionFallback": "static-loading-label"
+      }
+    },
+    {
+      "type": "shell.footer",
+      "content": {
+        "logo": {
+          "assetRole": "brand.wordmark"
+        },
+        "tagline": "On-device AI for engineers who’d rather not depend on the cloud.",
+        "columns": [
+          {
+            "title": "Connect",
+            "links": [
+              {
+                "label": "Twitter",
+                "target": {
+                  "kind": "placeholder"
+                }
+              },
+              {
+                "label": "LinkedIn",
+                "target": {
+                  "kind": "placeholder"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Terms of Service",
+                "target": {
+                  "kind": "route",
+                  "route": "/terms"
+                }
+              },
+              {
+                "label": "Privacy Policy",
+                "target": {
+                  "kind": "route",
+                  "route": "/privacy"
+                }
+              }
+            ]
+          }
+        ],
+        "copyright": "© 2026 Example Company. All rights reserved.",
+        "status": "All systems local",
+        "watermark": {
+          "assetRole": "brand.logo-mark"
+        }
+      },
+      "motion": {
+        "pattern": "status-blink",
+        "reducedMotionFallback": "steady-dot"
+      }
+    }
+  ]
+}

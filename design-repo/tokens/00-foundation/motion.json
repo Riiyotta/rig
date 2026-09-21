@@ -1,0 +1,317 @@
+{
+  "$description": "Durations, easings and delays that really occur in the source. There are NO scroll-reveal/fade-in animations anywhere (spec §0.9, §18.7, P5).",
+  "duration": {
+    "button": {
+      "$type": "duration",
+      "$value": "0.2s",
+      "measuredFrom": "src/index.css:266",
+      "evidenceQuote": "0.2s",
+      "$description": ".btn-chamfer transition"
+    },
+    "btn-glitch": {
+      "$type": "duration",
+      "$value": "0.3s",
+      "measuredFrom": "src/index.css:323",
+      "evidenceQuote": "0.3s",
+      "$description": "button hover glitch (once)"
+    },
+    "ticker": {
+      "$type": "duration",
+      "$value": "18s",
+      "measuredFrom": "src/styles/Hero.css:75",
+      "evidenceQuote": "18s",
+      "$description": "hero ticker loop (translate -50% of the viewport-wide flex box: the loop visibly jumps - faithful)"
+    },
+    "watermark-glitch": {
+      "$type": "duration",
+      "$value": "4s",
+      "measuredFrom": "src/styles/Hero.css:22",
+      "evidenceQuote": "4s",
+      "$description": "hero watermark"
+    },
+    "pupil-glitch": {
+      "$type": "duration",
+      "$value": "4s",
+      "measuredFrom": "src/styles/Problem.css:93",
+      "evidenceQuote": "4s",
+      "$description": "eye pupil"
+    },
+    "eye-close": {
+      "$type": "duration",
+      "$value": "0.25s",
+      "measuredFrom": "src/styles/Problem.css:101",
+      "evidenceQuote": "0.25s",
+      "$description": "eye blink close"
+    },
+    "eye-open": {
+      "$type": "duration",
+      "$value": "0.2s",
+      "measuredFrom": "src/styles/Problem.css:105",
+      "evidenceQuote": "0.2s",
+      "$description": "eye blink open"
+    },
+    "globe-drift": {
+      "$type": "duration",
+      "$value": "6s",
+      "measuredFrom": "src/styles/Offline.css:139",
+      "evidenceQuote": "6s",
+      "$description": "globe meridian drift"
+    },
+    "how-progress": {
+      "$type": "duration",
+      "$value": "6s",
+      "measuredFrom": "src/styles/HowItWorks.css:81",
+      "evidenceQuote": "6s",
+      "$description": "per-step progress fill = auto-advance interval"
+    },
+    "how-body-rows": {
+      "$type": "duration",
+      "$value": "0.4s",
+      "measuredFrom": "src/styles/HowItWorks.css:115",
+      "evidenceQuote": "0.4s",
+      "$description": "step body expand"
+    },
+    "how-card-tween": {
+      "$type": "duration",
+      "$value": "400ms",
+      "measuredFrom": "src/components/HowItWorks.jsx:84",
+      "evidenceQuote": "400",
+      "$description": "overlay card height tween"
+    },
+    "faq-rows": {
+      "$type": "duration",
+      "$value": "0.3s",
+      "measuredFrom": "src/styles/Faq.css:74",
+      "evidenceQuote": "0.3s",
+      "$description": "FAQ answer open"
+    },
+    "faq-chevron": {
+      "$type": "duration",
+      "$value": "0.3s",
+      "measuredFrom": "src/styles/Faq.css:48",
+      "evidenceQuote": "0.3s",
+      "$description": "FAQ chevron rotate"
+    },
+    "typing-char": {
+      "$type": "duration",
+      "$value": "70ms",
+      "measuredFrom": "src/components/Terminal.jsx:17",
+      "evidenceQuote": "70",
+      "$description": "terminal typing per char"
+    },
+    "typing-delete": {
+      "$type": "duration",
+      "$value": "30ms",
+      "measuredFrom": "src/components/Terminal.jsx:18",
+      "evidenceQuote": "30",
+      "$description": "terminal delete per char"
+    },
+    "typing-hold": {
+      "$type": "duration",
+      "$value": "2000ms",
+      "measuredFrom": "src/components/Terminal.jsx:19",
+      "evidenceQuote": "2000",
+      "$description": "hold full phrase"
+    },
+    "typing-pause": {
+      "$type": "duration",
+      "$value": "400ms",
+      "measuredFrom": "src/components/Terminal.jsx:20",
+      "evidenceQuote": "400",
+      "$description": "pause before next phrase"
+    },
+    "typing-start": {
+      "$type": "duration",
+      "$value": "500ms",
+      "measuredFrom": "src/components/Terminal.jsx:21",
+      "evidenceQuote": "500",
+      "$description": "start after intersect"
+    },
+    "glitch-1": {
+      "$type": "duration",
+      "$value": "5s",
+      "measuredFrom": "src/styles/Cta.css:114",
+      "evidenceQuote": "5s",
+      "$description": "CTA glitch ::before"
+    },
+    "glitch-2": {
+      "$type": "duration",
+      "$value": "4.5s",
+      "measuredFrom": "src/styles/Cta.css:121",
+      "evidenceQuote": "4.5s",
+      "$description": "CTA glitch ::after"
+    },
+    "glow-pulse": {
+      "$type": "duration",
+      "$value": "3s",
+      "measuredFrom": "src/styles/Cta.css:59",
+      "evidenceQuote": "3s",
+      "$description": "CTA logo glow"
+    },
+    "blink-footer": {
+      "$type": "duration",
+      "$value": "1.5s",
+      "measuredFrom": "src/styles/Footer.css:77",
+      "evidenceQuote": "1.5s",
+      "$description": "footer status dot"
+    },
+    "blink-cursor": {
+      "$type": "duration",
+      "$value": "1s",
+      "measuredFrom": "src/styles/Terminal.css:241",
+      "evidenceQuote": "1s",
+      "$description": "terminal cursor"
+    },
+    "blink-led": {
+      "$type": "duration",
+      "$value": "3s",
+      "measuredFrom": "src/styles/Terminal.css:152",
+      "evidenceQuote": "3s",
+      "$description": "monitor LED"
+    },
+    "blink-dot": {
+      "$type": "duration",
+      "$value": "2s",
+      "measuredFrom": "src/index.css:378",
+      "evidenceQuote": "2s",
+      "$description": "blink dot"
+    },
+    "spin": {
+      "$type": "duration",
+      "$value": "1s",
+      "measuredFrom": "src/styles/WaitlistForm.css:80",
+      "evidenceQuote": "1s",
+      "$description": "submit spinner"
+    },
+    "pulse-dot": {
+      "$type": "duration",
+      "$value": "2s",
+      "measuredFrom": "src/styles/Waitlist.css:238",
+      "evidenceQuote": "2s",
+      "$description": "dashboard badge dot"
+    },
+    "mobile-menu": {
+      "$type": "duration",
+      "$value": "0.3s",
+      "measuredFrom": "src/styles/Navbar.css:123",
+      "evidenceQuote": "0.3s",
+      "$description": "mobile menu fade"
+    },
+    "nav-link": {
+      "$type": "duration",
+      "$value": "0.2s",
+      "measuredFrom": "src/styles/Navbar.css:50",
+      "evidenceQuote": "0.2s",
+      "$description": "nav link opacity"
+    },
+    "blog-row": {
+      "$type": "duration",
+      "$value": "0.15s",
+      "measuredFrom": "src/styles/Blog.css:38",
+      "evidenceQuote": "0.15s",
+      "$description": "blog row hover"
+    },
+    "card-hover": {
+      "$type": "duration",
+      "$value": "0.3s",
+      "measuredFrom": "src/styles/Capabilities.css:19",
+      "evidenceQuote": "0.3s",
+      "$description": "capabilities card hover"
+    }
+  },
+  "easing": {
+    "button": {
+      "$type": "cubicBezier",
+      "$value": "cubic-bezier(0.25, 1, 0.5, 1)",
+      "measuredFrom": "src/index.css:266",
+      "evidenceQuote": "cubic-bezier(0.25, 1, 0.5, 1)",
+      "$description": ".btn-chamfer"
+    },
+    "eye-close": {
+      "$type": "cubicBezier",
+      "$value": "cubic-bezier(0.7, 0, 1, 0.5)",
+      "measuredFrom": "src/styles/Problem.css:101",
+      "evidenceQuote": "cubic-bezier(0.7, 0, 1, 0.5)",
+      "$description": "eye close"
+    },
+    "eye-open": {
+      "$type": "cubicBezier",
+      "$value": "cubic-bezier(0, 0.5, 0.3, 1)",
+      "measuredFrom": "src/styles/Problem.css:105",
+      "evidenceQuote": "cubic-bezier(0, 0.5, 0.3, 1)",
+      "$description": "eye open"
+    },
+    "how-card-tween": {
+      "$type": "cubicBezier",
+      "$value": "cubic-bezier(0,0,.58,1)",
+      "measuredFrom": "src/components/HowItWorks.jsx:84",
+      "evidenceQuote": "cubic-bezier(0,0,.58,1)",
+      "$description": "overlay card height tween. Supersedes CLONE_SPEC §8's [.25,.1,.25,1] (see extraction/measured-values.json findings)"
+    },
+    "standard": {
+      "$type": "keyword",
+      "$value": "ease",
+      "measuredFrom": "src/styles/Faq.css:74",
+      "evidenceQuote": "ease",
+      "$description": "FAQ / how transitions"
+    }
+  },
+  "delay": {
+    "terminal-line-1": {
+      "$type": "duration",
+      "$value": "0.4s",
+      "measuredFrom": "src/styles/Terminal.css:218",
+      "evidenceQuote": "0.4s",
+      "$description": "terminal line 1 reveal (on page load)"
+    },
+    "terminal-line-2": {
+      "$type": "duration",
+      "$value": "1s",
+      "measuredFrom": "src/styles/Terminal.css:219",
+      "evidenceQuote": "1s",
+      "$description": "terminal line 2 reveal (on page load)"
+    },
+    "terminal-line-3": {
+      "$type": "duration",
+      "$value": "1.8s",
+      "measuredFrom": "src/styles/Terminal.css:220",
+      "evidenceQuote": "1.8s",
+      "$description": "terminal line 3 reveal (on page load)"
+    },
+    "terminal-line-4": {
+      "$type": "duration",
+      "$value": "2.4s",
+      "measuredFrom": "src/styles/Terminal.css:221",
+      "evidenceQuote": "2.4s",
+      "$description": "terminal line 4 reveal (on page load)"
+    },
+    "terminal-line-5": {
+      "$type": "duration",
+      "$value": "3.2s",
+      "measuredFrom": "src/styles/Terminal.css:222",
+      "evidenceQuote": "3.2s",
+      "$description": "terminal line 5 reveal (on page load)"
+    },
+    "terminal-line-6": {
+      "$type": "duration",
+      "$value": "3.6s",
+      "measuredFrom": "src/styles/Terminal.css:223",
+      "evidenceQuote": "3.6s",
+      "$description": "terminal line 6 reveal (on page load)"
+    },
+    "terminal-line-7": {
+      "$type": "duration",
+      "$value": "4.2s",
+      "measuredFrom": "src/styles/Terminal.css:224",
+      "evidenceQuote": "4.2s",
+      "$description": "terminal line 7 reveal (on page load)"
+    },
+    "terminal-line-8": {
+      "$type": "duration",
+      "$value": "4.8s",
+      "measuredFrom": "src/styles/Terminal.css:225",
+      "evidenceQuote": "4.8s",
+      "$description": "terminal line 8 reveal (on page load)"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+section,category,templates,routes,Homepage,Blog index,Blog post,Waitlist,Legal document
+shell.overlays,SHELL,5,9,x,x,x,x,x
+shell.footer,SHELL,5,9,x,x,x,x,x
+shell.header-default,SHELL,4,8,,x,x,x,x
+content.post-header,CONTENT,1,4,,,x,,
+content.post-body,CONTENT,1,4,,,x,,
+conversion.post-cta,CONVERSION,1,4,,,x,,
+hero.page-title,HERO,1,2,,,,,x
+content.legal-prose,CONTENT,1,2,,,,,x
+shell.header-hero,SHELL,1,1,x,,,,
+shell.content-lines,SHELL,1,1,x,,,,
+shell.section-divider,SHELL,1,1,x,,,,
+hero.home,HERO,1,1,x,,,,
+narrative.problem,NARRATIVE,1,1,x,,,,
+narrative.intro,NARRATIVE,1,1,x,,,,
+narrative.offline,NARRATIVE,1,1,x,,,,
+narrative.three-col,NARRATIVE,1,1,x,,,,
+features.how-it-works,FEATURES,1,1,x,,,,
+features.capabilities,FEATURES,1,1,x,,,,
+features.stats,FEATURES,1,1,x,,,,
+features.terminal,FEATURES,1,1,x,,,,
+conversion.early-access,CONVERSION,1,1,x,,,,
+content.faq,CONTENT,1,1,x,,,,
+conversion.cta,CONVERSION,1,1,x,,,,
+content.blog-index,CONTENT,1,1,,x,,,
+conversion.waitlist-signup,CONVERSION,1,1,,,,x,
+conversion.waitlist-dashboard,CONVERSION,1,1,,,,x,
+ROUTE COUNT,,,9,1,1,4,1,2

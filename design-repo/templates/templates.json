@@ -1,0 +1,501 @@
+{
+  "version": "1.0.0",
+  "$description": "One template per distinct page shape; every route in src/App.jsx maps to exactly one template (checked by verify_all.py). Template nodes are structured {section, required, repeatable[, variants, minCount, maxCount]} and the validator matches a PageSpec's nodes against its DECLARED template, variant-aware.",
+  "routeInventory": {
+    "source": "src/App.jsx:10-18",
+    "routes": [
+      {
+        "route": "/",
+        "template": "tpl.home",
+        "component": "Home",
+        "measuredFrom": "src/App.jsx:18",
+        "evidenceQuote": "return <Home />"
+      },
+      {
+        "route": "/blog",
+        "template": "tpl.blog-index",
+        "component": "Blog",
+        "measuredFrom": "src/App.jsx:13",
+        "evidenceQuote": "if (path === '/blog') return <Blog />"
+      },
+      {
+        "route": "/blog/manifesto",
+        "template": "tpl.blog-post",
+        "component": "BlogPost",
+        "measuredFrom": "src/App.jsx:14",
+        "evidenceQuote": "if (path.startsWith('/blog/'))",
+        "state": "post"
+      },
+      {
+        "route": "/blog/building-inference-engine",
+        "template": "tpl.blog-post",
+        "component": "BlogPost",
+        "measuredFrom": "src/App.jsx:14",
+        "evidenceQuote": "if (path.startsWith('/blog/'))",
+        "state": "post"
+      },
+      {
+        "route": "/blog/compressing-a-model-to-run-locally",
+        "template": "tpl.blog-post",
+        "component": "BlogPost",
+        "measuredFrom": "src/App.jsx:14",
+        "evidenceQuote": "if (path.startsWith('/blog/'))",
+        "state": "post"
+      },
+      {
+        "route": "/blog/teaching-a-model-to-code",
+        "template": "tpl.blog-post",
+        "component": "BlogPost",
+        "measuredFrom": "src/App.jsx:14",
+        "evidenceQuote": "if (path.startsWith('/blog/'))",
+        "state": "post"
+      },
+      {
+        "route": "/blog/:unknown-slug",
+        "template": "tpl.blog-post",
+        "component": "BlogPost",
+        "measuredFrom": "src/App.jsx:14",
+        "evidenceQuote": "if (path.startsWith('/blog/'))",
+        "state": "not-found"
+      },
+      {
+        "route": "/waitlist",
+        "template": "tpl.waitlist",
+        "component": "Waitlist",
+        "measuredFrom": "src/App.jsx:15",
+        "evidenceQuote": "if (path === '/waitlist') return <Waitlist />"
+      },
+      {
+        "route": "/privacy",
+        "template": "tpl.legal",
+        "component": "Legal",
+        "measuredFrom": "src/App.jsx:16",
+        "evidenceQuote": "if (path === '/privacy') return <Legal doc=\"privacy\" />"
+      },
+      {
+        "route": "/terms",
+        "template": "tpl.legal",
+        "component": "Legal",
+        "measuredFrom": "src/App.jsx:17",
+        "evidenceQuote": "if (path === '/terms') return <Legal doc=\"terms\" />"
+      }
+    ],
+    "notARoute": [
+      {
+        "pattern": "/blog/:unknown-slug",
+        "decision": "Modelled as the 'not-found' STATE of tpl.blog-post (same article template, BlogPost.jsx), listed once in the route inventory with state 'not-found' - not a separate template.",
+        "evidence": [
+          "src/pages/BlogPost.jsx:3",
+          "src/App.jsx:14"
+        ]
+      },
+      {
+        "pattern": "* (any other path)",
+        "decision": "App.jsx falls through to <Home /> for every unmatched path: there is NO 404 page/template. Generators must not invent one.",
+        "evidence": [
+          "src/App.jsx:18"
+        ]
+      }
+    ],
+    "excludedRoutes": [],
+    "excludedNote": "No deliberate route exclusions: all five original page shapes (home, blog index, blog post, waitlist, legal) are built."
+  },
+  "templates": [
+    {
+      "id": "tpl.home",
+      "purpose": "Single-scroll marketing homepage: red hero (embedded header + ticker), fixed frame lines, ten main sections separated by 1px frame dividers (double divider before how-it-works), CTA band outside <main>, footer.",
+      "routes": [
+        "/"
+      ],
+      "routePatterns": [
+        "/"
+      ],
+      "implementedBy": [
+        {
+          "citation": "src/pages/Home.jsx:19-59",
+          "quote": "<main className=\"content\">"
+        }
+      ],
+      "nodes": [
+        {
+          "section": "shell.overlays",
+          "required": true,
+          "repeatable": false
+        },
+        {
+          "section": "hero.home",
+          "required": true,
+          "repeatable": false
+        },
+        {
+          "section": "shell.frame-lines",
+          "required": true,
+          "repeatable": false
+        },
+        {
+          "section": "layout.section-divider",
+          "required": true,
+          "repeatable": false,
+          "variants": [
+            "spacer-top"
+          ]
+        },
+        {
+          "section": "problem.signal-grid",
+          "required": true,
+          "repeatable": false
+        },
+        {
+          "section": "layout.section-divider",
+          "required": true,
+          "repeatable": false,
+          "variants": [
+            "rule"
+          ]
+        },
+        {
+          "section": "intro.shader-diagram",
+          "required": true,
+          "repeatable": false
+        },
+        {
+          "section": "layout.section-divider",
+          "required": true,
+          "repeatable": false,
+          "variants": [
+            "rule"
+          ]
+        },
+        {
+          "section": "offline.globe-split",
+          "required": true,
+          "repeatable": false
+        },
+        {
+          "section": "layout.section-divider",
+          "required": true,
+          "repeatable": false,
+          "variants": [
+            "rule"
+          ]
+        },
+        {
+          "section": "feature.three-col",
+          "required": true,
+          "repeatable": false
+        },
+        {
+          "section": "layout.section-divider",
+          "required": true,
+          "repeatable": true,
+          "variants": [
+            "rule"
+          ],
+          "minCount": 2,
+          "maxCount": 2,
+          "note": "the real double divider before how-it-works (Home.jsx)"
+        },
+        {
+          "section": "how.stepper",
+          "required": true,
+          "repeatable": false
+        },
+        {
+          "section": "layout.section-divider",
+          "required": true,
+          "repeatable": false,
+          "variants": [
+            "rule"
+          ]
+        },
+        {
+          "section": "capabilities.card-grid",
+          "required": true,
+          "repeatable": false
+        },
+        {
+          "section": "layout.section-divider",
+          "required": true,
+          "repeatable": false,
+          "variants": [
+            "rule"
+          ]
+        },
+        {
+          "section": "stats.strip",
+          "required": true,
+          "repeatable": false
+        },
+        {
+          "section": "layout.section-divider",
+          "required": true,
+          "repeatable": false,
+          "variants": [
+            "rule"
+          ]
+        },
+        {
+          "section": "terminal.monitor",
+          "required": true,
+          "repeatable": false
+        },
+        {
+          "section": "layout.section-divider",
+          "required": true,
+          "repeatable": false,
+          "variants": [
+            "rule"
+          ]
+        },
+        {
+          "section": "early-access.waitlist",
+          "required": true,
+          "repeatable": false
+        },
+        {
+          "section": "layout.section-divider",
+          "required": true,
+          "repeatable": false,
+          "variants": [
+            "rule"
+          ]
+        },
+        {
+          "section": "faq.accordion",
+          "required": true,
+          "repeatable": false
+        },
+        {
+          "section": "layout.section-divider",
+          "required": true,
+          "repeatable": false,
+          "variants": [
+            "rule"
+          ]
+        },
+        {
+          "section": "layout.section-divider",
+          "required": true,
+          "repeatable": false,
+          "variants": [
+            "spacer-bottom"
+          ]
+        },
+        {
+          "section": "cta.vortex",
+          "required": true,
+          "repeatable": false
+        },
+        {
+          "section": "shell.footer",
+          "required": true,
+          "repeatable": false
+        }
+      ]
+    },
+    {
+      "id": "tpl.blog-index",
+      "purpose": "Blog index: static default header, one list section, footer. No hero, no frame lines, no dividers, no shaders.",
+      "routes": [
+        "/blog"
+      ],
+      "routePatterns": [
+        "/blog"
+      ],
+      "implementedBy": [
+        {
+          "citation": "src/pages/Blog.jsx:11-34",
+          "quote": "export default function Blog()"
+        }
+      ],
+      "nodes": [
+        {
+          "section": "shell.overlays",
+          "required": true,
+          "repeatable": false
+        },
+        {
+          "section": "shell.header",
+          "required": true,
+          "repeatable": false,
+          "variants": [
+            "default"
+          ]
+        },
+        {
+          "section": "blog.index-list",
+          "required": true,
+          "repeatable": false
+        },
+        {
+          "section": "shell.footer",
+          "required": true,
+          "repeatable": false
+        }
+      ]
+    },
+    {
+      "id": "tpl.blog-post",
+      "purpose": "Blog post template shared by all four posts AND the unknown-slug 'Post not found' state (a template state, not a separate route/template): article, then the CTA aside only when the post exists.",
+      "routes": [
+        "/blog/manifesto",
+        "/blog/building-inference-engine",
+        "/blog/compressing-a-model-to-run-locally",
+        "/blog/teaching-a-model-to-code",
+        "/blog/:unknown-slug"
+      ],
+      "routePatterns": [
+        "/blog/:slug"
+      ],
+      "implementedBy": [
+        {
+          "citation": "src/pages/BlogPost.jsx:79-129",
+          "quote": "export default function BlogPost({ slug })"
+        }
+      ],
+      "nodes": [
+        {
+          "section": "shell.overlays",
+          "required": true,
+          "repeatable": false
+        },
+        {
+          "section": "shell.header",
+          "required": true,
+          "repeatable": false,
+          "variants": [
+            "default"
+          ]
+        },
+        {
+          "section": "post.article",
+          "required": true,
+          "repeatable": false,
+          "variants": [
+            "post",
+            "not-found"
+          ]
+        },
+        {
+          "section": "post.cta-aside",
+          "required": false,
+          "repeatable": false
+        },
+        {
+          "section": "shell.footer",
+          "required": true,
+          "repeatable": false
+        }
+      ],
+      "states": {
+        "post": {
+          "description": "known slug: article variant 'post' + post.cta-aside",
+          "measuredFrom": "src/pages/BlogPost.jsx:120"
+        },
+        "not-found": {
+          "description": "unknown slug: article variant 'not-found' ('Post not found' h1 + body + back link), no CTA aside",
+          "measuredFrom": "src/pages/BlogPost.jsx:88"
+        }
+      }
+    },
+    {
+      "id": "tpl.waitlist",
+      "purpose": "/waitlist: default header WITHOUT the CTA, one of two sibling views (signup form OR dashboard), footer. View is chosen from localStorage / ?cid / ?reset - no backend.",
+      "routes": [
+        "/waitlist"
+      ],
+      "routePatterns": [
+        "/waitlist"
+      ],
+      "implementedBy": [
+        {
+          "citation": "src/pages/Waitlist.jsx:62-139",
+          "quote": "export default function Waitlist()"
+        }
+      ],
+      "nodes": [
+        {
+          "section": "shell.overlays",
+          "required": true,
+          "repeatable": false
+        },
+        {
+          "section": "shell.header",
+          "required": true,
+          "repeatable": false,
+          "variants": [
+            "default-no-cta"
+          ]
+        },
+        {
+          "section": "waitlist.form-view",
+          "required": false,
+          "repeatable": false
+        },
+        {
+          "section": "waitlist.dashboard-view",
+          "required": false,
+          "repeatable": false
+        },
+        {
+          "section": "shell.footer",
+          "required": true,
+          "repeatable": false
+        }
+      ],
+      "states": {
+        "form": {
+          "description": "no stored entry (or ?reset): waitlist.form-view",
+          "measuredFrom": "src/pages/Waitlist.jsx:113"
+        },
+        "dashboard": {
+          "description": "stored entry / ?cid / just signed up: waitlist.dashboard-view (loading -> success, or error)",
+          "measuredFrom": "src/pages/Waitlist.jsx:116"
+        }
+      }
+    },
+    {
+      "id": "tpl.legal",
+      "purpose": "Legal document page (privacy + terms share this one template): default header, one legal.document section, footer.",
+      "routes": [
+        "/privacy",
+        "/terms"
+      ],
+      "routePatterns": [
+        "/privacy",
+        "/terms"
+      ],
+      "implementedBy": [
+        {
+          "citation": "src/pages/Legal.jsx:77-98",
+          "quote": "export default function Legal({ doc })"
+        }
+      ],
+      "nodes": [
+        {
+          "section": "shell.overlays",
+          "required": true,
+          "repeatable": false
+        },
+        {
+          "section": "shell.header",
+          "required": true,
+          "repeatable": false,
+          "variants": [
+            "default"
+          ]
+        },
+        {
+          "section": "legal.document",
+          "required": true,
+          "repeatable": false
+        },
+        {
+          "section": "shell.footer",
+          "required": true,
+          "repeatable": false
+        }
+      ]
+    }
+  ]
+}

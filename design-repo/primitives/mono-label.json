@@ -1,0 +1,22 @@
+{
+  "id": "primitive.mono-label",
+  "kind": "primitive",
+  "purpose": "Uppercase Chivo Mono label (.mono-label / .section-label), .15em tracking.",
+  "implementedBy": [
+    {
+      "citation": "src/index.css:145-160",
+      "quote": "letter-spacing: 0.15em;"
+    }
+  ],
+  "tokensUsed": [
+    "typeRole.mono-label",
+    "color.text.tertiary"
+  ],
+  "usedBySections": [
+    "capabilities.card-grid",
+    "stats.strip",
+    "faq.accordion",
+    "shell.footer",
+    "blog.index-list"
+  ]
+}

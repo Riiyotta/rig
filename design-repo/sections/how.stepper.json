@@ -1,0 +1,383 @@
+{
+  "id": "how.stepper",
+  "kind": "section",
+  "category": "content",
+  "purpose": "Explain the approach: centred intro, then a 2fr/3fr stepper - three auto-advancing steps with progress rails beside a shader panel ('how' preset) carrying an ASCII bar-chart card per step. Must be preceded by the double divider.",
+  "implementedBy": [
+    {
+      "citation": "src/components/HowItWorks.jsx:86-265",
+      "quote": "preset=\"how\""
+    },
+    {
+      "citation": "src/styles/HowItWorks.css:2-237",
+      "quote": ".how-section"
+    }
+  ],
+  "usedOnRoutes": [
+    "/"
+  ],
+  "constraints": {
+    "onePerPage": true,
+    "mustBePrecededBy": "two consecutive layout.section-divider (variant rule)"
+  },
+  "content": {
+    "type": "object",
+    "properties": {
+      "badge": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 2,
+            "evidence": {
+              "longestObserved": "Our Approach",
+              "citation": "src/content.js:13"
+            }
+          },
+          "icon": {
+            "type": "object",
+            "properties": {
+              "assetRole": {
+                "type": "string",
+                "enum": [
+                  "icon.badge-pixel"
+                ]
+              },
+              "iconKey": {
+                "type": "string",
+                "enum": [
+                  "problem",
+                  "intro",
+                  "offline",
+                  "unlimited",
+                  "privacy",
+                  "latency",
+                  "approach",
+                  "capabilities",
+                  "terminal",
+                  "early-access",
+                  "faq"
+                ]
+              }
+            },
+            "required": [
+              "assetRole",
+              "iconKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "label",
+          "icon"
+        ],
+        "additionalProperties": false
+      },
+      "title": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 3,
+        "evidence": {
+          "longestObserved": "Focus beats size.",
+          "citation": "src/content.js:77"
+        }
+      },
+      "body": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 21,
+        "evidence": {
+          "longestObserved": "Rig is one integrated system — model, context, tools and runtime — built together for a single purpose: shipping real code.",
+          "citation": "src/content.js:78"
+        }
+      },
+      "steps": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "num": {
+              "type": "string",
+              "pattern": "^Step [0-9]{2}$"
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxWords": 8,
+              "evidence": {
+                "longestObserved": "Full reasoning power, compressed to fit your laptop.",
+                "citation": "src/content.js:91"
+              }
+            },
+            "body": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxWords": 23,
+                "evidence": {
+                  "longestObserved": "Inference runs on a bespoke engine tuned closely for Apple Silicon. Model, context engine and tools are all built together as one system.",
+                  "citation": "src/content.js:102"
+                }
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "cardTitle": {
+              "type": "string",
+              "minLength": 1,
+              "maxWords": 2,
+              "evidence": {
+                "longestObserved": "Training Focus",
+                "citation": "src/content.js:87"
+              }
+            }
+          },
+          "required": [
+            "num",
+            "title",
+            "body",
+            "cardTitle"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 3,
+        "maxItems": 3
+      },
+      "chart": {
+        "type": "object",
+        "properties": {
+          "assetRole": {
+            "type": "string",
+            "enum": [
+              "chart.ascii-bars"
+            ]
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "const": "caption"
+                      },
+                      "text": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 4,
+                        "evidence": {
+                          "longestObserved": "Weights devoted to code",
+                          "citation": "src/content.js:117"
+                        }
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "text"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "const": "bars"
+                      },
+                      "rows": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxWords": 2,
+                              "evidence": {
+                                "longestObserved": "General models",
+                                "citation": "src/content.js:121"
+                              }
+                            },
+                            "fill": {
+                              "type": [
+                                "number",
+                                "null"
+                              ],
+                              "minimum": 0,
+                              "maximum": 20,
+                              "description": "full cells of 20; a fraction adds a sliver; null = no bar"
+                            },
+                            "value": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxWords": 2,
+                              "evidence": {
+                                "longestObserved": "200+ GB",
+                                "citation": "src/content.js:131"
+                              }
+                            },
+                            "highlight": {
+                              "type": "boolean",
+                              "description": "the Rig row: bright label, green bar + value"
+                            }
+                          },
+                          "required": [
+                            "label",
+                            "fill",
+                            "value",
+                            "highlight"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "minItems": 2,
+                        "maxItems": 3
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "rows"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "const": "lines"
+                      },
+                      "lines": {
+                        "type": "array",
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "tone": {
+                                "type": "string",
+                                "enum": [
+                                  "dim",
+                                  "bright",
+                                  "green",
+                                  "red"
+                                ]
+                              },
+                              "text": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxWords": 6,
+                                "evidence": {
+                                  "longestObserved": "Sits inside 16 GB unified RAM.",
+                                  "citation": "src/content.js:136"
+                                }
+                              }
+                            },
+                            "required": [
+                              "tone",
+                              "text"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "minItems": 1,
+                          "maxItems": 2
+                        },
+                        "minItems": 1,
+                        "maxItems": 3
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "lines"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "minItems": 2,
+              "maxItems": 4
+            },
+            "minItems": 3,
+            "maxItems": 3,
+            "description": "one ASCII bar-chart card per step, same order"
+          }
+        },
+        "required": [
+          "assetRole",
+          "cards"
+        ],
+        "additionalProperties": false
+      },
+      "shader": {
+        "type": "object",
+        "properties": {
+          "assetRole": {
+            "type": "string",
+            "enum": [
+              "effect.dither-shader"
+            ]
+          }
+        },
+        "required": [
+          "assetRole"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "badge",
+      "title",
+      "body",
+      "steps",
+      "chart",
+      "shader"
+    ],
+    "additionalProperties": false
+  },
+  "motion": {
+    "allowed": [
+      {
+        "pattern": "stepper-autoadvance-tween",
+        "reducedMotionFallback": "manual-steps-no-autoadvance",
+        "shaderPreset": "how"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoints": [
+      {
+        "query": "(max-width: 1024px) and (min-width: 769px)",
+        "citation": "src/styles/HowItWorks.css:201-208",
+        "quote": "@media (max-width: 1024px) and (min-width: 769px)",
+        "changes": [
+          "stepper 1fr 1fr",
+          "illustration min-height 500"
+        ]
+      },
+      {
+        "query": "(max-width: 768px)",
+        "citation": "src/styles/HowItWorks.css:210-237",
+        "quote": "@media (max-width: 768px)",
+        "changes": [
+          "section padding 4rem 0 0; container padding-inline 1.25rem",
+          "stepper single column: steps first (order 1), illustration second (order 2, min-height 400, right border)",
+          "step padding 1.25rem 1.25rem 1.25rem 1rem with right border",
+          "step body text .85rem"
+        ]
+      }
+    ]
+  },
+  "assetRoles": [
+    "chart.ascii-bars",
+    "effect.dither-shader",
+    "icon.badge-pixel"
+  ],
+  "composedOf": [
+    "primitive.badge",
+    "component.how-step",
+    "component.how-overlay-card",
+    "component.shader-canvas"
+  ]
+}

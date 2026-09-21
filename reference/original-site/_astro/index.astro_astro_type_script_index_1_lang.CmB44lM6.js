@@ -1,0 +1,1 @@
+(function(){if("IntersectionObserver"in window){var i=document.querySelectorAll("section, .hero, footer"),s=new IntersectionObserver(function(e){e.forEach(function(r){r.isIntersecting?r.target.classList.add("is-visible"):r.target.classList.remove("is-visible")})},{threshold:0,rootMargin:"200px 0px"});i.forEach(function(e){s.observe(e)})}})();

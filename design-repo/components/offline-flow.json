@@ -1,0 +1,34 @@
+{
+  "id": "component.offline-flow",
+  "kind": "component",
+  "purpose": "Severed 3-card flow over the globe: small cloud card, severed connector (dash / X / 'Severed' / dash), bordered machine card with a green check accent, small 'nothing leaves' card.",
+  "implementedBy": [
+    {
+      "citation": "src/components/Offline.jsx:10-39",
+      "quote": "function Severed()"
+    },
+    {
+      "citation": "src/styles/Offline.css:45-217",
+      "quote": ".offline-work .offline-flow {"
+    }
+  ],
+  "tokensUsed": [
+    "color.surface.card-dark",
+    "color.accent.success",
+    "color.accent.success-hover"
+  ],
+  "usedBySections": [
+    "offline.globe-split"
+  ],
+  "states": [
+    {
+      "state": "hover",
+      "change": "border #f0ede647, text #fff; accent opacity 1 + #4ade80 (0s in, .1s out)",
+      "measuredFrom": "src/styles/Offline.css:92",
+      "evidenceQuote": ".offline-work .offline-card:hover {"
+    }
+  ],
+  "composes": [
+    "primitive.inline-svg"
+  ]
+}

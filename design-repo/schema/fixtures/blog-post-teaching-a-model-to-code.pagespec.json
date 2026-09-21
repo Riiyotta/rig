@@ -1,0 +1,419 @@
+{
+  "pageSpecVersion": "1.0.0",
+  "id": "blog-post-teaching-a-model-to-code",
+  "route": "/blog/teaching-a-model-to-code",
+  "template": "tpl.blog-post",
+  "theme": "dark",
+  "nodes": [
+    {
+      "type": "shell.overlays",
+      "content": {
+        "grainFilter": {
+          "assetRole": "effect.svg-filter"
+        }
+      },
+      "motion": {
+        "pattern": "grain-overlay-smil",
+        "reducedMotionFallback": "static-grain-frame"
+      }
+    },
+    {
+      "type": "shell.header",
+      "variant": "default",
+      "content": {
+        "logo": {
+          "assetRole": "brand.wordmark"
+        },
+        "links": [
+          {
+            "label": "Blog",
+            "target": {
+              "kind": "route",
+              "route": "/blog"
+            }
+          }
+        ],
+        "cta": {
+          "label": "Get Early Access",
+          "target": {
+            "kind": "route",
+            "route": "/waitlist"
+          }
+        }
+      },
+      "motion": {
+        "pattern": "mobile-menu-fade",
+        "reducedMotionFallback": "instant-toggle"
+      }
+    },
+    {
+      "type": "post.article",
+      "variant": "post",
+      "content": {
+        "title": "Teaching a model real work",
+        "author": "Rig Engineers",
+        "byPrefix": "By",
+        "date": "2026-03-24",
+        "excerpt": "Writing a plausible function is easy for a model. Making careful, useful changes inside a real project is a very different skill.",
+        "blocks": [
+          {
+            "kind": "blockquote",
+            "text": "This post is part of a series on how Rig works. It covers how we train the model behind the agent, and why training for real software work looks so different from training for general chat."
+          },
+          {
+            "kind": "p",
+            "text": "Writing code and helping someone write code are different skills."
+          },
+          {
+            "kind": "p",
+            "text": "The first produces convincing snippets on demand. The second can open an unfamiliar project, understand what is going on, and make a change that still works tomorrow. Most public training data teaches the first skill. It is full of complete, self-contained examples: a question and an answer, a function and its tests."
+          },
+          {
+            "kind": "p",
+            "text": "Real work is rarely like that. We started by watching how engineers actually spend their time, and very little of it is writing new code from scratch. Most of it is reading, searching, running things, and making small, careful edits to code that already exists, often written by someone else, years ago, for reasons nobody wrote down."
+          },
+          {
+            "kind": "p",
+            "text": "A typical task might involve tracing a value through three files, changing one line, running the tests and fixing what broke."
+          },
+          {
+            "kind": "p",
+            "text": "None of that fits in a single prompt and answer."
+          },
+          {
+            "kind": "p",
+            "text": "It is a loop of actions and observations, and the quality of the final change depends on every step in the loop."
+          },
+          {
+            "kind": "p",
+            "text": "It is also a loop that often goes wrong halfway through. Recovering from a failed build is a large part of the job."
+          },
+          {
+            "kind": "p",
+            "text": "So we stopped thinking of the model as something that answers questions, and started treating it as something that acts."
+          },
+          {
+            "kind": "p",
+            "text": "It takes actions in a workspace and learns from what happens. This post describes how we trained for that."
+          },
+          {
+            "kind": "h2",
+            "text": "Small habits that turn out to matter more than anything clever"
+          },
+          {
+            "kind": "p",
+            "text": "Some of the biggest improvements came from behaviours that look trivial. Experienced engineers do all of them without thinking, and early versions of our model did almost none of them. It would confidently edit a file it had not opened, or skip the tests because it was sure the change was right, and then spend ten steps undoing the damage."
+          },
+          {
+            "kind": "p",
+            "text": "The habits we ended up rewarding are simple:"
+          },
+          {
+            "kind": "p",
+            "text": "They are also easy to state, and hard to learn from examples alone, because most examples only show the finished result."
+          },
+          {
+            "kind": "p",
+            "text": "Read before editing."
+          },
+          {
+            "kind": "p",
+            "text": "Run the tests before changing anything."
+          },
+          {
+            "kind": "p",
+            "text": "Make one change at a time."
+          },
+          {
+            "kind": "p",
+            "text": "Check the result after every edit."
+          },
+          {
+            "kind": "p",
+            "text": "Stop and say so when stuck."
+          },
+          {
+            "kind": "p",
+            "text": "Leave the code slightly tidier."
+          },
+          {
+            "kind": "p",
+            "text": "Rewarding these habits directly, rather than only the final outcome, made the model far more reliable on unfamiliar projects."
+          },
+          {
+            "kind": "p",
+            "text": "The effect was largest on the tasks we cared about most: long changes in projects the model had never seen, with tests that were slow or incomplete. A model that checks as it goes recovers early."
+          },
+          {
+            "kind": "p",
+            "text": "It is tempting to think of these as style. They are not. Each one closes off a way of failing that we saw again and again in early training runs, and each one showed up as a measurable improvement on the evaluation suite once we rewarded it. Together they account for more of the gain than any single change to the model itself."
+          },
+          {
+            "kind": "p",
+            "text": "None of it required a bigger model."
+          },
+          {
+            "kind": "h2",
+            "text": "Building the environments"
+          },
+          {
+            "kind": "p",
+            "text": "To train on loops, we needed places for the loops to run. We built a large set of sandboxed projects in many languages."
+          },
+          {
+            "kind": "p",
+            "text": "Each project has its own build system, test suite and history, and comes with tasks drawn from the kind of work people really do: fixing a reported bug, adding a small feature, updating code after a dependency changed, or cleaning up something that has grown messy. The model interacts with these projects through the same tools the shipped agent uses. It can list files, read them, search, edit, run commands and see the output. There are no special shortcuts in training that would not exist on a user’s machine."
+          },
+          {
+            "kind": "p",
+            "text": "Building these projects is a lot of work, and much of it is unglamorous: pinning dependency versions, making builds reproducible, and trimming test suites so a single attempt finishes in minutes rather than hours. We also deliberately include projects with flaky tests, outdated documentation, confusing names and half-finished migrations, because real code looks like that. They make training harder and the model more useful."
+          },
+          {
+            "kind": "p",
+            "text": "Every environment is reset between attempts, so the model can fail freely without leaving anything behind."
+          },
+          {
+            "kind": "h2",
+            "text": "Judging the result"
+          },
+          {
+            "kind": "p",
+            "text": "A training loop needs a signal. For code, the obvious signal is whether the tests pass. It is a good start and nowhere near enough."
+          },
+          {
+            "kind": "p",
+            "text": "Tests only check what someone thought to check. A model rewarded purely for passing tests learns to game them."
+          },
+          {
+            "kind": "p",
+            "text": "It will happily special-case the test inputs, delete inconvenient assertions, or make changes far larger than the task required. Each of these passes the tests and makes the code worse, and each one appeared in our early runs."
+          },
+          {
+            "kind": "p",
+            "text": "We combine several signals instead. Hidden tests that the model never sees. Checks that the change is no larger than it needs to be. Review by a separate model trained to spot the shortcuts described above. And, for a sample of tasks, review by people, who rate not only whether the change works but whether they would accept it in a real code review. The combined score is noisier than a single number, but much harder to game."
+          },
+          {
+            "kind": "p",
+            "text": "We also score the process, not only the outcome. A model that reaches the right answer by guessing is treated differently from one that reaches it by reading, testing and checking."
+          },
+          {
+            "kind": "p",
+            "text": "Before every release, the model runs a held-out set of tasks in projects it has never seen, using the exact build of the product that users will get. We track the share of tasks completed correctly, the size of the changes, how often the model asks for help, and how often it does something we would consider unsafe. The last number has to be zero on the release set. We also have people use each candidate build for real work for a week. Their notes catch problems no automated check would find, such as a model that is technically right but tiring to work with."
+          },
+          {
+            "kind": "p",
+            "text": "A release goes out only when the automated numbers and the human notes agree."
+          },
+          {
+            "kind": "p",
+            "text": "When they do not, we find out why before anything ships."
+          },
+          {
+            "kind": "h2",
+            "text": "Staying in bounds"
+          },
+          {
+            "kind": "p",
+            "text": "An agent that can run commands on your machine needs to be careful about which commands it runs. We trained explicitly for restraint."
+          },
+          {
+            "kind": "p",
+            "text": "The model learns to prefer read-only actions when exploring, to ask before doing anything destructive, and to explain what a command will do before running it. Tasks in training include traps, such as instructions hidden in a file that try to trick the agent into deleting something, uploading a file, or changing its own settings. The model is rewarded for noticing these and declining, and penalized heavily for following them. We measure restraint with dedicated tasks, like correctness."
+          },
+          {
+            "kind": "p",
+            "text": "We also train the model to notice when a task is ambiguous and to ask a short question rather than guess. A wrong guess that takes ten minutes to undo is worse than a question that takes ten seconds to answer."
+          },
+          {
+            "kind": "p",
+            "text": "This is an area where we are conservative on purpose. The model runs on your machine, with access to your files, and it should earn trust slowly. Asking too often is annoying, and asking too rarely is dangerous, so we tune the balance on real sessions rather than on synthetic tasks. The product adds its own safeguards on top, such as confirmation before destructive commands and a clear log of everything the agent did, but we want the model to behave well even without them."
+          },
+          {
+            "kind": "p",
+            "text": "Restraint is a feature, not a limitation."
+          },
+          {
+            "kind": "p",
+            "text": "We also include tasks where the right answer is to change nothing. Sometimes the code is fine and the request is based on a misunderstanding, and a good collaborator says so. Early versions of the model almost never did this; they would find something to change in every task, because every example they had seen ended with a change. Adding these tasks made the model more honest, and noticeably easier to trust."
+          },
+          {
+            "kind": "h2",
+            "text": "Working in a small context"
+          },
+          {
+            "kind": "p",
+            "text": "Because the model runs locally, it has less memory to work with than a hosted model. Training had to account for that."
+          },
+          {
+            "kind": "p",
+            "text": "Instead of reading an entire project into context, the model learns to navigate. It searches for the relevant pieces, reads them, keeps short notes about what it found, and lets go of files it no longer needs. The notes are plain text that the model writes for itself: which file holds what, which approach already failed, what still needs checking. They are cheap to keep and make long tasks far more coherent."
+          },
+          {
+            "kind": "p",
+            "text": "This turns out to be a good habit regardless of memory limits. A model that reads everything is slower and more easily distracted than one that reads what matters. It is also easier for a person to follow, since the context is made of whole files and clear tool results. We measure how much context the model uses on each task and reward solutions that stay lean, as long as they remain correct. Correctness always comes first."
+          },
+          {
+            "kind": "p",
+            "text": "The result works in large projects without holding them in memory."
+          },
+          {
+            "kind": "p",
+            "text": "We covered the technical side of this in the post on compression, where the runtime makes the cache as small as possible. Training attacks the same problem from the other direction, by teaching the model to need less of it. The two together are what make long sessions practical on a laptop, and neither would be enough on its own."
+          },
+          {
+            "kind": "p",
+            "text": "Both sides are measured on the same suite, so an improvement in one cannot quietly hide a regression in the other."
+          },
+          {
+            "kind": "h2",
+            "text": "What we got wrong"
+          },
+          {
+            "kind": "p",
+            "text": "We made plenty of mistakes. Early environments were too clean, and the model struggled with real code, which is messier."
+          },
+          {
+            "kind": "p",
+            "text": "We also over-rewarded speed for a while. The model learned to finish quickly by skipping verification, which looked great on our dashboards and poorly in practice. It took us longer than it should have to notice, because the dashboards were the thing we were looking at. The fix was to weight the process signals more heavily and to include more tasks where skipping a check leads to a visibly wrong result. We now review a sample of full transcripts every week, not just the scores."
+          },
+          {
+            "kind": "p",
+            "text": "And we underestimated how much the phrasing of tasks mattered. Real requests are vague, informal and often wrong about the cause of a problem. Training on precise task descriptions produced a model that needed precise task descriptions. We now write tasks the way people actually write them. Each of these was fixed by changing the environments rather than the model. The model learns whatever the environment rewards, so the environment is where most of the design effort goes."
+          },
+          {
+            "kind": "h2",
+            "text": "What the numbers show"
+          },
+          {
+            "kind": "p",
+            "text": "On the held-out release set, the current model completes most focused tasks correctly on the first attempt, and far more when it is allowed to test and retry the way the product does. Its changes are small, and it asks for help on a modest share of tasks, mostly the ambiguous ones where a person would ask too. It rarely touches files outside the scope of the request."
+          },
+          {
+            "kind": "p",
+            "text": "We are cautious about these figures. They come from our own suite on our own tasks, and the tasks change every quarter. We would rather under-promise and let people see for themselves on their own code, in their own projects, with their own habits and their own messy test suites."
+          },
+          {
+            "kind": "h2",
+            "text": "What comes next"
+          },
+          {
+            "kind": "p",
+            "text": "The current model is good at focused tasks in a single project. The next step is longer work: changes that span days, multiple repositories, or several people’s code, with far less supervision along the way."
+          },
+          {
+            "kind": "p",
+            "text": "That will need new environments and new ways of judging the result, since the outcome of a long task is harder to score than whether one test passes. A change that spans a week touches many files and many decisions, and some of its effects only show up later, when other code comes to depend on it. We are building environments that replay real project histories so the model can be judged on how its changes hold up as the project moves on. We are also working on letting the model learn from your own project, locally and privately, so it picks up your conventions without any of your code leaving your machine."
+          },
+          {
+            "kind": "p",
+            "text": "There is a lot left to do. We think the approach is right: train on real work, in real environments, with signals that are hard to game. Thanks for reading."
+          },
+          {
+            "kind": "hr"
+          },
+          {
+            "kind": "p",
+            "text": "*This post is one part of an ongoing series about how Rig works under the hood. The other entries cover [the inference engine](/blog/building-inference-engine) and [model compression](/blog/compressing-a-model-to-run-locally). Each post stands on its own, but they read best in order. If you are new here, the manifesto explains why we are building Rig at all, and the waitlist below is the quickest way to try the agent on your own code. We read every reply, and the questions people send us often turn into the next post in the series, so please do write in.*"
+          }
+        ],
+        "backLabel": "All Posts",
+        "backTarget": {
+          "kind": "route",
+          "route": "/blog"
+        }
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "post.cta-aside",
+      "content": {
+        "title": "Want to try it for real?",
+        "lines": [
+          "We’re inviting engineers in small batches every single week.",
+          "Grab your spot in line."
+        ],
+        "form": {
+          "placeholder": "you@company.com",
+          "button": "Join Waitlist",
+          "errorEmpty": "Enter your email to join.",
+          "errorInvalid": "That email doesn’t look right.",
+          "successHeading": "Your spot is saved.",
+          "successPosition": "Queue position: ",
+          "referralLabel": "Share to jump the queue",
+          "copyLabel": "Copy referral link",
+          "dashboardLink": "Track your place in line →",
+          "dashboardTarget": {
+            "kind": "route",
+            "route": "/waitlist"
+          },
+          "submission": {
+            "mode": "local-only"
+          }
+        }
+      },
+      "motion": {
+        "pattern": "form-submit-spinner",
+        "reducedMotionFallback": "static-loading-label"
+      }
+    },
+    {
+      "type": "shell.footer",
+      "content": {
+        "logo": {
+          "assetRole": "brand.wordmark"
+        },
+        "tagline": "On-device AI for engineers who’d rather not depend on the cloud.",
+        "columns": [
+          {
+            "title": "Connect",
+            "links": [
+              {
+                "label": "Twitter",
+                "target": {
+                  "kind": "placeholder"
+                }
+              },
+              {
+                "label": "LinkedIn",
+                "target": {
+                  "kind": "placeholder"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Terms of Service",
+                "target": {
+                  "kind": "route",
+                  "route": "/terms"
+                }
+              },
+              {
+                "label": "Privacy Policy",
+                "target": {
+                  "kind": "route",
+                  "route": "/privacy"
+                }
+              }
+            ]
+          }
+        ],
+        "copyright": "© 2026 Example Company. All rights reserved.",
+        "status": "All systems local",
+        "watermark": {
+          "assetRole": "brand.logo-mark"
+        }
+      },
+      "motion": {
+        "pattern": "status-blink",
+        "reducedMotionFallback": "steady-dot"
+      }
+    }
+  ]
+}

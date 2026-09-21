@@ -1,0 +1,114 @@
+{
+  "id": "stats.strip",
+  "kind": "section",
+  "category": "content",
+  "purpose": "Four proof-point numbers in a bordered strip.",
+  "implementedBy": [
+    {
+      "citation": "src/components/Stats.jsx:5-15",
+      "quote": "stats-strip"
+    },
+    {
+      "citation": "src/styles/Stats.css:2-4",
+      "quote": "grid-template-columns: repeat(4, 1fr);"
+    }
+  ],
+  "usedOnRoutes": [
+    "/"
+  ],
+  "constraints": {
+    "onePerPage": true
+  },
+  "content": {
+    "type": "object",
+    "properties": {
+      "stats": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "maxWords": 3,
+              "evidence": {
+                "longestObserved": "Cost / Token",
+                "citation": "src/content.js:173"
+              }
+            },
+            "value": {
+              "type": "string",
+              "minLength": 1,
+              "maxWords": 1,
+              "evidence": {
+                "longestObserved": "0ms",
+                "citation": "src/content.js:171"
+              }
+            },
+            "note": {
+              "type": "string",
+              "minLength": 1,
+              "maxWords": 5,
+              "evidence": {
+                "longestObserved": "No cloud to go down",
+                "citation": "src/content.js:174"
+              }
+            }
+          },
+          "required": [
+            "label",
+            "value",
+            "note"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 4,
+        "maxItems": 4
+      }
+    },
+    "required": [
+      "stats"
+    ],
+    "additionalProperties": false
+  },
+  "motion": {
+    "allowed": [
+      {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoints": [
+      {
+        "query": "(max-width: 1280px)",
+        "citation": "src/styles/Stats.css:34-40",
+        "quote": "@media (max-width: 1280px)",
+        "changes": [
+          "max-width 90%"
+        ]
+      },
+      {
+        "query": "(max-width: 1024px)",
+        "citation": "src/styles/Stats.css:41-52",
+        "quote": "@media (max-width: 1024px)",
+        "changes": [
+          "2x2 grid; box 2 loses right border; boxes 1-2 gain bottom borders"
+        ]
+      },
+      {
+        "query": "(max-width: 768px)",
+        "citation": "src/styles/Stats.css:53-68",
+        "quote": "@media (max-width: 768px)",
+        "changes": [
+          "1 column; bottom borders except last; padding 1.5rem 1.25rem; value 2rem"
+        ]
+      }
+    ]
+  },
+  "assetRoles": [],
+  "composedOf": [
+    "component.stat-box"
+  ]
+}

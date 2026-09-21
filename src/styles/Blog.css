@@ -1,0 +1,83 @@
+/* Blog index — CLONE_SPEC.md Part 2 §P1 (inline <style> of blog.html). */
+.blog-section {
+  padding: 5rem 1.5rem;
+}
+/* Also carries the global .container class, so it inherits .container's
+   per-breakpoint padding (0 3rem / 0 at ≤1280 / 0 2rem / 0 1.25rem). */
+.blog-section .container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.blog-section > .container > h1 {
+  font-family: Chalet, sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700; /* UA h1 bold (faux-bold Chalet, §0.2) */
+  line-height: normal;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+  margin: 0 0 3rem;
+}
+.blog-section .blog-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.blog-section .blog-list li {
+  border-top: 1px solid var(--paper-15);
+}
+.blog-section .blog-list li:last-child {
+  border-bottom: 1px solid var(--paper-15);
+}
+.blog-section .blog-row {
+  display: flex;
+  gap: 2.5rem;
+  align-items: baseline;
+  padding: 1.5rem 0;
+  text-decoration: none;
+  color: var(--paper);
+  transition: opacity 0.15s;
+}
+.blog-section .blog-row:hover {
+  opacity: 0.7;
+}
+.blog-section .blog-row time {
+  flex-shrink: 0;
+  width: 120px;
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--paper-40);
+}
+.blog-section .blog-row-text {
+  flex: 1;
+  min-width: 0;
+}
+.blog-section .blog-row-text h2 {
+  font-family: Chalet, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.35rem;
+  color: var(--paper);
+}
+.blog-section .blog-row-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--paper-40);
+}
+
+@media (max-width: 640px) {
+  .blog-section {
+    padding: 3rem 1rem;
+  }
+  .blog-section .blog-row {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .blog-section .blog-row time {
+    width: auto;
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "id": "shell.header",
+  "kind": "section",
+  "category": "shell",
+  "purpose": "Static site header on secondary pages (default variant: white logo, paper links, red btn-cta CTA; not sticky, transparent). /waitlist drops the CTA (74px tall instead of 86.4).",
+  "implementedBy": [
+    {
+      "citation": "src/components/Navbar.jsx:11-69",
+      "quote": "data-variant={variant}"
+    },
+    {
+      "citation": "src/styles/Navbar.css:13",
+      "quote": ".site-nav {"
+    }
+  ],
+  "usedOnRoutes": [
+    "/blog",
+    "/blog/manifesto",
+    "/blog/building-inference-engine",
+    "/blog/compressing-a-model-to-run-locally",
+    "/blog/teaching-a-model-to-code",
+    "/blog/:unknown-slug",
+    "/waitlist",
+    "/privacy",
+    "/terms"
+  ],
+  "constraints": {
+    "onePerPage": true,
+    "mustFollow": "shell.overlays"
+  },
+  "variants": {
+    "default": {
+      "description": "logo filter invert(1) brightness(2), paper links, CTA .btn-cta",
+      "measuredFrom": "src/components/Navbar.jsx:61"
+    },
+    "default-no-cta": {
+      "description": "same, CTA <li> omitted (showCta={false}) - /waitlist only",
+      "measuredFrom": "src/pages/Waitlist.jsx:110"
+    }
+  },
+  "content": {
+    "type": "object",
+    "properties": {
+      "logo": {
+        "type": "object",
+        "properties": {
+          "assetRole": {
+            "type": "string",
+            "enum": [
+              "brand.wordmark"
+            ]
+          }
+        },
+        "required": [
+          "assetRole"
+        ],
+        "additionalProperties": false
+      },
+      "links": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "maxWords": 1,
+              "evidence": {
+                "longestObserved": "Blog",
+                "citation": "src/content.js:5"
+              }
+            },
+            "target": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "const": "route"
+                    },
+                    "route": {
+                      "type": "string",
+                      "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "route"
+                  ],
+                  "additionalProperties": false
+                }
+              ],
+              "x-allowedKinds": [
+                "route"
+              ]
+            }
+          },
+          "required": [
+            "label",
+            "target"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 1,
+        "maxItems": 1
+      },
+      "cta": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 3,
+            "evidence": {
+              "longestObserved": "Get Early Access",
+              "citation": "src/content.js:6"
+            }
+          },
+          "target": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "route"
+                  },
+                  "route": {
+                    "type": "string",
+                    "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "route"
+                ],
+                "additionalProperties": false
+              }
+            ],
+            "x-allowedKinds": [
+              "route"
+            ]
+          }
+        },
+        "required": [
+          "label",
+          "target"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "logo",
+      "links"
+    ],
+    "additionalProperties": false,
+    "description": "cta present on variant 'default' (red btn-cta), absent on 'default-no-cta' (/waitlist) - rule NAV_VARIANT_BY_ROUTE"
+  },
+  "motion": {
+    "allowed": [
+      {
+        "pattern": "mobile-menu-fade",
+        "reducedMotionFallback": "instant-toggle"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoints": [
+      {
+        "query": "(max-width: 768px)",
+        "citation": "src/styles/Navbar.css:99-143",
+        "quote": "@media (max-width: 768px)",
+        "changes": [
+          "nav padding 1rem 1.25rem (64px tall)",
+          "toggle shown; when open it is fixed top 1rem right 1.25rem",
+          "links become a fixed full-screen ink panel (opacity/visibility .3s), links 1.25rem paper",
+          "hero-variant CTA turns red with ink text inside the open menu"
+        ]
+      }
+    ]
+  },
+  "assetRoles": [
+    "brand.wordmark"
+  ],
+  "composedOf": [
+    "component.site-nav"
+  ]
+}

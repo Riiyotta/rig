@@ -1,0 +1,67 @@
+{
+  "id": "primitive.btn-chamfer",
+  "kind": "primitive",
+  "purpose": "Chivo Mono 700 button/link with a 45deg clip-path chamfer on the top-left and bottom-right corners. Hover = btn-glitch jitter + RGB text-shadow; the offset box-shadow is declared but clipped by the chamfer (faithful quirk).",
+  "implementedBy": [
+    {
+      "citation": "src/index.css:254-323",
+      "quote": "clip-path: polygon("
+    }
+  ],
+  "tokensUsed": [
+    "radius.chamfer",
+    "easing.button",
+    "duration.button",
+    "duration.btn-glitch",
+    "typeRole.button",
+    "shadow.btn-offset-blue",
+    "shadow.btn-offset-red",
+    "textShadow.btn-rgb",
+    "color.accent.primary",
+    "color.text.on-accent",
+    "color.surface.page",
+    "color.text.primary"
+  ],
+  "usedBySections": [
+    "hero.home",
+    "shell.header",
+    "cta.vortex",
+    "early-access.waitlist",
+    "post.cta-aside",
+    "waitlist.form-view"
+  ],
+  "variants": {
+    "red": "src/index.css:280",
+    "cta": "src/index.css:284",
+    "dark": "src/index.css:288",
+    "outline": "src/index.css:292",
+    "ghost": "src/index.css:298",
+    "submit": "src/styles/WaitlistForm.css:46"
+  },
+  "states": [
+    {
+      "state": "hover",
+      "change": "btn-glitch .3s once + RGB text-shadow; offset shadow computed but clipped",
+      "measuredFrom": "src/index.css:323",
+      "evidenceQuote": "animation: btn-glitch 0.3s ease-in-out;"
+    },
+    {
+      "state": "focus-visible",
+      "change": "2px red outline, offset 2px",
+      "measuredFrom": "src/index.css:276",
+      "evidenceQuote": ".btn-chamfer:focus-visible {"
+    },
+    {
+      "state": "submit-hover",
+      "change": "submit variant: background #d93d26 only (no glitch, not .btn-cta)",
+      "measuredFrom": "src/styles/WaitlistForm.css:63",
+      "evidenceQuote": ".waitlist-form-wrapper .submit-button:hover:not(:disabled) {"
+    },
+    {
+      "state": "submit-loading",
+      "change": "label hidden, spinner shown ([data-loading=true])",
+      "measuredFrom": "src/styles/WaitlistForm.css:74",
+      "evidenceQuote": ".waitlist-form-wrapper .submit-button[data-loading='true'] .button-loading {"
+    }
+  ]
+}

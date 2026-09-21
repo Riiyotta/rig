@@ -1,0 +1,27 @@
+{
+  "id": "primitive.badge-icon",
+  "kind": "primitive",
+  "purpose": "The closed set of 11 pixel-art badge icons (Icons.jsx badgeIcons keys).",
+  "implementedBy": [
+    {
+      "citation": "src/components/Icons.jsx:16-28",
+      "quote": "'early-access': earlyAccess,"
+    }
+  ],
+  "tokensUsed": [
+    "iconSize.badge",
+    "color.accent.primary"
+  ],
+  "usedBySections": [
+    "problem.signal-grid",
+    "intro.shader-diagram",
+    "offline.globe-split",
+    "feature.three-col",
+    "how.stepper",
+    "capabilities.card-grid",
+    "terminal.monitor",
+    "early-access.waitlist",
+    "faq.accordion",
+    "waitlist.form-view"
+  ]
+}

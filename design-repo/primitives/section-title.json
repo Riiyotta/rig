@@ -1,0 +1,20 @@
+{
+  "id": "primitive.section-title",
+  "kind": "primitive",
+  "purpose": "Chalet section heading clamp(2.5rem,4vw,3.5rem), lh .92, -.03em, faux-bold 700.",
+  "implementedBy": [
+    {
+      "citation": "src/index.css:160-165",
+      "quote": ".section-title {"
+    }
+  ],
+  "tokensUsed": [
+    "typeRole.section-title",
+    "font.family.display"
+  ],
+  "usedBySections": [
+    "how.stepper",
+    "capabilities.card-grid",
+    "faq.accordion"
+  ]
+}

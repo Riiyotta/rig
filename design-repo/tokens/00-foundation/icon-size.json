@@ -1,0 +1,47 @@
+{
+  "$description": "Icon sizes observed in the spec/markup.",
+  "iconSize": {
+    "badge": {
+      "$type": "dimension",
+      "$value": "16px",
+      "measuredFrom": "CLONE_SPEC.md:240",
+      "evidenceQuote": "16×16",
+      "$description": "badge pixel icons"
+    },
+    "ui": {
+      "$type": "dimension",
+      "$value": "18px",
+      "measuredFrom": "CLONE_SPEC.md:994",
+      "evidenceQuote": "18px",
+      "$description": "spinner, copy/check, return arrow, feature check"
+    },
+    "chevron": {
+      "$type": "dimension",
+      "$value": "20px",
+      "measuredFrom": "CLONE_SPEC.md:609",
+      "evidenceQuote": "20×20",
+      "$description": "FAQ chevron"
+    },
+    "success": {
+      "$type": "dimension",
+      "$value": "40px",
+      "measuredFrom": "CLONE_SPEC.md:999",
+      "evidenceQuote": "40×40",
+      "$description": "form success"
+    },
+    "error": {
+      "$type": "dimension",
+      "$value": "64px",
+      "measuredFrom": "CLONE_SPEC.md:1018",
+      "evidenceQuote": "64×64",
+      "$description": "dashboard error"
+    },
+    "share": {
+      "$type": "dimension",
+      "$value": "16px",
+      "measuredFrom": "CLONE_SPEC.md:1051",
+      "evidenceQuote": "16px",
+      "$description": "share buttons"
+    }
+  }
+}

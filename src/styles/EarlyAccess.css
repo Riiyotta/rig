@@ -1,0 +1,79 @@
+/* §12 Early access (section#early-access.promise-section). */
+
+.promise-section {
+  padding: 8rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* shader2 wrap: top/height are set by EarlyAccess.jsx (headline box + 48px pad). */
+#early-access .shader-wrap {
+  position: absolute;
+  top: 0;
+  height: 0;
+  left: calc(50% - 600px);
+  right: calc(50% - 600px);
+  overflow: hidden;
+  z-index: 0;
+  mix-blend-mode: lighten;
+  transform: translateY(-125px);
+}
+#early-access .shader-wrap .shader-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.promise-section .ea-container {
+  position: relative;
+  z-index: 1;
+}
+.promise-section .ea-content {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.promise-section .ea-badge {
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.promise-section .ea-title {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  line-height: 0.92;
+  margin-bottom: 1.5rem;
+}
+.promise-section .ea-desc {
+  color: var(--paper-dim);
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  text-wrap: balance;
+}
+#early-access h2,
+#early-access p:not(.form-error),
+#early-access .badge {
+  text-shadow: 0 0 8px var(--ink), 0 0 16px var(--ink), 0 0 32px var(--ink), 0 0 60px var(--ink), 0 0 100px var(--ink);
+}
+
+/* ---- Waitlist form: shared styles in WaitlistForm.css ------------------- */
+/* Homepage only: reserve the Cloudflare Turnstile box (65px iframe + line box = 69px in the original). */
+.promise-section .turnstile-container {
+  min-height: 69px;
+}
+
+@media (max-width: 1280px) {
+  #early-access .shader-wrap {
+    left: 5%;
+    right: 5%;
+  }
+}
+@media (max-width: 768px) {
+  .promise-section {
+    padding: 4rem 0;
+  }
+  #early-access .shader-wrap {
+    left: 0;
+    right: 0;
+  }
+}

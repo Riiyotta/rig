@@ -1,0 +1,109 @@
+/* §13 FAQ (section.faq-section). */
+
+.faq-section {
+  padding: 8rem 0 0;
+}
+.faq-section .faq-title {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+.faq-section .faq-list {
+  width: 100%;
+}
+.faq-section .faq-item {
+  padding: 0 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.faq-section .faq-item:last-child {
+  border-bottom: 1px solid var(--border);
+}
+.faq-section .faq-question {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem 0;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.faq-section .faq-question::-webkit-details-marker {
+  display: none;
+}
+.faq-section .faq-question-number {
+  color: var(--red);
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.faq-section .faq-question-text {
+  font-family: Chalet, sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  flex: 1;
+}
+.faq-section .faq-chevron {
+  flex-shrink: 0;
+  color: var(--paper-35);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+/* Preflight makes svg display:block; the original's inline svg sat in a 24px line box
+   (span measured 20x24). Keep it inline so the span box matches. */
+.faq-section .faq-chevron svg {
+  display: inline;
+  vertical-align: baseline;
+}
+.faq-section .faq-question:hover .faq-question-text {
+  color: var(--paper);
+}
+.faq-section .faq-question:hover .faq-chevron {
+  color: var(--paper-50);
+}
+.faq-section .faq-item[open] .faq-chevron {
+  transform: rotate(180deg);
+  color: var(--red);
+}
+.faq-section .faq-question:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+.faq-section .faq-answer-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+/* Spec: [open] -> 1fr. data-expanded is set one frame after `open` so the transition runs. */
+.faq-section .faq-item[open][data-expanded='true'] .faq-answer-wrap {
+  grid-template-rows: 1fr;
+}
+.faq-section .faq-answer {
+  overflow: hidden;
+}
+.faq-section .faq-answer p {
+  padding: 0 0 1.5rem 2.25rem;
+  color: var(--paper-dim);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+@media (max-width: 768px) {
+  .faq-section {
+    padding: 4rem 0;
+  }
+  .faq-section .faq-title {
+    margin-bottom: 2rem;
+  }
+  .faq-section .faq-question {
+    padding: 1.25rem 0;
+    gap: 1rem;
+  }
+  .faq-section .faq-question-text {
+    font-size: 1.05rem;
+  }
+  .faq-section .faq-answer p {
+    padding-left: 2.5rem;
+    font-size: 0.85rem;
+  }
+}

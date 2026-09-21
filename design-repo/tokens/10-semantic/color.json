@@ -1,0 +1,203 @@
+{
+  "$description": "Semantic colour roles. Each alias cites a real usage site in the clone source; generators reference these, never raw values.",
+  "color": {
+    "surface.page": {
+      "$value": "{color.ink}",
+      "measuredFrom": "src/index.css:105",
+      "evidenceQuote": "background: var(--ink);",
+      "$description": "Page background (body). The site is a single dark theme."
+    },
+    "surface.hero-brand": {
+      "$value": "{color.red}",
+      "measuredFrom": "src/styles/Hero.css:4",
+      "evidenceQuote": "background: var(--red);",
+      "$description": "Full-bleed red hero band (homepage only). A brand surface inside the dark theme, not a light theme."
+    },
+    "surface.footer": {
+      "$value": "{color.ink-solid}",
+      "measuredFrom": "src/styles/Footer.css:9",
+      "evidenceQuote": "background: #0a0a0a;",
+      "$description": "Footer background"
+    },
+    "surface.glass": {
+      "$value": "{color.ink-glass}",
+      "measuredFrom": "src/index.css:333",
+      "evidenceQuote": "background: #0a0a0ae0;",
+      "$description": "Badge / how overlay card glass fill (with blur(8px))"
+    },
+    "surface.card-dark": {
+      "$value": "{color.ink-95}",
+      "measuredFrom": "src/styles/Offline.css:60",
+      "evidenceQuote": "rgba(10, 10, 10, 0.95)",
+      "$description": "Offline flow cards, SVG diagram cards"
+    },
+    "surface.card-faint": {
+      "$value": "{color.paper-hex-04}",
+      "measuredFrom": "src/styles/Waitlist.css:47",
+      "evidenceQuote": "#f0ede60a",
+      "$description": "Waitlist cards, stat cards, features preview"
+    },
+    "surface.terminal": {
+      "$value": "{color.terminal}",
+      "measuredFrom": "src/styles/Terminal.css:157",
+      "evidenceQuote": "#050505",
+      "$description": "Terminal window"
+    },
+    "surface.input": {
+      "$value": "{color.paper-04}",
+      "measuredFrom": "src/styles/WaitlistForm.css:32",
+      "evidenceQuote": "var(--paper-04)",
+      "$description": "Email input / referral field fill"
+    },
+    "text.primary": {
+      "$value": "{color.paper}",
+      "measuredFrom": "src/index.css:106",
+      "evidenceQuote": "color: var(--paper);",
+      "$description": "Primary text and headings"
+    },
+    "text.secondary": {
+      "$value": "{color.paper-dim}",
+      "measuredFrom": "src/styles/Intro.css:54",
+      "evidenceQuote": "var(--paper-dim)",
+      "$description": "Body copy / leads"
+    },
+    "text.muted": {
+      "$value": "{color.paper-40}",
+      "measuredFrom": "src/index.css:89",
+      "evidenceQuote": "--text-muted: var(--paper-40);",
+      "$description": "Muted text (declared alias --text-muted)"
+    },
+    "text.tertiary": {
+      "$value": "{color.paper-35}",
+      "measuredFrom": "src/index.css:90",
+      "evidenceQuote": "--text-tertiary: var(--paper-35);",
+      "$description": "Tertiary text (declared alias --text-tertiary)"
+    },
+    "text.faint": {
+      "$value": "{color.paper-25}",
+      "measuredFrom": "src/index.css:91",
+      "evidenceQuote": "--text-faint: var(--paper-25);",
+      "$description": "Faint text (declared alias --text-faint)"
+    },
+    "text.prose": {
+      "$value": "{color.paper-60}",
+      "measuredFrom": "src/styles/BlogPost.css:50",
+      "evidenceQuote": "var(--paper-60)",
+      "$description": "Blog/legal prose body"
+    },
+    "text.subtle": {
+      "$value": "{color.paper-hex-50}",
+      "measuredFrom": "src/styles/Waitlist.css:33",
+      "evidenceQuote": "#f0ede680",
+      "$description": "Waitlist descriptions and feature rows"
+    },
+    "text.on-brand": {
+      "$value": "{color.ink}",
+      "measuredFrom": "src/styles/Hero.css:43",
+      "evidenceQuote": "color: var(--ink)",
+      "$description": "Text on the red hero surface"
+    },
+    "text.on-accent": {
+      "$value": "{color.ink}",
+      "measuredFrom": "src/index.css:286",
+      "evidenceQuote": "color: var(--ink);",
+      "$description": "Text on red CTA buttons (.btn-cta)"
+    },
+    "text.error": {
+      "$value": "{color.error}",
+      "measuredFrom": "src/styles/WaitlistForm.css:84",
+      "evidenceQuote": "#ff6b6b",
+      "$description": "Form validation error"
+    },
+    "text.bright": {
+      "$value": "{color.white}",
+      "measuredFrom": "src/styles/Terminal.css:75",
+      "evidenceQuote": "#fff;",
+      "$description": "Blueprint/annotation titles"
+    },
+    "accent.primary": {
+      "$value": "{color.red}",
+      "measuredFrom": "src/index.css:285",
+      "evidenceQuote": "background: var(--red);",
+      "$description": "Primary accent (badges, CTAs, labels)"
+    },
+    "accent.primary-hover": {
+      "$value": "{color.red-hover}",
+      "measuredFrom": "src/styles/WaitlistForm.css:64",
+      "evidenceQuote": "#d93d26",
+      "$description": "Submit hover"
+    },
+    "accent.secondary": {
+      "$value": "{color.blue}",
+      "measuredFrom": "src/index.css:305",
+      "evidenceQuote": "box-shadow: 4px 4px 0 var(--blue);",
+      "$description": "Offset hover shadow (clipped by chamfer) and glitch fringe"
+    },
+    "accent.success": {
+      "$value": "{color.green-accent}",
+      "measuredFrom": "src/styles/Offline.css:81",
+      "evidenceQuote": "#22c55e",
+      "$description": "'active' / success green"
+    },
+    "accent.success-hover": {
+      "$value": "{color.green-hex}",
+      "measuredFrom": "src/styles/Offline.css:99",
+      "evidenceQuote": "#4ade80",
+      "$description": "Offline card accent on hover"
+    },
+    "border.default": {
+      "$value": "{color.border}",
+      "measuredFrom": "src/index.css:236",
+      "evidenceQuote": "background: var(--border);",
+      "$description": "Frame lines, section dividers, card borders"
+    },
+    "border.dim": {
+      "$value": "{color.border-dim}",
+      "measuredFrom": "src/styles/BlogPost.css:18",
+      "evidenceQuote": "var(--border-dim)",
+      "$description": "Prose rules, post header rule"
+    },
+    "border.card": {
+      "$value": "{color.paper-a10}",
+      "measuredFrom": "src/styles/Waitlist.css:48",
+      "evidenceQuote": "rgba(240, 237, 230, 0.1)",
+      "$description": "Waitlist card and input borders"
+    },
+    "border.badge": {
+      "$value": "{color.red-a20}",
+      "measuredFrom": "src/index.css:334",
+      "evidenceQuote": "border: 1px solid rgba(237, 70, 45, 0.2);",
+      "$description": "Badge border"
+    },
+    "selection.bg": {
+      "$value": "{color.selection}",
+      "measuredFrom": "src/index.css:124",
+      "evidenceQuote": "background: #ed462de5;",
+      "$description": "::selection background"
+    },
+    "selection.fg": {
+      "$value": "{color.selection-fg}",
+      "measuredFrom": "src/index.css:125",
+      "evidenceQuote": "color: #fffde0;",
+      "$description": "::selection text"
+    },
+    "glow.brand": {
+      "$value": "{color.red-glow}",
+      "measuredFrom": "src/index.css:377",
+      "evidenceQuote": "box-shadow: 0 0 8px var(--red-glow);",
+      "$description": "Red glow (blink dot, LED, CTA button)"
+    },
+    "share.x-bg": {
+      "$value": "{color.black}",
+      "measuredFrom": "src/styles/Waitlist.css:474",
+      "evidenceQuote": "background: #000;",
+      "$description": "Share-on-X button (third-party brand)"
+    },
+    "share.linkedin-bg": {
+      "$value": "{color.linkedin}",
+      "measuredFrom": "src/styles/Waitlist.css:478",
+      "evidenceQuote": "#0077b5",
+      "$description": "Share-on-LinkedIn button (third-party brand)"
+    }
+  }
+}

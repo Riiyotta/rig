@@ -1,0 +1,31 @@
+{
+  "id": "primitive.copy-button",
+  "kind": "primitive",
+  "purpose": "40x40 copy button: copy icon, swaps to the red check for 2s after copying.",
+  "implementedBy": [
+    {
+      "citation": "src/components/WaitlistForm.jsx:122",
+      "quote": "className=\"copy-button\""
+    },
+    {
+      "citation": "src/styles/WaitlistForm.css:154",
+      "quote": ".waitlist-form-wrapper .copy-button {"
+    }
+  ],
+  "tokensUsed": [
+    "color.accent.primary"
+  ],
+  "usedBySections": [
+    "early-access.waitlist",
+    "post.cta-aside",
+    "waitlist.dashboard-view"
+  ],
+  "states": [
+    {
+      "state": "hover",
+      "change": "icon + border turn red (.2s)",
+      "measuredFrom": "src/styles/WaitlistForm.css:166",
+      "evidenceQuote": ".waitlist-form-wrapper .copy-button:hover {"
+    }
+  ]
+}

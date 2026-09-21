@@ -1,0 +1,237 @@
+/* §8 How it works (section.how-section#our-approach) */
+.how-section {
+  padding: 8rem 0 0;
+}
+.how-section > .container {
+  padding-left: 0;
+  padding-right: 0;
+}
+.how-section .how-intro {
+  text-align: center;
+  margin-bottom: 1rem;
+  padding: 0 3rem;
+}
+.how-section .how-intro-badge {
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.how-section .how-intro-body {
+  color: var(--paper-dim);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 620px;
+  margin: 1.5rem auto 0;
+}
+
+/* Stepper */
+.how-section .how-stepper {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 0;
+  margin-top: 3rem;
+  align-items: start;
+}
+.how-section .how-steps-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.how-section .how-step {
+  padding: 1.5rem 2rem 1.5rem 1.25rem;
+  border: none;
+  border-top: 1px solid var(--border);
+  cursor: pointer;
+  position: relative;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  width: 100%;
+  display: block;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  overflow: visible;
+}
+.how-section .how-step:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: -2px;
+}
+.how-section .how-step:last-child {
+  border-bottom: 1px solid var(--border);
+}
+.how-section .how-step-progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--paper-faint);
+}
+.how-section .how-step-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: var(--red);
+  transition: none;
+}
+.how-section .how-step.active .how-step-progress-fill {
+  animation: howProgressFill 6s linear forwards;
+  animation-play-state: paused;
+}
+.how-section .how-step-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.how-section .how-step-num {
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  transition: color 0.3s ease;
+}
+.how-section .how-step.active .how-step-num {
+  color: var(--red);
+}
+.how-section .how-step h3 {
+  font-family: Chalet, sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--text-tertiary);
+  transition: color 0.3s ease;
+}
+.how-section .how-step.active h3 {
+  color: var(--paper);
+}
+.how-section .how-step-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+.how-section .how-step.active .how-step-body {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.how-section .how-step-body-inner {
+  overflow: hidden;
+}
+.how-section .how-step-body p {
+  color: var(--paper-dim);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-top: 1rem;
+}
+.how-section .how-step-body p + p {
+  margin-top: 0.5rem;
+}
+
+/* Illustration panel */
+.how-section .how-illustration {
+  position: relative;
+  min-height: 680px;
+  border: 1px solid var(--border);
+  border-right: none;
+  background: #f0ede604;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.how-section .shader-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.how-section .shader-overlay-card {
+  position: relative;
+  z-index: 1;
+  background: #0a0a0ae0;
+  border: 1px solid #ed462d;
+  border-radius: 6px;
+  padding: 1.75rem 2rem;
+  max-width: 380px;
+  width: 90%;
+  height: auto;
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.7rem;
+  line-height: 1.8;
+  color: var(--paper-45);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+}
+.how-section .shader-overlay-card .card-title {
+  display: block;
+  color: var(--paper);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(237, 70, 45, 0.12);
+}
+.how-section .shader-overlay-card .hl-red {
+  color: var(--red);
+}
+.how-section .shader-overlay-card .hl-green {
+  color: #22c55e;
+}
+.how-section .shader-overlay-card .hl-bright {
+  color: var(--paper-70);
+}
+.how-section .shader-overlay-card .hl-dim {
+  color: var(--paper-45);
+}
+.how-section .card-content {
+  display: none;
+}
+.how-section .card-content.active {
+  display: block;
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .how-section .how-stepper {
+    grid-template-columns: 1fr 1fr;
+  }
+  .how-section .how-illustration {
+    min-height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .how-section {
+    padding: 4rem 0 0;
+  }
+  .how-section > .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  .how-section .how-stepper {
+    grid-template-columns: 1fr;
+  }
+  .how-section .how-illustration {
+    min-height: 400px;
+    order: 2;
+    border-right: 1px solid var(--border);
+    border-bottom: none;
+  }
+  .how-section .how-steps-left {
+    order: 1;
+  }
+  .how-section .how-step {
+    padding: 1.25rem 1.25rem 1.25rem 1rem;
+    border-right: 1px solid var(--border);
+  }
+  .how-section .how-step-body p {
+    font-size: 0.85rem;
+  }
+}

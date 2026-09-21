@@ -1,0 +1,240 @@
+{
+  "id": "shell.footer",
+  "kind": "section",
+  "category": "shell",
+  "purpose": "Site footer on every page: brand (logo + tagline), Connect/Legal link columns, bottom bar with copyright and a blinking status dot, near-invisible logo watermark.",
+  "implementedBy": [
+    {
+      "citation": "src/components/Footer.jsx:9-44",
+      "quote": "footer-grid"
+    },
+    {
+      "citation": "src/styles/Footer.css:3-8",
+      "quote": "z-index: 10000;"
+    }
+  ],
+  "usedOnRoutes": [
+    "/",
+    "/blog",
+    "/blog/manifesto",
+    "/blog/building-inference-engine",
+    "/blog/compressing-a-model-to-run-locally",
+    "/blog/teaching-a-model-to-code",
+    "/blog/:unknown-slug",
+    "/waitlist",
+    "/privacy",
+    "/terms"
+  ],
+  "constraints": {
+    "onePerPage": true,
+    "mustBeLast": true
+  },
+  "content": {
+    "type": "object",
+    "properties": {
+      "logo": {
+        "type": "object",
+        "properties": {
+          "assetRole": {
+            "type": "string",
+            "enum": [
+              "brand.wordmark"
+            ]
+          }
+        },
+        "required": [
+          "assetRole"
+        ],
+        "additionalProperties": false
+      },
+      "tagline": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 11,
+        "evidence": {
+          "longestObserved": "On-device AI for engineers who’d rather not depend on the cloud.",
+          "citation": "src/content.js:241"
+        }
+      },
+      "columns": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxWords": 1,
+              "evidence": {
+                "longestObserved": "Connect",
+                "citation": "src/content.js:243"
+              }
+            },
+            "links": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 3,
+                    "evidence": {
+                      "longestObserved": "Terms of Service",
+                      "citation": "src/content.js:244"
+                    }
+                  },
+                  "target": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "const": "route"
+                          },
+                          "route": {
+                            "type": "string",
+                            "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "route"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "const": "placeholder"
+                          }
+                        },
+                        "required": [
+                          "kind"
+                        ],
+                        "additionalProperties": false,
+                        "description": "renders href='#'; real social-profile URLs are intentionally absent"
+                      }
+                    ],
+                    "x-allowedKinds": [
+                      "route",
+                      "placeholder"
+                    ]
+                  }
+                },
+                "required": [
+                  "label",
+                  "target"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 1,
+              "maxItems": 2
+            }
+          },
+          "required": [
+            "title",
+            "links"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "copyright": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 8,
+        "evidence": {
+          "citation": "src/content.js:246",
+          "withheld": true,
+          "observedWordCount": 8,
+          "reason": "verbatim rig.ai wording (legal name + copyright); not reproduced here - see extraction/measured-values.json finding copyright-line-verbatim"
+        },
+        "description": "company legal line; generated pages supply the client's own legal name"
+      },
+      "status": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 3,
+        "evidence": {
+          "longestObserved": "All systems local",
+          "citation": "src/content.js:247"
+        }
+      },
+      "watermark": {
+        "type": "object",
+        "properties": {
+          "assetRole": {
+            "type": "string",
+            "enum": [
+              "brand.logo-mark"
+            ]
+          }
+        },
+        "required": [
+          "assetRole"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "logo",
+      "tagline",
+      "columns",
+      "copyright",
+      "status",
+      "watermark"
+    ],
+    "additionalProperties": false
+  },
+  "motion": {
+    "allowed": [
+      {
+        "pattern": "status-blink",
+        "reducedMotionFallback": "steady-dot"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoints": [
+      {
+        "query": "(max-width: 1280px)",
+        "citation": "src/styles/Footer.css:91-103",
+        "quote": "@media (max-width: 1280px)",
+        "changes": [
+          "container 90% with 0 side padding (no footer padding-inline on the homepage - see findings)"
+        ]
+      },
+      {
+        "query": "(max-width: 1024px)",
+        "citation": "src/styles/Footer.css:104-112",
+        "quote": "@media (max-width: 1024px)",
+        "changes": [
+          "grid 1fr 1fr; brand spans both columns"
+        ]
+      },
+      {
+        "query": "(max-width: 768px)",
+        "citation": "src/styles/Footer.css:113-132",
+        "quote": "@media (max-width: 768px)",
+        "changes": [
+          "padding 3rem 0 6rem",
+          "grid 1 column",
+          "bottom bar stacks (column, gap 1rem, left-aligned)",
+          "watermark hidden"
+        ]
+      }
+    ]
+  },
+  "assetRoles": [
+    "brand.logo-mark",
+    "brand.wordmark"
+  ],
+  "composedOf": [
+    "primitive.wordmark-logo",
+    "primitive.status-dot",
+    "primitive.mono-label"
+  ]
+}

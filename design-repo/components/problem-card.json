@@ -1,0 +1,26 @@
+{
+  "id": "component.problem-card",
+  "kind": "component",
+  "purpose": "Numbered problem card: red label + '00N' number row, Chalet h3, small paper-dim body with <br> line breaks.",
+  "implementedBy": [
+    {
+      "citation": "src/components/Problem.jsx:145-150",
+      "quote": "<div className=\"problem-card\" key={card.num}>"
+    },
+    {
+      "citation": "src/styles/Problem.css:52",
+      "quote": ".problem-section .problem-card {"
+    }
+  ],
+  "tokensUsed": [
+    "typeRole.card-h3",
+    "typeRole.small-body",
+    "typeRole.problem-card-label",
+    "typeRole.problem-card-number",
+    "color.border.default"
+  ],
+  "usedBySections": [
+    "problem.signal-grid"
+  ],
+  "composes": []
+}

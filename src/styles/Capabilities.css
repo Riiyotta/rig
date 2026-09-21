@@ -1,0 +1,70 @@
+/* §9 Capabilities (section.illust-features) */
+.illust-features {
+  padding: 8rem 0;
+}
+/* Beats the global .container padding at every breakpoint (spec §9). */
+.illust-features .container {
+  padding: 0 1.5rem;
+}
+.illust-features .illust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+.illust-features .illust-card {
+  background: #ffffff05;
+  border: 1px solid var(--border);
+  padding: 2.5rem 2rem 2rem;
+  transition: all 0.3s;
+  clip-path: polygon(
+    var(--chamfer) 0,
+    100% 0,
+    100% calc(100% - var(--chamfer)),
+    calc(100% - var(--chamfer)) 100%,
+    0 100%,
+    0 var(--chamfer)
+  );
+}
+.illust-features .illust-card:hover {
+  border-color: #ed462d33;
+  background: #ed462d08;
+}
+.illust-features .illust-card .illust-label {
+  font-size: 0.7rem;
+  color: var(--red);
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+.illust-features .illust-card h3 {
+  font-family: Chalet, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+.illust-features .illust-card p {
+  color: var(--paper-dim);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .illust-features .illust-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .illust-features {
+    padding: 4rem 0;
+  }
+  .illust-features .illust-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .illust-features .illust-card {
+    padding: 1.5rem 1.25rem 1.25rem;
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "component.ticker",
+  "kind": "component",
+  "purpose": "Geist Pixel uppercase marquee at the hero bottom: 7 phrases + bullets repeated (27 spans), 18s translate to -50% of a viewport-wide row (the loop jump is faithful).",
+  "implementedBy": [
+    {
+      "citation": "src/components/Hero.jsx:11-12",
+      "quote": "const tickerSet ="
+    },
+    {
+      "citation": "src/styles/Hero.css:72-75",
+      "quote": "animation: ticker 18s linear infinite;"
+    }
+  ],
+  "tokensUsed": [
+    "typeRole.ticker",
+    "duration.ticker",
+    "color.ink-15"
+  ],
+  "usedBySections": [
+    "hero.home"
+  ],
+  "composes": []
+}

@@ -1,0 +1,269 @@
+{
+  "$comment": "IA for the rig.ai clone, derived from the running codebase: route table in src/App.jsx, page skeletons in src/pages/*.jsx, section components in src/components/*.jsx. Measurements behind each section live in CLONE_SPEC.md (Part 1 = homepage, Part 2 = secondary pages). All page copy is clone placeholder text (src/content.js, src/blog.js, src/legal.js).",
+  "meta": {
+    "source": "https://rig.ai/ (cloned locally as a React 18 + Vite + Tailwind v3 app)",
+    "mirror": "Local clone at the project root; original HTML/CSS/JS snapshot in reference/original-site/",
+    "status": "measured-from-mirror",
+    "productionApproved": false,
+    "totalRoutes": 9,
+    "totalTemplates": 5,
+    "generatedBy": "ia-builder skill, hand-authored ia.json from src/App.jsx + src/pages/*.jsx"
+  },
+  "categories": {
+    "SHELL": "Page chrome shared across routes: fixed visual overlays, header/nav variants, frame lines, section dividers, footer.",
+    "HERO": "Page-opening block that sets the page title or the primary homepage message.",
+    "NARRATIVE": "Homepage storytelling blocks that frame the problem and the product's answer to it.",
+    "FEATURES": "Homepage blocks explaining how the product works and what it can do, including stats and the terminal demo.",
+    "CONVERSION": "Waitlist sign-up surfaces and calls to action, including the waitlist dashboard.",
+    "CONTENT": "Substantive reading content: FAQ, blog listing, blog article body, legal prose."
+  },
+  "sections": {
+    "shell.overlays": {
+      "category": "SHELL",
+      "description": "Three fixed, pointer-transparent full-viewport overlays stacked above everything: scanlines, grain noise, and RGB fringe.",
+      "scope": "Present on all 9 routes, rendered first on every page.",
+      "implementedBy": "src/components/Overlays.jsx"
+    },
+    "shell.header-hero": {
+      "category": "SHELL",
+      "description": "Header variant that sits inside the red homepage hero: black wordmark, ink-coloured links, dark chamfer CTA; collapses to a full-screen toggle menu at 768px and below.",
+      "scope": "Homepage only (1 route).",
+      "implementedBy": "src/components/Navbar.jsx (variant=\"hero\")"
+    },
+    "shell.header-default": {
+      "category": "SHELL",
+      "description": "Static, transparent header variant for dark secondary pages: white wordmark, paper-coloured links, red chamfer CTA. The CTA list item can be dropped via showCta={false}, which shortens the header.",
+      "scope": "Every secondary page (8 routes); the waitlist route renders it without the CTA.",
+      "implementedBy": "src/components/Navbar.jsx (variant=\"default\")"
+    },
+    "shell.content-lines": {
+      "category": "SHELL",
+      "description": "Fixed vertical frame lines that bound the homepage's main content column.",
+      "scope": "Homepage only (1 route).",
+      "implementedBy": "src/pages/Home.jsx > .content-lines"
+    },
+    "shell.section-divider": {
+      "category": "SHELL",
+      "description": "Full-width hairline divider between homepage sections. Rendered 13 times on the page: a top and bottom spacer divider, one between each pair of sections, and a doubled divider before How it works.",
+      "scope": "Homepage only (1 route).",
+      "implementedBy": "src/components/SectionDivider.jsx"
+    },
+    "shell.footer": {
+      "category": "SHELL",
+      "description": "Site footer: brand column with wordmark and tagline, Connect and Legal link columns, bottom bar with copyright and a blinking 'all systems local' status dot, and a giant logo watermark.",
+      "scope": "Present on all 9 routes, rendered last on every page.",
+      "implementedBy": "src/components/Footer.jsx"
+    },
+    "hero.home": {
+      "category": "HERO",
+      "description": "Full-viewport red homepage hero: faded logo watermark, two-line display headline, subline, two chamfer buttons (primary + outline), and a looping marquee ticker along the bottom edge. Hosts the hero header variant.",
+      "scope": "Homepage only (1 route).",
+      "implementedBy": "src/components/Hero.jsx"
+    },
+    "hero.page-title": {
+      "category": "HERO",
+      "description": "Plain title block at the top of a legal document: h1 capped in width inside the 960px legal box, with a last-updated line.",
+      "scope": "The two legal routes (privacy and terms).",
+      "implementedBy": "src/pages/Legal.jsx > .page-hero"
+    },
+    "narrative.problem": {
+      "category": "NARRATIVE",
+      "description": "Bordered box with badge and two-line headline, a full-width divider, then a grid of a surveillance-eye illustration (mouse-tracking pupil) beside four numbered problem cards.",
+      "scope": "Homepage only (1 route).",
+      "implementedBy": "src/components/Problem.jsx"
+    },
+    "narrative.intro": {
+      "category": "NARRATIVE",
+      "description": "Product introduction: WebGL dither-shader band behind a centred badge, two-line headline and description, followed by an animated (SMIL) solution-flow diagram.",
+      "scope": "Homepage only (1 route).",
+      "implementedBy": "src/components/Intro.jsx"
+    },
+    "narrative.offline": {
+      "category": "NARRATIVE",
+      "description": "Two-column 'work offline' block: an oversized drifting globe clipped by the section, overlaid with a three-card vertical flow joined by severed connectors, beside a badge, heading and short body.",
+      "scope": "Homepage only (1 route).",
+      "implementedBy": "src/components/Offline.jsx"
+    },
+    "narrative.three-col": {
+      "category": "NARRATIVE",
+      "description": "Three equal columns separated by 1px dividers, each with a badge, heading and one-paragraph body (unlimited / privacy / latency).",
+      "scope": "Homepage only (1 route).",
+      "implementedBy": "src/components/ThreeCol.jsx"
+    },
+    "features.how-it-works": {
+      "category": "FEATURES",
+      "description": "Intro block (badge, title, body) above a two-column stepper: three auto-advancing expandable steps with progress fills on the left, a shader panel with an overlay card of ASCII bar charts that swaps and tweens height per step on the right.",
+      "scope": "Homepage only (1 route).",
+      "implementedBy": "src/components/HowItWorks.jsx"
+    },
+    "features.capabilities": {
+      "category": "FEATURES",
+      "description": "Badge and centred section title above a grid of six numbered capability cards ([ 01 ] to [ 06 ]), each with a heading and paragraph.",
+      "scope": "Homepage only (1 route).",
+      "implementedBy": "src/components/Capabilities.jsx"
+    },
+    "features.stats": {
+      "category": "FEATURES",
+      "description": "Full-width strip of four stat boxes, each a mono label, a large value and a short note.",
+      "scope": "Homepage only (1 route).",
+      "implementedBy": "src/components/Stats.jsx"
+    },
+    "features.terminal": {
+      "category": "FEATURES",
+      "description": "Grid-background block with badge and title above a monitor casing (vents, bezel, LED strip) framing a terminal window: ASCII logo, boot lines revealed on load, and a typing loop of prompts. Blueprint annotations sit left and right on desktop and become a two-column grid below the monitor on smaller screens.",
+      "scope": "Homepage only (1 route).",
+      "implementedBy": "src/components/Terminal.jsx"
+    },
+    "conversion.early-access": {
+      "category": "CONVERSION",
+      "description": "Homepage waitlist band: dither-shader background behind a badge, headline and description, with the shared inline email form (input + chamfer submit, loading, error, and success-with-referral-link states) and a reserved verification-widget slot.",
+      "scope": "Homepage only (1 route).",
+      "implementedBy": "src/components/EarlyAccess.jsx + src/components/WaitlistForm.jsx"
+    },
+    "content.faq": {
+      "category": "CONTENT",
+      "description": "Badge and title above a numbered list of eight accordion rows; each opens with a grid-row height transition and a rotating chevron.",
+      "scope": "Homepage only (1 route).",
+      "implementedBy": "src/components/Faq.jsx"
+    },
+    "conversion.cta": {
+      "category": "CONVERSION",
+      "description": "Closing homepage call to action outside the main column: vortex image, oversized line-art logo, bloom-glow logo, glitch heading, a large chamfer button that smooth-scrolls to the early-access band, and fine print.",
+      "scope": "Homepage only (1 route).",
+      "implementedBy": "src/components/Cta.jsx"
+    },
+    "content.blog-index": {
+      "category": "CONTENT",
+      "description": "Single-column blog listing: h1 above hairline-separated rows, newest first, each row a date beside a title and excerpt; rows dim to 0.7 opacity on hover.",
+      "scope": "The blog index route only.",
+      "implementedBy": "src/pages/Blog.jsx > .blog-section"
+    },
+    "content.post-header": {
+      "category": "CONTENT",
+      "description": "Article title block: h1 plus a meta row with byline and long-form date. For an unknown slug it renders a 'post not found' title with no meta row.",
+      "scope": "All 4 blog post routes.",
+      "implementedBy": "src/pages/BlogPost.jsx > .blog-post-header"
+    },
+    "content.post-body": {
+      "category": "CONTENT",
+      "description": "Article body in a 672px column: lead excerpt, then typed rich-text blocks (h2, h3, p, lists, blockquote, figure placeholder, hr; styles also exist for h4, code and pre), ending with a back-to-blog link.",
+      "scope": "All 4 blog post routes.",
+      "implementedBy": "src/pages/BlogPost.jsx > .blog-post-content + Block"
+    },
+    "conversion.post-cta": {
+      "category": "CONVERSION",
+      "description": "End-of-article waitlist box: sans-serif title, two short lines, and the shared inline email form. Omitted for an unknown slug.",
+      "scope": "All 4 blog post routes.",
+      "implementedBy": "src/pages/BlogPost.jsx > aside.blog-cta + src/components/WaitlistForm.jsx"
+    },
+    "conversion.waitlist-signup": {
+      "category": "CONVERSION",
+      "description": "Waitlist page form view: badge, headline, description, checkmarked feature list, and a self-contained email form. Shown when no saved sign-up exists.",
+      "scope": "The waitlist route only, in its signed-out state.",
+      "implementedBy": "src/pages/Waitlist.jsx > FormView"
+    },
+    "conversion.waitlist-dashboard": {
+      "category": "CONVERSION",
+      "description": "Waitlist page dashboard view, shown instead of the form once a sign-up is saved: loading and error states, then position and referral-count stat cards, a giveaway card, a hardware survey (chip + RAM selects, save), referral link with copy, share-on-X and LinkedIn buttons, joined date, and a dev-only reset.",
+      "scope": "The waitlist route only, in its signed-up state.",
+      "implementedBy": "src/pages/Waitlist.jsx > Dashboard + HardwareSurvey"
+    },
+    "content.legal-prose": {
+      "category": "CONTENT",
+      "description": "Legal document body in a 720px column: bold-paragraph section headings, mostly justified paragraphs, bullet lists, numbered lists nested up to three levels, and a block of centred bold lines.",
+      "scope": "The two legal routes (privacy and terms).",
+      "implementedBy": "src/pages/Legal.jsx > .content-block.prose + src/legal.js"
+    }
+  },
+  "templates": [
+    {
+      "id": "template.home",
+      "name": "Homepage",
+      "routeCount": 1,
+      "routes": ["/"],
+      "routePattern": null,
+      "chrome": "full-hero",
+      "sections": [
+        "shell.overlays",
+        "shell.header-hero",
+        "hero.home",
+        "shell.content-lines",
+        "shell.section-divider",
+        "narrative.problem",
+        "narrative.intro",
+        "narrative.offline",
+        "narrative.three-col",
+        "features.how-it-works",
+        "features.capabilities",
+        "features.stats",
+        "features.terminal",
+        "conversion.early-access",
+        "content.faq",
+        "conversion.cta",
+        "shell.footer"
+      ]
+    },
+    {
+      "id": "template.blog-index",
+      "name": "Blog index",
+      "routeCount": 1,
+      "routes": ["/blog"],
+      "routePattern": null,
+      "chrome": "default",
+      "sections": ["shell.overlays", "shell.header-default", "content.blog-index", "shell.footer"]
+    },
+    {
+      "id": "template.blog-post",
+      "name": "Blog post",
+      "routeCount": 4,
+      "routes": [
+        "/blog/manifesto",
+        "/blog/building-inference-engine",
+        "/blog/compressing-a-model-to-run-locally",
+        "/blog/teaching-a-model-to-code"
+      ],
+      "routePattern": "/blog/{slug}",
+      "chrome": "default",
+      "notes": "Any other /blog/<slug> renders this template's not-found state (header without meta, no post CTA). Not counted as a route.",
+      "sections": [
+        "shell.overlays",
+        "shell.header-default",
+        "content.post-header",
+        "content.post-body",
+        "conversion.post-cta",
+        "shell.footer"
+      ]
+    },
+    {
+      "id": "template.waitlist",
+      "name": "Waitlist",
+      "routeCount": 1,
+      "routes": ["/waitlist"],
+      "routePattern": null,
+      "chrome": "default-no-cta",
+      "notes": "conversion.waitlist-signup and conversion.waitlist-dashboard are mutually exclusive states of the same slot, chosen by saved localStorage state or a ?cid= param.",
+      "sections": [
+        "shell.overlays",
+        "shell.header-default",
+        "conversion.waitlist-signup",
+        "conversion.waitlist-dashboard",
+        "shell.footer"
+      ]
+    },
+    {
+      "id": "template.legal",
+      "name": "Legal document",
+      "routeCount": 2,
+      "routes": ["/privacy", "/terms"],
+      "routePattern": null,
+      "chrome": "default",
+      "sections": [
+        "shell.overlays",
+        "shell.header-default",
+        "hero.page-title",
+        "content.legal-prose",
+        "shell.footer"
+      ]
+    }
+  ]
+}

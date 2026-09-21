@@ -1,0 +1,175 @@
+{
+  "$description": "Containers, frame and section spacing, cited to real CSS.",
+  "container": {
+    "frame": {
+      "$type": "dimension",
+      "$value": "1200px",
+      "measuredFrom": "src/index.css:170",
+      "evidenceQuote": "1200px",
+      "$description": ".container / .section-divider max width (the 1200px frame)"
+    },
+    "gutter": {
+      "$type": "dimension",
+      "$value": "3rem",
+      "measuredFrom": "src/index.css:172",
+      "evidenceQuote": "3rem",
+      "$description": ".container side padding (>1024)"
+    },
+    "gutter-lg": {
+      "$type": "dimension",
+      "$value": "2rem",
+      "measuredFrom": "src/index.css:433",
+      "evidenceQuote": "2rem",
+      "$description": "<=1024"
+    },
+    "gutter-md": {
+      "$type": "dimension",
+      "$value": "1.25rem",
+      "measuredFrom": "src/index.css:438",
+      "evidenceQuote": "1.25rem",
+      "$description": "<=768"
+    },
+    "fluid": {
+      "$type": "dimension",
+      "$value": "90%",
+      "measuredFrom": "src/index.css:420",
+      "evidenceQuote": "90%",
+      "$description": "<=1280 container width"
+    },
+    "nav": {
+      "$type": "dimension",
+      "$value": "calc(1200px + 6rem)",
+      "measuredFrom": "src/styles/Navbar.css:14",
+      "evidenceQuote": "calc(1200px + 6rem)",
+      "$description": "nav + hero content box"
+    },
+    "hero-sub": {
+      "$type": "dimension",
+      "$value": "540px",
+      "measuredFrom": "src/styles/Hero.css:53",
+      "evidenceQuote": "540px",
+      "$description": "hero sub paragraph"
+    },
+    "intro-headline": {
+      "$type": "dimension",
+      "$value": "650px",
+      "measuredFrom": "src/styles/Intro.css:41",
+      "evidenceQuote": "650px",
+      "$description": "intro headline block"
+    },
+    "intro-diagram": {
+      "$type": "dimension",
+      "$value": "1000px",
+      "measuredFrom": "src/styles/Intro.css:71",
+      "evidenceQuote": "1000px",
+      "$description": "intro diagram"
+    },
+    "how-intro-body": {
+      "$type": "dimension",
+      "$value": "620px",
+      "measuredFrom": "src/styles/HowItWorks.css:22",
+      "evidenceQuote": "620px",
+      "$description": "how intro paragraph"
+    },
+    "how-card": {
+      "$type": "dimension",
+      "$value": "380px",
+      "measuredFrom": "src/styles/HowItWorks.css:161",
+      "evidenceQuote": "380px",
+      "$description": "how overlay card"
+    },
+    "terminal": {
+      "$type": "dimension",
+      "$value": "630px",
+      "measuredFrom": "src/styles/Terminal.css:21",
+      "evidenceQuote": "630px",
+      "$description": "terminal artifact"
+    },
+    "ea-content": {
+      "$type": "dimension",
+      "$value": "500px",
+      "measuredFrom": "src/styles/EarlyAccess.css:34",
+      "evidenceQuote": "500px",
+      "$description": "early-access column"
+    },
+    "form": {
+      "$type": "dimension",
+      "$value": "480px",
+      "measuredFrom": "src/styles/WaitlistForm.css:7",
+      "evidenceQuote": "480px",
+      "$description": "waitlist form"
+    },
+    "cta-heading": {
+      "$type": "dimension",
+      "$value": "600px",
+      "measuredFrom": "src/styles/Cta.css:90",
+      "evidenceQuote": "600px",
+      "$description": "CTA heading"
+    },
+    "blog": {
+      "$type": "dimension",
+      "$value": "700px",
+      "measuredFrom": "src/styles/Blog.css:8",
+      "evidenceQuote": "700px",
+      "$description": "blog index column (also carries .container padding; widens to 700 content at <=1280)"
+    },
+    "post": {
+      "$type": "dimension",
+      "$value": "720px",
+      "measuredFrom": "src/styles/BlogPost.css:7",
+      "evidenceQuote": "720px",
+      "$description": "post article + CTA aside"
+    },
+    "waitlist": {
+      "$type": "dimension",
+      "$value": "640px",
+      "measuredFrom": "src/styles/Waitlist.css:13",
+      "evidenceQuote": "640px",
+      "$description": "waitlist page column"
+    },
+    "legal": {
+      "$type": "dimension",
+      "$value": "min(100% - 3rem, 960px)",
+      "measuredFrom": "src/styles/Legal.css:6",
+      "evidenceQuote": "min(100% - 3rem, 960px)",
+      "$description": "legal page box"
+    },
+    "prose": {
+      "$type": "dimension",
+      "$value": "720px",
+      "measuredFrom": "src/styles/Legal.css:35",
+      "evidenceQuote": "720px",
+      "$description": "legal prose column"
+    }
+  },
+  "space": {
+    "section-y": {
+      "$type": "dimension",
+      "$value": "8rem",
+      "measuredFrom": "src/styles/Capabilities.css:3",
+      "evidenceQuote": "8rem",
+      "$description": "section vertical padding (>768)"
+    },
+    "section-y-md": {
+      "$type": "dimension",
+      "$value": "4rem",
+      "measuredFrom": "src/styles/Capabilities.css:60",
+      "evidenceQuote": "4rem",
+      "$description": "section vertical padding (<=768)"
+    },
+    "cta": {
+      "$type": "dimension",
+      "$value": "12rem 0 16rem",
+      "measuredFrom": "src/styles/Cta.css:4",
+      "evidenceQuote": "12rem 0 16rem",
+      "$description": "CTA section padding"
+    },
+    "badge-gap": {
+      "$type": "dimension",
+      "$value": "2rem",
+      "measuredFrom": "src/index.css:329",
+      "evidenceQuote": "2rem",
+      "$description": "badge default bottom margin"
+    }
+  }
+}

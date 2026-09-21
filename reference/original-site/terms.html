@@ -1,0 +1,383 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Terms of Service | Rig</title><meta name="description" content><!-- OG Meta --><meta property="og:title" content="Terms of Service | Rig"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://rig.ai/terms"><meta property="og:image" content="https://rig.ai/rig-graph.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Terms of Service | Rig"><meta name="twitter:description" content><meta name="twitter:image" content="https://rig.ai/rig-graph.png"><!-- Canonical --><link rel="canonical" href="https://rig.ai/terms"><!-- Favicon (inline SVG) --><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' rx='48' fill='%230a0a0a'/%3E%3Cg transform='translate(60 61) scale(0.835)'%3E%3Cpath d='M162.809 89.412H82.684c-7.9 0-15.478 3.14-21.063 8.73-5.577 5.583-8.71 13.152-8.71 21.043v40.811h19.26v-33.546c0-9.638.173-18.449.173-18.449h90.465V89.412z' fill='%23ed462d'/%3E%3Cpath d='M162.808 118.61h-50.993c-7.9 0-15.478 3.14-21.063 8.73-5.577 5.583-8.71 13.152-8.71 21.044v11.613h22.867v-15.945c0-9.638 0-9.97 0-9.97h57.899v-15.472z' fill='%23ed462d'/%3E%3Cpath d='M162.809 146.002c-18.103 0-28.242-.006-46.345.002V160h46.345v-13.998z' fill='%23ed462d'/%3E%3Cpath d='M162.809.003H70.886C52.08.003 34.045 7.476 20.75 20.777 7.464 34.07 0 52.095 0 70.889c0 28.397 0 69.878 0 89.108h15.785V67.714c0-14.457 0-26.177 0-26.177h147.027V0l-.003.003z' fill='%23ed462d'/%3E%3Cpath d='M162.809 51.87H56.804c-7.9 0-15.478 3.141-21.063 8.73-5.577 5.583-8.71 13.152-8.71 21.044v78.353h14.785V96.318c0-9.638 0-17.449 0-17.449h120.993V51.867v.003z' fill='%23ed462d'/%3E%3C/g%3E%3C/svg%3E"><!-- Font Preloads --><link rel="preload" href="/fonts/chalet_londonnineteensixty.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/InstrumentSans-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/ChivoMono-latin.woff2" as="font" type="font/woff2" crossorigin><!-- Global Styles --><!-- Additional head content --><!-- PostHog Analytics --><script>
+      !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init rs ls yi ns us ts ss capture calculateEventProperties vs register register_once register_for_session unregister unregister_for_session gs getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty fs ds createPersonProfile setInternalOrTestUser ps Qr opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing hs debug M cs getPageViewId captureTraceFeedback captureTraceMetric Kr".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+      posthog.init('phc_gawX5E1IIBFtn3NhrElji4a7OhDvxprwI8Www69zQgv', {
+        api_host: 'https://d.rig.ai',
+        ui_host: 'https://us.i.posthog.com',
+        defaults: '2026-01-30',
+        person_profiles: 'always',
+      })
+
+      // Capture referral code from URL on first visit
+      // register_once only sets if not already set, so it captures the original referrer
+      ;(function() {
+        var params = new URLSearchParams(window.location.search)
+        var referralCode = params.get('rc')
+        if (referralCode) {
+          posthog.register_once({ referred_by: referralCode })
+        }
+      })()
+    </script><link rel="stylesheet" href="/_astro/_slug_.syMwFS_H.css">
+<style>.site-header[data-astro-cid-3ef6ksr2]{display:flex}.site-nav[data-astro-cid-3ef6ksr2]{max-width:calc(1200px + 6rem);margin:0 auto;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;position:relative;width:100%}.site-logo[data-astro-cid-3ef6ksr2] img[data-astro-cid-3ef6ksr2]{height:22px;filter:invert(1) brightness(2)}.site-nav-links[data-astro-cid-3ef6ksr2]{display:flex;align-items:center;gap:2rem;list-style:none;margin:0;padding:0}.site-nav-links[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{font-family:Chivo Mono,monospace;font-size:.75rem;font-weight:700;color:var(--paper);text-decoration:none;opacity:.7;letter-spacing:.05em;transition:opacity .2s}.site-nav-links[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]:hover{opacity:1}.site-nav-links[data-astro-cid-3ef6ksr2] .site-nav-cta[data-astro-cid-3ef6ksr2]{color:var(--ink);height:22px;padding:1.2rem;opacity:1}.site-header[data-astro-cid-3ef6ksr2][data-variant=hero] .site-logo[data-astro-cid-3ef6ksr2] img[data-astro-cid-3ef6ksr2]{filter:brightness(0)}.site-header[data-astro-cid-3ef6ksr2][data-variant=hero] .site-nav-links[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{color:var(--ink)}.site-header[data-astro-cid-3ef6ksr2][data-variant=hero] .site-nav-links[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2].btn-dark{color:var(--paper)}.site-header[data-astro-cid-3ef6ksr2][data-variant=hero] .nav-toggle-bar[data-astro-cid-3ef6ksr2]{background:var(--ink)}.nav-toggle[data-astro-cid-3ef6ksr2]{display:none;background:none;border:none;cursor:pointer;padding:.5rem;flex-direction:column;gap:5px;z-index:20}.nav-toggle-bar[data-astro-cid-3ef6ksr2]{display:block;width:24px;height:2px;background:var(--paper);transition:transform .3s,opacity .3s;transform-origin:center}.nav-toggle[data-astro-cid-3ef6ksr2][aria-expanded=true] .nav-toggle-bar[data-astro-cid-3ef6ksr2]:nth-child(1){transform:translateY(7px) rotate(45deg)}.nav-toggle[data-astro-cid-3ef6ksr2][aria-expanded=true] .nav-toggle-bar[data-astro-cid-3ef6ksr2]:nth-child(2){opacity:0}.nav-toggle[data-astro-cid-3ef6ksr2][aria-expanded=true] .nav-toggle-bar[data-astro-cid-3ef6ksr2]:nth-child(3){transform:translateY(-7px) rotate(-45deg)}@media(max-width:768px){.site-nav[data-astro-cid-3ef6ksr2]{padding:1rem 1.25rem}.nav-toggle[data-astro-cid-3ef6ksr2]{display:flex}.nav-toggle[data-astro-cid-3ef6ksr2][aria-expanded=true]{position:fixed;top:1rem;right:1.25rem;z-index:10002}.site-nav-links[data-astro-cid-3ef6ksr2]{position:fixed;inset:0;flex-direction:column;justify-content:center;gap:2.5rem;background:var(--ink);padding:2rem;z-index:10001;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}.site-nav-links[data-astro-cid-3ef6ksr2][data-open=true]{opacity:1;visibility:visible}.site-nav-links[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{font-size:1.25rem;opacity:1}.site-header[data-astro-cid-3ef6ksr2][data-variant=hero] .nav-toggle[data-astro-cid-3ef6ksr2][aria-expanded=true] .nav-toggle-bar[data-astro-cid-3ef6ksr2]{background:var(--paper)}.site-header[data-astro-cid-3ef6ksr2][data-variant=hero] .site-nav-links[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{color:var(--paper)}.site-header[data-astro-cid-3ef6ksr2][data-variant=hero] .site-nav-links[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2].btn-dark{background-color:var(--red);color:var(--ink)}}
+footer[data-astro-cid-sz7xmlte]{border-top:1px solid var(--border);padding:4rem 0 10rem;position:relative;overflow:hidden;z-index:10000;background:#0a0a0a}.footer-grid[data-astro-cid-sz7xmlte]{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem;position:relative;z-index:2}.footer-logo[data-astro-cid-sz7xmlte]{height:18px;filter:invert(1) brightness(2)}.footer-brand[data-astro-cid-sz7xmlte] p[data-astro-cid-sz7xmlte]{color:var(--text-muted);font-size:.85rem;max-width:280px;line-height:1.6;margin-top:1rem}.footer-col[data-astro-cid-sz7xmlte] h3[data-astro-cid-sz7xmlte]{color:var(--text-muted);margin-bottom:1.25rem}.footer-col[data-astro-cid-sz7xmlte] ul[data-astro-cid-sz7xmlte]{list-style:none}.footer-col[data-astro-cid-sz7xmlte] li[data-astro-cid-sz7xmlte]{margin-bottom:.6rem}.footer-col[data-astro-cid-sz7xmlte] a[data-astro-cid-sz7xmlte]{color:var(--paper-50);text-decoration:none;font-size:.85rem;transition:color .2s}.footer-col[data-astro-cid-sz7xmlte] a[data-astro-cid-sz7xmlte]:hover{color:var(--red)}.footer-bottom[data-astro-cid-sz7xmlte]{display:flex;justify-content:space-between;align-items:center;margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border);position:relative;z-index:2}.footer-bottom[data-astro-cid-sz7xmlte] span[data-astro-cid-sz7xmlte]{color:var(--text-tertiary);letter-spacing:.1em}.footer-status[data-astro-cid-sz7xmlte]{color:var(--paper-50);gap:.6rem}.footer-status-dot[data-astro-cid-sz7xmlte]{width:6px;height:6px;background:var(--red);animation:blink 1.5s step-end infinite;flex-shrink:0}.footer-bottom[data-astro-cid-sz7xmlte] .status-dot[data-astro-cid-sz7xmlte],.footer-bottom[data-astro-cid-sz7xmlte] .status-dot[data-astro-cid-sz7xmlte]:after{border-radius:0}.footer-watermark[data-astro-cid-sz7xmlte]{color:var(--paper-06);position:absolute;bottom:-80px;right:-60px;width:600px;opacity:.03;pointer-events:none}@media(max-width:1024px){.footer-grid[data-astro-cid-sz7xmlte]{grid-template-columns:1fr 1fr;gap:2rem}.footer-brand[data-astro-cid-sz7xmlte]{grid-column:1 / -1}}@media(max-width:768px){footer[data-astro-cid-sz7xmlte]{padding:3rem 0 6rem}.footer-grid[data-astro-cid-sz7xmlte]{grid-template-columns:1fr;gap:2rem}.footer-brand[data-astro-cid-sz7xmlte]{grid-column:auto}.footer-bottom[data-astro-cid-sz7xmlte]{flex-direction:column;gap:1rem;align-items:flex-start}.footer-watermark[data-astro-cid-sz7xmlte]{display:none}}
+.payload-page[data-astro-cid-yvbahnfj]{width:min(100% - 3rem,960px);margin:0 auto;padding:4rem 0 6rem;color:var(--paper)}.page-heading[data-astro-cid-yvbahnfj],.page-hero[data-astro-cid-yvbahnfj]{margin-bottom:3rem}.page-heading[data-astro-cid-yvbahnfj] h1[data-astro-cid-yvbahnfj],.page-hero[data-astro-cid-yvbahnfj] h1[data-astro-cid-yvbahnfj]{margin:0;font-family:Chalet,sans-serif;font-size:clamp(2.25rem,7vw,4.5rem);line-height:1.05;letter-spacing:-.03em}.page-hero[data-astro-cid-yvbahnfj]{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,.7fr);gap:3rem;align-items:center}.page-hero-copy[data-astro-cid-yvbahnfj]>p[data-astro-cid-yvbahnfj]{max-width:680px;margin:1.25rem 0 2rem;color:var(--paper-60);font-size:1.125rem;line-height:1.7}.page-hero-image[data-astro-cid-yvbahnfj]{display:block;width:100%;height:auto;border-radius:6px}.page-layout[data-astro-cid-yvbahnfj]{display:grid;gap:4rem}.content-block[data-astro-cid-yvbahnfj]{max-width:720px}.features-block[data-astro-cid-yvbahnfj]>h2[data-astro-cid-yvbahnfj],.cta-block[data-astro-cid-yvbahnfj] h2[data-astro-cid-yvbahnfj],.testimonials-block[data-astro-cid-yvbahnfj]>h2[data-astro-cid-yvbahnfj]{margin:0 0 2rem;font-family:Chalet,sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);line-height:1.15}.feature-grid[data-astro-cid-yvbahnfj],.testimonial-grid[data-astro-cid-yvbahnfj]{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.feature-card[data-astro-cid-yvbahnfj],.testimonial-card[data-astro-cid-yvbahnfj],.cta-block[data-astro-cid-yvbahnfj]{margin:0;padding:2rem;border:1px solid var(--border-dim);background:var(--paper-04)}.feature-icon[data-astro-cid-yvbahnfj]{display:block;margin-bottom:1rem;color:var(--red);font-family:Chivo Mono,monospace}.feature-card[data-astro-cid-yvbahnfj] h3[data-astro-cid-yvbahnfj]{margin:0 0 .75rem;font-family:Chalet,sans-serif;font-size:1.3rem}.feature-card[data-astro-cid-yvbahnfj] p[data-astro-cid-yvbahnfj],.cta-block[data-astro-cid-yvbahnfj] p[data-astro-cid-yvbahnfj],.testimonial-card[data-astro-cid-yvbahnfj] blockquote[data-astro-cid-yvbahnfj]{margin:0;color:var(--paper-60);line-height:1.7}.cta-actions[data-astro-cid-yvbahnfj]{display:flex;align-items:center;gap:1.5rem;margin-top:2rem}.secondary-link[data-astro-cid-yvbahnfj]{color:var(--paper);text-underline-offset:.25rem}.testimonial-card[data-astro-cid-yvbahnfj] blockquote[data-astro-cid-yvbahnfj]{font-size:1.1rem}.testimonial-card[data-astro-cid-yvbahnfj] figcaption[data-astro-cid-yvbahnfj]{display:flex;gap:.75rem;align-items:center;margin-top:1.5rem}.testimonial-card[data-astro-cid-yvbahnfj] figcaption[data-astro-cid-yvbahnfj] img[data-astro-cid-yvbahnfj]{width:3rem;height:3rem;border-radius:50%;object-fit:cover}.testimonial-card[data-astro-cid-yvbahnfj] figcaption[data-astro-cid-yvbahnfj] span[data-astro-cid-yvbahnfj]{display:grid;gap:.2rem}.testimonial-card[data-astro-cid-yvbahnfj] small[data-astro-cid-yvbahnfj]{color:var(--paper-50)}@media(max-width:720px){.payload-page[data-astro-cid-yvbahnfj]{width:min(100% - 2rem,960px);padding:3rem 0 4rem}.page-hero[data-astro-cid-yvbahnfj],.feature-grid[data-astro-cid-yvbahnfj],.testimonial-grid[data-astro-cid-yvbahnfj]{grid-template-columns:1fr}.page-hero[data-astro-cid-yvbahnfj]{gap:2rem}.cta-actions[data-astro-cid-yvbahnfj]{align-items:flex-start;flex-direction:column}}
+</style><script type="module" src="/_astro/page.sJrt8mpm.js"></script></head> <body> <!-- Overlays --> <svg width="0" height="0" aria-hidden="true" style="display: none;"> <filter id="grainy" x="0" y="0" width="100%" height="100%"> <feTurbulence type="fractalNoise" baseFrequency="0.4" numOctaves="4" stitchTiles="stitch" seed="0"> <animate attributeName="seed" from="0" to="100" dur="10s" repeatCount="indefinite"></animate> </feTurbulence> <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  1 0 0 0 0"></feColorMatrix> </filter> </svg> <div class="scanlines" aria-hidden="true"></div> <div class="noise" aria-hidden="true"></div> <div class="rgb-fringe" aria-hidden="true"></div>  <header class="site-header" role="banner" data-variant="default" data-astro-cid-3ef6ksr2> <nav class="site-nav" aria-label="Main navigation" data-astro-cid-3ef6ksr2> <a href="/" class="site-logo" aria-label="Rig — Home" data-astro-cid-3ef6ksr2> <img src="/assets/rig-wordmark.svg" alt="" width="60" height="22" data-astro-cid-3ef6ksr2> </a> <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation" type="button" data-astro-cid-3ef6ksr2> <span class="nav-toggle-bar" data-astro-cid-3ef6ksr2></span> <span class="nav-toggle-bar" data-astro-cid-3ef6ksr2></span> <span class="nav-toggle-bar" data-astro-cid-3ef6ksr2></span> </button> <ul class="site-nav-links" id="nav-menu" role="list" data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2><a href="/blog" data-astro-cid-3ef6ksr2>Blog</a></li> <li data-astro-cid-3ef6ksr2><a id="nav-join-btn" href="/waitlist" class="btn-chamfer site-nav-cta btn-cta" data-astro-cid-3ef6ksr2>Get Early Access</a></li> </ul> </nav> </header>  <script type="module" src="/_astro/Header.astro_astro_type_script_index_0_lang.BGuAL9A7.js"></script> <main class="payload-page" data-astro-cid-yvbahnfj> <header class="page-hero" data-astro-cid-yvbahnfj> <div class="page-hero-copy" data-astro-cid-yvbahnfj> <h1 data-astro-cid-yvbahnfj>Terms of Service</h1>   </div>  </header> <div class="page-layout" data-astro-cid-yvbahnfj> <section class="content-block prose" data-astro-cid-yvbahnfj><p style="text-align: center;"><strong>TERMS OF SERVICE</strong><br /><strong>Revised: 5/1/26</strong></p><ol class="list-number"><li
+          class=""
+          style=""
+          value="1"
+        ><strong>ACCEPTANCE OF TERMS</strong></li></ol><p style="text-align: justify;">Cortex Coding, Corp., d/b/a Rig AI, (“<span style="text-decoration: underline;">Rig</span>”) provides certain paid, technology-enabled services, including the paid features of its desktop application branded “Rig AI,” which enables users to interact with and run artificial intelligence models, including locally and through integrated services, as well as related software, tools, content, and services, including all updates, upgrades, and enhancements thereto (collectively, the “<span style="text-decoration: underline;">Services”</span>). This Terms of Service (this “<span style="text-decoration: underline;">TOS</span>”) governs the access and use by the individual or entity who accesses or uses the Services (“<span style="text-decoration: underline;">Customer</span>” or “<span style="text-decoration: underline;">you</span>”). Rig may, at its discretion, update this TOS at any time, and such updates shall become effective immediately upon posting unless otherwise specified. Your continued use of the Services following any such update constitutes your acceptance of the updated TOS. You can access and review the most current version of this TOS at the URL for this page or by clicking on the “Terms of Service” link within the Services, or as otherwise made available by Rig.</p><p style="text-align: justify;">PLEASE REVIEW THIS TOS CAREFULLY. BY REGISTERING FOR AN ACCOUNT OR OTHERWISE ACCESSING OR USING THE SERVICES PURSUANT TO A LICENSE KEY, YOU AGREE TO BE BOUND BY THIS TOS, INCLUDING ANY UPDATES OR REVISIONS POSTED HERE OR OTHERWISE COMMUNICATED TO YOU. IF YOU DO NOT AGREE WITH THE TERMS AND CONDITIONS OF THIS TOS, YOU MAY NOT ACCESS OR USE THE SERVICES.</p><p style="text-align: justify;"><strong>THIS TOS REQUIRES FINAL AND BINDING ARBITRATION TO RESOLVE ANY DISPUTE OR CLAIM ARISING OUT OF OR RELATING IN ANY WAY TO THIS TOS, OR YOUR ACCESS TO OR USE OF THE SERVICES</strong>, INCLUDING THE VALIDITY, APPLICABILITY OR INTERPRETATION OF THIS TOS, AND YOU AGREE THAT ANY SUCH CLAIM WILL BE RESOLVED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS, CONSOLIDATED OR REPRESENTATIVE ACTION, ARBITRATION OR OTHER SIMILAR PROCESS. PLEASE REVIEW THE ARBITRATION PROVISIONS IN THIS TOS CAREFULLY TO UNDERSTAND YOUR RIGHTS AND OBLIGATIONS WITH RESPECT TO THE RESOLUTION OF ANY CLAIM. </p><p style="text-align: justify;">By accessing or using the Services or related services, you represent and warrant that you: (a) are of legal age to form a binding contract; (b) have the right, authority, and capacity to agree to and abide by this TOS; and (c) are not a person barred from using the Services under the laws of any applicable jurisdiction. THE SERVICES ARE NOT INTENDED FOR USERS UNDER THE AGE OF 18, AND SUCH USERS ARE EXPRESSLY PROHIBITED FROM SUBMITTING ANY PERSONAL DATA OR USING ANY ASPECT OF THE SERVICES WITHOUT PARENTAL CONSENT. BY ACCESSING OR USING THE SERVICES, YOU REPRESENT AND WARRANT THAT YOU ARE 18 YEARS OF AGE OR OLDER, OR THAT YOU HAVE OBTAINED VERIFIABLE PARENTAL CONSENT IF YOU ARE BETWEEN 13 AND 18 YEARS OF AGE.  If you are entering into this TOS on behalf of an entity, that entity is deemed to be the Customer herein and you represent that you have the power and authority to bind that entity to this TOS.</p><p style="text-align: justify;"><br /></p><ol class="list-number"><li
+          class=""
+          style=""
+          value="2"
+        ><strong>CUSTOMER RIGHTS AND RESPONSIBILITIES</strong></li><li
+          class="nestedListItem"
+          style="list-style-type: none;"
+          value="3"
+        ><ol class="list-number"><li
+          class=""
+          style=""
+          value="1"
+        ><strong>Grant.</strong> Subject to and conditioned on your compliance with this TOS, Rig hereby grants you a non-exclusive, non-transferable, non-sublicensable, revocable license solely to use the Services only for your internal use during the applicable subscription term purchased by you. Your access to and use of the Services must further comply in all material respects with all usage guidelines posted by Rig. In connection with the foregoing, you may allow your authorized employees, agents and consultants, as necessary for your own internal business operations (collectively, “<span style="text-decoration: underline;">Authorized Users</span>”) to use the Services on your behalf through your account on the Services, subject to such Authorized Users’ compliance with this TOS and you agree that you shall be responsible for such Authorized User’s use of the Services.</li><li
+          class=""
+          style=""
+          value="2"
+        ><strong>License Scope</strong>. The license granted herein is limited to use on a single device per license key. Customer may not install or use the Services on multiple devices simultaneously using a single license unless expressly authorized by Rig in writing or through the purchase of additional licenses. Customer may transfer the license to a different device but no more than once every thirty (30) days, except in cases of device failure, loss, or theft, in which case Customer may request an expedited transfer by contacting Rig support.</li><li
+          class=""
+          style=""
+          value="3"
+        ><strong>Trademarks.</strong> You may not use the Rig names, brands, trademarks, service marks and logos that Rig makes available on the Services (“<span style="text-decoration: underline;">Marks</span>”). Rig claims trademark protection over all such Marks and you will not use the Marks except as expressly authorized herein. You will not remove or alter the Marks or any proprietary notices on the Services. The Marks may not be included in or as part of any registered corporate name, any other logo, or service or product name.  You may not create any derivative works of the Marks or use the Marks in a manner that creates or reasonably implies an inaccurate sense of endorsement, sponsorship, or association with Rig. You will not otherwise use business names or logos in a manner that can mislead, confuse, or deceive any third party. All use of the Marks and all goodwill arising out of such use, will inure to Rig’s benefit.</li><li
+          class=""
+          style=""
+          value="4"
+        ><strong>Credentials</strong>. You must keep all registration and login information, license keys, and credentials confidential, and you are responsible for all activities that occur under your account or using your credentials. You agree to notify Rig immediately of any unauthorized use of your account or password or any other similar breach of security. </li><li
+          class=""
+          style=""
+          value="5"
+        ><strong>Third Party Applications</strong>. The Services may include, provide access to, or enable integrations with various application programing interfaces, whether yours or a third party’s (“<span style="text-decoration: underline;">APIs</span>”), and products, services, content, or offerings (collectively with the APIs, “<span style="text-decoration: underline;">Third Party Services</span>”).  You acknowledge and agree that (i) different terms of use and privacy policies may apply to your use of such Third Party Services and that such terms and policies are solely between you and such third party, (ii) Rig does not endorse and is not responsible or liable for any issues related to Third Party Services, including any data loss or other losses you may suffer as a result of using any such Third Party Services, (iii) you are responsible for acquiring any necessary rights to use any such Third-Party Services, and (iv) Rig does not guarantee compatibility with any Third Party Services and Rig shall not be responsible for any changes or new developments in Third Party Service which may interrupt your use of, access to or interaction with the Services.</li><li
+          class=""
+          style=""
+          value="6"
+        ><strong>Artificial Intelligence</strong>. The Services utilize artificial intelligence and machine learning technologies. Outputs generated by the Services may contain errors, inaccuracies, or inappropriate content. Customer acknowledges that AI-generated content should be reviewed and verified before use. Customer agrees to use AI-generated outputs at its own risk and discretion. Rig makes no warranties, express or implied, regarding the accuracy, completeness, reliability, or appropriateness of AI-generated outputs, and Customer shall not rely on such outputs for any critical, professional, medical, legal, or safety-related decisions without independent verification.</li><li
+          class=""
+          style=""
+          value="7"
+        ><strong>Connectivity Requirement.</strong> The Services require periodic internet connectivity for license validation. Customer must ensure that each device on which the Services are installed connects to the internet at least once every seven (7) days to enable Rig to verify that the applicable license key remains valid and active. If the Services are unable to complete such validation within the required period, Rig may suspend or restrict access to the Services until successful validation occurs.</li><li
+          class=""
+          style=""
+          value="8"
+        ><strong>Free Trial.</strong> Rig may make the Services available to Customer on a free trial basis for a period of time from initial activation (the “<span style="text-decoration: underline;">Trial Period</span>”). The Trial Period begins when the license key is first issued or activated. During the Trial Period, Customer is granted a limited, non-exclusive, non-transferable, revocable license to use the Services solely for evaluation purposes and subject to the terms of this Agreement. Unless Customer purchases a paid subscription prior to the expiration of the Trial Period, the license key will automatically expire, and Customer’s right to access and use the Services will terminate immediately without notice. Rig has no obligation to maintain or provide access to any data or configurations after expiration of the Trial Period unless otherwise agreed in writing. Rig reserves the right to modify, suspend, or terminate the Trial Period at any time. All use of the Services during the Trial Period is provided “as is” without warranties of any kind, to the fullest extent permitted by applicable law.</li></ol></li><li
+          class=""
+          style=""
+          value="3"
+        ><strong>DATA</strong></li><li
+          class="nestedListItem"
+          style="list-style-type: none;"
+          value="4"
+        ><ol class="list-number"><li
+          class=""
+          style=""
+          value="1"
+        ><strong>Data Processing. </strong>In addition to this TOS, the Rig Privacy Policy at <a href="https://rig.ai/privacy">https://rig.ai/privacy</a> (“<span style="text-decoration: underline;">Privacy Policy</span>”) applies to how Rig may process information provided as part of the Services. You acknowledge and agree that by accessing or using the Services, Rig may receive certain information about you, including personal data, as set forth in the Privacy Policy, and Rig may collect, use, disclose, store, share, and process such personal data in accordance with such Privacy Policy.</li><li
+          class=""
+          style=""
+          value="2"
+        ><strong>Data Warranty and Obligations</strong>. For purposes hereof, “<span style="text-decoration: underline;">Customer Data</span>” shall mean software code, documents, messages, graphics, images, files, data and other information transmitted to and processed through the Services by Customer. By using the Services, Customer represents, warrants and agrees that it has obtained and will maintain all necessary rights, licenses, authorizations, approvals and consents to use, transmit, provide and process Customer Data through the Services or otherwise makes available to Rig, and Rig is authorized to perform any actions initiated through instructions given to Rig via its account or through other means, notwithstanding that these may contain personal data or information (each as defined by applicable data protection laws). Customer is solely responsible for the accuracy, quality and legality of Customer Data, the means by which Customer acquired the Customer Data, and Customer’s use of Customer Data. Customer acknowledges and agrees that: (i) it will evaluate and bear all risks associated with its use and distribution of all Customer Data; (ii) it is responsible for protecting and backing up the Customer Data; (iii) it is responsible for protecting the confidentiality of all Customer Data in its possession or control; and (iv) under no circumstances will Rig be liable in any way for the content of any Customer Data, including, but not limited to, any errors or omissions in any Customer Data, or any loss or damages of any kind incurred as a result of Customer’s use, deletion, modification, or correction of any Customer Data. Customer has full discretion and control on how to store, protect, remove or delete any Customer Data and (A) Rig shall have no liability for any damages caused by any deletion or removal of Customer Data from the Services by Customer or Customer’s failure to store or protect Customer Data within its possession or control, and (B) Customer will comply with all applicable privacy and data protection laws that govern the collection, use, and transfer of such data. </li><li
+          class=""
+          style=""
+          value="3"
+        ><strong>Data Use.</strong> Rig may use certain data derived from Customer’s or its Authorized Users’ use of the Services only to the extent Customer has expressly opted in to such use.</li><li
+          class="nestedListItem"
+          style="list-style-type: none;"
+          value="4"
+        ><ol class="list-number"><li
+          class=""
+          style=""
+          value="1"
+        ><strong>Analytics Information.</strong> To the extent Customer has expressly opted in to such use, Rig may extract, compile, aggregate, synthesize, and analyze usage or performance data related to the use of the Services (“<span style="text-decoration: underline;">Analytics Information</span>”) solely for the purpose of improving and operating the Services, provided such data is used only in an aggregated and de-identified form that does not identify Customer or its Authorized Users. Notwithstanding the foregoing, Rig may, without Customer opt-in, transmit or receive minimal technical data necessary to validate a locally hosted license key and confirm that the license is active, provided such data is used solely for license verification and not for analytics or product improvement purposes.</li><li
+          class=""
+          style=""
+          value="2"
+        ><strong>Customer Data for AI Training.</strong> To the extent Customer has expressly opted in to such use, Rig may use Customer Data to develop, train, or improve its artificial intelligence or machine learning models solely to the extent Customer has expressly opted in to such use.</li></ol></li></ol></li></ol><p style="text-align: justify;">In all cases, no use of Analytics Information or Customer Data as described above will occur unless and until Customer has provided an affirmative opt-in.</p><ol class="list-number"><li
+          class=""
+          style=""
+          value="4"
+        ><strong>PROPRIETARY RIGHTS</strong></li><li
+          class="nestedListItem"
+          style="list-style-type: none;"
+          value="5"
+        ><ol class="list-number"><li
+          class=""
+          style=""
+          value="1"
+        ><strong>Customer Data. </strong>Customer retains all right, title and interest not expressly granted in this TOS in and to all Customer Data. As between Customer and Rig, Customer owns all rights, title and interest (including all intellectual property rights) in the Customer Data. </li><li
+          class=""
+          style=""
+          value="2"
+        ><strong>Services. </strong>The Services provided to you hereunder or available to you through the Services are licensed, not sold, and Rig retains and reserves all rights not expressly granted in this TOS. You acknowledge and agree that, as between you and Rig, Rig and its licensors own all rights, title and interest (including all intellectual property rights) in the Analytics Information and the Services and any improvement or derivative works thereof. The Services are protected by U.S. and international copyright and other intellectual property laws and treaties. </li></ol></li><li
+          class=""
+          style=""
+          value="5"
+        ><strong>USER CONDUCT AND RESTRICTIONS</strong></li><li
+          class="nestedListItem"
+          style="list-style-type: none;"
+          value="6"
+        ><ol class="list-number"><li
+          class=""
+          style=""
+          value="1"
+        >In your use of the Services, you will not: </li><li
+          class="nestedListItem"
+          style="list-style-type: none;"
+          value="2"
+        ><ol class="list-number"><li
+          class=""
+          style=""
+          value="1"
+        >use, reproduce, modify, adapt, create derivative works from, sublicense, publicly perform, publicly display, distribute, sell, lease, rent, make, have made, assign, pledge, transfer or otherwise grant rights to the Services, except as expressly permitted under this TOS; </li><li
+          class=""
+          style=""
+          value="2"
+        >reverse engineer, disassemble, decompile, translate, or otherwise attempt to derive trade secrets, algorithms, or the source code, architectural framework, or data records, within or associated with the Services; </li><li
+          class=""
+          style=""
+          value="3"
+        >interfere with or disrupt the integrity or performance of the Services, including by disrupting the ability of any other person to use or enjoy the Services; </li><li
+          class=""
+          style=""
+          value="4"
+        >provide use of the Services on a service bureau, rental or managed services basis, provide or permit other individuals or entities to create Internet "links" to the Services or "frame" or "mirror" the Services on any other server, or wireless or Internet-based device; </li><li
+          class=""
+          style=""
+          value="5"
+        >access the Services for the purpose of developing, marketing, selling or distributing any product or service that competes with or includes features substantially similar to the Services; </li><li
+          class=""
+          style=""
+          value="6"
+        >violate any applicable local, state, provincial, federal or international law or regulation, or use the Services for any illegal, unauthorized or otherwise improper purposes, including to store or transmit malicious code, or to store or transmit material in violation of third-party privacy rights; </li><li
+          class=""
+          style=""
+          value="7"
+        >remove or obscure any proprietary notice that appears within the Services;</li><li
+          class=""
+          style=""
+          value="8"
+        >impersonate any person or entity, including Rig personnel, or falsely state or otherwise misrepresent your affiliation with Rig, or any other entity or person;</li><li
+          class=""
+          style=""
+          value="9"
+        >forge headers or otherwise manipulate identifiers to disguise the origin of any content transmitted through the Services;</li><li
+          class=""
+          style=""
+          value="10"
+        >take any action that imposes an unreasonable or disproportionately heavy load on the Services or its infrastructure; or</li><li
+          class=""
+          style=""
+          value="11"
+        >use spiders, crawlers, robots, scrapers, automated tools or any other similar means to access the Services; or download, reproduce, or archive any substantial portion of the Services.</li></ol></li><li
+          class=""
+          style=""
+          value="2"
+        >You will not upload, post, email, store, transmit, process or otherwise make available any content that: </li><li
+          class="nestedListItem"
+          style="list-style-type: none;"
+          value="3"
+        ><ol class="list-number"><li
+          class=""
+          style=""
+          value="1"
+        >is illegal, harmful, threatening, abusive, harassing, tortious, defamatory, vulgar, obscene, libelous, invasive of another's privacy, hateful, or otherwise objectionable; </li><li
+          class=""
+          style=""
+          value="2"
+        >may not be made available under any law or under contractual or fiduciary relationships (such as confidential or proprietary information learned as part of an employment relationship or under a non-disclosure agreement); </li><li
+          class=""
+          style=""
+          value="3"
+        >infringes any patent, trademark, trade secret, copyright, or other proprietary right of any party; </li><li
+          class=""
+          style=""
+          value="4"
+        >consists of unsolicited or unauthorized advertising, promotional materials, junk mail, spam, chain letters, pyramid schemes, commercial electronic messages, or any other form of solicitation; </li><li
+          class=""
+          style=""
+          value="5"
+        >contains software viruses or any other code, files or programs designed to interrupt, destroy or limit the functionality of any software or hardware; </li><li
+          class=""
+          style=""
+          value="6"
+        >contains infringing, libelous, or otherwise unlawful or tortious material; or </li><li
+          class=""
+          style=""
+          value="7"
+        >consists of information that you know or have reason to know is false or inaccurate.</li></ol></li><li
+          class=""
+          style=""
+          value="3"
+        >Rig’s failure to enforce any of these restrictions or guidelines shall not act as a waiver for any future enforcement, will not be considered a breach of this TOS by Rig, and does not create a private right of action for any other party.</li></ol></li><li
+          class=""
+          style=""
+          value="6"
+        ><strong>FEES</strong></li><li
+          class="nestedListItem"
+          style="list-style-type: none;"
+          value="7"
+        ><ol class="list-number"><li
+          class=""
+          style=""
+          value="1"
+        ><strong>Fees and Expenses.</strong>  Customer shall pay all agreed upon fees for the Services as agreed to by Customer on Rig’s website or otherwise (“<span style="text-decoration: underline;">Fees</span>”) and in accordance with terms set forth with respect to any such Fees.</li><li
+          class=""
+          style=""
+          value="2"
+        ><strong>Payment Terms.</strong> Customer will pay Fees according to the payment terms set forth in the payment confirmation page. Customer shall provide Rig with complete and accurate billing contact information including a valid email address. All payments to Rig are non-refundable except as otherwise expressly provided in writing by Rig. All payments will be made in United States dollars via electric funds transfer, as per the instructions of Rig. Rig may invoice parts of any Fees due separately or all in one invoice. </li><li
+          class=""
+          style=""
+          value="3"
+        ><strong>Payment Processing</strong>. Rig may use a third-party payment process (the “<span style="text-decoration: underline;">Payment Processor”)</span> to bill Customer through a payment account linked to Customer’s account. The processing of these payments will be subject to the terms, conditions and privacy policies of the Payment Processor, in addition to this TOS. By submitting Customer’s credit card or other payment information, Customer grants Rig the right to store and process such information with the Payment Processor, which it may change from time to time. Customer agrees that Rig shall not be responsible for any failures of the Payment Processor to adequately protect such payment information. All financial matters regarding Customer’s information are subject to the terms, conditions and privacy policies of the Payment Processor, the current version of which is available at <a href="https://stripe.com/legal/end-users"><span style="text-decoration: underline;">https://stripe.com/legal/end-users</span></a>. Customer acknowledges that Rig may change the Payment Processor and move Customer’s information to another Payment Processor, as may be required. </li><li
+          class=""
+          style=""
+          value="4"
+        ><strong>Taxes.</strong> All Fees exclude any and all taxes and similar fees now in force, enacted or imposed in the future on the transaction, delivery of the Services, including any sales, use or value added taxes, goods and services tax, consumption tax, customs duties or similar charges, but excluding withholding taxes and taxes solely based on Rig’s net income, and Customer shall be responsible for payment of all such taxes, duties and charges, and any related penalties and interest arising from the payment of such amounts. If Customer is legally required to withhold any amounts to be paid to Rig, Customer will deduct such taxes from the amount otherwise owed, pay the tax to the appropriate taxing authority, and provide to Rig on a timely basis properly executed certificates, receipts or other documentation as evidence of such tax payment to the taxing authority, sufficient to permit Rig to establish Rig’s right to a credit for such taxes against Rig’s income tax liability.  Customer shall provide Rig with such assistance as Rig shall reasonably request in connection with any application by Rig to qualify for the benefit of a reduced rate of withholding taxation under the terms of any applicable income tax treaty.</li></ol></li><li
+          class=""
+          style=""
+          value="7"
+        ><strong>FEEDBACK</strong></li></ol><p style="text-align: justify;">If you elect to provide or make available to Rig any suggestions, comments, ideas, improvements or other feedback relating to the Services (“<span style="text-decoration: underline;">Feedback</span>”), Rig shall own and be free to use, reproduce, modify, adapt, create derivative works from, publicly perform, publicly display, distribute, make, have made, assign, pledge, transfer or otherwise grant rights in your Feedback in any form and any medium (whether now known or later developed), without credit or compensation to you.</p><ol class="list-number"><li
+          class=""
+          style=""
+          value="8"
+        ><strong>INDEMNIFICATION</strong></li><li
+          class="nestedListItem"
+          style="list-style-type: none;"
+          value="9"
+        ><ol class="list-number"><li
+          class=""
+          style=""
+          value="1"
+        ><strong>Claims Against Customer</strong>. Rig shall indemnify and hold Customer and its affiliates, and each of their officers, directors, employees, agents, partners and licensors (collectively, “<span style="text-decoration: underline;">Customer Parties</span>”) harmless from and against all losses, damages, costs, liabilities, and expenses, including reasonable attorneys’ fees, (“<span style="text-decoration: underline;">Losses</span>”) to extent resulting from or arising out of any claim, demand or action (“<span style="text-decoration: underline;">Claim</span>”) due to an assertion that Customer’s or any Authorized User’s permitted use of the Services infringes the intellectual property rights of such third party; <em>provided</em>, <em>however</em>, that Rig shall have no obligation to indemnify Customer from any Claim to the extent it arises from: (i) use of the Services by or on behalf of Customer in any manner that does not comply with the terms and conditions of this TOS or applicable laws or regulations; (ii) use of the Services by or on behalf of Customer in combination with any hardware or software not provided or approved by Rig; (iii) modifications to the Services made by or on behalf of Customer that are not authorized by Rig; or (iv) any Customer Data (Sections 8(a)(i) through 8(a)(iv), collectively, “<span style="text-decoration: underline;">Customer Acts</span>”). In the event that any part of the Services becomes the subject of a Claim or Rig reasonably determines that any part of the Services is likely to become the subject of a Claim, Rig may, at its sole discretion: (1) procure for Customer a license as necessary for Customer to exercise the rights granted by Rig under this TOS; (2) modify or replace the infringing portion of the Services to avoid infringement; or (3) terminate this TOS and provide a pro rata refund of the fees paid by Customer to Rig for the unused portion of the Term.</li><li
+          class=""
+          style=""
+          value="2"
+        ><strong>Claims Against Rig</strong>. You shall indemnify and hold Rig and its affiliates, and each of their officers, directors, employees, agents, partners and licensors (collectively, “<span style="text-decoration: underline;">Rig Parties</span>”) harmless from and against all Losses to extent resulting from or arising out of any Claim due to: (i) content or information, including Customer Data, you provide to Rig; (ii) your violation of this TOS, any law or regulation, or any rights (including intellectual property rights) of another party; (iii) Customer Acts; or (iv) your use of the Services, except as expressly permitted in this TOS.</li><li
+          class=""
+          style=""
+          value="3"
+        ><strong>Procedure</strong>. The indemnified party shall: (i) give the indemnifying party prompt written notice of any Claim; provided, however, that failure of the indemnified party to give such prompt written notice shall not relieve the indemnifying party of any obligation to indemnify pursuant to this Section 8, except to the extent the indemnifying party has been prejudiced thereby; (ii) cooperate fully with the indemnifying party, at the indemnifying party’s expense, in the defense or settlement of any Claim; and (iii) give the indemnifying party sole and complete control over the defense or settlement of any Claim; provided, however, that any settlement must include a complete release of the indemnified party without requiring the indemnified party to make any payment or bear any obligation.</li></ol></li><li
+          class=""
+          style=""
+          value="9"
+        ><strong>WARRANTIES</strong></li><li
+          class="nestedListItem"
+          style="list-style-type: none;"
+          value="10"
+        ><ol class="list-number"><li
+          class=""
+          style=""
+          value="1"
+        ><strong>Mutual Representations and Warranties</strong>. Each party represents and warrants that (i) it has full right, power, and authority to enter into this TOS, (ii) it has obtained and shall maintain throughout the term of this TOS all necessary licenses, authorizations, approvals and consents to enter into, exercise its rights and perform its obligations and duties hereunder in compliance with all applicable laws, rules and regulations, and (iii) that the performance of such obligations and duties does not conflict with or result in a breach of any other agreement of such party or any judgment, order, or decree by which such party is bound. </li><li
+          class=""
+          style=""
+          value="2"
+        ><strong>Disclaimer of Warranties</strong></li><li
+          class="nestedListItem"
+          style="list-style-type: none;"
+          value="3"
+        ><ol class="list-number"><li
+          class=""
+          style=""
+          value="1"
+        >YOUR USE OF THE SERVICES IS AT YOUR SOLE RISK. THE SERVICES ARE PROVIDED ON AN “AS IS” AND “AS AVAILABLE” BASIS, WITH ALL FAULTS. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, RIG PARTIES EXPRESSLY DISCLAIM ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED OR ARISING FROM STATUTE, COURSE OF DEALING, USAGE OF TRADE OR OTHERWISE, INCLUDING THE IMPLIED WARRANTIES OF MERCHANTABILITY, QUALITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.</li><li
+          class=""
+          style=""
+          value="2"
+        >RIG PARTIES MAKE NO WARRANTY OR REPRESENTATION THAT: (A) THE SERVICES WILL MEET YOUR REQUIREMENTS; (B) ACCESS TO THE SERVICES WILL BE UNINTERRUPTED, TIMELY, SECURE, VIRUS-FREE, OR ERROR-FREE; OR (C) THE INFORMATION AND ANY RESULTS THAT MAY BE OBTAINED FROM ACCESS TO OR USE OF THE SERVICES WILL BE ACCURATE, RELIABLE, CURRENT, OR COMPLETE.</li><li
+          class=""
+          style=""
+          value="3"
+        >ALL CONTENT, DATA AND RESULTS MADE AVAILABLE THROUGH THE SERVICES ARE MADE AVAILABLE FOR INFORMATIONAL PURPOSES ONLY. YOU ARE SOLELY RESPONSIBLE FOR CONFIRMING THE ACCURACY OF ALL CONTENT, DATA AND RESULTS BEFORE TAKING OR OMITTING ANY ACTION.</li><li
+          class=""
+          style=""
+          value="4"
+        >THIS DISCLAIMER OF WARRANTY MAY NOT BE VALID IN SOME JURISDICTIONS AND YOU MAY HAVE WARRANTY RIGHTS UNDER LAW WHICH MAY NOT BE WAIVED OR DISCLAIMED. TO THE EXTENT REQUIRED BY APPLICABLE LAW, ANY SUCH IMPLIED WARRANTY SHALL BE LIMITED IN DURATION TO THIRTY (30) DAYS FROM THE EFFECTIVE DATE OF THIS TOS.</li></ol></li></ol></li><li
+          class=""
+          style=""
+          value="10"
+        ><strong>LIMITATION OF LIABILITY</strong></li><li
+          class="nestedListItem"
+          style="list-style-type: none;"
+          value="11"
+        ><ol class="list-number"><li
+          class=""
+          style=""
+          value="1"
+        >RIG PARTIES SHALL NOT BE LIABLE FOR ANY LOST PROFITS, LOSS OF DATA OR GOODWILL, OR COST OF COVER, OR FOR ANY INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, PUNITIVE, OR CONSEQUENTIAL DAMAGES, INCLUDING DAMAGES ARISING FROM ANY TYPE OR MANNER OF COMMERCIAL, BUSINESS, OR FINANCIAL LOSS, EVEN IF RIG PARTIES HAD ACTUAL OR CONSTRUCTIVE KNOWLEDGE OF THE POSSIBILITY OF SUCH DAMAGES AND REGARDLESS OF WHETHER SUCH DAMAGES WERE FORESEEABLE. IN NO EVENT SHALL RIG PARTIES’ TOTAL LIABILITY TO YOU FOR ANY AND ALL CLAIMS ARISING FROM OR RELATING TO THIS TOS OR YOUR ACCESS TO OR USE OF (OR INABILITY TO ACCESS OR USE) THE SERVICES OR CONTENT EXCEED THE GREATER OF (I) THE AMOUNT PAID BY YOU TO RIG FOR ACCESS TO THE APPLICABLE SERVICES WITHIN THE TWELVE (12) MONTHS IMMEDIATELY PRECEDING THE DATE ON WHICH THE APPLICABLE CLAIM(S) AROSE, OR (II) ONE THOUSAND DOLLARS ($1,000).</li><li
+          class=""
+          style=""
+          value="2"
+        >THE FOREGOING LIMITATIONS, EXCLUSIONS AND DISCLAIMERS SHALL APPLY REGARDLESS OF WHETHER SUCH LIABILITY ARISES FROM ANY CLAIM BASED UPON CONTRACT, WARRANTY, TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY OR OTHERWISE, AND WHETHER OR NOT THE PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH LOSS OR DAMAGE. INSOFAR AS APPLICABLE LAW PROHIBITS ANY LIMITATION ON LIABILITY HEREIN, THE PARTIES AGREE THAT SUCH LIMITATION WILL BE AUTOMATICALLY MODIFIED, BUT ONLY TO THE EXTENT SO AS TO MAKE THE LIMITATION COMPLIANT WITH APPLICABLE LAW. THE PARTIES AGREE THAT THE LIMITATIONS ON LIABILITIES SET FORTH HEREIN ARE AGREED ALLOCATIONS OF RISK AND SUCH LIMITATIONS WILL APPLY NOTWITHSTANDING THE FAILURE OF ESSENTIAL PURPOSE OF ANY LIMITED REMEDY.</li></ol></li><li
+          class=""
+          style=""
+          value="11"
+        ><strong>TERM AND TERMINATION</strong></li><li
+          class="nestedListItem"
+          style="list-style-type: none;"
+          value="12"
+        ><ol class="list-number"><li
+          class=""
+          style=""
+          value="1"
+        >The term of this TOS shall commence on the date Customer first accesses the Services and shall continue for the subscription period selected by Customer at the time of purchase (the “<span style="text-decoration: underline;">Initial Term</span>”). Upon expiration of the Initial Term, the subscription shall automatically renew for successive periods equal to the Initial Term (each such renewal period, a “<span style="text-decoration: underline;">Renewal Term</span>,” and together with the Initial Term, the “<span style="text-decoration: underline;">Term</span>”), unless and until: (i) terminated by Rig as permitted by this TOS; or (ii) Customer provides written notice of cancellation to Rig prior to the commencement of the next Renewal Term. Any such cancellation by Customer shall take effect at the end of the then-current Term, and Customer shall retain access to the Services through the end of such Term. No refunds shall be issued for any prepaid or unused portion of the then-current Term. Except as set forth above, Customer shall have no right to terminate this TOS prior to the end of the then-current Term, and Customer's sole remedy for any dissatisfaction with the Services shall be to discontinue use of the Services.</li><li
+          class=""
+          style=""
+          value="2"
+        >Notwithstanding anything to the contrary, Rig may terminate this TOS: (i) immediately upon written notice to you if you commit a material breach that is not curable, or upon thirty (30) days’ written notice if you commit a material breach that is curable and fail to cure such breach within that thirty (30) day period; or (ii) in the event you become insolvent or bankrupt, become the subject of any proceedings under bankruptcy, insolvency or debtor’s relief law, have a receiver or manager appointed, make an assignment for the benefit of creditors, or take the benefit of any applicable law or statute in force for the winding up or liquidation of your business; or (iii) for convenience upon sixty (60) days' prior written notice to Customer. Notwithstanding the termination of this TOS for any reason, neither party will be relieved of any duty, obligation, debt or liability that arose or accrued prior to the effective date of termination. </li><li
+          class=""
+          style=""
+          value="3"
+        >Upon termination of this TOS for any reason: (i) Rig, in its sole discretion, may remove and discard your content and information; (ii) you will immediately stop using the Services and delete all versions in your possession or control; and (iii) any provision that, by its terms, is intended to survive the expiration or termination of this TOS shall survive such expiration or termination, including without limitation Sections 9, 10, 12, 13, and 17. Further, you agree that that Rig shall not be liable to you or any third party for any termination of your account or access to the Services. </li></ol></li><li
+          class=""
+          style=""
+          value="12"
+        ><strong>GOVERNING LAW</strong></li></ol><p style="text-align: justify;">This TOS shall be governed by and construed and enforced in accordance with the United States Federal Arbitration Act, other applicable federal laws and the laws of the State of Delaware without regard to conflict of laws principles. The parties agree that neither the United Nations Convention on Contracts for the International Sale of Goods, nor the Uniform Computer Information Transaction Act (UCITA) shall apply to this TOS, regardless of the states in which the parties do business or are incorporated.</p><ol class="list-number"><li
+          class=""
+          style=""
+          value="13"
+        ><strong>BINDING ARBITRATION AND CLASS ACTION WAIVER</strong></li><li
+          class="nestedListItem"
+          style="list-style-type: none;"
+          value="14"
+        ><ol class="list-number"><li
+          class=""
+          style=""
+          value="1"
+        >ALL CLAIMS ARISING IN CONNECTION WITH THIS TOS SHALL BE RESOLVED BY FINAL AND BINDING ARBITRATION RATHER THAN IN COURT.</li><li
+          class=""
+          style=""
+          value="2"
+        >The arbitration shall be conducted by the American Arbitration Association (“<span style="text-decoration: underline;">AAA</span>”) under its then-applicable Commercial Arbitration Rules or, as appropriate, its Consumer Arbitration Rules. The AAA’s rules are available at <a href="http://www.adr.org/"><span style="text-decoration: underline;">http://www.adr.org/</span></a>. Payment of all filing, administration and arbitrator fees shall be governed by the AAA’s rules. The arbitration shall be conducted in the English language by a single independent and neutral arbitrator. For any hearing conducted in person as part of the arbitration, you agree that such hearing shall be conducted in Wilmington, DE or, if the Consumer Arbitration Rules apply, another location reasonably convenient to both parties with due consideration of their ability to travel and other pertinent circumstances, as determined by the arbitrator. The decision of the arbitrator shall be final and binding. Judgment on the arbitral award may be entered in any court of competent jurisdiction.</li><li
+          class=""
+          style=""
+          value="3"
+        >WE EACH AGREE THAT ALL CLAIMS SHALL BE RESOLVED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS, CONSOLIDATED OR REPRESENTATIVE ACTION OR OTHER SIMILAR PROCESS (INCLUDING ARBITRATION). IF FOR ANY REASON A CLAIM PROCEEDS IN COURT RATHER THAN IN ARBITRATION, EACH PARTY WAIVES ANY RIGHT TO A JURY TRIAL AND AGREE THAT SUCH CLAIM SHALL BE BROUGHT ONLY IN A COURT OF COMPETENT JURISDICTION IN WILMINGTON, DE. YOU HEREBY SUBMIT TO THE PERSONAL JURISDICTION AND VENUE OF SUCH COURTS AND WAIVE ANY OBJECTION ON THE GROUNDS OF VENUE, FORUM <em>NON-CONVENIENS</em> OR ANY SIMILAR GROUNDS WITH RESPECT TO ANY SUCH CLAIM.</li><li
+          class=""
+          style=""
+          value="4"
+        >Notwithstanding anything to the contrary, you and Rig may seek injunctive relief and any other equitable remedies from any court of competent jurisdiction to protect its intellectual property rights, whether in aid of, pending, or independently of the resolution of any dispute pursuant to the arbitration procedures set forth in this Section 13.</li><li
+          class=""
+          style=""
+          value="5"
+        >If Rig implements any material change to this Section 13, such change shall not apply to any Claim for which you provided written notice to Rig before the implementation of the change.</li></ol></li><li
+          class=""
+          style=""
+          value="14"
+        ><strong>LEGAL COMPLIANCE</strong></li></ol><p style="text-align: justify;">You represent and warrant that you will comply with all applicable foreign, federal, state, and local laws, rules and regulations, including without limitation, U.S. export laws and import and use laws of the country where the Services are delivered or used and you are not: (a) located in a country that is subject to a U.S. Government embargo, or designated by the U.S. Government as a “terrorist supporting” country; and (b) listed on any U.S. Government list of prohibited or restricted parties, including the Specially Designated Nationals List.</p><ol class="list-number"><li
+          class=""
+          style=""
+          value="15"
+        ><strong>U.S. GOVERNMENT ENTITIES</strong></li></ol><p style="text-align: justify;">This section applies to access to or use of the Services by a branch or agency of the United States Government. The Services includes “commercial computer software” and “commercial computer software documentation” as such terms are used in 48 C.F.R. 12.212 and qualifies as “commercial items” as defined in 48 C.F.R. 2.101. Such items are provided to the United States Government: (a) for acquisition by or on behalf of civilian agencies, consistent with the policy set forth in 48 C.F.R. 12.212; or (b) for acquisition by or on behalf of units of the Department of Defense, consistent with the policies set forth in 48 C.F.R. 227.7202-1 and 227.7202-3. The United States Government shall acquire only those rights set forth in this TOS with respect to the such items, and any access to or use of the Services by the United States Government constitutes: (i) agreement by the United States Government that that such items are “commercial computer software” and “commercial computer software documentation” as defined in this section; and (ii) acceptance of the rights and obligations herein.</p><ol class="list-number"><li
+          class=""
+          style=""
+          value="16"
+        ><strong>CALIFORNIA USERS & RESIDENTS</strong></li></ol><p style="text-align: justify;">In accordance with California Civil Code §1789.3, you may report complaints to the Complaint Assistance Unit of the Division of Consumer Services of the California Department of Consumer Affairs by contacting such unit in writing at 1625 North Market Blvd., Suite N 112, Sacramento, CA 95834, or by telephone at (800) 952-5210.</p><ol class="list-number"><li
+          class=""
+          style=""
+          value="17"
+        ><strong>GENERAL PROVISIONS</strong></li></ol><p style="text-align: justify;">This TOS constitutes the entire agreement between you and Rig concerning your access to and use of the Services. It supersedes all prior and contemporaneous oral or written negotiations and agreements between you and Rig with respect to such subject matter. In the event of any conflict between or among this TOS and any end user license agreement, privacy policy or usage guidelines to which this TOS refers, the terms and conditions of this TOS shall take precedence and govern. This TOS may not be amended by you except in a writing executed by you and an authorized representative of Rig. Except as otherwise expressly provided in this TOS, there shall be no third-party beneficiaries to this TOS. For the purposes of this TOS, the words “such as,” “include,” “includes” and “including” shall be deemed to be followed by the words “without limitation.” You may not assign or delegate any right or obligation under this TOS without the prior written consent of Rig. The failure of Rig to exercise or enforce any right or provision of this TOS shall not constitute a waiver of such right or provision. If any provision of this TOS is held to be invalid or unenforceable under applicable law, then such provision shall be construed, limited, modified or, if necessary, severed to the extent necessary to eliminate its invalidity or unenforceability, without in any way affecting the remaining parts of this TOS. Any prevention of or delay in performance by Rig hereunder due to labor disputes, acts of God, failure of the Internet, governmental restrictions, enemy or hostile governmental action, fire or other casualty or other causes beyond its reasonable control shall excuse the performance of its obligations for a period equal to the duration of any such prevention or delay.</p></section> </div> </main> <!-- ═══ FOOTER ═══ --><footer data-astro-cid-sz7xmlte> <div class="container" data-astro-cid-sz7xmlte> <div class="footer-grid" data-astro-cid-sz7xmlte> <div class="footer-brand" data-astro-cid-sz7xmlte> <a href="/" data-astro-cid-sz7xmlte><img class="footer-logo" src="/assets/rig-wordmark.svg" alt="Rig" data-astro-cid-sz7xmlte></a> <p data-astro-cid-sz7xmlte>Local-first AI for developers who refuse to be dependent on the cloud.</p> </div> <div class="footer-col" data-astro-cid-sz7xmlte> <h3 class="mono-label" data-astro-cid-sz7xmlte>Connect</h3> <ul data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="https://x.com/rig_code" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>Twitter</a></li> <li data-astro-cid-sz7xmlte><a href="https://www.linkedin.com/company/get-rig/" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte>LinkedIn</a></li> </ul> </div> <div class="footer-col" data-astro-cid-sz7xmlte> <h3 class="mono-label" data-astro-cid-sz7xmlte>Legal</h3> <ul data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="/terms" data-astro-cid-sz7xmlte>Terms of Service</a></li> <li data-astro-cid-sz7xmlte><a href="/privacy" data-astro-cid-sz7xmlte>Privacy Policy</a></li> </ul> </div> </div> <div class="footer-bottom" data-astro-cid-sz7xmlte> <span class="mono-label" data-astro-cid-sz7xmlte>&copy; 2026 Rig AI Inc. All rights reserved.</span> <div class="status footer-status" data-astro-cid-sz7xmlte> <span class="footer-status-dot" data-astro-cid-sz7xmlte></span> <span data-astro-cid-sz7xmlte>All systems local</span> </div> </div> </div> <!-- Giant logo watermark --> <svg class="footer-watermark" viewBox="0 0 163 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-astro-cid-sz7xmlte> <path d="M162.809 89.4121H82.6844C74.7832 89.4121 67.2059 92.5528 61.6216 98.1424C56.0441 103.725 52.9111 111.294 52.9111 119.185V159.996H72.1703V126.45C72.1703 116.812 72.3437 108.001 72.3437 108.001H162.809V89.4121Z" stroke="currentColor" stroke-width="0.5" fill="none" data-astro-cid-sz7xmlte></path> <path d="M162.808 118.61H111.815C103.914 118.61 96.3368 121.751 90.7524 127.341C85.1749 132.923 82.042 140.492 82.042 148.384V159.997H104.909V144.052C104.909 134.414 104.909 134.082 104.909 134.082H162.808V118.61Z" stroke="currentColor" stroke-width="0.5" fill="none" data-astro-cid-sz7xmlte></path> <path d="M162.809 146.002C144.706 146.002 134.567 145.996 116.464 146.004V160H162.809V146.002Z" stroke="currentColor" stroke-width="0.5" fill="none" data-astro-cid-sz7xmlte></path> <path d="M162.809 0.00304711H70.8863C52.0802 0.00304711 34.0448 7.47609 20.7501 20.7772C7.46368 34.07 0 52.0946 0 70.8889C0 99.2859 0 140.767 0 159.997H15.7849V67.7138C15.7849 53.2572 15.7849 41.5373 15.7849 41.5373H162.812V0L162.809 0.00304711Z" stroke="currentColor" stroke-width="0.5" fill="none" data-astro-cid-sz7xmlte></path> <path d="M162.809 51.8704H56.8042C48.903 51.8704 41.3258 55.0111 35.7414 60.6008C30.1639 66.1835 27.031 73.7522 27.031 81.6437V159.997H41.8159V96.3178C41.8159 86.6801 41.8159 78.8688 41.8159 78.8688H162.809V51.8674V51.8704Z" stroke="currentColor" stroke-width="0.5" fill="none" data-astro-cid-sz7xmlte></path> </svg> </footer>   </body></html> 

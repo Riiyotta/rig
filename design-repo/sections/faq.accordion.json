@@ -1,0 +1,161 @@
+{
+  "id": "faq.accordion",
+  "kind": "section",
+  "category": "content",
+  "purpose": "Answer objections: centred badge + title, numbered accordion (01..08) with chevrons.",
+  "implementedBy": [
+    {
+      "citation": "src/components/Faq.jsx:51-65",
+      "quote": "faq-list"
+    },
+    {
+      "citation": "src/styles/Faq.css:3-109",
+      "quote": ".faq-section"
+    }
+  ],
+  "usedOnRoutes": [
+    "/"
+  ],
+  "constraints": {
+    "onePerPage": true
+  },
+  "content": {
+    "type": "object",
+    "properties": {
+      "badge": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 1,
+            "evidence": {
+              "longestObserved": "FAQ",
+              "citation": "src/content.js:219"
+            }
+          },
+          "icon": {
+            "type": "object",
+            "properties": {
+              "assetRole": {
+                "type": "string",
+                "enum": [
+                  "icon.badge-pixel"
+                ]
+              },
+              "iconKey": {
+                "type": "string",
+                "enum": [
+                  "problem",
+                  "intro",
+                  "offline",
+                  "unlimited",
+                  "privacy",
+                  "latency",
+                  "approach",
+                  "capabilities",
+                  "terminal",
+                  "early-access",
+                  "faq"
+                ]
+              }
+            },
+            "required": [
+              "assetRole",
+              "iconKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "label",
+          "icon"
+        ],
+        "additionalProperties": false
+      },
+      "title": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 2,
+        "evidence": {
+          "longestObserved": "Common questions.",
+          "citation": "src/content.js:220"
+        }
+      },
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "q": {
+              "type": "string",
+              "minLength": 1,
+              "maxWords": 9,
+              "evidence": {
+                "longestObserved": "How does it stack up against big cloud models?",
+                "citation": "src/content.js:225"
+              }
+            },
+            "a": {
+              "type": "string",
+              "minLength": 1,
+              "maxWords": 61,
+              "evidence": {
+                "longestObserved": "Rig is an on-device AI coding assistant. It pairs an open-source model, post-trained purely for code, with a custom Rust inference engine tuned for Apple Silicon. You get low-latency agentic coding with no API calls, no usage caps, no telemetry and no per-token cost. Your files never leave your computer. macOS is supported today, with Linux and Windows on the roadmap.",
+                "citation": "src/content.js:222"
+              }
+            }
+          },
+          "required": [
+            "q",
+            "a"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 1,
+        "maxItems": 8,
+        "description": "numbered 01..NN automatically"
+      }
+    },
+    "required": [
+      "badge",
+      "title",
+      "items"
+    ],
+    "additionalProperties": false
+  },
+  "motion": {
+    "allowed": [
+      {
+        "pattern": "faq-grid-rows",
+        "reducedMotionFallback": "instant-toggle"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoints": [
+      {
+        "query": "(max-width: 768px)",
+        "citation": "src/styles/Faq.css:91-109",
+        "quote": "@media (max-width: 768px)",
+        "changes": [
+          "section padding 4rem 0; title margin-bottom 2rem",
+          "question padding 1.25rem 0, gap 1rem, text 1.05rem",
+          "answer padding-left 2.5rem, .85rem"
+        ]
+      }
+    ]
+  },
+  "assetRoles": [
+    "icon.badge-pixel"
+  ],
+  "fixedAssetRoles": [
+    "icon.ui"
+  ],
+  "fixedAssetRolesNote": "rendered by the section itself (glyphs/filters), not settable from a PageSpec",
+  "composedOf": [
+    "primitive.badge",
+    "primitive.section-title",
+    "component.faq-item"
+  ]
+}

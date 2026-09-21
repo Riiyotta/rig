@@ -1,0 +1,207 @@
+{
+  "id": "problem.signal-grid",
+  "kind": "section",
+  "category": "content",
+  "purpose": "Frame the pain (surveillance, metering, model swaps, latency): bordered box with badge + two-line headline, then a 3x2 grid - tall surveillance-eye column plus four numbered problem cards.",
+  "implementedBy": [
+    {
+      "citation": "src/components/Problem.jsx:37-164",
+      "quote": "problem-grid"
+    },
+    {
+      "citation": "src/styles/Problem.css:2-148",
+      "quote": ".problem-section"
+    }
+  ],
+  "usedOnRoutes": [
+    "/"
+  ],
+  "constraints": {
+    "onePerPage": true
+  },
+  "content": {
+    "type": "object",
+    "properties": {
+      "badge": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 2,
+            "evidence": {
+              "longestObserved": "The problem",
+              "citation": "src/content.js:26"
+            }
+          },
+          "icon": {
+            "type": "object",
+            "properties": {
+              "assetRole": {
+                "type": "string",
+                "enum": [
+                  "icon.badge-pixel"
+                ]
+              },
+              "iconKey": {
+                "type": "string",
+                "enum": [
+                  "problem",
+                  "intro",
+                  "offline",
+                  "unlimited",
+                  "privacy",
+                  "latency",
+                  "approach",
+                  "capabilities",
+                  "terminal",
+                  "early-access",
+                  "faq"
+                ]
+              }
+            },
+            "required": [
+              "assetRole",
+              "iconKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "label",
+          "icon"
+        ],
+        "additionalProperties": false
+      },
+      "titleLines": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxWords": 5,
+          "evidence": {
+            "longestObserved": "Your AI rents you back.",
+            "citation": "src/content.js:27"
+          }
+        },
+        "minItems": 2,
+        "maxItems": 2,
+        "description": "two-line headline"
+      },
+      "eye": {
+        "type": "object",
+        "properties": {
+          "assetRole": {
+            "type": "string",
+            "enum": [
+              "illustration.surveillance-eye"
+            ]
+          }
+        },
+        "required": [
+          "assetRole"
+        ],
+        "additionalProperties": false
+      },
+      "cards": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "maxWords": 2,
+              "evidence": {
+                "longestObserved": "Data harvesting",
+                "citation": "src/content.js:30"
+              }
+            },
+            "num": {
+              "type": "string",
+              "pattern": "^[0-9]{3}$"
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxWords": 5,
+              "evidence": {
+                "longestObserved": "Your code feeds their model.",
+                "citation": "src/content.js:32"
+              }
+            },
+            "bodyLines": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxWords": 17,
+                "evidence": {
+                  "longestObserved": "It all passes through servers you never see — sharpening a product built to compete with you.",
+                  "citation": "src/content.js:33"
+                }
+              },
+              "minItems": 1,
+              "maxItems": 2
+            }
+          },
+          "required": [
+            "label",
+            "num",
+            "title",
+            "bodyLines"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 4,
+        "maxItems": 4,
+        "description": "2x2 grid beside the eye column (fixed 4)"
+      }
+    },
+    "required": [
+      "badge",
+      "titleLines",
+      "eye",
+      "cards"
+    ],
+    "additionalProperties": false
+  },
+  "motion": {
+    "allowed": [
+      {
+        "pattern": "eye-glitch-tracking-blink",
+        "reducedMotionFallback": "static-eye-no-tracking"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoints": [
+      {
+        "query": "(max-width: 1024px) and (min-width: 769px)",
+        "citation": "src/styles/Problem.css:115-119",
+        "quote": "@media (max-width: 1024px) and (min-width: 769px)",
+        "changes": [
+          "problem-top padding 2rem"
+        ]
+      },
+      {
+        "query": "(max-width: 768px)",
+        "citation": "src/styles/Problem.css:121-148",
+        "quote": "@media (max-width: 768px)",
+        "changes": [
+          "grid collapses to 1 column, rows auto",
+          "eye column loses its right border, gains a bottom border, min-height 280, 280x280 eye",
+          "cards padding 1.25rem with bottom borders except the last"
+        ]
+      }
+    ]
+  },
+  "assetRoles": [
+    "icon.badge-pixel",
+    "illustration.surveillance-eye"
+  ],
+  "composedOf": [
+    "primitive.badge",
+    "component.problem-card"
+  ]
+}

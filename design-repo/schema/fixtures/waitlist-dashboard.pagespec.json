@@ -1,0 +1,203 @@
+{
+  "pageSpecVersion": "1.0.0",
+  "id": "waitlist-dashboard",
+  "route": "/waitlist",
+  "template": "tpl.waitlist",
+  "theme": "dark",
+  "nodes": [
+    {
+      "type": "shell.overlays",
+      "content": {
+        "grainFilter": {
+          "assetRole": "effect.svg-filter"
+        }
+      },
+      "motion": {
+        "pattern": "grain-overlay-smil",
+        "reducedMotionFallback": "static-grain-frame"
+      }
+    },
+    {
+      "type": "shell.header",
+      "variant": "default-no-cta",
+      "content": {
+        "logo": {
+          "assetRole": "brand.wordmark"
+        },
+        "links": [
+          {
+            "label": "Blog",
+            "target": {
+              "kind": "route",
+              "route": "/blog"
+            }
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "mobile-menu-fade",
+        "reducedMotionFallback": "instant-toggle"
+      }
+    },
+    {
+      "type": "waitlist.dashboard-view",
+      "content": {
+        "loading": "Fetching your spot...",
+        "error": {
+          "heading": "We couldn’t find that entry",
+          "message": "That referral code isn’t saved in this browser.",
+          "icon": {
+            "assetRole": "icon.ui"
+          }
+        },
+        "badge": "You are in line",
+        "heading": "Where you stand",
+        "positionLabel": "Queue position",
+        "referralsLabel": "Friends referred",
+        "giveaway": {
+          "heading": "Hardware giveaway",
+          "body": [
+            "One person on the list will win a new Mac mini on us.",
+            "Every friend who signs up with your link adds another entry to the draw. Pass it along to anyone who writes code on a laptop."
+          ]
+        },
+        "survey": {
+          "heading": "Tell us your setup",
+          "description": "Share the machine you plan to run Rig on so we can test against the configurations people actually use.",
+          "chipLabel": "Chip",
+          "chipPlaceholder": "Choose your chip",
+          "chipOptions": [
+            "M1",
+            "M1 Pro",
+            "M1 Max",
+            "M1 Ultra",
+            "M2",
+            "M2 Pro",
+            "M2 Max",
+            "M2 Ultra",
+            "M3",
+            "M3 Pro",
+            "M3 Max",
+            "M3 Ultra",
+            "M4",
+            "M4 Pro",
+            "M4 Max",
+            "M5",
+            "M5 Pro",
+            "M5 Max",
+            "Intel Mac",
+            "Windows",
+            "Linux"
+          ],
+          "ramLabel": "RAM",
+          "ramPlaceholder": "Choose your RAM",
+          "ramOptions": [
+            "8GB",
+            "16GB",
+            "24GB",
+            "32GB",
+            "36GB",
+            "48GB",
+            "64GB",
+            "96GB",
+            "128GB"
+          ],
+          "submit": "Save",
+          "saving": "Saving...",
+          "saved": "Saved!",
+          "submission": {
+            "mode": "local-only"
+          }
+        },
+        "referral": {
+          "heading": "Skip ahead",
+          "description": "Each friend who joins through your link moves you higher in the queue, and the higher spots get their invites first.",
+          "linkLabel": "Your invite link",
+          "copyLabel": "Copy invite link",
+          "shareX": "Share on X",
+          "shareLinkedIn": "Share on LinkedIn",
+          "shareText": "I just joined the Rig waitlist. Grab a spot with my link:",
+          "shareTargets": [
+            {
+              "kind": "share-intent",
+              "network": "x"
+            },
+            {
+              "kind": "share-intent",
+              "network": "linkedin"
+            }
+          ],
+          "shareIcons": {
+            "assetRole": "icon.social-share"
+          }
+        },
+        "joined": "Joined: ",
+        "devReset": "Clear local waitlist",
+        "storage": {
+          "mode": "localStorage",
+          "key": "rig-clone-waitlist"
+        }
+      },
+      "motion": {
+        "pattern": "dashboard-pulse-spin",
+        "reducedMotionFallback": "steady-dot-static-loading"
+      }
+    },
+    {
+      "type": "shell.footer",
+      "content": {
+        "logo": {
+          "assetRole": "brand.wordmark"
+        },
+        "tagline": "On-device AI for engineers who’d rather not depend on the cloud.",
+        "columns": [
+          {
+            "title": "Connect",
+            "links": [
+              {
+                "label": "Twitter",
+                "target": {
+                  "kind": "placeholder"
+                }
+              },
+              {
+                "label": "LinkedIn",
+                "target": {
+                  "kind": "placeholder"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Terms of Service",
+                "target": {
+                  "kind": "route",
+                  "route": "/terms"
+                }
+              },
+              {
+                "label": "Privacy Policy",
+                "target": {
+                  "kind": "route",
+                  "route": "/privacy"
+                }
+              }
+            ]
+          }
+        ],
+        "copyright": "© 2026 Example Company. All rights reserved.",
+        "status": "All systems local",
+        "watermark": {
+          "assetRole": "brand.logo-mark"
+        }
+      },
+      "motion": {
+        "pattern": "status-blink",
+        "reducedMotionFallback": "steady-dot"
+      }
+    }
+  ]
+}

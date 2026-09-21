@@ -1,0 +1,26 @@
+{
+  "id": "component.three-col-cell",
+  "kind": "component",
+  "purpose": "Centred cell: badge, Chalet h3, paper-dim body; cells separated by 1px vertical rules.",
+  "implementedBy": [
+    {
+      "citation": "src/components/ThreeCol.jsx:17-23",
+      "quote": "<div className=\"three-col-cell\">"
+    },
+    {
+      "citation": "src/styles/ThreeCol.css:4-74",
+      "quote": ".three-col-section"
+    }
+  ],
+  "tokensUsed": [
+    "typeRole.three-col-h3",
+    "typeRole.card-body",
+    "color.border.default"
+  ],
+  "usedBySections": [
+    "feature.three-col"
+  ],
+  "composes": [
+    "primitive.badge"
+  ]
+}

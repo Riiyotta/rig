@@ -1,0 +1,32 @@
+{
+  "id": "component.faq-item",
+  "kind": "component",
+  "purpose": "Numbered <details> row: red '0N' label, Chalet question, chevron (rotates + turns red when open); answer via grid-rows 0fr->1fr .3s (React two-phase open; close instant).",
+  "implementedBy": [
+    {
+      "citation": "src/components/Faq.jsx:12-47",
+      "quote": "function FaqItem({ index, q, a })"
+    },
+    {
+      "citation": "src/styles/Faq.css:74",
+      "quote": "transition: grid-template-rows 0.3s ease;"
+    }
+  ],
+  "tokensUsed": [
+    "typeRole.faq-question",
+    "typeRole.step-body",
+    "duration.faq-rows",
+    "duration.faq-chevron",
+    "color.border.default",
+    "color.accent.primary"
+  ],
+  "usedBySections": [
+    "faq.accordion"
+  ],
+  "accessibility": [
+    "native details/summary; summary focus-visible 2px red outline"
+  ],
+  "composes": [
+    "primitive.mono-label"
+  ]
+}

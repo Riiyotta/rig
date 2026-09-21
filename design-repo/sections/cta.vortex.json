@@ -1,0 +1,192 @@
+{
+  "id": "cta.vortex",
+  "kind": "section",
+  "category": "conversion",
+  "purpose": "Closing conversion band OUTSIDE <main>: red wireframe vortex raster, bloom logo, glitch heading, big red chamfer button that scrolls to #early-access, fine print.",
+  "implementedBy": [
+    {
+      "citation": "src/components/Cta.jsx:16-46",
+      "quote": "glitch-text"
+    },
+    {
+      "citation": "src/styles/Cta.css:3-4",
+      "quote": "padding: 12rem 0 16rem;"
+    }
+  ],
+  "usedOnRoutes": [
+    "/"
+  ],
+  "constraints": {
+    "onePerPage": true,
+    "homeRouteOnly": true,
+    "mustPrecede": "shell.footer"
+  },
+  "content": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 4,
+        "evidence": {
+          "longestObserved": "Take back your tools",
+          "citation": "src/content.js:234",
+          "lineConstraint": "CLONE_SPEC.md:633"
+        }
+      },
+      "button": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 3,
+            "evidence": {
+              "longestObserved": "Request Early Access",
+              "citation": "src/content.js:235"
+            }
+          },
+          "target": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "fragment"
+                  },
+                  "id": {
+                    "type": "string",
+                    "enum": [
+                      "early-access",
+                      "our-approach"
+                    ]
+                  }
+                },
+                "required": [
+                  "kind",
+                  "id"
+                ],
+                "additionalProperties": false
+              }
+            ],
+            "x-allowedKinds": [
+              "fragment"
+            ]
+          }
+        },
+        "required": [
+          "label",
+          "target"
+        ],
+        "additionalProperties": false
+      },
+      "fine": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 6,
+        "evidence": {
+          "longestObserved": "No card required. No meter running.",
+          "citation": "src/content.js:236"
+        }
+      },
+      "vortex": {
+        "type": "object",
+        "properties": {
+          "assetRole": {
+            "type": "string",
+            "enum": [
+              "image.cta-vortex"
+            ]
+          }
+        },
+        "required": [
+          "assetRole"
+        ],
+        "additionalProperties": false
+      },
+      "logo": {
+        "type": "object",
+        "properties": {
+          "assetRole": {
+            "type": "string",
+            "enum": [
+              "brand.logo-mark"
+            ]
+          }
+        },
+        "required": [
+          "assetRole"
+        ],
+        "additionalProperties": false
+      },
+      "lineart": {
+        "type": "object",
+        "properties": {
+          "assetRole": {
+            "type": "string",
+            "enum": [
+              "brand.logo-mark"
+            ]
+          }
+        },
+        "required": [
+          "assetRole"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "title",
+      "button",
+      "fine",
+      "vortex",
+      "logo",
+      "lineart"
+    ],
+    "additionalProperties": false
+  },
+  "motion": {
+    "allowed": [
+      {
+        "pattern": "cta-glitch-glow-pulse",
+        "reducedMotionFallback": "static-heading-static-glow"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoints": [
+      {
+        "query": "(max-width: 1024px) and (min-width: 769px)",
+        "citation": "src/styles/Cta.css:158-162",
+        "quote": "@media (max-width: 1024px) and (min-width: 769px)",
+        "changes": [
+          "padding 8rem 0 10rem"
+        ]
+      },
+      {
+        "query": "(max-width: 768px)",
+        "citation": "src/styles/Cta.css:163-177",
+        "quote": "@media (max-width: 768px)",
+        "changes": [
+          "padding 6rem 0 8rem",
+          "h2 clamp(2.5rem,8vw,7rem)",
+          "oversized line-art hidden",
+          "button padding 1.25rem 2rem, 1rem text"
+        ]
+      }
+    ]
+  },
+  "assetRoles": [
+    "brand.logo-mark",
+    "image.cta-vortex"
+  ],
+  "fixedAssetRoles": [
+    "effect.svg-filter",
+    "icon.ui"
+  ],
+  "fixedAssetRolesNote": "rendered by the section itself (glyphs/filters), not settable from a PageSpec",
+  "composedOf": [
+    "component.glitch-heading",
+    "primitive.btn-chamfer"
+  ]
+}

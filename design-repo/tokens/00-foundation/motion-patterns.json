@@ -1,0 +1,195 @@
+{
+  "$description": "Closed registry of section motion patterns + the closed shader preset enum. Each pattern has a const reducedMotionFallback. reducedMotionHandledInSource=false marks a REAL gap: the clone source has no prefers-reduced-motion rule at all, so the fallback is a requirement generated pages must implement (warn rule REDUCED_MOTION_UNHANDLED_IN_SOURCE).",
+  "pattern": {
+    "none": {
+      "reducedMotionFallback": "none",
+      "description": "No load/scroll/keyframe motion in the section body; at most hover/focus transitions.",
+      "measuredFrom": [
+        "CLONE_SPEC.md:178",
+        "CLONE_SPEC.md:1097"
+      ],
+      "reducedMotionHandledInSource": true,
+      "pausesOffscreen": false
+    },
+    "grain-overlay-smil": {
+      "reducedMotionFallback": "static-grain-frame",
+      "description": "Fixed scanlines/noise/rgb-fringe overlays; the #grainy feTurbulence seed animates via SMIL (10s, indefinite).",
+      "measuredFrom": [
+        "CLONE_SPEC.md:144",
+        "src/components/Overlays.jsx:4"
+      ],
+      "reducedMotionHandledInSource": false,
+      "pausesOffscreen": false,
+      "fallbackNote": "No prefers-reduced-motion rule exists anywhere in src/ (grep -ri 'reduce' src finds only prose). This fallback is a design-repo REQUIREMENT for generated pages, not observed source behaviour."
+    },
+    "mobile-menu-fade": {
+      "reducedMotionFallback": "instant-toggle",
+      "description": "<=768 full-screen menu fades (opacity/visibility .3s); toggle bars morph to an X (.3s). Escape closes and refocuses the toggle.",
+      "measuredFrom": [
+        "src/styles/Navbar.css:123",
+        "src/components/Navbar.jsx:18"
+      ],
+      "reducedMotionHandledInSource": false,
+      "pausesOffscreen": false,
+      "fallbackNote": "No prefers-reduced-motion rule exists anywhere in src/ (grep -ri 'reduce' src finds only prose). This fallback is a design-repo REQUIREMENT for generated pages, not observed source behaviour."
+    },
+    "hero-ticker-watermark-glitch": {
+      "reducedMotionFallback": "static-ticker-no-glitch",
+      "description": "Ticker marquee (18s linear, translate 0 -> -50% of the viewport-wide flex row, so the loop visibly jumps - faithful) + watermark-glitch 4s keyframes; both paused off-screen via .is-visible. Hero header CTA/buttons glitch on hover.",
+      "measuredFrom": [
+        "src/styles/Hero.css:75",
+        "src/styles/Hero.css:22",
+        "src/styles/Hero.css:86-87"
+      ],
+      "reducedMotionHandledInSource": false,
+      "pausesOffscreen": true,
+      "fallbackNote": "No prefers-reduced-motion rule exists anywhere in src/ (grep -ri 'reduce' src finds only prose). This fallback is a design-repo REQUIREMENT for generated pages, not observed source behaviour."
+    },
+    "eye-glitch-tracking-blink": {
+      "reducedMotionFallback": "static-eye-no-tracking",
+      "description": "Pupil-glitch 4s keyframes; pupil follows the mouse (max 16 viewBox units, no easing); random blink loop (first 2-5s after entering view, then every 6-14s, 30% double blink) with a 300ms per-frame filter glitch.",
+      "measuredFrom": [
+        "src/styles/Problem.css:93",
+        "src/components/Problem.jsx:9",
+        "src/components/Problem.jsx:89"
+      ],
+      "reducedMotionHandledInSource": false,
+      "pausesOffscreen": true,
+      "fallbackNote": "No prefers-reduced-motion rule exists anywhere in src/ (grep -ri 'reduce' src finds only prose). This fallback is a design-repo REQUIREMENT for generated pages, not observed source behaviour."
+    },
+    "shader-headline-smil-diagram": {
+      "reducedMotionFallback": "single-shader-frame-static-diagram",
+      "shaderPreset": "headline",
+      "description": "WebGL dither canvas (preset 'headline', mix-blend lighten) behind the headline + SMIL shooting-star flow diagram (2s / 1.5s loops).",
+      "measuredFrom": [
+        "src/components/Intro.jsx:43",
+        "CLONE_SPEC.md:409"
+      ],
+      "reducedMotionHandledInSource": false,
+      "pausesOffscreen": true,
+      "fallbackNote": "No prefers-reduced-motion rule exists anywhere in src/ (grep -ri 'reduce' src finds only prose). This fallback is a design-repo REQUIREMENT for generated pages, not observed source behaviour."
+    },
+    "globe-drift-signal-flicker": {
+      "reducedMotionFallback": "static-globe",
+      "description": "Globe meridian groups drift apart (disconnect-drift-left/right 6s) + wifi-off signal-flicker 4s; paused off-screen.",
+      "measuredFrom": [
+        "src/styles/Offline.css:139",
+        "src/styles/Offline.css:144"
+      ],
+      "reducedMotionHandledInSource": false,
+      "pausesOffscreen": true,
+      "fallbackNote": "No prefers-reduced-motion rule exists anywhere in src/ (grep -ri 'reduce' src finds only prose). This fallback is a design-repo REQUIREMENT for generated pages, not observed source behaviour."
+    },
+    "stepper-autoadvance-tween": {
+      "reducedMotionFallback": "manual-steps-no-autoadvance",
+      "shaderPreset": "how",
+      "description": "3-step stepper: active step's progress fill runs 6s linear then auto-advances (loops 3 -> 1); runs only while in view (IO .1) and not hovered; body expands via grid-template-rows .4s; overlay card height tweens 400ms cubic-bezier(0,0,.58,1); shader preset 'how' behind the card with a mouse red tint.",
+      "measuredFrom": [
+        "src/styles/HowItWorks.css:81",
+        "src/components/HowItWorks.jsx:84",
+        "src/components/HowItWorks.jsx:164"
+      ],
+      "reducedMotionHandledInSource": false,
+      "pausesOffscreen": true,
+      "fallbackNote": "No prefers-reduced-motion rule exists anywhere in src/ (grep -ri 'reduce' src finds only prose). This fallback is a design-repo REQUIREMENT for generated pages, not observed source behaviour."
+    },
+    "terminal-boot-reveal-typing": {
+      "reducedMotionFallback": "all-lines-visible-static-prompt",
+      "description": "8 boot lines reveal on PAGE LOAD (terminalLineIn step-end, delays .4-4.8s - not scroll-triggered); prompt typing loop 70ms/char, 2000ms hold, 30ms delete, 400ms pause, starting 500ms after the section intersects; cursor blink 1s step-end; LED blink 3s.",
+      "measuredFrom": [
+        "src/styles/Terminal.css:216",
+        "src/components/Terminal.jsx:17-21"
+      ],
+      "reducedMotionHandledInSource": false,
+      "pausesOffscreen": false,
+      "fallbackNote": "No prefers-reduced-motion rule exists anywhere in src/ (grep -ri 'reduce' src finds only prose). This fallback is a design-repo REQUIREMENT for generated pages, not observed source behaviour."
+    },
+    "shader-headline-form": {
+      "reducedMotionFallback": "single-shader-frame",
+      "shaderPreset": "headline",
+      "description": "WebGL dither canvas (preset 'headline') behind the early-access headline; submit spinner (wl-spin 1s) while the fake submission runs.",
+      "measuredFrom": [
+        "src/components/EarlyAccess.jsx:43",
+        "src/styles/WaitlistForm.css:80"
+      ],
+      "reducedMotionHandledInSource": false,
+      "pausesOffscreen": true,
+      "fallbackNote": "No prefers-reduced-motion rule exists anywhere in src/ (grep -ri 'reduce' src finds only prose). This fallback is a design-repo REQUIREMENT for generated pages, not observed source behaviour."
+    },
+    "faq-grid-rows": {
+      "reducedMotionFallback": "instant-toggle",
+      "description": "Answer opens via grid-template-rows 0fr -> 1fr .3s ease (two-phase React open); chevron rotates 180deg .3s; closing is instant.",
+      "measuredFrom": [
+        "src/styles/Faq.css:74",
+        "src/components/Faq.jsx:28"
+      ],
+      "reducedMotionHandledInSource": false,
+      "pausesOffscreen": false,
+      "fallbackNote": "No prefers-reduced-motion rule exists anywhere in src/ (grep -ri 'reduce' src finds only prose). This fallback is a design-repo REQUIREMENT for generated pages, not observed source behaviour."
+    },
+    "cta-glitch-glow-pulse": {
+      "reducedMotionFallback": "static-heading-static-glow",
+      "description": "Glitch heading pseudo-copies in moving clip bands (5s / 4.5s alternate-reverse), logo glow pulse 3s; all CTA SVG animation paused off-screen.",
+      "measuredFrom": [
+        "src/styles/Cta.css:114",
+        "src/styles/Cta.css:59",
+        "src/styles/Cta.css:154"
+      ],
+      "reducedMotionHandledInSource": false,
+      "pausesOffscreen": true,
+      "fallbackNote": "No prefers-reduced-motion rule exists anywhere in src/ (grep -ri 'reduce' src finds only prose). This fallback is a design-repo REQUIREMENT for generated pages, not observed source behaviour."
+    },
+    "status-blink": {
+      "reducedMotionFallback": "steady-dot",
+      "description": "Footer square status dot blinks (1.5s step-end infinite). The only animation on secondary pages besides the grain seed (spec P5).",
+      "measuredFrom": [
+        "src/styles/Footer.css:77",
+        "CLONE_SPEC.md:1097"
+      ],
+      "reducedMotionHandledInSource": false,
+      "pausesOffscreen": false,
+      "fallbackNote": "No prefers-reduced-motion rule exists anywhere in src/ (grep -ri 'reduce' src finds only prose). This fallback is a design-repo REQUIREMENT for generated pages, not observed source behaviour."
+    },
+    "form-submit-spinner": {
+      "reducedMotionFallback": "static-loading-label",
+      "description": "Submit button swaps its label for an 18px spinner (wl-spin 1s linear) during the ~800ms fake submission.",
+      "measuredFrom": [
+        "src/styles/WaitlistForm.css:80",
+        "src/components/WaitlistForm.jsx:25"
+      ],
+      "reducedMotionHandledInSource": false,
+      "pausesOffscreen": false,
+      "fallbackNote": "No prefers-reduced-motion rule exists anywhere in src/ (grep -ri 'reduce' src finds only prose). This fallback is a design-repo REQUIREMENT for generated pages, not observed source behaviour."
+    },
+    "dashboard-pulse-spin": {
+      "reducedMotionFallback": "steady-dot-static-loading",
+      "description": "Dashboard status-badge dot pulse-dot 2s; loading-state spinner spin 1s; hardware Save shows 'Saving...' text.",
+      "measuredFrom": [
+        "src/styles/Waitlist.css:238",
+        "src/styles/Waitlist.css:184"
+      ],
+      "reducedMotionHandledInSource": false,
+      "pausesOffscreen": false,
+      "fallbackNote": "No prefers-reduced-motion rule exists anywhere in src/ (grep -ri 'reduce' src finds only prose). This fallback is a design-repo REQUIREMENT for generated pages, not observed source behaviour."
+    }
+  },
+  "shaderPreset": {
+    "headline": {
+      "usedBy": [
+        "intro.shader-diagram",
+        "early-access.waitlist"
+      ],
+      "measuredFrom": "src/lib/ditherShader.js:299-324",
+      "evidenceQuote": "headline: {",
+      "description": "shader2/shader3: red (#ed462d) horizontal dash streaks on black, blended with mix-blend-mode:lighten over the ink page."
+    },
+    "how": {
+      "usedBy": [
+        "how.stepper"
+      ],
+      "measuredFrom": "src/lib/ditherShader.js:276-296",
+      "evidenceQuote": "how: {",
+      "description": "shader1: near-invisible dark-grey dash field (#121212 on #0A0A0A, 14px cells) behind the How overlay card; mouse tints it red within 0.25 UV."
+    }
+  }
+}

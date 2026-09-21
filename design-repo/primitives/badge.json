@@ -1,0 +1,35 @@
+{
+  "id": "primitive.badge",
+  "kind": "primitive",
+  "purpose": "Glass pill-less label: 16px pixel icon + uppercase red Chivo text, blur(8px) backdrop, red/.2 border; centred by default with per-section margin overrides.",
+  "implementedBy": [
+    {
+      "citation": "src/index.css:327-343",
+      "quote": "backdrop-filter: blur(8px);"
+    },
+    {
+      "citation": "src/components/Badge.jsx:6",
+      "quote": "export default function Badge("
+    }
+  ],
+  "tokensUsed": [
+    "color.surface.glass",
+    "color.border.badge",
+    "color.accent.primary",
+    "typeRole.badge",
+    "backdrop.glass-blur",
+    "iconSize.badge"
+  ],
+  "usedBySections": [
+    "problem.signal-grid",
+    "intro.shader-diagram",
+    "offline.globe-split",
+    "feature.three-col",
+    "how.stepper",
+    "capabilities.card-grid",
+    "terminal.monitor",
+    "early-access.waitlist",
+    "faq.accordion",
+    "waitlist.form-view"
+  ]
+}

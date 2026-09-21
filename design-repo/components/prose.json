@@ -1,0 +1,30 @@
+{
+  "id": "component.prose",
+  "kind": "component",
+  "purpose": "Shared .prose typography for posts and legal docs: 17px/1.75 paper-60, Chalet h2/h3, red underlined links, strong paper 600, red-rule blockquote, dim hr.",
+  "implementedBy": [
+    {
+      "citation": "src/styles/BlogPost.css:47-161",
+      "quote": ".blog-post .prose {"
+    },
+    {
+      "citation": "src/styles/Legal.css:39-75",
+      "quote": ".payload-page .prose {"
+    }
+  ],
+  "tokensUsed": [
+    "prose.body",
+    "prose.rule",
+    "typeRole.prose-base",
+    "typeRole.prose-excerpt",
+    "typeRole.prose-h2",
+    "typeRole.prose-h3",
+    "color.accent.primary",
+    "duration.blog-row"
+  ],
+  "usedBySections": [
+    "post.article",
+    "legal.document"
+  ],
+  "composes": []
+}

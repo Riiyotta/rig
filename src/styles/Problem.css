@@ -1,0 +1,148 @@
+/* Problem — CLONE_SPEC.md §3 */
+.problem-section {
+  padding: 0;
+  border-bottom: none;
+}
+.problem-section .problem-container {
+  padding: 0;
+}
+.problem-section .problem-outer {
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.problem-section .problem-top {
+  padding: 3rem 3rem 2.5rem;
+}
+.problem-section .problem-badge {
+  margin-bottom: 2rem;
+}
+.problem-section .problem-headline {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  line-height: 0.92;
+}
+.problem-section .problem-divider {
+  border-top: 1px solid var(--border);
+}
+
+.problem-section .problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  min-height: 420px;
+}
+.problem-section .problem-eye-col {
+  grid-row: 1 / 3;
+  border-right: 1px solid var(--border);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.problem-section .problem-eye-wrapper {
+  width: 380px;
+  height: 380px;
+}
+.problem-section .problem-eye-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.problem-section .problem-card {
+  padding: 2rem;
+}
+.problem-section .problem-grid > :nth-child(2),
+.problem-section .problem-grid > :nth-child(4) {
+  border-right: 1px solid var(--border);
+}
+.problem-section .problem-grid > :nth-child(2),
+.problem-section .problem-grid > :nth-child(3) {
+  border-bottom: 1px solid var(--border);
+}
+.problem-section .problem-card-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+.problem-section .problem-card-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+.problem-section .problem-card-number {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--paper-20);
+}
+.problem-section .problem-card h3 {
+  font-size: 1.35rem;
+  line-height: 1.05;
+  margin-bottom: 0.75rem;
+}
+.problem-section .problem-card p {
+  color: var(--paper-dim);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+/* Eye */
+.problem-section #eye-pupil {
+  animation: pupil-glitch 4s infinite linear;
+}
+.signal-section:not(.is-visible) #eye-pupil {
+  animation-play-state: paused !important;
+}
+.problem-section .eye-blink-target {
+  transform-origin: 240px 240px;
+  transform: scaleY(1);
+  transition: transform 0.25s cubic-bezier(0.7, 0, 1, 0.5);
+}
+.problem-section .eye-blink-target.shut {
+  transform: scaleY(0.02);
+  transition: transform 0.2s cubic-bezier(0, 0.5, 0.3, 1);
+}
+.problem-section .eye-linework {
+  transition: opacity 0.1s ease;
+}
+.problem-section .problem-eye-col:hover .eye-linework {
+  opacity: 0.28;
+  transition: opacity 0s;
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .problem-section .problem-top {
+    padding: 2rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .problem-section .problem-top {
+    padding: 1.5rem 1.25rem !important;
+  }
+  .problem-section .problem-grid {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+    min-height: auto !important;
+  }
+  .problem-section .problem-eye-col {
+    grid-row: auto !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--border);
+    min-height: 280px;
+  }
+  .problem-section .problem-eye-wrapper {
+    width: 280px !important;
+    height: 280px !important;
+  }
+  .problem-section .problem-card {
+    padding: 1.25rem !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--border) !important;
+  }
+  .problem-section .problem-card:last-child {
+    border-bottom: none !important;
+  }
+}

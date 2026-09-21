@@ -1,0 +1,54 @@
+{
+  "$description": "Radius scale from every border-radius in src/styles/*.css. The system is overwhelmingly square: buttons/cards use the 14px chamfer clip-path instead of rounded corners.",
+  "radius": {
+    "none": {
+      "$type": "dimension",
+      "$value": "0",
+      "measuredFrom": "CLONE_SPEC.md:1021",
+      "evidenceQuote": "square corners",
+      "$description": "default: badges, cards, inputs, status badge"
+    },
+    "xs": {
+      "$type": "dimension",
+      "$value": "1px",
+      "measuredFrom": "src/styles/Terminal.css:117",
+      "evidenceQuote": "1px",
+      "$description": "monitor vents"
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": "4px",
+      "measuredFrom": "src/styles/BlogPost.css:138",
+      "evidenceQuote": "4px",
+      "$description": "inline code (declared, unused by posts)"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "6px",
+      "measuredFrom": "src/styles/HowItWorks.css:159",
+      "evidenceQuote": "6px",
+      "$description": "how overlay card, prose img/pre, diagram placeholder, screen bezel"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "10px",
+      "measuredFrom": "src/styles/Terminal.css:103",
+      "evidenceQuote": "10px",
+      "$description": "monitor casing"
+    },
+    "round": {
+      "$type": "dimension",
+      "$value": "50%",
+      "measuredFrom": "src/styles/Terminal.css:150",
+      "evidenceQuote": "50%",
+      "$description": "dots, spinners"
+    },
+    "chamfer": {
+      "$type": "dimension",
+      "$value": "14px",
+      "measuredFrom": "src/index.css:92",
+      "evidenceQuote": "14px",
+      "$description": "45deg corner cut (top-left + bottom-right) via clip-path on .btn-chamfer / .illust-card / submit button"
+    }
+  }
+}

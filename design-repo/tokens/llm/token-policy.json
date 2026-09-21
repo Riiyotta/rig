@@ -1,0 +1,68 @@
+{
+  "$description": "What is enforced vs convention for token use in generated output.",
+  "rules": [
+    {
+      "id": "REFERENCE_SEMANTIC_FIRST",
+      "status": "convention",
+      "text": "Reference semantic/component tokens (color.text.primary) rather than raw values (#f0ede6 / oklch)."
+    },
+    {
+      "id": "NO_NEW_VALUES",
+      "status": "enforced-by-review",
+      "text": "Never introduce a colour, radius, shadow, easing or size that is not in tokens/00-foundation (which mirrors src/index.css :root + the real CSS literal histogram; verify_all checks each cited value)."
+    },
+    {
+      "id": "THEME",
+      "status": "enforced",
+      "text": "PageSpec.theme enum is ['dark'] (schema). There is no light theme; the red hero is a brand surface."
+    },
+    {
+      "id": "PAGE_CONTENT_NOT_TOKENS",
+      "status": "enforced",
+      "text": "PageSpecs carry content, variants, motion and asset roles only; no style overrides exist in the schema (additionalProperties false)."
+    },
+    {
+      "id": "FAUX_BOLD_HEADINGS",
+      "status": "convention",
+      "text": "Chalet ships weight 400 only; headings use font-weight 700 (browser faux-bold) exactly as the source does (spec §0.2). Do not substitute a real bold cut."
+    },
+    {
+      "id": "CHAMFER_NOT_RADIUS",
+      "status": "convention",
+      "text": "Buttons/cards use the 14px chamfer clip-path (radius.chamfer), not rounded corners. The clipped hover shadow is a faithful quirk."
+    },
+    {
+      "id": "COMMERCIAL_FONT",
+      "status": "enforced-by-review",
+      "text": "font.family.display (Chalet) is commercially licensed; production builds must license or substitute it."
+    }
+  ],
+  "flaggedTokens": {
+    "font.family.display": [
+      "restricted:commercial-license"
+    ],
+    "color.share.x-bg": [
+      "restricted:third-party-brand"
+    ],
+    "color.share.linkedin-bg": [
+      "restricted:third-party-brand"
+    ],
+    "color.blue-dim": [
+      "declared-unused-in-css"
+    ],
+    "color.green-dim": [
+      "declared-unused-in-css"
+    ],
+    "color.paper-12": [
+      "declared-unused-in-css"
+    ]
+  },
+  "resolutionOrder": [
+    "foundation",
+    "theme-mode overrides",
+    "semantic aliases",
+    "component tokens",
+    "permitted local overrides",
+    "responsive overrides"
+  ]
+}

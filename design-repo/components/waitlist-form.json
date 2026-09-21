@@ -1,0 +1,62 @@
+{
+  "id": "component.waitlist-form",
+  "kind": "component",
+  "purpose": "Shared waitlist form (home early-access, post CTA aside; /waitlist has a page-scoped twin): email + chamfer submit, error line, honeypot, EMPTY Turnstile slot (keeps the 1rem margin), then a fake success view with queue position, referral link + copy, dashboard link. NO backend: ~800ms timer, random position/code.",
+  "implementedBy": [
+    {
+      "citation": "src/components/WaitlistForm.jsx:27-128",
+      "quote": "export default function WaitlistForm("
+    },
+    {
+      "citation": "src/components/WaitlistForm.jsx:105",
+      "quote": "{/* Cloudflare Turnstile slot (3rd-party, not recreated — §18.11). */}"
+    },
+    {
+      "citation": "src/styles/WaitlistForm.css:5",
+      "quote": ".waitlist-form-wrapper {"
+    }
+  ],
+  "tokensUsed": [
+    "container.form",
+    "color.surface.input",
+    "button.submit.hover-bg",
+    "typeRole.button",
+    "color.text.error",
+    "duration.spin"
+  ],
+  "usedBySections": [
+    "early-access.waitlist",
+    "post.cta-aside",
+    "waitlist.form-view"
+  ],
+  "states": [
+    {
+      "state": "error",
+      "change": "#ff6b6b .75rem line under the row; hidden when empty",
+      "measuredFrom": "src/styles/WaitlistForm.css:83",
+      "evidenceQuote": ".waitlist-form-wrapper .form-error {"
+    },
+    {
+      "state": "loading",
+      "change": "spinner replaces the label",
+      "measuredFrom": "src/styles/WaitlistForm.css:74",
+      "evidenceQuote": ".waitlist-form-wrapper .submit-button[data-loading='true'] .button-loading {"
+    },
+    {
+      "state": "success",
+      "change": "form replaced by the success block",
+      "measuredFrom": "src/styles/WaitlistForm.css:98",
+      "evidenceQuote": ".waitlist-form-wrapper .waitlist-success {"
+    }
+  ],
+  "accessibility": [
+    "error <p role=alert aria-live=polite>",
+    "input aria-invalid when erroring",
+    "copy button aria-label"
+  ],
+  "composes": [
+    "primitive.text-input",
+    "primitive.btn-chamfer",
+    "primitive.copy-button"
+  ]
+}

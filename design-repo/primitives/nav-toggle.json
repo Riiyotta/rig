@@ -1,0 +1,35 @@
+{
+  "id": "primitive.nav-toggle",
+  "kind": "primitive",
+  "purpose": "<=768 three-bar menu toggle (40x32); bars morph to an X when aria-expanded=true.",
+  "implementedBy": [
+    {
+      "citation": "src/components/Navbar.jsx:39-49",
+      "quote": "className=\"nav-toggle\""
+    },
+    {
+      "citation": "src/styles/Navbar.css:68",
+      "quote": ".nav-toggle {"
+    }
+  ],
+  "tokensUsed": [
+    "zIndex.nav-toggle-open",
+    "duration.mobile-menu"
+  ],
+  "usedBySections": [
+    "hero.home",
+    "shell.header"
+  ],
+  "states": [
+    {
+      "state": "expanded",
+      "change": "bars rotate +/-45deg, middle fades; toggle becomes fixed",
+      "measuredFrom": "src/styles/Navbar.css:89",
+      "evidenceQuote": ".nav-toggle[aria-expanded='true'] .nav-toggle-bar:nth-child(1) {"
+    }
+  ],
+  "accessibility": [
+    "aria-expanded + aria-controls=nav-menu",
+    "Escape closes the menu and returns focus to the toggle"
+  ]
+}

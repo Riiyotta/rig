@@ -1,0 +1,382 @@
+{
+  "id": "terminal.monitor",
+  "kind": "section",
+  "category": "content",
+  "purpose": "Show the product for tinkerers: perspective floor grid, a monitor casing with a terminal boot session (reveals on load) and a typing prompt loop, flanked by blueprint annotations.",
+  "implementedBy": [
+    {
+      "citation": "src/components/Terminal.jsx:124-220",
+      "quote": "terminal-artifact"
+    },
+    {
+      "citation": "src/styles/Terminal.css:2-315",
+      "quote": ".terminal-section"
+    }
+  ],
+  "usedOnRoutes": [
+    "/"
+  ],
+  "constraints": {
+    "onePerPage": true
+  },
+  "content": {
+    "type": "object",
+    "properties": {
+      "badge": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 2,
+            "evidence": {
+              "longestObserved": "Engineered intelligence",
+              "citation": "src/content.js:178"
+            }
+          },
+          "icon": {
+            "type": "object",
+            "properties": {
+              "assetRole": {
+                "type": "string",
+                "enum": [
+                  "icon.badge-pixel"
+                ]
+              },
+              "iconKey": {
+                "type": "string",
+                "enum": [
+                  "problem",
+                  "intro",
+                  "offline",
+                  "unlimited",
+                  "privacy",
+                  "latency",
+                  "approach",
+                  "capabilities",
+                  "terminal",
+                  "early-access",
+                  "faq"
+                ]
+              }
+            },
+            "required": [
+              "assetRole",
+              "iconKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "label",
+          "icon"
+        ],
+        "additionalProperties": false
+      },
+      "title": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 3,
+        "evidence": {
+          "longestObserved": "Made for tinkerers",
+          "citation": "src/content.js:179"
+        }
+      },
+      "windowTitle": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 3,
+        "evidence": {
+          "longestObserved": "rig://127.0.0.1 · offline",
+          "citation": "src/content.js:193"
+        }
+      },
+      "command": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 2,
+        "evidence": {
+          "longestObserved": "rig init",
+          "citation": "src/content.js:195"
+        }
+      },
+      "asciiArt": {
+        "type": "object",
+        "properties": {
+          "assetRole": {
+            "type": "string",
+            "enum": [
+              "text.ascii-brand-art"
+            ]
+          }
+        },
+        "required": [
+          "assetRole"
+        ],
+        "additionalProperties": false
+      },
+      "boot": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxWords": 7,
+          "evidence": {
+            "longestObserved": "> Indexing 1,904 files · 63,550 symbols",
+            "citation": "src/content.js:196"
+          }
+        },
+        "minItems": 4,
+        "maxItems": 4
+      },
+      "bootOk": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 1,
+        "evidence": {
+          "longestObserved": "OK",
+          "citation": "src/content.js:197"
+        }
+      },
+      "ready": {
+        "type": "object",
+        "properties": {
+          "mark": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 1,
+            "evidence": {
+              "longestObserved": "✓",
+              "citation": "src/content.js:198"
+            }
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 1,
+            "evidence": {
+              "longestObserved": "Ready.",
+              "citation": "src/content.js:198"
+            }
+          },
+          "network": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 1,
+            "evidence": {
+              "longestObserved": "Network",
+              "citation": "src/content.js:48"
+            }
+          },
+          "telemetry": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 1,
+            "evidence": {
+              "longestObserved": "Telemetry",
+              "citation": "src/content.js:198"
+            }
+          },
+          "off": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 1,
+            "evidence": {
+              "longestObserved": "OFF",
+              "citation": "src/content.js:198"
+            }
+          }
+        },
+        "required": [
+          "mark",
+          "text",
+          "network",
+          "telemetry",
+          "off"
+        ],
+        "additionalProperties": false
+      },
+      "prompts": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxWords": 6,
+          "evidence": {
+            "longestObserved": "write tests for the auth module",
+            "citation": "src/content.js:190"
+          }
+        },
+        "minItems": 1,
+        "maxItems": 4,
+        "description": "typing-loop phrases"
+      },
+      "typingInitial": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 4,
+        "evidence": {
+          "longestObserved": "explain this regex to ",
+          "citation": "src/content.js:190"
+        }
+      },
+      "bezel": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxWords": 2,
+          "evidence": {
+            "longestObserved": "Neural Core",
+            "citation": "src/content.js:199"
+          }
+        },
+        "minItems": 3,
+        "maxItems": 3
+      },
+      "annotations": {
+        "type": "object",
+        "properties": {
+          "left": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxWords": 2,
+                  "evidence": {
+                    "longestObserved": "Custom Model",
+                    "citation": "src/content.js:181"
+                  }
+                },
+                "desc": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxWords": 5,
+                  "evidence": {
+                    "longestObserved": "Reliable tool calls and plans",
+                    "citation": "src/content.js:187"
+                  }
+                }
+              },
+              "required": [
+                "title",
+                "desc"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "right": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxWords": 2,
+                  "evidence": {
+                    "longestObserved": "Custom Model",
+                    "citation": "src/content.js:181"
+                  }
+                },
+                "desc": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxWords": 5,
+                  "evidence": {
+                    "longestObserved": "Reliable tool calls and plans",
+                    "citation": "src/content.js:187"
+                  }
+                }
+              },
+              "required": [
+                "title",
+                "desc"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 3,
+            "maxItems": 3
+          }
+        },
+        "required": [
+          "left",
+          "right"
+        ],
+        "additionalProperties": false,
+        "description": "blueprint annotations (desktop) / interleaved 2-col grid (<=1024)"
+      }
+    },
+    "required": [
+      "badge",
+      "title",
+      "windowTitle",
+      "command",
+      "asciiArt",
+      "boot",
+      "bootOk",
+      "ready",
+      "prompts",
+      "typingInitial",
+      "bezel",
+      "annotations"
+    ],
+    "additionalProperties": false,
+    "description": "Exactly 8 .term-line rows: nth-child drives the reveal delays (Terminal.jsx comment)"
+  },
+  "motion": {
+    "allowed": [
+      {
+        "pattern": "terminal-boot-reveal-typing",
+        "reducedMotionFallback": "all-lines-visible-static-prompt"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoints": [
+      {
+        "query": "(max-width: 1280px)",
+        "citation": "src/styles/Terminal.css:270-274",
+        "quote": "@media (max-width: 1280px)",
+        "changes": [
+          "clip-path inset(0 5%)"
+        ]
+      },
+      {
+        "query": "(max-width: 1024px)",
+        "citation": "src/styles/Terminal.css:275-296",
+        "quote": "@media (max-width: 1024px)",
+        "changes": [
+          "blueprint annotations hidden",
+          "annotation grid shown: 2 columns, bordered, interleaved L1 R1 L2 R2 L3 R3"
+        ]
+      },
+      {
+        "query": "(max-width: 768px)",
+        "citation": "src/styles/Terminal.css:297-315",
+        "quote": "@media (max-width: 768px)",
+        "changes": [
+          "section padding 4rem 0, clip-path inset(0 1.25rem)",
+          "terminal body padding 1rem, .75rem text (.info .65rem)",
+          "screen bezel aspect-ratio auto",
+          "annotation grid margin-top 1.5rem"
+        ]
+      }
+    ]
+  },
+  "assetRoles": [
+    "icon.badge-pixel",
+    "text.ascii-brand-art"
+  ],
+  "composedOf": [
+    "primitive.badge",
+    "component.grid-bg",
+    "component.monitor-terminal",
+    "component.blueprint-annotation"
+  ]
+}

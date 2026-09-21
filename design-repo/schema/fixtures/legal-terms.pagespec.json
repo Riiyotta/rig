@@ -1,0 +1,1671 @@
+{
+  "pageSpecVersion": "1.0.0",
+  "id": "legal-terms",
+  "route": "/terms",
+  "template": "tpl.legal",
+  "theme": "dark",
+  "nodes": [
+    {
+      "type": "shell.overlays",
+      "content": {
+        "grainFilter": {
+          "assetRole": "effect.svg-filter"
+        }
+      },
+      "motion": {
+        "pattern": "grain-overlay-smil",
+        "reducedMotionFallback": "static-grain-frame"
+      }
+    },
+    {
+      "type": "shell.header",
+      "variant": "default",
+      "content": {
+        "logo": {
+          "assetRole": "brand.wordmark"
+        },
+        "links": [
+          {
+            "label": "Blog",
+            "target": {
+              "kind": "route",
+              "route": "/blog"
+            }
+          }
+        ],
+        "cta": {
+          "label": "Get Early Access",
+          "target": {
+            "kind": "route",
+            "route": "/waitlist"
+          }
+        }
+      },
+      "motion": {
+        "pattern": "mobile-menu-fade",
+        "reducedMotionFallback": "instant-toggle"
+      }
+    },
+    {
+      "type": "legal.document",
+      "content": {
+        "title": "Terms of Service",
+        "blocks": [
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "bold",
+                "text": "Placeholder text for a design clone — not a real policy."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "bold",
+                "text": "Terms of Service"
+              },
+              {
+                "kind": "break"
+              },
+              {
+                "kind": "bold",
+                "text": "Revised: 1/1/26"
+              }
+            ],
+            "align": "center"
+          },
+          {
+            "kind": "ol",
+            "items": [
+              {
+                "value": 1,
+                "runs": [
+                  {
+                    "kind": "bold",
+                    "text": "ABOUT THESE TERMS"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Section numbers, headings and list markers are"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "underline",
+                "text": "Service"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "underline",
+                "text": "Terms"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "inbox. Dates, figures and time periods shown"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "underline",
+                "text": "Company"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "on this page are illustrative and should not be relied upon. Each block keeps roughly the same length"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "underline",
+                "text": "you"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "as its counterpart"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "underline",
+                "text": "User"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "LINKS, UNDERLINED PHRASES AND BOLD LEAD-INS APPEAR WHERE THE LAYOUT CALLS FOR THEM, NOT WHERE MEANING REQUIRES. ANY RESEMBLANCE BETWEEN THIS FILLER AND A REAL AGREEMENT IS COINCIDENTAL AND SHOULD BE DISREGARDED. THE DESIGN CLONE RENDERS THIS CONTENT FROM STRUCTURED BLOCKS RATHER THAN FROM PASTED MARKUP. THIS PARAGRAPH IS PLACEHOLDER COPY THAT STANDS IN FOR A REAL CLAUSE WHILE THE LAYOUT IS BEING REVIEWED."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "bold",
+                "text": "NOTHING WRITTEN HERE DESCRIBES AN ACTUAL PRACTICE, PROMISE OR OBLIGATION OF ANY COMPANY OR PRODUCT. THE SAMPLE WORDING IS LONG ENOUGH TO WRAP ACROSS SEVERAL LINES SO THAT JUSTIFIED TEXT CAN BE CHECKED."
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "READERS SHOULD TREAT EACH SENTENCE AS FILLER AND CONSULT A QUALIFIED PROFESSIONAL FOR GENUINE GUIDANCE. IN A FINISHED DOCUMENT THIS SPACE WOULD EXPLAIN WHAT IS COVERED, WHEN IT APPLIES AND WHO IT AFFECTS. TERMS SUCH AS SERVICE, ACCOUNT AND CONTENT ARE USED LOOSELY HERE AND CARRY NO DEFINED MEANING. SECTION NUMBERS, HEADINGS AND LIST MARKERS ARE INCLUDED ONLY TO DEMONSTRATE THE VISUAL HIERARCHY."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in such documents. Links, underlined."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "break"
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "ol",
+            "items": [
+              {
+                "value": 2,
+                "runs": [
+                  {
+                    "kind": "bold",
+                    "text": "USING THE SAMPLE SERVICE"
+                  }
+                ],
+                "sub": [
+                  {
+                    "value": 1,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Eligibility."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "phrases and bold lead-ins appear where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "underline",
+                        "text": "Account Holder"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 2,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Sample accounts."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 3,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Access."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "underline",
+                        "text": "Software"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in such documents. Links, underlined phrases and bold lead-ins appear where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 4,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Updates."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 5,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Placeholder beta terms."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "underline",
+                        "text": "Beta"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "a finished document this space would explain what is covered, when it"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "underline",
+                        "text": "Pre-Release Build Features"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 6,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Usage limits."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in such documents. Links, underlined phrases and bold lead-ins appear where the layout calls for them, not where meaning requires."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 7,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Sample restrictions."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 8,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Account security."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "underline",
+                        "text": "Sign-in Details"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "value": 3,
+                "runs": [
+                  {
+                    "kind": "bold",
+                    "text": "CONTENT"
+                  }
+                ],
+                "sub": [
+                  {
+                    "value": 1,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Your content."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "intended to be enforceable. A production version would be drafted"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "link",
+                        "text": "here",
+                        "target": {
+                          "kind": "route",
+                          "route": "/terms"
+                        }
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "underline",
+                        "text": "User Content"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in such documents. Links, underlined."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 2,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "A placeholder licence grant."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "phrases and bold lead-ins appear"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "underline",
+                        "text": "Licensed Content"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 3,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Sample feedback."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "such documents. Links, underlined phrases and bold lead-ins appear where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement."
+                      }
+                    ]
+                  },
+                  {
+                    "nestedOnly": true,
+                    "sub": [
+                      {
+                        "value": 1,
+                        "runs": [
+                          {
+                            "kind": "bold",
+                            "text": "Sample output."
+                          },
+                          {
+                            "kind": "text",
+                            "text": " "
+                          },
+                          {
+                            "kind": "text",
+                            "text": "is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real"
+                          },
+                          {
+                            "kind": "text",
+                            "text": " "
+                          },
+                          {
+                            "kind": "underline",
+                            "text": "Generated Output"
+                          },
+                          {
+                            "kind": "text",
+                            "text": " "
+                          },
+                          {
+                            "kind": "text",
+                            "text": "clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account."
+                          }
+                        ]
+                      },
+                      {
+                        "value": 2,
+                        "runs": [
+                          {
+                            "kind": "bold",
+                            "text": "A placeholder note on ownership."
+                          },
+                          {
+                            "kind": "text",
+                            "text": " "
+                          },
+                          {
+                            "kind": "text",
+                            "text": "and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "ol",
+            "items": [
+              {
+                "value": 4,
+                "runs": [
+                  {
+                    "kind": "bold",
+                    "text": "Fees placeholder"
+                  }
+                ],
+                "sub": [
+                  {
+                    "value": 1,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Sample pricing."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 2,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Taxes."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in such documents. Links, underlined phrases and bold lead-ins appear where."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "value": 5,
+                "runs": [
+                  {
+                    "kind": "bold",
+                    "text": "SAMPLE ACCEPTABLE USE"
+                  }
+                ],
+                "sub": [
+                  {
+                    "value": 1,
+                    "runs": [
+                      {
+                        "kind": "text",
+                        "text": "Any resemblance between this filler and a real agreement is coincidental and should be disregarded."
+                      }
+                    ],
+                    "sub": [
+                      {
+                        "value": 1,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an."
+                          }
+                        ]
+                      },
+                      {
+                        "value": 2,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance."
+                          }
+                        ]
+                      },
+                      {
+                        "value": 3,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are."
+                          }
+                        ]
+                      },
+                      {
+                        "value": 4,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context."
+                          }
+                        ]
+                      },
+                      {
+                        "value": 5,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon."
+                          }
+                        ]
+                      },
+                      {
+                        "value": 6,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care."
+                          }
+                        ]
+                      },
+                      {
+                        "value": 7,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "Until then, the words on this page exist to exercise typography, spacing, alignment and indentation."
+                          }
+                        ]
+                      },
+                      {
+                        "value": 8,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix."
+                          }
+                        ]
+                      },
+                      {
+                        "value": 9,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "Links, underlined phrases and bold lead-ins appear where the layout calls for them, not where meaning requires."
+                          }
+                        ]
+                      },
+                      {
+                        "value": 10,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone."
+                          }
+                        ]
+                      },
+                      {
+                        "value": 11,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": 2,
+                    "runs": [
+                      {
+                        "kind": "text",
+                        "text": "The sample wording is long enough to wrap across several lines so that justified text can be checked."
+                      }
+                    ],
+                    "sub": [
+                      {
+                        "value": 1,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document."
+                          }
+                        ]
+                      },
+                      {
+                        "value": 2,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a."
+                          }
+                        ]
+                      },
+                      {
+                        "value": 3,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "The placeholder company is called Rig AI Inc. purely so that a name appears in context."
+                          }
+                        ]
+                      },
+                      {
+                        "value": 4,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page."
+                          }
+                        ]
+                      },
+                      {
+                        "value": 5,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights."
+                          }
+                        ]
+                      },
+                      {
+                        "value": 6,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "A production version would be drafted with care, reviewed by counsel and updated as practices change."
+                          }
+                        ]
+                      },
+                      {
+                        "value": 7,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "Until then, the words on this page exist to exercise typography, spacing, alignment and indentation."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": 3,
+                    "runs": [
+                      {
+                        "kind": "text",
+                        "text": "Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in such documents. Links, underlined phrases and bold lead-ins appear where the layout."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "value": 6,
+                "runs": [
+                  {
+                    "kind": "bold",
+                    "text": "Ownership"
+                  }
+                ],
+                "sub": [
+                  {
+                    "value": 1,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Sample ownership note."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "underline",
+                        "text": "Materials"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "disregarded. The design clone renders this content from structured blocks rather than from pasted."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 2,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Placeholder marks."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 3,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Sample notices."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "applies and who it affects. Terms such as service, account"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "underline",
+                        "text": "Notice Contact"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "link",
+                        "text": "placeholder@example.com",
+                        "target": {
+                          "kind": "email-placeholder",
+                          "address": "placeholder@example.com"
+                        }
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 4,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Reservation."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in such documents. Links, underlined phrases and bold lead-ins appear where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "value": 7,
+                "runs": [
+                  {
+                    "kind": "bold",
+                    "text": "Privacy"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "underline",
+                "text": "Policy"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "ol",
+            "items": [
+              {
+                "value": 8,
+                "runs": [
+                  {
+                    "kind": "bold",
+                    "text": "Termination"
+                  }
+                ],
+                "sub": [
+                  {
+                    "value": 1,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Placeholder term length."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "underline",
+                        "text": "Sample Term"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "underline",
+                        "text": "Period"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "Until then, the words on this page exist to exercise typography, spacing, alignment and indentation."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "underline",
+                        "text": "Notice"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in such documents. Links, underlined phrases and bold lead-ins appear where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "underline",
+                        "text": "Wind Down"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 2,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Sample suspension notes."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "underline",
+                        "text": "Suspension Event"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 3,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Survival."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in such documents. Links, underlined phrases and bold lead-ins appear where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "value": 9,
+                "runs": [
+                  {
+                    "kind": "bold",
+                    "text": "Warranties"
+                  }
+                ],
+                "sub": [
+                  {
+                    "value": 1,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Sample statements by you."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 2,
+                    "runs": [
+                      {
+                        "kind": "bold",
+                        "text": "Placeholder disclaimer text."
+                      }
+                    ],
+                    "sub": [
+                      {
+                        "value": 1,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "QUESTIONS ABOUT THIS SAMPLE CAN BE SENT TO PLACEHOLDER@EXAMPLE.COM, WHICH IS NOT A MONITORED INBOX. DATES, FIGURES AND TIME PERIODS SHOWN ON THIS PAGE ARE ILLUSTRATIVE AND SHOULD NOT BE RELIED UPON. EACH BLOCK KEEPS ROUGHLY THE SAME LENGTH AS ITS COUNTERPART SO THAT THE PAGE HEIGHT STAYS COMPARABLE. NOTHING IN THIS TEXT CREATES RIGHTS FOR ANYONE, AND NO PART OF IT IS INTENDED TO BE ENFORCEABLE. A PRODUCTION VERSION WOULD BE DRAFTED."
+                          }
+                        ]
+                      },
+                      {
+                        "value": 2,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "UNTIL THEN, THE WORDS ON THIS PAGE EXIST TO EXERCISE TYPOGRAPHY, SPACING, ALIGNMENT AND INDENTATION. SOME PARAGRAPHS ARE INTENTIONALLY LONG SO THAT THE RHYTHM OF A DENSE LEGAL PAGE CAN BE EVALUATED. OTHERS ARE SHORT, WHICH MIRRORS THE MIX OF BRIEF NOTICES AND LONGER EXPLANATIONS FOUND IN SUCH DOCUMENTS. LINKS, UNDERLINED PHRASES AND BOLD."
+                          }
+                        ]
+                      },
+                      {
+                        "value": 3,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "ANY RESEMBLANCE BETWEEN THIS FILLER AND A REAL AGREEMENT IS COINCIDENTAL AND SHOULD BE DISREGARDED. THE DESIGN CLONE RENDERS THIS CONTENT FROM STRUCTURED BLOCKS RATHER THAN FROM PASTED MARKUP. THIS PARAGRAPH IS PLACEHOLDER COPY THAT STANDS IN."
+                          }
+                        ]
+                      },
+                      {
+                        "value": 4,
+                        "runs": [
+                          {
+                            "kind": "text",
+                            "text": "NOTHING WRITTEN HERE DESCRIBES AN ACTUAL PRACTICE, PROMISE OR OBLIGATION OF ANY COMPANY OR PRODUCT. THE SAMPLE WORDING IS LONG ENOUGH TO WRAP ACROSS SEVERAL LINES SO THAT JUSTIFIED TEXT CAN BE CHECKED. READERS SHOULD TREAT EACH SENTENCE AS FILLER AND CONSULT A QUALIFIED PROFESSIONAL FOR GENUINE GUIDANCE. IN A FINISHED DOCUMENT THIS."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "value": 10,
+                "runs": [
+                  {
+                    "kind": "bold",
+                    "text": "Limitation of Liability"
+                  }
+                ],
+                "sub": [
+                  {
+                    "value": 1,
+                    "runs": [
+                      {
+                        "kind": "text",
+                        "text": "TERMS SUCH AS SERVICE, ACCOUNT AND CONTENT ARE USED LOOSELY HERE AND CARRY NO DEFINED MEANING. SECTION NUMBERS, HEADINGS AND LIST MARKERS ARE INCLUDED ONLY TO DEMONSTRATE THE VISUAL HIERARCHY. WHERE A REAL POLICY WOULD LIST EXCEPTIONS, THIS VERSION SIMPLY REPEATS NEUTRAL STATEMENTS OF SIMILAR LENGTH. THE PLACEHOLDER COMPANY IS CALLED RIG AI INC. PURELY SO THAT A NAME APPEARS IN CONTEXT. QUESTIONS ABOUT THIS SAMPLE CAN BE SENT TO PLACEHOLDER@EXAMPLE.COM, WHICH IS NOT A MONITORED INBOX. DATES, FIGURES AND TIME PERIODS SHOWN ON THIS PAGE ARE ILLUSTRATIVE AND SHOULD NOT BE RELIED UPON. EACH BLOCK KEEPS ROUGHLY THE SAME LENGTH AS ITS COUNTERPART SO THAT THE PAGE HEIGHT STAYS COMPARABLE. NOTHING IN THIS TEXT CREATES RIGHTS FOR ANYONE, AND NO PART OF IT IS INTENDED TO BE ENFORCEABLE. A PRODUCTION VERSION WOULD BE DRAFTED WITH CARE, REVIEWED BY COUNSEL AND UPDATED AS PRACTICES CHANGE."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 2,
+                    "runs": [
+                      {
+                        "kind": "text",
+                        "text": "UNTIL THEN, THE WORDS ON THIS PAGE EXIST TO EXERCISE TYPOGRAPHY, SPACING, ALIGNMENT AND INDENTATION. SOME PARAGRAPHS ARE INTENTIONALLY LONG SO THAT THE RHYTHM OF A DENSE LEGAL PAGE CAN BE EVALUATED. OTHERS ARE SHORT, WHICH MIRRORS THE MIX OF BRIEF NOTICES AND LONGER EXPLANATIONS FOUND IN SUCH DOCUMENTS. LINKS, UNDERLINED PHRASES AND BOLD LEAD-INS APPEAR WHERE THE LAYOUT CALLS FOR THEM, NOT WHERE MEANING REQUIRES. ANY RESEMBLANCE BETWEEN THIS FILLER AND A REAL AGREEMENT IS COINCIDENTAL AND SHOULD BE DISREGARDED. THE DESIGN CLONE RENDERS THIS CONTENT FROM STRUCTURED BLOCKS RATHER THAN FROM PASTED MARKUP. THIS PARAGRAPH IS PLACEHOLDER COPY THAT STANDS IN FOR A REAL CLAUSE WHILE THE LAYOUT IS BEING REVIEWED."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "value": 11,
+                "runs": [
+                  {
+                    "kind": "bold",
+                    "text": "Placeholder Indemnity Terms"
+                  }
+                ],
+                "sub": [
+                  {
+                    "value": 1,
+                    "runs": [
+                      {
+                        "kind": "text",
+                        "text": "Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "underline",
+                        "text": "Covered Parties"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "underline",
+                        "text": "Sample Claims"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "covered, when it applies and who it affects. Terms"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "underline",
+                        "text": "Losses"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 2,
+                    "runs": [
+                      {
+                        "kind": "text",
+                        "text": "A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in such documents. Links, underlined phrases and bold lead-ins appear where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 3,
+                    "runs": [
+                      {
+                        "kind": "text",
+                        "text": "Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "value": 12,
+                "runs": [
+                  {
+                    "kind": "bold",
+                    "text": "Sample Disputes"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "ol",
+            "items": [
+              {
+                "value": 13,
+                "runs": [
+                  {
+                    "kind": "bold",
+                    "text": "PLACEHOLDER GENERAL TERMS AND NOTICES"
+                  }
+                ],
+                "sub": [
+                  {
+                    "value": 1,
+                    "runs": [
+                      {
+                        "kind": "text",
+                        "text": "SOME PARAGRAPHS ARE INTENTIONALLY LONG SO THAT THE RHYTHM OF A DENSE LEGAL PAGE CAN BE EVALUATED. OTHERS ARE SHORT."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 2,
+                    "runs": [
+                      {
+                        "kind": "text",
+                        "text": "Links, underlined phrases and bold lead-ins appear where the layout calls"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "underline",
+                        "text": "Notice"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be"
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "link",
+                        "text": "placeholder@example.com",
+                        "target": {
+                          "kind": "email-placeholder",
+                          "address": "placeholder@example.com"
+                        }
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 3,
+                    "runs": [
+                      {
+                        "kind": "text",
+                        "text": "SECTION NUMBERS, HEADINGS AND LIST MARKERS ARE INCLUDED ONLY TO DEMONSTRATE THE VISUAL HIERARCHY. WHERE A REAL POLICY WOULD LIST EXCEPTIONS, THIS VERSION SIMPLY REPEATS NEUTRAL STATEMENTS OF SIMILAR LENGTH. THE PLACEHOLDER COMPANY IS CALLED RIG AI INC. PURELY SO THAT A NAME APPEARS IN CONTEXT. QUESTIONS ABOUT THIS SAMPLE CAN BE SENT TO PLACEHOLDER@EXAMPLE.COM, WHICH IS NOT A MONITORED INBOX. DATES, FIGURES AND TIME PERIODS SHOWN ON THIS PAGE ARE ILLUSTRATIVE AND SHOULD NOT BE RELIED UPON. EACH BLOCK KEEPS ROUGHLY THE SAME LENGTH AS ITS COUNTERPART SO THAT THE PAGE HEIGHT STAYS COMPARABLE."
+                      },
+                      {
+                        "kind": "text",
+                        "text": " "
+                      },
+                      {
+                        "kind": "text",
+                        "text": "NOTHING IN THIS TEXT CREATES RIGHTS FOR ANYONE, AND NO."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 4,
+                    "runs": [
+                      {
+                        "kind": "text",
+                        "text": "A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors."
+                      }
+                    ]
+                  },
+                  {
+                    "value": 5,
+                    "runs": [
+                      {
+                        "kind": "text",
+                        "text": "Links, underlined phrases and bold lead-ins appear where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "value": 14,
+                "runs": [
+                  {
+                    "kind": "bold",
+                    "text": "Governing law"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "ol",
+            "items": [
+              {
+                "value": 15,
+                "runs": [
+                  {
+                    "kind": "bold",
+                    "text": "Changes to Terms"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "ol",
+            "items": [
+              {
+                "value": 16,
+                "runs": [
+                  {
+                    "kind": "bold",
+                    "text": "SAMPLE EXPORT CONTROL NOTES"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Others are short, which mirrors the mix of brief notices and longer explanations found in such documents. Links, underlined phrases and bold lead-ins appear where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "ol",
+            "items": [
+              {
+                "value": 17,
+                "runs": [
+                  {
+                    "kind": "bold",
+                    "text": "Miscellaneous provisions"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length."
+              }
+            ],
+            "align": "justify"
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "shell.footer",
+      "content": {
+        "logo": {
+          "assetRole": "brand.wordmark"
+        },
+        "tagline": "On-device AI for engineers who’d rather not depend on the cloud.",
+        "columns": [
+          {
+            "title": "Connect",
+            "links": [
+              {
+                "label": "Twitter",
+                "target": {
+                  "kind": "placeholder"
+                }
+              },
+              {
+                "label": "LinkedIn",
+                "target": {
+                  "kind": "placeholder"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Terms of Service",
+                "target": {
+                  "kind": "route",
+                  "route": "/terms"
+                }
+              },
+              {
+                "label": "Privacy Policy",
+                "target": {
+                  "kind": "route",
+                  "route": "/privacy"
+                }
+              }
+            ]
+          }
+        ],
+        "copyright": "© 2026 Example Company. All rights reserved.",
+        "status": "All systems local",
+        "watermark": {
+          "assetRole": "brand.logo-mark"
+        }
+      },
+      "motion": {
+        "pattern": "status-blink",
+        "reducedMotionFallback": "steady-dot"
+      }
+    }
+  ]
+}

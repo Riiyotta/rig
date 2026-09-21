@@ -1,0 +1,244 @@
+{
+  "pageSpecVersion": "1.0.0",
+  "id": "blog-post-manifesto",
+  "route": "/blog/manifesto",
+  "template": "tpl.blog-post",
+  "theme": "dark",
+  "nodes": [
+    {
+      "type": "shell.overlays",
+      "content": {
+        "grainFilter": {
+          "assetRole": "effect.svg-filter"
+        }
+      },
+      "motion": {
+        "pattern": "grain-overlay-smil",
+        "reducedMotionFallback": "static-grain-frame"
+      }
+    },
+    {
+      "type": "shell.header",
+      "variant": "default",
+      "content": {
+        "logo": {
+          "assetRole": "brand.wordmark"
+        },
+        "links": [
+          {
+            "label": "Blog",
+            "target": {
+              "kind": "route",
+              "route": "/blog"
+            }
+          }
+        ],
+        "cta": {
+          "label": "Get Early Access",
+          "target": {
+            "kind": "route",
+            "route": "/waitlist"
+          }
+        }
+      },
+      "motion": {
+        "pattern": "mobile-menu-fade",
+        "reducedMotionFallback": "instant-toggle"
+      }
+    },
+    {
+      "type": "post.article",
+      "variant": "post",
+      "content": {
+        "title": "Why we decided to build Rig on our own",
+        "author": "Rig Engineers",
+        "byPrefix": "By",
+        "date": "2026-03-19",
+        "excerpt": "The tools engineers depend on most have moved off our machines and onto someone else’s meter. We think a coding agent should live where the code lives: on your own hardware.",
+        "blocks": [
+          {
+            "kind": "p",
+            "text": "For most of the history of software, the tools of the trade lived on the machine in front of you. You installed them once and they were there."
+          },
+          {
+            "kind": "p",
+            "text": "That changed quietly over the last few years. The most capable new tools now run somewhere else, in a data center you will never see, and they reach your work only through a network connection and a monthly bill."
+          },
+          {
+            "kind": "p",
+            "text": "The trade seemed reasonable at first. The models were large, laptops were not, and renting time on someone else’s hardware was the only way to get the results."
+          },
+          {
+            "kind": "p",
+            "text": "But the costs of that arrangement add up in ways that are easy to overlook until you start to notice them."
+          },
+          {
+            "kind": "p",
+            "text": "**Every keystroke leaves the room.**"
+          },
+          {
+            "kind": "p",
+            "text": "To help you, a hosted assistant first has to see your code."
+          },
+          {
+            "kind": "p",
+            "text": "It usually sees more than it needs. The code travels across the internet, is processed on machines you do not control, and is kept under policies that can change. For a side project that may be fine."
+          },
+          {
+            "kind": "p",
+            "text": "Then there is the meter. Usage limits, rate limits, tiers and overage charges shape how people work. Engineers start rationing their questions, which is the opposite of what a good tool should encourage."
+          },
+          {
+            "kind": "p",
+            "text": "**A tool you ration is not your tool.**"
+          },
+          {
+            "kind": "p",
+            "text": "And there is the dependency. When the service is slow, you are slow. When it is down, you stop working."
+          },
+          {
+            "kind": "p",
+            "text": "None of this is anyone’s fault. It is simply what happens when the essential part of a tool lives on a server instead of on your desk."
+          },
+          {
+            "kind": "p",
+            "text": "We think that moment is passing. Laptops have become remarkably capable, models have become far more efficient, and the gap between what you can run at home and what you can rent has narrowed sharply."
+          },
+          {
+            "kind": "p",
+            "text": "Rig is our attempt to close that gap entirely."
+          },
+          {
+            "kind": "p",
+            "text": "No account is required to use it. There are no usage caps and no tiers. No code is sent anywhere, and nothing is reported back."
+          },
+          {
+            "kind": "p",
+            "text": "It works on a plane, in a basement, and behind the strictest firewall. It is exactly as fast on a bad connection as on a good one, because it never uses the connection at all. Nothing waits on a server."
+          },
+          {
+            "kind": "p",
+            "text": "Getting there has meant rethinking the model, the runtime and the agent together, as one system tuned for a single job instead of three parts built separately. We will write about each part in detail."
+          },
+          {
+            "kind": "p",
+            "text": "**Small, focused, and yours.**"
+          },
+          {
+            "kind": "p",
+            "text": "We are not trying to build the biggest model. We are trying to build the most useful one that fits where your code already lives, and to make it good enough that you stop noticing it is local at all."
+          },
+          {
+            "kind": "p",
+            "text": "That means honest limits and shipping only what holds up."
+          },
+          {
+            "kind": "p",
+            "text": "We are opening access gradually, starting with engineers on real projects."
+          },
+          {
+            "kind": "p",
+            "text": "**Your code stays with you.**"
+          }
+        ],
+        "backLabel": "All Posts",
+        "backTarget": {
+          "kind": "route",
+          "route": "/blog"
+        }
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "post.cta-aside",
+      "content": {
+        "title": "Want to try it for real?",
+        "lines": [
+          "We’re inviting engineers in small batches every single week.",
+          "Grab your spot in line."
+        ],
+        "form": {
+          "placeholder": "you@company.com",
+          "button": "Join Waitlist",
+          "errorEmpty": "Enter your email to join.",
+          "errorInvalid": "That email doesn’t look right.",
+          "successHeading": "Your spot is saved.",
+          "successPosition": "Queue position: ",
+          "referralLabel": "Share to jump the queue",
+          "copyLabel": "Copy referral link",
+          "dashboardLink": "Track your place in line →",
+          "dashboardTarget": {
+            "kind": "route",
+            "route": "/waitlist"
+          },
+          "submission": {
+            "mode": "local-only"
+          }
+        }
+      },
+      "motion": {
+        "pattern": "form-submit-spinner",
+        "reducedMotionFallback": "static-loading-label"
+      }
+    },
+    {
+      "type": "shell.footer",
+      "content": {
+        "logo": {
+          "assetRole": "brand.wordmark"
+        },
+        "tagline": "On-device AI for engineers who’d rather not depend on the cloud.",
+        "columns": [
+          {
+            "title": "Connect",
+            "links": [
+              {
+                "label": "Twitter",
+                "target": {
+                  "kind": "placeholder"
+                }
+              },
+              {
+                "label": "LinkedIn",
+                "target": {
+                  "kind": "placeholder"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Terms of Service",
+                "target": {
+                  "kind": "route",
+                  "route": "/terms"
+                }
+              },
+              {
+                "label": "Privacy Policy",
+                "target": {
+                  "kind": "route",
+                  "route": "/privacy"
+                }
+              }
+            ]
+          }
+        ],
+        "copyright": "© 2026 Example Company. All rights reserved.",
+        "status": "All systems local",
+        "watermark": {
+          "assetRole": "brand.logo-mark"
+        }
+      },
+      "motion": {
+        "pattern": "status-blink",
+        "reducedMotionFallback": "steady-dot"
+      }
+    }
+  ]
+}

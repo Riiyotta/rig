@@ -1,0 +1,4934 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "rig-clone/pagespec.schema.json",
+  "title": "Rig clone PageSpec",
+  "description": "Machine contract for a page composed from this design-repo. Structural/rhythm/compliance rules live in semantic_validate.py. 'maxWords' is a custom keyword enforced there.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "pageSpecVersion",
+    "id",
+    "route",
+    "template",
+    "theme",
+    "nodes"
+  ],
+  "properties": {
+    "pageSpecVersion": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "route": {
+      "type": "string",
+      "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$",
+      "description": "Concrete internal route. Unknown /blog/<slug> values are the post template's not-found state."
+    },
+    "template": {
+      "type": "string",
+      "enum": [
+        "tpl.home",
+        "tpl.blog-index",
+        "tpl.blog-post",
+        "tpl.waitlist",
+        "tpl.legal"
+      ]
+    },
+    "theme": {
+      "type": "string",
+      "enum": [
+        "dark"
+      ],
+      "description": "The site has one theme; the red hero is a brand surface inside it."
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/node"
+      }
+    }
+  },
+  "definitions": {
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "content",
+        "motion"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "blog.index-list",
+            "capabilities.card-grid",
+            "cta.vortex",
+            "early-access.waitlist",
+            "faq.accordion",
+            "feature.three-col",
+            "hero.home",
+            "how.stepper",
+            "intro.shader-diagram",
+            "layout.section-divider",
+            "legal.document",
+            "offline.globe-split",
+            "post.article",
+            "post.cta-aside",
+            "problem.signal-grid",
+            "shell.footer",
+            "shell.frame-lines",
+            "shell.header",
+            "shell.overlays",
+            "stats.strip",
+            "terminal.monitor",
+            "waitlist.dashboard-view",
+            "waitlist.form-view"
+          ]
+        },
+        "variant": {
+          "type": "string"
+        },
+        "content": {
+          "type": "object"
+        },
+        "motion": {
+          "type": "object"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "shell.overlays"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "grain-overlay-smil"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "static-grain-frame"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "grainFilter": {
+                    "type": "object",
+                    "properties": {
+                      "assetRole": {
+                        "type": "string",
+                        "enum": [
+                          "effect.svg-filter"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "assetRole"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "grainFilter"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "not": {
+              "required": [
+                "variant"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "shell.header"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "mobile-menu-fade"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "instant-toggle"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "variant": {
+                "type": "string",
+                "enum": [
+                  "default",
+                  "default-no-cta"
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "logo": {
+                    "type": "object",
+                    "properties": {
+                      "assetRole": {
+                        "type": "string",
+                        "enum": [
+                          "brand.wordmark"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "assetRole"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "links": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 1
+                        },
+                        "target": {
+                          "oneOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "kind": {
+                                  "const": "route"
+                                },
+                                "route": {
+                                  "type": "string",
+                                  "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                                }
+                              },
+                              "required": [
+                                "kind",
+                                "route"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ],
+                          "x-allowedKinds": [
+                            "route"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "label",
+                        "target"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "cta": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 3
+                      },
+                      "target": {
+                        "oneOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "kind": {
+                                "const": "route"
+                              },
+                              "route": {
+                                "type": "string",
+                                "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                              }
+                            },
+                            "required": [
+                              "kind",
+                              "route"
+                            ],
+                            "additionalProperties": false
+                          }
+                        ],
+                        "x-allowedKinds": [
+                          "route"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "target"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "logo",
+                  "links"
+                ],
+                "additionalProperties": false,
+                "description": "cta present on variant 'default' (red btn-cta), absent on 'default-no-cta' (/waitlist) - rule NAV_VARIANT_BY_ROUTE"
+              }
+            },
+            "required": [
+              "variant"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "hero.home"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "hero-ticker-watermark-glitch"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "static-ticker-no-glitch"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "nav": {
+                    "type": "object",
+                    "properties": {
+                      "logo": {
+                        "type": "object",
+                        "properties": {
+                          "assetRole": {
+                            "type": "string",
+                            "enum": [
+                              "brand.wordmark"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "assetRole"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "links": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxWords": 1
+                            },
+                            "target": {
+                              "oneOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "kind": {
+                                      "const": "route"
+                                    },
+                                    "route": {
+                                      "type": "string",
+                                      "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                                    }
+                                  },
+                                  "required": [
+                                    "kind",
+                                    "route"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              ],
+                              "x-allowedKinds": [
+                                "route"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "label",
+                            "target"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "minItems": 1,
+                        "maxItems": 1
+                      },
+                      "cta": {
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxWords": 3
+                          },
+                          "target": {
+                            "oneOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "const": "route"
+                                  },
+                                  "route": {
+                                    "type": "string",
+                                    "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "route"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ],
+                            "x-allowedKinds": [
+                              "route"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "label",
+                          "target"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "logo",
+                      "links",
+                      "cta"
+                    ],
+                    "additionalProperties": false,
+                    "description": "Header, hero variant (black logo, ink links, btn-dark CTA). Embedded in the hero: the homepage has no standalone shell.header node."
+                  },
+                  "watermark": {
+                    "type": "object",
+                    "properties": {
+                      "assetRole": {
+                        "type": "string",
+                        "enum": [
+                          "brand.logo-mark"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "assetRole"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "titleLines": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxWords": 4
+                    },
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "description": "h1: exactly two lines separated by <br>"
+                  },
+                  "sub": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 16
+                  },
+                  "primaryCta": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 2
+                      },
+                      "target": {
+                        "oneOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "kind": {
+                                "const": "fragment"
+                              },
+                              "id": {
+                                "type": "string",
+                                "enum": [
+                                  "early-access",
+                                  "our-approach"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "kind",
+                              "id"
+                            ],
+                            "additionalProperties": false
+                          }
+                        ],
+                        "x-allowedKinds": [
+                          "fragment"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "target"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "secondaryCta": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 2
+                      },
+                      "target": {
+                        "oneOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "kind": {
+                                "const": "fragment"
+                              },
+                              "id": {
+                                "type": "string",
+                                "enum": [
+                                  "early-access",
+                                  "our-approach"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "kind",
+                              "id"
+                            ],
+                            "additionalProperties": false
+                          }
+                        ],
+                        "x-allowedKinds": [
+                          "fragment"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "target"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "ticker": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxWords": 4
+                    },
+                    "minItems": 7,
+                    "maxItems": 7,
+                    "description": "7 phrases; rendered twice with bullet separators (27 spans, trailing bullet dropped)"
+                  }
+                },
+                "required": [
+                  "nav",
+                  "watermark",
+                  "titleLines",
+                  "sub",
+                  "primaryCta",
+                  "secondaryCta",
+                  "ticker"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "not": {
+              "required": [
+                "variant"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "shell.frame-lines"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "none"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "none"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {},
+                "required": [],
+                "additionalProperties": false,
+                "description": "no content fields"
+              }
+            },
+            "not": {
+              "required": [
+                "variant"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "layout.section-divider"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "none"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "none"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "variant": {
+                "type": "string",
+                "enum": [
+                  "spacer-top",
+                  "rule",
+                  "spacer-bottom"
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {},
+                "required": [],
+                "additionalProperties": false,
+                "description": "no content fields"
+              }
+            },
+            "required": [
+              "variant"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "problem.signal-grid"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "eye-glitch-tracking-blink"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "static-eye-no-tracking"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "badge": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 2
+                      },
+                      "icon": {
+                        "type": "object",
+                        "properties": {
+                          "assetRole": {
+                            "type": "string",
+                            "enum": [
+                              "icon.badge-pixel"
+                            ]
+                          },
+                          "iconKey": {
+                            "type": "string",
+                            "enum": [
+                              "problem",
+                              "intro",
+                              "offline",
+                              "unlimited",
+                              "privacy",
+                              "latency",
+                              "approach",
+                              "capabilities",
+                              "terminal",
+                              "early-access",
+                              "faq"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "assetRole",
+                          "iconKey"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "icon"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "titleLines": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxWords": 5
+                    },
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "description": "two-line headline"
+                  },
+                  "eye": {
+                    "type": "object",
+                    "properties": {
+                      "assetRole": {
+                        "type": "string",
+                        "enum": [
+                          "illustration.surveillance-eye"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "assetRole"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "cards": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 2
+                        },
+                        "num": {
+                          "type": "string",
+                          "pattern": "^[0-9]{3}$"
+                        },
+                        "title": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 5
+                        },
+                        "bodyLines": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxWords": 17
+                          },
+                          "minItems": 1,
+                          "maxItems": 2
+                        }
+                      },
+                      "required": [
+                        "label",
+                        "num",
+                        "title",
+                        "bodyLines"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "description": "2x2 grid beside the eye column (fixed 4)"
+                  }
+                },
+                "required": [
+                  "badge",
+                  "titleLines",
+                  "eye",
+                  "cards"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "not": {
+              "required": [
+                "variant"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "intro.shader-diagram"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "shader-headline-smil-diagram"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "single-shader-frame-static-diagram"
+                      },
+                      "shaderPreset": {
+                        "const": "headline"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback",
+                      "shaderPreset"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "badge": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 2
+                      },
+                      "icon": {
+                        "type": "object",
+                        "properties": {
+                          "assetRole": {
+                            "type": "string",
+                            "enum": [
+                              "icon.badge-pixel"
+                            ]
+                          },
+                          "iconKey": {
+                            "type": "string",
+                            "enum": [
+                              "problem",
+                              "intro",
+                              "offline",
+                              "unlimited",
+                              "privacy",
+                              "latency",
+                              "approach",
+                              "capabilities",
+                              "terminal",
+                              "early-access",
+                              "faq"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "assetRole",
+                          "iconKey"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "icon"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "titleLines": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxWords": 3
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "desc": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 18
+                  },
+                  "shader": {
+                    "type": "object",
+                    "properties": {
+                      "assetRole": {
+                        "type": "string",
+                        "enum": [
+                          "effect.dither-shader"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "assetRole"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "diagram": {
+                    "type": "object",
+                    "properties": {
+                      "assetRole": {
+                        "type": "string",
+                        "enum": [
+                          "illustration.flow-diagram"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "assetRole"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "badge",
+                  "titleLines",
+                  "desc",
+                  "shader",
+                  "diagram"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "not": {
+              "required": [
+                "variant"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "offline.globe-split"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "globe-drift-signal-flicker"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "static-globe"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "badge": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 1
+                      },
+                      "icon": {
+                        "type": "object",
+                        "properties": {
+                          "assetRole": {
+                            "type": "string",
+                            "enum": [
+                              "icon.badge-pixel"
+                            ]
+                          },
+                          "iconKey": {
+                            "type": "string",
+                            "enum": [
+                              "problem",
+                              "intro",
+                              "offline",
+                              "unlimited",
+                              "privacy",
+                              "latency",
+                              "approach",
+                              "capabilities",
+                              "terminal",
+                              "early-access",
+                              "faq"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "assetRole",
+                          "iconKey"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "icon"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 2
+                  },
+                  "body": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 8
+                  },
+                  "flow": {
+                    "type": "object",
+                    "properties": {
+                      "cloud": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 2
+                      },
+                      "machine": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 2
+                      },
+                      "active": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 3
+                      },
+                      "nothing": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 2
+                      },
+                      "severed": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 1
+                      }
+                    },
+                    "required": [
+                      "cloud",
+                      "machine",
+                      "active",
+                      "nothing",
+                      "severed"
+                    ],
+                    "additionalProperties": false,
+                    "description": "3-card severed flow: cloud -x- machine (active) -x- nothing leaves"
+                  },
+                  "globe": {
+                    "type": "object",
+                    "properties": {
+                      "assetRole": {
+                        "type": "string",
+                        "enum": [
+                          "illustration.globe"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "assetRole"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "connector": {
+                    "type": "object",
+                    "properties": {
+                      "assetRole": {
+                        "type": "string",
+                        "enum": [
+                          "illustration.severed-connector"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "assetRole"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "badge",
+                  "title",
+                  "body",
+                  "flow",
+                  "globe",
+                  "connector"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "not": {
+              "required": [
+                "variant"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "feature.three-col"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "none"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "none"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "columns": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "badge": {
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxWords": 1
+                            },
+                            "icon": {
+                              "type": "object",
+                              "properties": {
+                                "assetRole": {
+                                  "type": "string",
+                                  "enum": [
+                                    "icon.badge-pixel"
+                                  ]
+                                },
+                                "iconKey": {
+                                  "type": "string",
+                                  "enum": [
+                                    "problem",
+                                    "intro",
+                                    "offline",
+                                    "unlimited",
+                                    "privacy",
+                                    "latency",
+                                    "approach",
+                                    "capabilities",
+                                    "terminal",
+                                    "early-access",
+                                    "faq"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "assetRole",
+                                "iconKey"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "label",
+                            "icon"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "title": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 3
+                        },
+                        "body": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 15
+                        },
+                        "dim": {
+                          "type": "boolean",
+                          "description": "third column text rendered dimmer (content.js dim:true)"
+                        }
+                      },
+                      "required": [
+                        "badge",
+                        "title",
+                        "body",
+                        "dim"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  }
+                },
+                "required": [
+                  "columns"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "not": {
+              "required": [
+                "variant"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "how.stepper"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "stepper-autoadvance-tween"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "manual-steps-no-autoadvance"
+                      },
+                      "shaderPreset": {
+                        "const": "how"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback",
+                      "shaderPreset"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "badge": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 2
+                      },
+                      "icon": {
+                        "type": "object",
+                        "properties": {
+                          "assetRole": {
+                            "type": "string",
+                            "enum": [
+                              "icon.badge-pixel"
+                            ]
+                          },
+                          "iconKey": {
+                            "type": "string",
+                            "enum": [
+                              "problem",
+                              "intro",
+                              "offline",
+                              "unlimited",
+                              "privacy",
+                              "latency",
+                              "approach",
+                              "capabilities",
+                              "terminal",
+                              "early-access",
+                              "faq"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "assetRole",
+                          "iconKey"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "icon"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 3
+                  },
+                  "body": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 21
+                  },
+                  "steps": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "num": {
+                          "type": "string",
+                          "pattern": "^Step [0-9]{2}$"
+                        },
+                        "title": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 8
+                        },
+                        "body": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxWords": 23
+                          },
+                          "minItems": 2,
+                          "maxItems": 2
+                        },
+                        "cardTitle": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 2
+                        }
+                      },
+                      "required": [
+                        "num",
+                        "title",
+                        "body",
+                        "cardTitle"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "chart": {
+                    "type": "object",
+                    "properties": {
+                      "assetRole": {
+                        "type": "string",
+                        "enum": [
+                          "chart.ascii-bars"
+                        ]
+                      },
+                      "cards": {
+                        "type": "array",
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "oneOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "const": "caption"
+                                  },
+                                  "text": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxWords": 4
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "text"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "const": "bars"
+                                  },
+                                  "rows": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "label": {
+                                          "type": "string",
+                                          "minLength": 1,
+                                          "maxWords": 2
+                                        },
+                                        "fill": {
+                                          "type": [
+                                            "number",
+                                            "null"
+                                          ],
+                                          "minimum": 0,
+                                          "maximum": 20,
+                                          "description": "full cells of 20; a fraction adds a sliver; null = no bar"
+                                        },
+                                        "value": {
+                                          "type": "string",
+                                          "minLength": 1,
+                                          "maxWords": 2
+                                        },
+                                        "highlight": {
+                                          "type": "boolean",
+                                          "description": "the Rig row: bright label, green bar + value"
+                                        }
+                                      },
+                                      "required": [
+                                        "label",
+                                        "fill",
+                                        "value",
+                                        "highlight"
+                                      ],
+                                      "additionalProperties": false
+                                    },
+                                    "minItems": 2,
+                                    "maxItems": 3
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "rows"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "const": "lines"
+                                  },
+                                  "lines": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "tone": {
+                                            "type": "string",
+                                            "enum": [
+                                              "dim",
+                                              "bright",
+                                              "green",
+                                              "red"
+                                            ]
+                                          },
+                                          "text": {
+                                            "type": "string",
+                                            "minLength": 1,
+                                            "maxWords": 6
+                                          }
+                                        },
+                                        "required": [
+                                          "tone",
+                                          "text"
+                                        ],
+                                        "additionalProperties": false
+                                      },
+                                      "minItems": 1,
+                                      "maxItems": 2
+                                    },
+                                    "minItems": 1,
+                                    "maxItems": 3
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "lines"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          },
+                          "minItems": 2,
+                          "maxItems": 4
+                        },
+                        "minItems": 3,
+                        "maxItems": 3,
+                        "description": "one ASCII bar-chart card per step, same order"
+                      }
+                    },
+                    "required": [
+                      "assetRole",
+                      "cards"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "shader": {
+                    "type": "object",
+                    "properties": {
+                      "assetRole": {
+                        "type": "string",
+                        "enum": [
+                          "effect.dither-shader"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "assetRole"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "badge",
+                  "title",
+                  "body",
+                  "steps",
+                  "chart",
+                  "shader"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "not": {
+              "required": [
+                "variant"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "capabilities.card-grid"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "none"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "none"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "badge": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 1
+                      },
+                      "icon": {
+                        "type": "object",
+                        "properties": {
+                          "assetRole": {
+                            "type": "string",
+                            "enum": [
+                              "icon.badge-pixel"
+                            ]
+                          },
+                          "iconKey": {
+                            "type": "string",
+                            "enum": [
+                              "problem",
+                              "intro",
+                              "offline",
+                              "unlimited",
+                              "privacy",
+                              "latency",
+                              "approach",
+                              "capabilities",
+                              "terminal",
+                              "early-access",
+                              "faq"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "assetRole",
+                          "iconKey"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "icon"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 3
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 5
+                        },
+                        "body": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 26
+                        }
+                      },
+                      "required": [
+                        "title",
+                        "body"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1,
+                    "maxItems": 6,
+                    "description": "3-col grid; the '[ 01 ]' labels are generated from the index"
+                  }
+                },
+                "required": [
+                  "badge",
+                  "title",
+                  "items"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "not": {
+              "required": [
+                "variant"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "stats.strip"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "none"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "none"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "stats": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 3
+                        },
+                        "value": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 1
+                        },
+                        "note": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 5
+                        }
+                      },
+                      "required": [
+                        "label",
+                        "value",
+                        "note"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 4,
+                    "maxItems": 4
+                  }
+                },
+                "required": [
+                  "stats"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "not": {
+              "required": [
+                "variant"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "terminal.monitor"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "terminal-boot-reveal-typing"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "all-lines-visible-static-prompt"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "badge": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 2
+                      },
+                      "icon": {
+                        "type": "object",
+                        "properties": {
+                          "assetRole": {
+                            "type": "string",
+                            "enum": [
+                              "icon.badge-pixel"
+                            ]
+                          },
+                          "iconKey": {
+                            "type": "string",
+                            "enum": [
+                              "problem",
+                              "intro",
+                              "offline",
+                              "unlimited",
+                              "privacy",
+                              "latency",
+                              "approach",
+                              "capabilities",
+                              "terminal",
+                              "early-access",
+                              "faq"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "assetRole",
+                          "iconKey"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "icon"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 3
+                  },
+                  "windowTitle": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 3
+                  },
+                  "command": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 2
+                  },
+                  "asciiArt": {
+                    "type": "object",
+                    "properties": {
+                      "assetRole": {
+                        "type": "string",
+                        "enum": [
+                          "text.ascii-brand-art"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "assetRole"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "boot": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxWords": 7
+                    },
+                    "minItems": 4,
+                    "maxItems": 4
+                  },
+                  "bootOk": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 1
+                  },
+                  "ready": {
+                    "type": "object",
+                    "properties": {
+                      "mark": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 1
+                      },
+                      "text": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 1
+                      },
+                      "network": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 1
+                      },
+                      "telemetry": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 1
+                      },
+                      "off": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 1
+                      }
+                    },
+                    "required": [
+                      "mark",
+                      "text",
+                      "network",
+                      "telemetry",
+                      "off"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "prompts": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxWords": 6
+                    },
+                    "minItems": 1,
+                    "maxItems": 4,
+                    "description": "typing-loop phrases"
+                  },
+                  "typingInitial": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 4
+                  },
+                  "bezel": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxWords": 2
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "annotations": {
+                    "type": "object",
+                    "properties": {
+                      "left": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "title": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxWords": 2
+                            },
+                            "desc": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxWords": 5
+                            }
+                          },
+                          "required": [
+                            "title",
+                            "desc"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "right": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "title": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxWords": 2
+                            },
+                            "desc": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxWords": 5
+                            }
+                          },
+                          "required": [
+                            "title",
+                            "desc"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      }
+                    },
+                    "required": [
+                      "left",
+                      "right"
+                    ],
+                    "additionalProperties": false,
+                    "description": "blueprint annotations (desktop) / interleaved 2-col grid (<=1024)"
+                  }
+                },
+                "required": [
+                  "badge",
+                  "title",
+                  "windowTitle",
+                  "command",
+                  "asciiArt",
+                  "boot",
+                  "bootOk",
+                  "ready",
+                  "prompts",
+                  "typingInitial",
+                  "bezel",
+                  "annotations"
+                ],
+                "additionalProperties": false,
+                "description": "Exactly 8 .term-line rows: nth-child drives the reveal delays (Terminal.jsx comment)"
+              }
+            },
+            "not": {
+              "required": [
+                "variant"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "early-access.waitlist"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "shader-headline-form"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "single-shader-frame"
+                      },
+                      "shaderPreset": {
+                        "const": "headline"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback",
+                      "shaderPreset"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "badge": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 2
+                      },
+                      "icon": {
+                        "type": "object",
+                        "properties": {
+                          "assetRole": {
+                            "type": "string",
+                            "enum": [
+                              "icon.badge-pixel"
+                            ]
+                          },
+                          "iconKey": {
+                            "type": "string",
+                            "enum": [
+                              "problem",
+                              "intro",
+                              "offline",
+                              "unlimited",
+                              "privacy",
+                              "latency",
+                              "approach",
+                              "capabilities",
+                              "terminal",
+                              "early-access",
+                              "faq"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "assetRole",
+                          "iconKey"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "icon"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 4
+                  },
+                  "desc": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 18
+                  },
+                  "form": {
+                    "type": "object",
+                    "properties": {
+                      "placeholder": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 1
+                      },
+                      "button": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 2
+                      },
+                      "errorEmpty": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 5
+                      },
+                      "errorInvalid": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 5
+                      },
+                      "successHeading": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 4
+                      },
+                      "successPosition": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 2
+                      },
+                      "referralLabel": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 5
+                      },
+                      "copyLabel": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 3
+                      },
+                      "dashboardLink": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 6
+                      },
+                      "dashboardTarget": {
+                        "oneOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "kind": {
+                                "const": "route"
+                              },
+                              "route": {
+                                "type": "string",
+                                "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                              }
+                            },
+                            "required": [
+                              "kind",
+                              "route"
+                            ],
+                            "additionalProperties": false
+                          }
+                        ],
+                        "x-allowedKinds": [
+                          "route"
+                        ]
+                      },
+                      "submission": {
+                        "type": "object",
+                        "properties": {
+                          "mode": {
+                            "const": "local-only",
+                            "description": "Front-end only: validation + timed fake success (no network). Wiring a real endpoint requires review (see README)."
+                          }
+                        },
+                        "required": [
+                          "mode"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "placeholder",
+                      "button",
+                      "errorEmpty",
+                      "errorInvalid",
+                      "successHeading",
+                      "successPosition",
+                      "referralLabel",
+                      "copyLabel",
+                      "dashboardLink",
+                      "dashboardTarget",
+                      "submission"
+                    ],
+                    "additionalProperties": false,
+                    "description": "Shared WaitlistForm copy (content.js earlyAccess; the post CTA uses the same defaults). submission.mode is locked to local-only."
+                  },
+                  "shader": {
+                    "type": "object",
+                    "properties": {
+                      "assetRole": {
+                        "type": "string",
+                        "enum": [
+                          "effect.dither-shader"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "assetRole"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "badge",
+                  "title",
+                  "desc",
+                  "form",
+                  "shader"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "not": {
+              "required": [
+                "variant"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "faq.accordion"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "faq-grid-rows"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "instant-toggle"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "badge": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 1
+                      },
+                      "icon": {
+                        "type": "object",
+                        "properties": {
+                          "assetRole": {
+                            "type": "string",
+                            "enum": [
+                              "icon.badge-pixel"
+                            ]
+                          },
+                          "iconKey": {
+                            "type": "string",
+                            "enum": [
+                              "problem",
+                              "intro",
+                              "offline",
+                              "unlimited",
+                              "privacy",
+                              "latency",
+                              "approach",
+                              "capabilities",
+                              "terminal",
+                              "early-access",
+                              "faq"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "assetRole",
+                          "iconKey"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "icon"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 2
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "q": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 9
+                        },
+                        "a": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 61
+                        }
+                      },
+                      "required": [
+                        "q",
+                        "a"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1,
+                    "maxItems": 8,
+                    "description": "numbered 01..NN automatically"
+                  }
+                },
+                "required": [
+                  "badge",
+                  "title",
+                  "items"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "not": {
+              "required": [
+                "variant"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "cta.vortex"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "cta-glitch-glow-pulse"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "static-heading-static-glow"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 4
+                  },
+                  "button": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 3
+                      },
+                      "target": {
+                        "oneOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "kind": {
+                                "const": "fragment"
+                              },
+                              "id": {
+                                "type": "string",
+                                "enum": [
+                                  "early-access",
+                                  "our-approach"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "kind",
+                              "id"
+                            ],
+                            "additionalProperties": false
+                          }
+                        ],
+                        "x-allowedKinds": [
+                          "fragment"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "target"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "fine": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 6
+                  },
+                  "vortex": {
+                    "type": "object",
+                    "properties": {
+                      "assetRole": {
+                        "type": "string",
+                        "enum": [
+                          "image.cta-vortex"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "assetRole"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "logo": {
+                    "type": "object",
+                    "properties": {
+                      "assetRole": {
+                        "type": "string",
+                        "enum": [
+                          "brand.logo-mark"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "assetRole"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "lineart": {
+                    "type": "object",
+                    "properties": {
+                      "assetRole": {
+                        "type": "string",
+                        "enum": [
+                          "brand.logo-mark"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "assetRole"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "title",
+                  "button",
+                  "fine",
+                  "vortex",
+                  "logo",
+                  "lineart"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "not": {
+              "required": [
+                "variant"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "shell.footer"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "status-blink"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "steady-dot"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "logo": {
+                    "type": "object",
+                    "properties": {
+                      "assetRole": {
+                        "type": "string",
+                        "enum": [
+                          "brand.wordmark"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "assetRole"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "tagline": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 11
+                  },
+                  "columns": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 1
+                        },
+                        "links": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "label": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxWords": 3
+                              },
+                              "target": {
+                                "oneOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "kind": {
+                                        "const": "route"
+                                      },
+                                      "route": {
+                                        "type": "string",
+                                        "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                                      }
+                                    },
+                                    "required": [
+                                      "kind",
+                                      "route"
+                                    ],
+                                    "additionalProperties": false
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "kind": {
+                                        "const": "placeholder"
+                                      }
+                                    },
+                                    "required": [
+                                      "kind"
+                                    ],
+                                    "additionalProperties": false,
+                                    "description": "renders href='#'; real social-profile URLs are intentionally absent"
+                                  }
+                                ],
+                                "x-allowedKinds": [
+                                  "route",
+                                  "placeholder"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "label",
+                              "target"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "minItems": 1,
+                          "maxItems": 2
+                        }
+                      },
+                      "required": [
+                        "title",
+                        "links"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "copyright": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 8,
+                    "description": "company legal line; generated pages supply the client's own legal name"
+                  },
+                  "status": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 3
+                  },
+                  "watermark": {
+                    "type": "object",
+                    "properties": {
+                      "assetRole": {
+                        "type": "string",
+                        "enum": [
+                          "brand.logo-mark"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "assetRole"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "logo",
+                  "tagline",
+                  "columns",
+                  "copyright",
+                  "status",
+                  "watermark"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "not": {
+              "required": [
+                "variant"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "blog.index-list"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "none"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "none"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 1
+                  },
+                  "posts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 10
+                        },
+                        "excerpt": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 31
+                        },
+                        "date": {
+                          "type": "string",
+                          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+                          "description": "ISO date; rendered 'Mmm D, YYYY'"
+                        },
+                        "target": {
+                          "oneOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "kind": {
+                                  "const": "route"
+                                },
+                                "route": {
+                                  "type": "string",
+                                  "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                                }
+                              },
+                              "required": [
+                                "kind",
+                                "route"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ],
+                          "x-allowedKinds": [
+                            "route"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "title",
+                        "excerpt",
+                        "date",
+                        "target"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1,
+                    "maxItems": 4,
+                    "description": "newest first (rule BLOG_INDEX_NEWEST_FIRST); no featured post, tags, images or pagination"
+                  }
+                },
+                "required": [
+                  "title",
+                  "posts"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "not": {
+              "required": [
+                "variant"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "post.article"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "none"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "none"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "variant": {
+                "type": "string",
+                "enum": [
+                  "post",
+                  "not-found"
+                ]
+              },
+              "content": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "variant"
+            ],
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "variant": {
+                      "const": "post"
+                    }
+                  },
+                  "required": [
+                    "variant"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "content": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 10
+                        },
+                        "author": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 2
+                        },
+                        "byPrefix": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 1
+                        },
+                        "date": {
+                          "type": "string",
+                          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                        },
+                        "excerpt": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 31
+                        },
+                        "blocks": {
+                          "type": "array",
+                          "items": {
+                            "oneOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "const": "p"
+                                  },
+                                  "text": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxWords": 182,
+                                    "description": "inline markup: **strong**, *em*, [label](/internal-route)"
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "text"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "const": "h2"
+                                  },
+                                  "text": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxWords": 11
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "text"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "const": "h3"
+                                  },
+                                  "text": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxWords": 4
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "text"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "const": "ul"
+                                  },
+                                  "items": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string",
+                                      "minLength": 1,
+                                      "maxWords": 49
+                                    },
+                                    "minItems": 1,
+                                    "maxItems": 5
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "items"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "const": "ol"
+                                  },
+                                  "items": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string",
+                                      "minLength": 1,
+                                      "maxWords": 36
+                                    },
+                                    "minItems": 1,
+                                    "maxItems": 5
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "items"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "const": "blockquote"
+                                  },
+                                  "text": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxWords": 47
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "text"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "const": "figure"
+                                  },
+                                  "alt": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxWords": 3
+                                  },
+                                  "asset": {
+                                    "type": "object",
+                                    "properties": {
+                                      "assetRole": {
+                                        "type": "string",
+                                        "enum": [
+                                          "placeholder.blog-diagram"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "assetRole"
+                                    ],
+                                    "additionalProperties": false
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "alt",
+                                  "asset"
+                                ],
+                                "additionalProperties": false,
+                                "description": "origin image 502s; always the neutral placeholder box"
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "const": "hr"
+                                  }
+                                },
+                                "required": [
+                                  "kind"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          },
+                          "minItems": 1,
+                          "maxItems": 65
+                        },
+                        "backLabel": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 2
+                        },
+                        "backTarget": {
+                          "oneOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "kind": {
+                                  "const": "route"
+                                },
+                                "route": {
+                                  "type": "string",
+                                  "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                                }
+                              },
+                              "required": [
+                                "kind",
+                                "route"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ],
+                          "x-allowedKinds": [
+                            "route"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "title",
+                        "author",
+                        "byPrefix",
+                        "date",
+                        "excerpt",
+                        "blocks",
+                        "backLabel",
+                        "backTarget"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "variant": {
+                      "const": "not-found"
+                    }
+                  },
+                  "required": [
+                    "variant"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "content": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 3
+                        },
+                        "body": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 17
+                        },
+                        "backLabel": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 2
+                        },
+                        "backTarget": {
+                          "oneOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "kind": {
+                                  "const": "route"
+                                },
+                                "route": {
+                                  "type": "string",
+                                  "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                                }
+                              },
+                              "required": [
+                                "kind",
+                                "route"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ],
+                          "x-allowedKinds": [
+                            "route"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "title",
+                        "body",
+                        "backLabel",
+                        "backTarget"
+                      ],
+                      "additionalProperties": false,
+                      "description": "unknown slug: same article template, no meta/excerpt/CTA aside"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "post.cta-aside"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "form-submit-spinner"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "static-loading-label"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 6
+                  },
+                  "lines": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxWords": 9
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "form": {
+                    "type": "object",
+                    "properties": {
+                      "placeholder": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 1
+                      },
+                      "button": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 2
+                      },
+                      "errorEmpty": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 5
+                      },
+                      "errorInvalid": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 5
+                      },
+                      "successHeading": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 4
+                      },
+                      "successPosition": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 2
+                      },
+                      "referralLabel": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 5
+                      },
+                      "copyLabel": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 3
+                      },
+                      "dashboardLink": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 6
+                      },
+                      "dashboardTarget": {
+                        "oneOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "kind": {
+                                "const": "route"
+                              },
+                              "route": {
+                                "type": "string",
+                                "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                              }
+                            },
+                            "required": [
+                              "kind",
+                              "route"
+                            ],
+                            "additionalProperties": false
+                          }
+                        ],
+                        "x-allowedKinds": [
+                          "route"
+                        ]
+                      },
+                      "submission": {
+                        "type": "object",
+                        "properties": {
+                          "mode": {
+                            "const": "local-only",
+                            "description": "Front-end only: validation + timed fake success (no network). Wiring a real endpoint requires review (see README)."
+                          }
+                        },
+                        "required": [
+                          "mode"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "placeholder",
+                      "button",
+                      "errorEmpty",
+                      "errorInvalid",
+                      "successHeading",
+                      "successPosition",
+                      "referralLabel",
+                      "copyLabel",
+                      "dashboardLink",
+                      "dashboardTarget",
+                      "submission"
+                    ],
+                    "additionalProperties": false,
+                    "description": "Shared WaitlistForm copy (content.js earlyAccess; the post CTA uses the same defaults). submission.mode is locked to local-only."
+                  }
+                },
+                "required": [
+                  "title",
+                  "lines",
+                  "form"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "not": {
+              "required": [
+                "variant"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "waitlist.form-view"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "form-submit-spinner"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "static-loading-label"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "badge": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 1
+                      },
+                      "icon": {
+                        "type": "object",
+                        "properties": {
+                          "assetRole": {
+                            "type": "string",
+                            "enum": [
+                              "icon.badge-pixel"
+                            ]
+                          },
+                          "iconKey": {
+                            "type": "string",
+                            "enum": [
+                              "problem",
+                              "intro",
+                              "offline",
+                              "unlimited",
+                              "privacy",
+                              "latency",
+                              "approach",
+                              "capabilities",
+                              "terminal",
+                              "early-access",
+                              "faq"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "assetRole",
+                          "iconKey"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "icon"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "heading": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 3
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 26
+                  },
+                  "form": {
+                    "type": "object",
+                    "properties": {
+                      "placeholder": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 1
+                      },
+                      "button": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 2
+                      },
+                      "errorEmpty": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 5
+                      },
+                      "errorInvalid": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 5
+                      },
+                      "submission": {
+                        "type": "object",
+                        "properties": {
+                          "mode": {
+                            "const": "local-only",
+                            "description": "Front-end only: validation + timed fake success (no network). Wiring a real endpoint requires review (see README)."
+                          }
+                        },
+                        "required": [
+                          "mode"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "placeholder",
+                      "button",
+                      "errorEmpty",
+                      "errorInvalid",
+                      "submission"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "featuresHeading": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 2
+                  },
+                  "features": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxWords": 6
+                    },
+                    "minItems": 1,
+                    "maxItems": 4
+                  },
+                  "featureIcon": {
+                    "type": "object",
+                    "properties": {
+                      "assetRole": {
+                        "type": "string",
+                        "enum": [
+                          "icon.ui"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "assetRole"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "badge",
+                  "heading",
+                  "description",
+                  "form",
+                  "featuresHeading",
+                  "features",
+                  "featureIcon"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "not": {
+              "required": [
+                "variant"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "waitlist.dashboard-view"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "dashboard-pulse-spin"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "steady-dot-static-loading"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "loading": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 3
+                  },
+                  "error": {
+                    "type": "object",
+                    "properties": {
+                      "heading": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 5
+                      },
+                      "message": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 8
+                      },
+                      "icon": {
+                        "type": "object",
+                        "properties": {
+                          "assetRole": {
+                            "type": "string",
+                            "enum": [
+                              "icon.ui"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "assetRole"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "heading",
+                      "message",
+                      "icon"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "badge": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 4
+                  },
+                  "heading": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 3
+                  },
+                  "positionLabel": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 2
+                  },
+                  "referralsLabel": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 2
+                  },
+                  "giveaway": {
+                    "type": "object",
+                    "properties": {
+                      "heading": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 2
+                      },
+                      "body": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 25
+                        },
+                        "minItems": 2,
+                        "maxItems": 2
+                      }
+                    },
+                    "required": [
+                      "heading",
+                      "body"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "survey": {
+                    "type": "object",
+                    "properties": {
+                      "heading": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 4
+                      },
+                      "description": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 19
+                      },
+                      "chipLabel": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 1
+                      },
+                      "chipPlaceholder": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 3
+                      },
+                      "chipOptions": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 2
+                        },
+                        "minItems": 1,
+                        "maxItems": 21
+                      },
+                      "ramLabel": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 1
+                      },
+                      "ramPlaceholder": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 3
+                      },
+                      "ramOptions": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxWords": 1
+                        },
+                        "minItems": 1,
+                        "maxItems": 9
+                      },
+                      "submit": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 1
+                      },
+                      "saving": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 1
+                      },
+                      "saved": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 1
+                      },
+                      "submission": {
+                        "type": "object",
+                        "properties": {
+                          "mode": {
+                            "const": "local-only",
+                            "description": "Front-end only: validation + timed fake success (no network). Wiring a real endpoint requires review (see README)."
+                          }
+                        },
+                        "required": [
+                          "mode"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "heading",
+                      "description",
+                      "chipLabel",
+                      "chipPlaceholder",
+                      "chipOptions",
+                      "ramLabel",
+                      "ramPlaceholder",
+                      "ramOptions",
+                      "submit",
+                      "saving",
+                      "saved",
+                      "submission"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "referral": {
+                    "type": "object",
+                    "properties": {
+                      "heading": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 2
+                      },
+                      "description": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 21
+                      },
+                      "linkLabel": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 3
+                      },
+                      "copyLabel": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 3
+                      },
+                      "shareX": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 3
+                      },
+                      "shareLinkedIn": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 3
+                      },
+                      "shareText": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxWords": 12
+                      },
+                      "shareTargets": {
+                        "type": "array",
+                        "items": {
+                          "oneOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "kind": {
+                                  "const": "share-intent"
+                                },
+                                "network": {
+                                  "type": "string",
+                                  "enum": [
+                                    "x",
+                                    "linkedin"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "kind",
+                                "network"
+                              ],
+                              "additionalProperties": false,
+                              "description": "URL is built at runtime from the page's own referral link; a PageSpec never carries the URL"
+                            }
+                          ],
+                          "x-allowedKinds": [
+                            "share-intent"
+                          ]
+                        },
+                        "minItems": 2,
+                        "maxItems": 2
+                      },
+                      "shareIcons": {
+                        "type": "object",
+                        "properties": {
+                          "assetRole": {
+                            "type": "string",
+                            "enum": [
+                              "icon.social-share"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "assetRole"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "heading",
+                      "description",
+                      "linkLabel",
+                      "copyLabel",
+                      "shareX",
+                      "shareLinkedIn",
+                      "shareText",
+                      "shareTargets",
+                      "shareIcons"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "joined": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 1
+                  },
+                  "devReset": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 3,
+                    "description": "rendered only behind ?dev (never in production)"
+                  },
+                  "storage": {
+                    "type": "object",
+                    "properties": {
+                      "mode": {
+                        "const": "localStorage"
+                      },
+                      "key": {
+                        "const": "rig-clone-waitlist"
+                      }
+                    },
+                    "required": [
+                      "mode",
+                      "key"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "loading",
+                  "error",
+                  "badge",
+                  "heading",
+                  "positionLabel",
+                  "referralsLabel",
+                  "giveaway",
+                  "survey",
+                  "referral",
+                  "joined",
+                  "devReset",
+                  "storage"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "not": {
+              "required": [
+                "variant"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "legal.document"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "const": "none"
+                      },
+                      "reducedMotionFallback": {
+                        "const": "none"
+                      }
+                    },
+                    "required": [
+                      "pattern",
+                      "reducedMotionFallback"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 3
+                  },
+                  "blocks": {
+                    "type": "array",
+                    "items": {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "kind": {
+                              "const": "p"
+                            },
+                            "align": {
+                              "type": "string",
+                              "enum": [
+                                "center",
+                                "justify"
+                              ]
+                            },
+                            "runs": {
+                              "type": "array",
+                              "items": {
+                                "oneOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "kind": {
+                                        "const": "text"
+                                      },
+                                      "text": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxWords": 315
+                                      }
+                                    },
+                                    "required": [
+                                      "kind",
+                                      "text"
+                                    ],
+                                    "additionalProperties": false
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "kind": {
+                                        "const": "bold"
+                                      },
+                                      "text": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxWords": 315
+                                      }
+                                    },
+                                    "required": [
+                                      "kind",
+                                      "text"
+                                    ],
+                                    "additionalProperties": false
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "kind": {
+                                        "const": "underline"
+                                      },
+                                      "text": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxWords": 315
+                                      }
+                                    },
+                                    "required": [
+                                      "kind",
+                                      "text"
+                                    ],
+                                    "additionalProperties": false
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "kind": {
+                                        "const": "link"
+                                      },
+                                      "text": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxWords": 315
+                                      },
+                                      "target": {
+                                        "oneOf": [
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "kind": {
+                                                "const": "route"
+                                              },
+                                              "route": {
+                                                "type": "string",
+                                                "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                                              }
+                                            },
+                                            "required": [
+                                              "kind",
+                                              "route"
+                                            ],
+                                            "additionalProperties": false
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "kind": {
+                                                "const": "email-placeholder"
+                                              },
+                                              "address": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9._%+-]+@example\\.(com|org|net)$"
+                                              }
+                                            },
+                                            "required": [
+                                              "kind",
+                                              "address"
+                                            ],
+                                            "additionalProperties": false,
+                                            "description": "rendered as a mailto: link to a RESERVED placeholder domain only (legal copy); never a real inbox"
+                                          }
+                                        ],
+                                        "x-allowedKinds": [
+                                          "route",
+                                          "email-placeholder"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "kind",
+                                      "text",
+                                      "target"
+                                    ],
+                                    "additionalProperties": false
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "kind": {
+                                        "const": "break"
+                                      }
+                                    },
+                                    "required": [
+                                      "kind"
+                                    ],
+                                    "additionalProperties": false
+                                  }
+                                ]
+                              },
+                              "minItems": 1,
+                              "maxItems": 40
+                            }
+                          },
+                          "required": [
+                            "kind",
+                            "runs"
+                          ],
+                          "additionalProperties": false,
+                          "description": "bold-only paragraphs act as section headings; per-block text-align preserved"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "kind": {
+                              "const": "ul"
+                            },
+                            "items": {
+                              "type": "array",
+                              "items": {
+                                "type": "array",
+                                "items": {
+                                  "oneOf": [
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "kind": {
+                                          "const": "text"
+                                        },
+                                        "text": {
+                                          "type": "string",
+                                          "minLength": 1,
+                                          "maxWords": 315
+                                        }
+                                      },
+                                      "required": [
+                                        "kind",
+                                        "text"
+                                      ],
+                                      "additionalProperties": false
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "kind": {
+                                          "const": "bold"
+                                        },
+                                        "text": {
+                                          "type": "string",
+                                          "minLength": 1,
+                                          "maxWords": 315
+                                        }
+                                      },
+                                      "required": [
+                                        "kind",
+                                        "text"
+                                      ],
+                                      "additionalProperties": false
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "kind": {
+                                          "const": "underline"
+                                        },
+                                        "text": {
+                                          "type": "string",
+                                          "minLength": 1,
+                                          "maxWords": 315
+                                        }
+                                      },
+                                      "required": [
+                                        "kind",
+                                        "text"
+                                      ],
+                                      "additionalProperties": false
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "kind": {
+                                          "const": "link"
+                                        },
+                                        "text": {
+                                          "type": "string",
+                                          "minLength": 1,
+                                          "maxWords": 315
+                                        },
+                                        "target": {
+                                          "oneOf": [
+                                            {
+                                              "type": "object",
+                                              "properties": {
+                                                "kind": {
+                                                  "const": "route"
+                                                },
+                                                "route": {
+                                                  "type": "string",
+                                                  "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                                                }
+                                              },
+                                              "required": [
+                                                "kind",
+                                                "route"
+                                              ],
+                                              "additionalProperties": false
+                                            },
+                                            {
+                                              "type": "object",
+                                              "properties": {
+                                                "kind": {
+                                                  "const": "email-placeholder"
+                                                },
+                                                "address": {
+                                                  "type": "string",
+                                                  "pattern": "^[a-z0-9._%+-]+@example\\.(com|org|net)$"
+                                                }
+                                              },
+                                              "required": [
+                                                "kind",
+                                                "address"
+                                              ],
+                                              "additionalProperties": false,
+                                              "description": "rendered as a mailto: link to a RESERVED placeholder domain only (legal copy); never a real inbox"
+                                            }
+                                          ],
+                                          "x-allowedKinds": [
+                                            "route",
+                                            "email-placeholder"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "kind",
+                                        "text",
+                                        "target"
+                                      ],
+                                      "additionalProperties": false
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "kind": {
+                                          "const": "break"
+                                        }
+                                      },
+                                      "required": [
+                                        "kind"
+                                      ],
+                                      "additionalProperties": false
+                                    }
+                                  ]
+                                },
+                                "minItems": 1,
+                                "maxItems": 40
+                              },
+                              "minItems": 1,
+                              "maxItems": 30
+                            }
+                          },
+                          "required": [
+                            "kind",
+                            "items"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "kind": {
+                              "const": "ol"
+                            },
+                            "items": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "nestedOnly": {
+                                    "type": "boolean"
+                                  },
+                                  "value": {
+                                    "type": "integer",
+                                    "minimum": 1
+                                  },
+                                  "runs": {
+                                    "type": "array",
+                                    "items": {
+                                      "oneOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "kind": {
+                                              "const": "text"
+                                            },
+                                            "text": {
+                                              "type": "string",
+                                              "minLength": 1,
+                                              "maxWords": 315
+                                            }
+                                          },
+                                          "required": [
+                                            "kind",
+                                            "text"
+                                          ],
+                                          "additionalProperties": false
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "kind": {
+                                              "const": "bold"
+                                            },
+                                            "text": {
+                                              "type": "string",
+                                              "minLength": 1,
+                                              "maxWords": 315
+                                            }
+                                          },
+                                          "required": [
+                                            "kind",
+                                            "text"
+                                          ],
+                                          "additionalProperties": false
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "kind": {
+                                              "const": "underline"
+                                            },
+                                            "text": {
+                                              "type": "string",
+                                              "minLength": 1,
+                                              "maxWords": 315
+                                            }
+                                          },
+                                          "required": [
+                                            "kind",
+                                            "text"
+                                          ],
+                                          "additionalProperties": false
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "kind": {
+                                              "const": "link"
+                                            },
+                                            "text": {
+                                              "type": "string",
+                                              "minLength": 1,
+                                              "maxWords": 315
+                                            },
+                                            "target": {
+                                              "oneOf": [
+                                                {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "kind": {
+                                                      "const": "route"
+                                                    },
+                                                    "route": {
+                                                      "type": "string",
+                                                      "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "kind",
+                                                    "route"
+                                                  ],
+                                                  "additionalProperties": false
+                                                },
+                                                {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "kind": {
+                                                      "const": "email-placeholder"
+                                                    },
+                                                    "address": {
+                                                      "type": "string",
+                                                      "pattern": "^[a-z0-9._%+-]+@example\\.(com|org|net)$"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "kind",
+                                                    "address"
+                                                  ],
+                                                  "additionalProperties": false,
+                                                  "description": "rendered as a mailto: link to a RESERVED placeholder domain only (legal copy); never a real inbox"
+                                                }
+                                              ],
+                                              "x-allowedKinds": [
+                                                "route",
+                                                "email-placeholder"
+                                              ]
+                                            }
+                                          },
+                                          "required": [
+                                            "kind",
+                                            "text",
+                                            "target"
+                                          ],
+                                          "additionalProperties": false
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "kind": {
+                                              "const": "break"
+                                            }
+                                          },
+                                          "required": [
+                                            "kind"
+                                          ],
+                                          "additionalProperties": false
+                                        }
+                                      ]
+                                    },
+                                    "minItems": 1,
+                                    "maxItems": 40
+                                  },
+                                  "sub": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "nestedOnly": {
+                                          "type": "boolean"
+                                        },
+                                        "value": {
+                                          "type": "integer",
+                                          "minimum": 1
+                                        },
+                                        "runs": {
+                                          "type": "array",
+                                          "items": {
+                                            "oneOf": [
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "kind": {
+                                                    "const": "text"
+                                                  },
+                                                  "text": {
+                                                    "type": "string",
+                                                    "minLength": 1,
+                                                    "maxWords": 315
+                                                  }
+                                                },
+                                                "required": [
+                                                  "kind",
+                                                  "text"
+                                                ],
+                                                "additionalProperties": false
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "kind": {
+                                                    "const": "bold"
+                                                  },
+                                                  "text": {
+                                                    "type": "string",
+                                                    "minLength": 1,
+                                                    "maxWords": 315
+                                                  }
+                                                },
+                                                "required": [
+                                                  "kind",
+                                                  "text"
+                                                ],
+                                                "additionalProperties": false
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "kind": {
+                                                    "const": "underline"
+                                                  },
+                                                  "text": {
+                                                    "type": "string",
+                                                    "minLength": 1,
+                                                    "maxWords": 315
+                                                  }
+                                                },
+                                                "required": [
+                                                  "kind",
+                                                  "text"
+                                                ],
+                                                "additionalProperties": false
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "kind": {
+                                                    "const": "link"
+                                                  },
+                                                  "text": {
+                                                    "type": "string",
+                                                    "minLength": 1,
+                                                    "maxWords": 315
+                                                  },
+                                                  "target": {
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "kind": {
+                                                            "const": "route"
+                                                          },
+                                                          "route": {
+                                                            "type": "string",
+                                                            "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "kind",
+                                                          "route"
+                                                        ],
+                                                        "additionalProperties": false
+                                                      },
+                                                      {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "kind": {
+                                                            "const": "email-placeholder"
+                                                          },
+                                                          "address": {
+                                                            "type": "string",
+                                                            "pattern": "^[a-z0-9._%+-]+@example\\.(com|org|net)$"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "kind",
+                                                          "address"
+                                                        ],
+                                                        "additionalProperties": false,
+                                                        "description": "rendered as a mailto: link to a RESERVED placeholder domain only (legal copy); never a real inbox"
+                                                      }
+                                                    ],
+                                                    "x-allowedKinds": [
+                                                      "route",
+                                                      "email-placeholder"
+                                                    ]
+                                                  }
+                                                },
+                                                "required": [
+                                                  "kind",
+                                                  "text",
+                                                  "target"
+                                                ],
+                                                "additionalProperties": false
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "kind": {
+                                                    "const": "break"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "kind"
+                                                ],
+                                                "additionalProperties": false
+                                              }
+                                            ]
+                                          },
+                                          "minItems": 1,
+                                          "maxItems": 40
+                                        },
+                                        "sub": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "properties": {
+                                              "nestedOnly": {
+                                                "type": "boolean"
+                                              },
+                                              "value": {
+                                                "type": "integer",
+                                                "minimum": 1
+                                              },
+                                              "runs": {
+                                                "type": "array",
+                                                "items": {
+                                                  "oneOf": [
+                                                    {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "kind": {
+                                                          "const": "text"
+                                                        },
+                                                        "text": {
+                                                          "type": "string",
+                                                          "minLength": 1,
+                                                          "maxWords": 315
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "kind",
+                                                        "text"
+                                                      ],
+                                                      "additionalProperties": false
+                                                    },
+                                                    {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "kind": {
+                                                          "const": "bold"
+                                                        },
+                                                        "text": {
+                                                          "type": "string",
+                                                          "minLength": 1,
+                                                          "maxWords": 315
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "kind",
+                                                        "text"
+                                                      ],
+                                                      "additionalProperties": false
+                                                    },
+                                                    {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "kind": {
+                                                          "const": "underline"
+                                                        },
+                                                        "text": {
+                                                          "type": "string",
+                                                          "minLength": 1,
+                                                          "maxWords": 315
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "kind",
+                                                        "text"
+                                                      ],
+                                                      "additionalProperties": false
+                                                    },
+                                                    {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "kind": {
+                                                          "const": "link"
+                                                        },
+                                                        "text": {
+                                                          "type": "string",
+                                                          "minLength": 1,
+                                                          "maxWords": 315
+                                                        },
+                                                        "target": {
+                                                          "oneOf": [
+                                                            {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "kind": {
+                                                                  "const": "route"
+                                                                },
+                                                                "route": {
+                                                                  "type": "string",
+                                                                  "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                                                                }
+                                                              },
+                                                              "required": [
+                                                                "kind",
+                                                                "route"
+                                                              ],
+                                                              "additionalProperties": false
+                                                            },
+                                                            {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "kind": {
+                                                                  "const": "email-placeholder"
+                                                                },
+                                                                "address": {
+                                                                  "type": "string",
+                                                                  "pattern": "^[a-z0-9._%+-]+@example\\.(com|org|net)$"
+                                                                }
+                                                              },
+                                                              "required": [
+                                                                "kind",
+                                                                "address"
+                                                              ],
+                                                              "additionalProperties": false,
+                                                              "description": "rendered as a mailto: link to a RESERVED placeholder domain only (legal copy); never a real inbox"
+                                                            }
+                                                          ],
+                                                          "x-allowedKinds": [
+                                                            "route",
+                                                            "email-placeholder"
+                                                          ]
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "kind",
+                                                        "text",
+                                                        "target"
+                                                      ],
+                                                      "additionalProperties": false
+                                                    },
+                                                    {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "kind": {
+                                                          "const": "break"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "kind"
+                                                      ],
+                                                      "additionalProperties": false
+                                                    }
+                                                  ]
+                                                },
+                                                "minItems": 1,
+                                                "maxItems": 40
+                                              }
+                                            },
+                                            "required": [],
+                                            "additionalProperties": false
+                                          },
+                                          "minItems": 1,
+                                          "maxItems": 30
+                                        }
+                                      },
+                                      "required": [],
+                                      "additionalProperties": false
+                                    },
+                                    "minItems": 1,
+                                    "maxItems": 30
+                                  }
+                                },
+                                "required": [],
+                                "additionalProperties": false
+                              },
+                              "minItems": 1,
+                              "maxItems": 30
+                            }
+                          },
+                          "required": [
+                            "kind",
+                            "items"
+                          ],
+                          "additionalProperties": false,
+                          "description": "CMS-style numbered lists; nested sub-lists up to 3 levels"
+                        }
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 108
+                  }
+                },
+                "required": [
+                  "title",
+                  "blocks"
+                ],
+                "additionalProperties": false,
+                "description": "No TOC, anchors or h2/h3 - headings are bold paragraphs (spec P4)"
+              }
+            },
+            "not": {
+              "required": [
+                "variant"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

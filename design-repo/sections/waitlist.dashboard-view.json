@@ -1,0 +1,507 @@
+{
+  "id": "waitlist.dashboard-view",
+  "kind": "section",
+  "category": "conversion",
+  "purpose": "/waitlist dashboard view (after signup / stored entry): loading, error and success states - status badge, heading, position/referral stat cards, giveaway card, hardware survey, referral link + share buttons, joined date. All state is localStorage; share buttons build X/LinkedIn intent URLs at runtime.",
+  "implementedBy": [
+    {
+      "citation": "src/pages/Waitlist.jsx:226-301",
+      "quote": "function Dashboard({ entry, onEntryChange, dev, onReset })"
+    },
+    {
+      "citation": "src/pages/Waitlist.jsx:27",
+      "quote": "const STORAGE_KEY = 'rig-clone-waitlist'"
+    },
+    {
+      "citation": "src/styles/Waitlist.css:249-254",
+      "quote": ".waitlist-page .stats-grid {"
+    }
+  ],
+  "usedOnRoutes": [
+    "/waitlist"
+  ],
+  "constraints": {
+    "onePerPage": true,
+    "exclusiveWith": "waitlist.form-view"
+  },
+  "content": {
+    "type": "object",
+    "properties": {
+      "loading": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 3,
+        "evidence": {
+          "longestObserved": "Fetching your spot...",
+          "citation": "src/content.js:268"
+        }
+      },
+      "error": {
+        "type": "object",
+        "properties": {
+          "heading": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 5,
+            "evidence": {
+              "longestObserved": "We couldn’t find that entry",
+              "citation": "src/content.js:270"
+            }
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 8,
+            "evidence": {
+              "longestObserved": "That referral code isn’t saved in this browser.",
+              "citation": "src/content.js:271"
+            }
+          },
+          "icon": {
+            "type": "object",
+            "properties": {
+              "assetRole": {
+                "type": "string",
+                "enum": [
+                  "icon.ui"
+                ]
+              }
+            },
+            "required": [
+              "assetRole"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "heading",
+          "message",
+          "icon"
+        ],
+        "additionalProperties": false
+      },
+      "badge": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 4,
+        "evidence": {
+          "longestObserved": "You are in line",
+          "citation": "src/content.js:274"
+        }
+      },
+      "heading": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 3,
+        "evidence": {
+          "longestObserved": "Where you stand",
+          "citation": "src/content.js:275"
+        }
+      },
+      "positionLabel": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 2,
+        "evidence": {
+          "longestObserved": "Queue position",
+          "citation": "src/content.js:212"
+        }
+      },
+      "referralsLabel": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 2,
+        "evidence": {
+          "longestObserved": "Friends referred",
+          "citation": "src/content.js:277"
+        }
+      },
+      "giveaway": {
+        "type": "object",
+        "properties": {
+          "heading": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 2,
+            "evidence": {
+              "longestObserved": "Hardware giveaway",
+              "citation": "src/content.js:279"
+            }
+          },
+          "body": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxWords": 25,
+              "evidence": {
+                "longestObserved": "Every friend who signs up with your link adds another entry to the draw. Pass it along to anyone who writes code on a laptop.",
+                "citation": "src/content.js:282"
+              }
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "required": [
+          "heading",
+          "body"
+        ],
+        "additionalProperties": false
+      },
+      "survey": {
+        "type": "object",
+        "properties": {
+          "heading": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 4,
+            "evidence": {
+              "longestObserved": "Tell us your setup",
+              "citation": "src/content.js:286"
+            }
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 19,
+            "evidence": {
+              "longestObserved": "Share the machine you plan to run Rig on so we can test against the configurations people actually use.",
+              "citation": "src/content.js:287"
+            }
+          },
+          "chipLabel": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 1,
+            "evidence": {
+              "longestObserved": "Chip",
+              "citation": "src/content.js:288"
+            }
+          },
+          "chipPlaceholder": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 3,
+            "evidence": {
+              "longestObserved": "Choose your chip",
+              "citation": "src/content.js:289"
+            }
+          },
+          "chipOptions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxWords": 2,
+              "evidence": {
+                "longestObserved": "M1 Pro",
+                "citation": "src/content.js:291"
+              }
+            },
+            "minItems": 1,
+            "maxItems": 21
+          },
+          "ramLabel": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 1,
+            "evidence": {
+              "longestObserved": "RAM",
+              "citation": "src/content.js:128"
+            }
+          },
+          "ramPlaceholder": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 3,
+            "evidence": {
+              "longestObserved": "Choose your RAM",
+              "citation": "src/content.js:299"
+            }
+          },
+          "ramOptions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxWords": 1,
+              "evidence": {
+                "longestObserved": "8GB",
+                "citation": "src/content.js:300"
+              }
+            },
+            "minItems": 1,
+            "maxItems": 9
+          },
+          "submit": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 1,
+            "evidence": {
+              "longestObserved": "Save",
+              "citation": "src/content.js:301"
+            }
+          },
+          "saving": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 1,
+            "evidence": {
+              "longestObserved": "Saving...",
+              "citation": "src/content.js:302"
+            }
+          },
+          "saved": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 1,
+            "evidence": {
+              "longestObserved": "Saved!",
+              "citation": "src/content.js:303"
+            }
+          },
+          "submission": {
+            "type": "object",
+            "properties": {
+              "mode": {
+                "const": "local-only",
+                "description": "Front-end only: validation + timed fake success (no network). Wiring a real endpoint requires review (see README)."
+              }
+            },
+            "required": [
+              "mode"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "heading",
+          "description",
+          "chipLabel",
+          "chipPlaceholder",
+          "chipOptions",
+          "ramLabel",
+          "ramPlaceholder",
+          "ramOptions",
+          "submit",
+          "saving",
+          "saved",
+          "submission"
+        ],
+        "additionalProperties": false
+      },
+      "referral": {
+        "type": "object",
+        "properties": {
+          "heading": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 2,
+            "evidence": {
+              "longestObserved": "Skip ahead",
+              "citation": "src/content.js:306"
+            }
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 21,
+            "evidence": {
+              "longestObserved": "Each friend who joins through your link moves you higher in the queue, and the higher spots get their invites first.",
+              "citation": "src/content.js:307"
+            }
+          },
+          "linkLabel": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 3,
+            "evidence": {
+              "longestObserved": "Your invite link",
+              "citation": "src/content.js:308"
+            }
+          },
+          "copyLabel": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 3,
+            "evidence": {
+              "longestObserved": "Copy invite link",
+              "citation": "src/content.js:309"
+            }
+          },
+          "shareX": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 3,
+            "evidence": {
+              "longestObserved": "Share on X",
+              "citation": "src/content.js:310"
+            }
+          },
+          "shareLinkedIn": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 3,
+            "evidence": {
+              "longestObserved": "Share on LinkedIn",
+              "citation": "src/content.js:311"
+            }
+          },
+          "shareText": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 12,
+            "evidence": {
+              "longestObserved": "I just joined the Rig waitlist. Grab a spot with my link:",
+              "citation": "src/content.js:312"
+            }
+          },
+          "shareTargets": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "const": "share-intent"
+                    },
+                    "network": {
+                      "type": "string",
+                      "enum": [
+                        "x",
+                        "linkedin"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "network"
+                  ],
+                  "additionalProperties": false,
+                  "description": "URL is built at runtime from the page's own referral link; a PageSpec never carries the URL"
+                }
+              ],
+              "x-allowedKinds": [
+                "share-intent"
+              ]
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "shareIcons": {
+            "type": "object",
+            "properties": {
+              "assetRole": {
+                "type": "string",
+                "enum": [
+                  "icon.social-share"
+                ]
+              }
+            },
+            "required": [
+              "assetRole"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "heading",
+          "description",
+          "linkLabel",
+          "copyLabel",
+          "shareX",
+          "shareLinkedIn",
+          "shareText",
+          "shareTargets",
+          "shareIcons"
+        ],
+        "additionalProperties": false
+      },
+      "joined": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 1,
+        "evidence": {
+          "longestObserved": "Joined: ",
+          "citation": "src/content.js:314"
+        }
+      },
+      "devReset": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 3,
+        "evidence": {
+          "longestObserved": "Clear local waitlist",
+          "citation": "src/content.js:315"
+        },
+        "description": "rendered only behind ?dev (never in production)"
+      },
+      "storage": {
+        "type": "object",
+        "properties": {
+          "mode": {
+            "const": "localStorage"
+          },
+          "key": {
+            "const": "rig-clone-waitlist"
+          }
+        },
+        "required": [
+          "mode",
+          "key"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "loading",
+      "error",
+      "badge",
+      "heading",
+      "positionLabel",
+      "referralsLabel",
+      "giveaway",
+      "survey",
+      "referral",
+      "joined",
+      "devReset",
+      "storage"
+    ],
+    "additionalProperties": false
+  },
+  "motion": {
+    "allowed": [
+      {
+        "pattern": "dashboard-pulse-spin",
+        "reducedMotionFallback": "steady-dot-static-loading"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoints": [
+      {
+        "query": "(max-width: 480px)",
+        "citation": "src/styles/Waitlist.css:515-528",
+        "quote": "@media (max-width: 480px)",
+        "changes": [
+          "stats grid 1 column",
+          "share buttons stack",
+          "stat value 2rem"
+        ]
+      }
+    ],
+    "note": "At 768 the dashboard matches 1440 except the 32px heading (spec P3.4)."
+  },
+  "assetRoles": [
+    "icon.social-share",
+    "icon.ui"
+  ],
+  "composedOf": [
+    "primitive.copy-button",
+    "primitive.text-input",
+    "primitive.rect-button",
+    "primitive.status-dot"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "component.illust-card",
+  "kind": "component",
+  "purpose": "Chamfer-clipped capability card: '[ 0N ]' red label, Chalet h3, paper-dim body; hover tints border + background red. The chamfer clips the border at the cut corners (faithful).",
+  "implementedBy": [
+    {
+      "citation": "src/components/Capabilities.jsx:18-21",
+      "quote": "<div key={i} className=\"illust-card\">"
+    },
+    {
+      "citation": "src/styles/Capabilities.css:15",
+      "quote": ".illust-features .illust-card {"
+    }
+  ],
+  "tokensUsed": [
+    "radius.chamfer",
+    "color.white-02",
+    "color.border.default",
+    "color.red-hex-20",
+    "color.red-hex-03",
+    "duration.card-hover",
+    "typeRole.card-h3",
+    "typeRole.card-body"
+  ],
+  "usedBySections": [
+    "capabilities.card-grid"
+  ],
+  "states": [
+    {
+      "state": "hover",
+      "change": "border #ed462d33, background #ed462d08 (.3s)",
+      "measuredFrom": "src/styles/Capabilities.css:29",
+      "evidenceQuote": ".illust-features .illust-card:hover {"
+    }
+  ],
+  "composes": [
+    "primitive.mono-label"
+  ]
+}

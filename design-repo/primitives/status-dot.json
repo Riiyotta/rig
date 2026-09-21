@@ -1,0 +1,28 @@
+{
+  "id": "primitive.status-dot",
+  "kind": "primitive",
+  "purpose": "Status row + dots: .status-dot (pulse-ring), .blink-dot (red, glow, blink 2s), footer square dot (blink 1.5s step-end), dashboard .badge-dot (pulse-dot 2s).",
+  "implementedBy": [
+    {
+      "citation": "src/index.css:348-380",
+      "quote": "animation: pulse-ring 2s ease-in-out infinite;"
+    },
+    {
+      "citation": "src/styles/Footer.css:77",
+      "quote": "animation: blink 1.5s step-end infinite;"
+    }
+  ],
+  "tokensUsed": [
+    "color.accent.primary",
+    "shadow.blink-dot-glow",
+    "duration.blink-dot",
+    "duration.blink-footer",
+    "duration.pulse-dot",
+    "radius.round"
+  ],
+  "usedBySections": [
+    "shell.footer",
+    "terminal.monitor",
+    "waitlist.dashboard-view"
+  ]
+}

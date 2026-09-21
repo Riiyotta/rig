@@ -1,0 +1,244 @@
+{
+  "$description": "Citation ledger for build-time evidence that lives OUTSIDE design-repo/ (sibling src/, CLONE_SPEC.md, config, reference/). verify_all.py checks every citation (range + quoted content) when the sibling source tree exists and WARNS (does not fail) when it is absent.",
+  "sourceRootConvention": "Citations are path:line[-line] relative to the parent folder of design-repo/ (override with env DESIGN_REPO_SOURCE_ROOT).",
+  "stack": {
+    "react": {
+      "value": "^18.3.1",
+      "measuredFrom": "package.json:12",
+      "evidenceQuote": "^18.3.1"
+    },
+    "react-dom": {
+      "value": "^18.3.1",
+      "measuredFrom": "package.json:13",
+      "evidenceQuote": "^18.3.1"
+    },
+    "vite": {
+      "value": "^5.4.8",
+      "measuredFrom": "package.json:20",
+      "evidenceQuote": "^5.4.8"
+    },
+    "tailwindcss": {
+      "value": "^3.4.13",
+      "measuredFrom": "package.json:19",
+      "evidenceQuote": "^3.4.13"
+    },
+    "router": {
+      "value": "none - a 54-line pushState router (no react-router dependency)",
+      "measuredFrom": "src/lib/router.jsx:1",
+      "evidenceQuote": "no dependency"
+    },
+    "fonts": {
+      "value": "self-hosted woff2 in public/fonts (Chalet, Geist Pixel Square, Instrument Sans, Chivo Mono)",
+      "measuredFrom": "index.html:8-11",
+      "evidenceQuote": "chalet_londonnineteensixty.woff2"
+    }
+  },
+  "decisions": [
+    {
+      "id": "copy-is-original-placeholder",
+      "claim": "Every word of page copy in the clone is ORIGINAL placeholder text written for the clone (not rig.ai's copy). All maxWords budgets and the example/fixtures derive from it; rig.ai wording is never pasted here (enforced by ORIGINAL_COPY_FINGERPRINT with hash-only fingerprints).",
+      "citations": [
+        "src/content.js:1",
+        "src/blog.js:1",
+        "src/legal.js:2",
+        "src/CONVENTIONS.md:26"
+      ]
+    },
+    {
+      "id": "tokens-source-of-truth",
+      "claim": "CSS custom properties on :root in src/index.css (oklch, verbatim from the original) are the token source of truth; tailwind.config.js points at them.",
+      "citations": [
+        "src/index.css:62-92",
+        "tailwind.config.js:2"
+      ]
+    },
+    {
+      "id": "breakpoints-max-width",
+      "claim": "All breakpoints are max-width (desktop-first): xl <=1280, lg <=1024, tab 769-1024, md <=768, plus page-scoped 720/640/480/400.",
+      "citations": [
+        "tailwind.config.js:9-13",
+        "CLONE_SPEC.md:133"
+      ]
+    },
+    {
+      "id": "routes",
+      "claim": "10 inventory routes: 9 concrete paths + the /blog/<unknown-slug> not-found state of the post template. Any other path renders Home (no 404).",
+      "citations": [
+        "src/App.jsx:10-18"
+      ]
+    },
+    {
+      "id": "section-order",
+      "claim": "Homepage order: overlays, hero (embedded header + ticker), frame lines, spacer-top, problem, intro, offline, three-col, DOUBLE divider, how, capabilities, stats, terminal, early-access, faq, spacer-bottom, CTA (outside main), footer - with a rule divider between every pair of main sections.",
+      "citations": [
+        "src/pages/Home.jsx:19-59",
+        "CLONE_SPEC.md:159-172"
+      ]
+    },
+    {
+      "id": "no-backend",
+      "claim": "All forms are front-end only: WaitlistForm fakes success after ~800ms; /waitlist persists an entry in localStorage ('rig-clone-waitlist'); the hardware survey saves locally. Turnstile, PostHog and the waitlist API were intentionally NOT recreated; an empty .turnstile-container keeps the 1rem margin.",
+      "citations": [
+        "src/components/WaitlistForm.jsx:2",
+        "src/pages/Waitlist.jsx:27",
+        "src/components/WaitlistForm.jsx:105",
+        "CLONE_SPEC.md:762"
+      ]
+    },
+    {
+      "id": "shaders-original-glsl",
+      "claim": "Three WebGL canvases (intro #shader3, how #shader1, early-access #shader2) use src/lib/ditherShader.js, whose GLSL was written for the clone to approximate rig.ai's look (not ported, despite spec §15 saying 'port verbatim'). Two presets only: headline, how - modelled as a closed enum.",
+      "citations": [
+        "src/lib/ditherShader.js:3",
+        "src/lib/ditherShader.js:274",
+        "CLONE_SPEC.md:650"
+      ]
+    },
+    {
+      "id": "motion-reality",
+      "claim": "No scroll-reveal/fade-in anywhere. Real motion: ticker, watermark/pupil/btn glitches, eye tracking + blink, SMIL diagram, globe drift, stepper auto-advance + fill + card tween, terminal load-reveal + typing, FAQ grid-rows, CTA glitch + glow, blink dots, spinners; off-screen pausing via .is-visible.",
+      "citations": [
+        "CLONE_SPEC.md:178",
+        "src/lib/visibility.js:6-16",
+        "CLONE_SPEC.md:716"
+      ]
+    },
+    {
+      "id": "faithful-quirks",
+      "claim": "Chamfer clip-path clips hover box-shadows and CTA glow; the ticker loop jumps (-50% of a viewport-wide flex row). Both are faithful, not bugs.",
+      "citations": [
+        "src/index.css:302",
+        "src/styles/Hero.css:70"
+      ]
+    },
+    {
+      "id": "blog-image-placeholder",
+      "claim": "The only blog image (building-inference-engine) 502s at origin; the clone renders a neutral placeholder box with per-breakpoint aspect ratios -> asset role placeholder.blog-diagram (must-not-fabricate).",
+      "citations": [
+        "CLONE_SPEC.md:918",
+        "src/styles/BlogPost.css:172"
+      ]
+    },
+    {
+      "id": "real-company",
+      "claim": "rig.ai is a live company. The clone ships its real wordmark/logo marks as build evidence; generated output must never reproduce them (asset roles brand.* must-not-fabricate), and Chalet London Nineteen Sixty is commercially licensed.",
+      "citations": [
+        "CLONE_ASSETS.json:12",
+        "src/index.css:10"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "how-card-tween-easing",
+      "status": "spec-superseded",
+      "claim": "CLONE_SPEC §8 says the How card height tween uses easing [.25,.1,.25,1]. The original passes `easing` to the motion library, which ignores it and uses its easeOut default; the clone implements cubic-bezier(0,0,.58,1), 400ms. Source wins; tokens/motion use cubic-bezier(0,0,.58,1).",
+      "citations": [
+        "CLONE_SPEC.md:500",
+        "src/components/HowItWorks.jsx:84"
+      ]
+    },
+    {
+      "id": "footer-1280-padding",
+      "status": "spec-superseded",
+      "claim": "CLONE_SPEC §0.5/§16 says footer gets padding-inline 5% at <=1280. The clone source documents that this rule lives only in the original's blog-page stylesheet (measured 0px on the homepage) and does not apply it; the footer contract follows the source.",
+      "citations": [
+        "CLONE_SPEC.md:697",
+        "src/styles/Footer.css:92-101"
+      ]
+    },
+    {
+      "id": "no-reduced-motion-in-source",
+      "status": "source-gap",
+      "claim": "There is no prefers-reduced-motion rule anywhere in src/ (grep -ri reduce src matches only blog prose). Every non-'none' motion pattern therefore has reducedMotionHandledInSource=false; the const fallbacks in motion-patterns.json are requirements for generated pages (warn rule REDUCED_MOTION_UNHANDLED_IN_SOURCE), not observed behaviour.",
+      "citations": [
+        "src/index.css:412",
+        "src/styles/Hero.css:75"
+      ]
+    },
+    {
+      "id": "copyright-line-verbatim",
+      "status": "copy-rule-violation-in-source",
+      "claim": "ORIGINAL_COPY_FINGERPRINT found exactly one clone string that is verbatim original-site wording: the footer copyright/legal-name line in src/content.js. It is withheld from this repo (budget records only its word count; example/fixtures use a neutral 'Example Company' line). Recommend rewriting it in the clone.",
+      "citations": [
+        "src/content.js:246"
+      ]
+    },
+    {
+      "id": "real-name-in-clone-copy",
+      "status": "real-company-content",
+      "claim": "The clone's placeholder copy still names the real company ('Introducing Rig', 'Rig AI Inc.' in legal.js, 'rig.ai' as link text). Flagged by warn rule SOURCE_BRAND_IN_COPY on every fixture; production generation must substitute the client's brand.",
+      "citations": [
+        "src/content.js:57",
+        "src/legal.js:13",
+        "src/legal.js:133"
+      ]
+    },
+    {
+      "id": "svg-labels-original-wording",
+      "status": "real-company-content",
+      "claim": "intro-diagram.svg and surveillance-eye.svg are extracted verbatim from the original markup and carry the original's short text labels (incl. the RIG name); Intro.jsx inlines the diagram without replacing them. Asset roles flag them; replace labels before production.",
+      "citations": [
+        "src/svg/README.md:25",
+        "src/components/Intro.jsx:63"
+      ]
+    },
+    {
+      "id": "how-card-titles",
+      "status": "copy-difference",
+      "claim": "The spec's card-title strings for steps 2-3 (original-site labels, not reproduced here) differ from the clone's cardTitle values; the clone copy is authoritative per the copy rule.",
+      "citations": [
+        "CLONE_SPEC.md:484",
+        "src/content.js:96"
+      ]
+    },
+    {
+      "id": "legal-notice-block",
+      "status": "clone-addition",
+      "claim": "Both legal docs open with an extra 'placeholder, not a real policy' notice block, so the clone has 108/22 top-level blocks vs the spec's 107/21 inventory. Budgets include it.",
+      "citations": [
+        "src/legal.js:105",
+        "CLONE_SPEC.md:1079",
+        "CLONE_SPEC.md:1086"
+      ]
+    },
+    {
+      "id": "copy-length-drift",
+      "status": "copy-difference",
+      "claim": "Clone copy lengths exceed some spec ranges: longest compressing-post paragraph 182 words (spec 3-126), inference title 10 words (spec 4-9). Budgets follow the clone copy (the copy rule), so these are the real maxWords.",
+      "citations": [
+        "CLONE_SPEC.md:936",
+        "CLONE_SPEC.md:853"
+      ]
+    },
+    {
+      "id": "legal-mailto-placeholder",
+      "status": "modelled",
+      "claim": "Legal copy links a placeholder address on the reserved example.com domain via mailto:. Modelled as link kind 'email-placeholder' restricted to example.com/.org/.net - never a real inbox.",
+      "citations": [
+        "src/legal.js:14",
+        "src/legal.js:200"
+      ]
+    },
+    {
+      "id": "share-intents-external",
+      "status": "modelled",
+      "claim": "The only external links in the clone are the dashboard's X/LinkedIn share intents, built at runtime from the page's referral link; modelled as link kind 'share-intent' (network enum) so a PageSpec never carries a URL. Footer social links are '#' placeholders.",
+      "citations": [
+        "src/pages/Waitlist.jsx:229",
+        "src/content.js:243"
+      ]
+    },
+    {
+      "id": "stale-source-comments",
+      "status": "doc-drift-in-source",
+      "claim": "Two source comments are stale: visibility.js says it is called from App.jsx (it is called from Home.jsx and Waitlist.jsx); CONVENTIONS.md says dividers are rendered by App.jsx (they are in Home.jsx). Contracts cite the real call sites.",
+      "citations": [
+        "src/lib/visibility.js:3",
+        "src/pages/Home.jsx:20",
+        "src/CONVENTIONS.md:17"
+      ]
+    }
+  ],
+  "screenshotNote": "Playwright screenshots and measurement scripts from the recon/QA sessions were consulted during the build but live outside the project in an ephemeral scratch area; they are not cited or shipped. CLONE_SPEC.md carries the measured values."
+}

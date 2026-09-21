@@ -1,0 +1,429 @@
+{
+  "version": "1.0.0",
+  "$description": "Rhythm/position/compliance rules JSON Schema cannot express. Every rule with enforcedBy semantic_validate.py is implemented under the same id in schema/semantic_validate.py RULES (parity checked by extraction/verify_all.py); rule parameters are cross-checked against templates/templates.json (graph_template_agreement).",
+  "categories": {
+    "shell.overlays": "shell",
+    "shell.header": "shell",
+    "hero.home": "hero",
+    "shell.frame-lines": "layout",
+    "layout.section-divider": "layout",
+    "problem.signal-grid": "content",
+    "intro.shader-diagram": "content",
+    "offline.globe-split": "content",
+    "feature.three-col": "content",
+    "how.stepper": "content",
+    "capabilities.card-grid": "content",
+    "stats.strip": "content",
+    "terminal.monitor": "content",
+    "early-access.waitlist": "conversion",
+    "faq.accordion": "content",
+    "cta.vortex": "conversion",
+    "shell.footer": "shell",
+    "blog.index-list": "listing",
+    "post.article": "article",
+    "post.cta-aside": "conversion",
+    "waitlist.form-view": "conversion",
+    "waitlist.dashboard-view": "conversion",
+    "legal.document": "article"
+  },
+  "recommendedSequence": {
+    "tpl.home": [
+      "shell.overlays",
+      "hero.home",
+      "shell.frame-lines",
+      "layout.section-divider[spacer-top]",
+      "problem.signal-grid",
+      "layout.section-divider[rule]",
+      "intro.shader-diagram",
+      "layout.section-divider[rule]",
+      "offline.globe-split",
+      "layout.section-divider[rule]",
+      "feature.three-col",
+      "layout.section-divider[rule] x2",
+      "how.stepper",
+      "layout.section-divider[rule]",
+      "capabilities.card-grid",
+      "layout.section-divider[rule]",
+      "stats.strip",
+      "layout.section-divider[rule]",
+      "terminal.monitor",
+      "layout.section-divider[rule]",
+      "early-access.waitlist",
+      "layout.section-divider[rule]",
+      "faq.accordion",
+      "layout.section-divider[rule]",
+      "layout.section-divider[spacer-bottom]",
+      "cta.vortex",
+      "shell.footer"
+    ],
+    "tpl.blog-index": [
+      "shell.overlays",
+      "shell.header[default]",
+      "blog.index-list",
+      "shell.footer"
+    ],
+    "tpl.blog-post": [
+      "shell.overlays",
+      "shell.header[default]",
+      "post.article[post,not-found]",
+      "post.cta-aside",
+      "shell.footer"
+    ],
+    "tpl.waitlist": [
+      "shell.overlays",
+      "shell.header[default-no-cta]",
+      "waitlist.form-view",
+      "waitlist.dashboard-view",
+      "shell.footer"
+    ],
+    "tpl.legal": [
+      "shell.overlays",
+      "shell.header[default]",
+      "legal.document",
+      "shell.footer"
+    ]
+  },
+  "rules": [
+    {
+      "id": "TEMPLATE_NODE_SEQUENCE",
+      "severity": "error",
+      "description": "A PageSpec's nodes must follow its DECLARED template's node list in order (variant-aware): required nodes present (minCount), non-repeatable nodes not repeated (maxCount), nothing outside the template.",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "templates/templates.json"
+      ]
+    },
+    {
+      "id": "TEMPLATE_VARIANT",
+      "severity": "error",
+      "description": "A node's variant must be one the template node allows (e.g. shell.header 'default-no-cta' only on tpl.waitlist; divider 'spacer-top' only first).",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "templates/templates.json"
+      ]
+    },
+    {
+      "id": "ROUTE_TEMPLATE",
+      "severity": "error",
+      "description": "The PageSpec route must match one of the declared template's routePatterns (':slug' = [a-z0-9-]+).",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "src/App.jsx:10-18"
+      ]
+    },
+    {
+      "id": "ONE_PER_PAGE",
+      "severity": "error",
+      "description": "Sections whose contract sets onePerPage appear once per (section, variant). layout.section-divider is the only repeatable section (onePerPage false).",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "src/pages/Home.jsx:33"
+      ]
+    },
+    {
+      "id": "SHELL_ORDER",
+      "severity": "error",
+      "description": "shell.overlays is the first node and shell.footer the last node on every template.",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "src/pages/Home.jsx:24",
+        "src/pages/Blog.jsx:14"
+      ]
+    },
+    {
+      "id": "ONE_HERO",
+      "severity": "error",
+      "description": "At most one hero-category section per page; tpl.home requires one. Named exceptions: the four secondary templates have NO hero at all (spec P0.1 'No page has a hero band'), so a hero there is an error.",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "CLONE_SPEC.md:785"
+      ],
+      "parameters": {
+        "heroRequiredTemplates": [
+          "tpl.home"
+        ],
+        "noHeroTemplates": [
+          "tpl.blog-index",
+          "tpl.blog-post",
+          "tpl.waitlist",
+          "tpl.legal"
+        ]
+      },
+      "exceptions": [
+        {
+          "templates": [
+            "tpl.blog-index",
+            "tpl.blog-post",
+            "tpl.waitlist",
+            "tpl.legal"
+          ],
+          "reason": "hero-less secondary pages (blog index, blog post incl. not-found, waitlist, legal)"
+        }
+      ]
+    },
+    {
+      "id": "HOME_ROUTE_ONLY",
+      "severity": "error",
+      "description": "Sections that exist only in tpl.home (hero, frame lines, dividers, the ten main sections, CTA band) may only appear on route '/'.",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "CLONE_SPEC.md:784"
+      ],
+      "parameters": {
+        "sections": [
+          "capabilities.card-grid",
+          "cta.vortex",
+          "early-access.waitlist",
+          "faq.accordion",
+          "feature.three-col",
+          "hero.home",
+          "how.stepper",
+          "intro.shader-diagram",
+          "layout.section-divider",
+          "offline.globe-split",
+          "problem.signal-grid",
+          "shell.frame-lines",
+          "stats.strip",
+          "terminal.monitor"
+        ]
+      }
+    },
+    {
+      "id": "HEADER_PLACEMENT",
+      "severity": "error",
+      "description": "tpl.home has NO standalone shell.header (its header is embedded inside hero.home, spec §2); every other template has shell.header directly after shell.overlays (static, not sticky).",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "src/components/Hero.jsx:17",
+        "CLONE_SPEC.md:789"
+      ],
+      "parameters": {
+        "embeddedHeaderTemplates": [
+          "tpl.home"
+        ],
+        "standaloneHeaderTemplates": [
+          "tpl.blog-index",
+          "tpl.blog-post",
+          "tpl.waitlist",
+          "tpl.legal"
+        ]
+      }
+    },
+    {
+      "id": "NAV_VARIANT_BY_ROUTE",
+      "severity": "error",
+      "description": "shell.header variant is 'default-no-cta' on /waitlist (CTA <li> omitted, 74px nav) and 'default' elsewhere; content.cta must be present exactly when the variant renders a CTA.",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "src/pages/Waitlist.jsx:110",
+        "CLONE_SPEC.md:796"
+      ],
+      "parameters": {
+        "routeVariants": {
+          "/waitlist": "default-no-cta"
+        },
+        "defaultVariant": "default"
+      }
+    },
+    {
+      "id": "SECTION_DIVIDER_RHYTHM",
+      "severity": "error",
+      "description": "On the homepage every pair of consecutive main sections is separated by rule divider(s) only; the first main section follows the spacer-top divider; the last (FAQ) is followed by a rule then the spacer-bottom divider.",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "src/pages/Home.jsx:28-57",
+        "CLONE_SPEC.md:159-172"
+      ],
+      "parameters": {
+        "mainSections": [
+          "problem.signal-grid",
+          "intro.shader-diagram",
+          "offline.globe-split",
+          "feature.three-col",
+          "how.stepper",
+          "capabilities.card-grid",
+          "stats.strip",
+          "terminal.monitor",
+          "early-access.waitlist",
+          "faq.accordion"
+        ]
+      }
+    },
+    {
+      "id": "DOUBLE_DIVIDER_BEFORE_HOW",
+      "severity": "error",
+      "description": "how.stepper is immediately preceded by exactly two rule dividers (the real double divider), and that is the only place two rule dividers are adjacent. Keyed on (section, variant): the FAQ's rule + spacer-bottom pair is NOT a double divider.",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "src/pages/Home.jsx:39-42",
+        "CLONE_SPEC.md:463"
+      ],
+      "parameters": {
+        "section": "how.stepper",
+        "count": 2
+      }
+    },
+    {
+      "id": "CTA_OUTSIDE_MAIN",
+      "severity": "error",
+      "description": "cta.vortex sits outside <main>: directly after the spacer-bottom divider and directly before shell.footer.",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "src/pages/Home.jsx:57-58"
+      ]
+    },
+    {
+      "id": "POST_STATE_SHAPE",
+      "severity": "error",
+      "description": "post.article variant 'post' is followed by post.cta-aside; variant 'not-found' has no CTA aside (BlogPost.jsx renders the aside only when the post exists).",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "src/pages/BlogPost.jsx:120"
+      ]
+    },
+    {
+      "id": "WAITLIST_SINGLE_VIEW",
+      "severity": "error",
+      "description": "tpl.waitlist renders exactly one of waitlist.form-view / waitlist.dashboard-view.",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "src/pages/Waitlist.jsx:113"
+      ]
+    },
+    {
+      "id": "BLOG_INDEX_NEWEST_FIRST",
+      "severity": "error",
+      "description": "blog.index-list posts are sorted newest first by date.",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "src/pages/Blog.jsx:9",
+        "CLONE_SPEC.md:842"
+      ]
+    },
+    {
+      "id": "MOTION_PATTERN_ALLOWED",
+      "severity": "error",
+      "description": "A node's motion.pattern must be one its section contract allows (closed enum in tokens/00-foundation/motion-patterns.json).",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "tokens/00-foundation/motion-patterns.json"
+      ]
+    },
+    {
+      "id": "REDUCED_MOTION_FALLBACK",
+      "severity": "error",
+      "description": "Every node's motion carries reducedMotionFallback, equal to the registry value for its pattern.",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "tokens/00-foundation/motion-patterns.json"
+      ]
+    },
+    {
+      "id": "REDUCED_MOTION_UNHANDLED_IN_SOURCE",
+      "severity": "warn",
+      "description": "The clone source has no prefers-reduced-motion handling at all; each non-'none' pattern's fallback must be implemented by the generator (reported once per page).",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "src/styles/Hero.css:75"
+      ]
+    },
+    {
+      "id": "SHADER_PRESET_BY_SECTION",
+      "severity": "error",
+      "description": "Shader canvases only in the three shader sections with their fixed preset (closed enum headline | how); at most 3 per page.",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "src/components/Intro.jsx:43",
+        "src/components/HowItWorks.jsx:251",
+        "src/components/EarlyAccess.jsx:43"
+      ],
+      "parameters": {
+        "bySection": {
+          "intro.shader-diagram": "headline",
+          "how.stepper": "how",
+          "early-access.waitlist": "headline"
+        },
+        "maxPerPage": 3
+      }
+    },
+    {
+      "id": "MAX_WORDS",
+      "severity": "error",
+      "description": "Every text field respects its contract maxWords (the word count of the longest real value in the clone copy).",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "sections/"
+      ]
+    },
+    {
+      "id": "ASSET_ROLE_REGISTERED",
+      "severity": "error",
+      "description": "Media fields carry an assetRole from the closed registry AND allowed on that field.",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "assets/asset-roles.json"
+      ]
+    },
+    {
+      "id": "NO_EXTERNAL_TARGETS",
+      "severity": "error",
+      "description": "No URL schemes, hosts, www., link/iframe/form markup, or inline [label](target) links whose target is not an internal route. Link objects use closed kinds (route | fragment | placeholder | share-intent).",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "src/components/Footer.jsx:7"
+      ]
+    },
+    {
+      "id": "NO_BACKEND_ENDPOINTS",
+      "severity": "error",
+      "description": "No generated page may reference a submission endpoint or the original's third-party services: forms are local-only (schema const). Wiring a real endpoint needs human review.",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "src/components/WaitlistForm.jsx:2",
+        "CLONE_SPEC.md:762"
+      ],
+      "parameters": {
+        "forbiddenPatterns": [
+          "/api/",
+          "\\bcms\\.",
+          "turnstile",
+          "posthog",
+          "challenges\\.cloudflare",
+          "email-decode",
+          "\\bfetch\\s*\\("
+        ]
+      }
+    },
+    {
+      "id": "NO_ASSET_URLS",
+      "severity": "error",
+      "description": "Content strings never carry asset file paths/URLs (.png/.svg/.woff2, /assets/, /fonts/): media is referenced by assetRole only, so the real Rig wordmark/logo files cannot be smuggled in.",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "assets/asset-roles.json"
+      ]
+    },
+    {
+      "id": "SOURCE_BRAND_IN_COPY",
+      "severity": "warn",
+      "description": "Copy naming the real company (Rig, rig.ai, Rig AI Inc.) is flagged. The clone's own placeholder copy uses the name, so this is a warning in this private design review; production generation must substitute the client's brand.",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "src/content.js:56-57",
+        "src/content.js:246"
+      ],
+      "parameters": {
+        "pattern": "\\bRig\\b|(?i:rig\\.ai)"
+      }
+    },
+    {
+      "id": "ORIGINAL_COPY_FINGERPRINT",
+      "severity": "error",
+      "description": "No copy string (or sentence of >= 5 words) may match a fingerprint of the ORIGINAL rig.ai site copy (assets/original-copy-fingerprints.json stores SHA-256 prefixes only - never the wording).",
+      "enforcedBy": "semantic_validate.py",
+      "evidence": [
+        "assets/original-copy-fingerprints.json"
+      ]
+    }
+  ]
+}

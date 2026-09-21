@@ -1,0 +1,136 @@
+{
+  "pageSpecVersion": "1.0.0",
+  "id": "waitlist-form",
+  "route": "/waitlist",
+  "template": "tpl.waitlist",
+  "theme": "dark",
+  "nodes": [
+    {
+      "type": "shell.overlays",
+      "content": {
+        "grainFilter": {
+          "assetRole": "effect.svg-filter"
+        }
+      },
+      "motion": {
+        "pattern": "grain-overlay-smil",
+        "reducedMotionFallback": "static-grain-frame"
+      }
+    },
+    {
+      "type": "shell.header",
+      "variant": "default-no-cta",
+      "content": {
+        "logo": {
+          "assetRole": "brand.wordmark"
+        },
+        "links": [
+          {
+            "label": "Blog",
+            "target": {
+              "kind": "route",
+              "route": "/blog"
+            }
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "mobile-menu-fade",
+        "reducedMotionFallback": "instant-toggle"
+      }
+    },
+    {
+      "type": "waitlist.form-view",
+      "content": {
+        "badge": {
+          "label": "Waitlist",
+          "icon": {
+            "assetRole": "icon.badge-pixel",
+            "iconKey": "early-access"
+          }
+        },
+        "heading": "Claim your spot",
+        "description": "Rig is opening up in waves. Leave your email and we will let you know when your invite is ready, plus a few early build notes.",
+        "form": {
+          "placeholder": "you@company.com",
+          "button": "Join Waitlist",
+          "errorEmpty": "Enter your email to join.",
+          "errorInvalid": "That email doesn’t look right.",
+          "submission": {
+            "mode": "local-only"
+          }
+        },
+        "featuresHeading": "What’s included",
+        "features": [
+          "Priority access to beta builds",
+          "Occasional notes from the team",
+          "An invite to the community chat",
+          "A shot at the hardware giveaway"
+        ],
+        "featureIcon": {
+          "assetRole": "icon.ui"
+        }
+      },
+      "motion": {
+        "pattern": "form-submit-spinner",
+        "reducedMotionFallback": "static-loading-label"
+      }
+    },
+    {
+      "type": "shell.footer",
+      "content": {
+        "logo": {
+          "assetRole": "brand.wordmark"
+        },
+        "tagline": "On-device AI for engineers who’d rather not depend on the cloud.",
+        "columns": [
+          {
+            "title": "Connect",
+            "links": [
+              {
+                "label": "Twitter",
+                "target": {
+                  "kind": "placeholder"
+                }
+              },
+              {
+                "label": "LinkedIn",
+                "target": {
+                  "kind": "placeholder"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Terms of Service",
+                "target": {
+                  "kind": "route",
+                  "route": "/terms"
+                }
+              },
+              {
+                "label": "Privacy Policy",
+                "target": {
+                  "kind": "route",
+                  "route": "/privacy"
+                }
+              }
+            ]
+          }
+        ],
+        "copyright": "© 2026 Example Company. All rights reserved.",
+        "status": "All systems local",
+        "watermark": {
+          "assetRole": "brand.logo-mark"
+        }
+      },
+      "motion": {
+        "pattern": "status-blink",
+        "reducedMotionFallback": "steady-dot"
+      }
+    }
+  ]
+}

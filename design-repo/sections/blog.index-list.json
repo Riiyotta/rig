@@ -1,0 +1,133 @@
+{
+  "id": "blog.index-list",
+  "kind": "section",
+  "category": "listing",
+  "purpose": "Blog index: plain Chalet h1 and a hairline-separated list of whole-row links (date column + title + excerpt), newest first. No cards, images, tags or pagination.",
+  "implementedBy": [
+    {
+      "citation": "src/pages/Blog.jsx:11-34",
+      "quote": "blog-list"
+    },
+    {
+      "citation": "src/styles/Blog.css:2-83",
+      "quote": ".blog-section"
+    }
+  ],
+  "usedOnRoutes": [
+    "/blog"
+  ],
+  "constraints": {
+    "onePerPage": true
+  },
+  "content": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 1,
+        "evidence": {
+          "longestObserved": "Blog",
+          "citation": "src/blog.js:1"
+        }
+      },
+      "posts": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxWords": 10,
+              "evidence": {
+                "longestObserved": "What it takes to build a fast local inference engine",
+                "citation": "src/blog.js:41",
+                "lineConstraint": "CLONE_SPEC.md:851"
+              }
+            },
+            "excerpt": {
+              "type": "string",
+              "minLength": 1,
+              "maxWords": 31,
+              "evidence": {
+                "longestObserved": "The tools engineers depend on most have moved off our machines and onto someone else’s meter. We think a coding agent should live where the code lives: on your own hardware.",
+                "citation": "src/blog.js:325"
+              }
+            },
+            "date": {
+              "type": "string",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+              "description": "ISO date; rendered 'Mmm D, YYYY'"
+            },
+            "target": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "const": "route"
+                    },
+                    "route": {
+                      "type": "string",
+                      "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "route"
+                  ],
+                  "additionalProperties": false
+                }
+              ],
+              "x-allowedKinds": [
+                "route"
+              ]
+            }
+          },
+          "required": [
+            "title",
+            "excerpt",
+            "date",
+            "target"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 1,
+        "maxItems": 4,
+        "description": "newest first (rule BLOG_INDEX_NEWEST_FIRST); no featured post, tags, images or pagination"
+      }
+    },
+    "required": [
+      "title",
+      "posts"
+    ],
+    "additionalProperties": false
+  },
+  "motion": {
+    "allowed": [
+      {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoints": [
+      {
+        "query": "(max-width: 640px)",
+        "citation": "src/styles/Blog.css:72-83",
+        "quote": "@media (max-width: 640px)",
+        "changes": [
+          "section padding 3rem 1rem",
+          "row stacks: date above title, gap .25rem; date width auto"
+        ]
+      }
+    ],
+    "note": "Global .container rules also apply (the column also has class container): content widens from 604 to 700px at <=1280 because padding drops to 0 (spec P7.2) - real behaviour."
+  },
+  "assetRoles": [],
+  "composedOf": [
+    "primitive.mono-label"
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "id": "feature.three-col",
+  "kind": "section",
+  "category": "content",
+  "purpose": "Three quick value props (unlimited / privacy / latency) across the full 1200px frame, separated by 1px vertical rules.",
+  "implementedBy": [
+    {
+      "citation": "src/components/ThreeCol.jsx:9-30",
+      "quote": "three-col-grid"
+    },
+    {
+      "citation": "src/styles/ThreeCol.css:4-74",
+      "quote": ".three-col-section"
+    }
+  ],
+  "usedOnRoutes": [
+    "/"
+  ],
+  "constraints": {
+    "onePerPage": true
+  },
+  "content": {
+    "type": "object",
+    "properties": {
+      "columns": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "badge": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxWords": 1,
+                  "evidence": {
+                    "longestObserved": "Unlimited",
+                    "citation": "src/content.js:70"
+                  }
+                },
+                "icon": {
+                  "type": "object",
+                  "properties": {
+                    "assetRole": {
+                      "type": "string",
+                      "enum": [
+                        "icon.badge-pixel"
+                      ]
+                    },
+                    "iconKey": {
+                      "type": "string",
+                      "enum": [
+                        "problem",
+                        "intro",
+                        "offline",
+                        "unlimited",
+                        "privacy",
+                        "latency",
+                        "approach",
+                        "capabilities",
+                        "terminal",
+                        "early-access",
+                        "faq"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "assetRole",
+                    "iconKey"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "label",
+                "icon"
+              ],
+              "additionalProperties": false
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxWords": 3,
+              "evidence": {
+                "longestObserved": "Lose the meter",
+                "citation": "src/content.js:70"
+              }
+            },
+            "body": {
+              "type": "string",
+              "minLength": 1,
+              "maxWords": 15,
+              "evidence": {
+                "longestObserved": "Rewrite an entire module. Chase an idea for hours. Loop agents without watching a bill.",
+                "citation": "src/content.js:70"
+              }
+            },
+            "dim": {
+              "type": "boolean",
+              "description": "third column text rendered dimmer (content.js dim:true)"
+            }
+          },
+          "required": [
+            "badge",
+            "title",
+            "body",
+            "dim"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 3,
+        "maxItems": 3
+      }
+    },
+    "required": [
+      "columns"
+    ],
+    "additionalProperties": false
+  },
+  "motion": {
+    "allowed": [
+      {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoints": [
+      {
+        "query": "(max-width: 768px)",
+        "citation": "src/styles/ThreeCol.css:65-74",
+        "quote": "@media (max-width: 768px)",
+        "changes": [
+          "grid 1 column",
+          "vertical dividers become full-width 1px horizontal rules"
+        ]
+      }
+    ]
+  },
+  "assetRoles": [
+    "icon.badge-pixel"
+  ],
+  "composedOf": [
+    "primitive.badge",
+    "component.three-col-cell"
+  ]
+}

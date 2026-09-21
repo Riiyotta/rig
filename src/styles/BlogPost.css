@@ -1,0 +1,255 @@
+/* Blog post template — CLONE_SPEC.md Part 2 §P2 (post inline <style> + the
+   global sheet's .prose rules). Everything is scoped under .blog-post or
+   .blog-cta so it can't collide with the homepage or legal pages. */
+
+/* ---- §P2.2 Article box -------------------------------------------------- */
+.blog-post {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  color: var(--paper);
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+}
+
+/* ---- §P2.3 Title block -------------------------------------------------- */
+.blog-post .blog-post-header {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-dim);
+}
+.blog-post .blog-post-header h1 {
+  font-family: Chalet, sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700; /* UA h1 bold (faux-bold Chalet, §0.2) */
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.75rem;
+}
+.blog-post .blog-post-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+.blog-post .blog-post-author {
+  font-style: normal;
+}
+.blog-post .blog-post-meta time::before {
+  content: '·';
+  margin-right: 0.5rem;
+}
+
+/* ---- §P2.4 Prose -------------------------------------------------------- */
+.blog-post .prose {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--paper-60);
+}
+.blog-post .prose p {
+  margin: 0 0 1.5rem;
+}
+/* Lead paragraph: .excerpt beats `.prose p` (post inline style). */
+.blog-post .prose .excerpt {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--paper-60);
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-dim);
+}
+.blog-post .prose h2 {
+  font-family: Chalet, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin: 3rem 0 1rem;
+  color: var(--paper);
+}
+.blog-post .prose h3 {
+  font-family: Chalet, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 2.5rem 0 0.75rem;
+  color: var(--paper);
+}
+/* Declared, unused by the current posts. Not Chalet: inherits Instrument Sans. */
+.blog-post .prose h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 2rem 0 0.5rem;
+  color: var(--paper);
+}
+.blog-post .prose a {
+  color: var(--red);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s;
+}
+.blog-post .prose a:hover {
+  color: var(--paper);
+}
+.blog-post .prose strong {
+  color: var(--paper);
+  font-weight: 600;
+}
+.blog-post .prose em {
+  font-style: italic;
+}
+.blog-post .prose ul,
+.blog-post .prose ol {
+  margin: 0 0 1.5rem;
+  padding-left: 1.5rem;
+}
+/* Preflight strips list markers; restore the UA disc / decimal. */
+.blog-post .prose ul {
+  list-style: disc;
+}
+.blog-post .prose ol {
+  list-style: decimal;
+}
+.blog-post .prose li {
+  margin-bottom: 0.5rem;
+}
+.blog-post .prose li::marker {
+  color: var(--text-muted);
+}
+.blog-post .prose blockquote {
+  margin: 2rem 0;
+  padding: 0.75rem 1.25rem;
+  border-left: 3px solid var(--red);
+  color: var(--paper-50);
+  font-style: italic;
+}
+.blog-post .prose blockquote p:last-child {
+  margin-bottom: 0;
+}
+/* Declared, unused by the current posts. */
+.blog-post .prose code {
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.875em;
+  background: var(--paper-06);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+}
+.blog-post .prose pre {
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--paper-04);
+  border: 1px solid var(--border-dim);
+  border-radius: 6px;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+.blog-post .prose pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.85rem;
+}
+.blog-post .prose img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 2rem 0;
+}
+.blog-post .prose hr {
+  border: none;
+  border-top: 1px solid var(--border-dim);
+  margin: 3rem 0;
+}
+
+/* Diagram slot (§P2.4 image note, gotcha P7.8): the origin image 502s, so a
+   block-level placeholder at the aspect ratio of the <source> the original
+   <picture> would pick: 16:9 >768, 3:4 at 401–768, 4:3 at ≤400.
+   Border colour / background / caption type are placeholder choices (the
+   spec has no values for them); they reuse existing tokens. */
+.blog-post .prose .prose-diagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 2rem 0;
+  border: 1px solid var(--border-dim);
+  border-radius: 6px;
+  background: var(--paper-02);
+}
+.blog-post .prose .prose-diagram-caption {
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.75rem;
+  line-height: normal;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+@media (max-width: 768px) {
+  .blog-post .prose .prose-diagram {
+    aspect-ratio: 3 / 4;
+  }
+}
+@media (max-width: 400px) {
+  .blog-post .prose .prose-diagram {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* ---- §P2.6 Back link (article footer, not the site footer) -------------- */
+.blog-post > footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  padding-left: 0;
+  border-top: 1px solid var(--border-dim);
+}
+.blog-post > footer a {
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+/* UA inline svg (preflight makes svg display:block). */
+.blog-post > footer .icon {
+  display: inline;
+  vertical-align: baseline;
+  fill: var(--text-muted);
+  margin-bottom: -6px;
+  transform: scale(0.75);
+}
+.blog-post > footer a:hover {
+  color: var(--paper);
+}
+.blog-post > footer a:hover svg {
+  fill: var(--paper);
+}
+
+/* ---- §P2.7 End-of-post CTA ---------------------------------------------- */
+.blog-cta.cta {
+  max-width: 720px;
+  margin: 0 auto 6rem;
+  padding: 0 1.5rem;
+}
+/* Instrument Sans (inherited), not Chalet; UA h3 bold, normal line-height. */
+.blog-cta.cta .cta-title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 1.5rem;
+}
+/* Original: `.cta[cid]{ p{…} }` = (0,2,1), which beats the WaitlistForm's
+   (0,2,0) p rules, so it also recolours/re-margins .success-position,
+   .referral-label and .form-error inside the CTA (§P2.7, gotcha P7.6). */
+.blog-cta.cta p {
+  color: var(--text-muted);
+  margin: 0.5rem 0;
+}
+.blog-cta.cta .waitlist-form-wrapper {
+  margin: 2rem 0 0;
+}

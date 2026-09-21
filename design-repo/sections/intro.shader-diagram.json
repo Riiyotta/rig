@@ -1,0 +1,179 @@
+{
+  "id": "intro.shader-diagram",
+  "kind": "section",
+  "category": "content",
+  "purpose": "Introduce the product: centred badge/headline/desc over red shader streaks (preset 'headline'), then the SMIL local-inference flow diagram.",
+  "implementedBy": [
+    {
+      "citation": "src/components/Intro.jsx:12-67",
+      "quote": "preset=\"headline\""
+    },
+    {
+      "citation": "src/styles/Intro.css:5-133",
+      "quote": "#intro-rig"
+    }
+  ],
+  "usedOnRoutes": [
+    "/"
+  ],
+  "constraints": {
+    "onePerPage": true
+  },
+  "content": {
+    "type": "object",
+    "properties": {
+      "badge": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 2,
+            "evidence": {
+              "longestObserved": "Introducing Rig",
+              "citation": "src/content.js:57"
+            }
+          },
+          "icon": {
+            "type": "object",
+            "properties": {
+              "assetRole": {
+                "type": "string",
+                "enum": [
+                  "icon.badge-pixel"
+                ]
+              },
+              "iconKey": {
+                "type": "string",
+                "enum": [
+                  "problem",
+                  "intro",
+                  "offline",
+                  "unlimited",
+                  "privacy",
+                  "latency",
+                  "approach",
+                  "capabilities",
+                  "terminal",
+                  "early-access",
+                  "faq"
+                ]
+              }
+            },
+            "required": [
+              "assetRole",
+              "iconKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "label",
+          "icon"
+        ],
+        "additionalProperties": false
+      },
+      "titleLines": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxWords": 3,
+          "evidence": {
+            "longestObserved": "Yours to keep.",
+            "citation": "src/content.js:58"
+          }
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "desc": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 18,
+        "evidence": {
+          "longestObserved": "An end-to-end coding agent that runs on hardware you already own. No quotas. No servers in the loop.",
+          "citation": "src/content.js:59"
+        }
+      },
+      "shader": {
+        "type": "object",
+        "properties": {
+          "assetRole": {
+            "type": "string",
+            "enum": [
+              "effect.dither-shader"
+            ]
+          }
+        },
+        "required": [
+          "assetRole"
+        ],
+        "additionalProperties": false
+      },
+      "diagram": {
+        "type": "object",
+        "properties": {
+          "assetRole": {
+            "type": "string",
+            "enum": [
+              "illustration.flow-diagram"
+            ]
+          }
+        },
+        "required": [
+          "assetRole"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "badge",
+      "titleLines",
+      "desc",
+      "shader",
+      "diagram"
+    ],
+    "additionalProperties": false
+  },
+  "motion": {
+    "allowed": [
+      {
+        "pattern": "shader-headline-smil-diagram",
+        "reducedMotionFallback": "single-shader-frame-static-diagram",
+        "shaderPreset": "headline"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoints": [
+      {
+        "query": "(max-width: 1280px)",
+        "citation": "src/styles/Intro.css:119-124",
+        "quote": "@media (max-width: 1280px)",
+        "changes": [
+          "shader wrap inset 5% left/right"
+        ]
+      },
+      {
+        "query": "(max-width: 768px)",
+        "citation": "src/styles/Intro.css:125-133",
+        "quote": "@media (max-width: 768px)",
+        "changes": [
+          "section padding 4rem 0",
+          "shader wrap full width (left/right 0)"
+        ]
+      }
+    ],
+    "note": "Diagram scales with width: 1000x500 @1440/1280, 651.2x325.6 @768, 311x155.5 @390 (CLONE_SPEC §4)."
+  },
+  "assetRoles": [
+    "effect.dither-shader",
+    "icon.badge-pixel",
+    "illustration.flow-diagram"
+  ],
+  "composedOf": [
+    "primitive.badge",
+    "component.shader-canvas"
+  ]
+}

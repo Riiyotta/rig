@@ -1,0 +1,27 @@
+{
+  "id": "component.how-overlay-card",
+  "kind": "component",
+  "purpose": "Glass card over the shader: uppercase title per step and one ASCII bar-chart (█ ░ ▎ glyphs, nbsp alignment) per step; height tweens 400ms cubic-bezier(0,0,.58,1) between steps.",
+  "implementedBy": [
+    {
+      "citation": "src/components/HowItWorks.jsx:15-51",
+      "quote": "function BarRow({ row, col })"
+    },
+    {
+      "citation": "src/styles/HowItWorks.css:154-159",
+      "quote": "border-radius: 6px;"
+    }
+  ],
+  "tokensUsed": [
+    "how.card.bg",
+    "how.card.border",
+    "how.card.radius",
+    "duration.how-card-tween",
+    "easing.how-card-tween",
+    "backdrop.glass-blur"
+  ],
+  "usedBySections": [
+    "how.stepper"
+  ],
+  "composes": []
+}

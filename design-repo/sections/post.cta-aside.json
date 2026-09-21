@@ -1,0 +1,226 @@
+{
+  "id": "post.cta-aside",
+  "kind": "section",
+  "category": "conversion",
+  "purpose": "End-of-post waitlist CTA: Instrument Sans h3 (not Chalet), two short lines, left-aligned shared waitlist form.",
+  "implementedBy": [
+    {
+      "citation": "src/pages/BlogPost.jsx:121-127",
+      "quote": "<aside className=\"cta blog-cta\">"
+    },
+    {
+      "citation": "src/styles/BlogPost.css:234-255",
+      "quote": ".blog-cta.cta {"
+    }
+  ],
+  "usedOnRoutes": [
+    "/blog/manifesto",
+    "/blog/building-inference-engine",
+    "/blog/compressing-a-model-to-run-locally",
+    "/blog/teaching-a-model-to-code"
+  ],
+  "constraints": {
+    "onePerPage": true,
+    "mustFollow": "post.article"
+  },
+  "content": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 6,
+        "evidence": {
+          "longestObserved": "Want to try it for real?",
+          "citation": "src/blog.js:22"
+        }
+      },
+      "lines": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxWords": 9,
+          "evidence": {
+            "longestObserved": "We’re inviting engineers in small batches every single week.",
+            "citation": "src/blog.js:23"
+          }
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "form": {
+        "type": "object",
+        "properties": {
+          "placeholder": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 1,
+            "evidence": {
+              "longestObserved": "you@company.com",
+              "citation": "src/content.js:206"
+            }
+          },
+          "button": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 2,
+            "evidence": {
+              "longestObserved": "Join Waitlist",
+              "citation": "src/content.js:12"
+            }
+          },
+          "errorEmpty": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 5,
+            "evidence": {
+              "longestObserved": "Enter your email to join.",
+              "citation": "src/content.js:209"
+            }
+          },
+          "errorInvalid": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 5,
+            "evidence": {
+              "longestObserved": "That email doesn’t look right.",
+              "citation": "src/content.js:210"
+            }
+          },
+          "successHeading": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 4,
+            "evidence": {
+              "longestObserved": "Your spot is saved.",
+              "citation": "src/content.js:211"
+            }
+          },
+          "successPosition": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 2,
+            "evidence": {
+              "longestObserved": "Queue position: ",
+              "citation": "src/content.js:212"
+            }
+          },
+          "referralLabel": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 5,
+            "evidence": {
+              "longestObserved": "Share to jump the queue",
+              "citation": "src/content.js:213"
+            }
+          },
+          "copyLabel": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 3,
+            "evidence": {
+              "longestObserved": "Copy referral link",
+              "citation": "src/content.js:214"
+            }
+          },
+          "dashboardLink": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 6,
+            "evidence": {
+              "longestObserved": "Track your place in line →",
+              "citation": "src/content.js:215"
+            }
+          },
+          "dashboardTarget": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "route"
+                  },
+                  "route": {
+                    "type": "string",
+                    "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "route"
+                ],
+                "additionalProperties": false
+              }
+            ],
+            "x-allowedKinds": [
+              "route"
+            ]
+          },
+          "submission": {
+            "type": "object",
+            "properties": {
+              "mode": {
+                "const": "local-only",
+                "description": "Front-end only: validation + timed fake success (no network). Wiring a real endpoint requires review (see README)."
+              }
+            },
+            "required": [
+              "mode"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "placeholder",
+          "button",
+          "errorEmpty",
+          "errorInvalid",
+          "successHeading",
+          "successPosition",
+          "referralLabel",
+          "copyLabel",
+          "dashboardLink",
+          "dashboardTarget",
+          "submission"
+        ],
+        "additionalProperties": false,
+        "description": "Shared WaitlistForm copy (content.js earlyAccess; the post CTA uses the same defaults). submission.mode is locked to local-only."
+      }
+    },
+    "required": [
+      "title",
+      "lines",
+      "form"
+    ],
+    "additionalProperties": false
+  },
+  "motion": {
+    "allowed": [
+      {
+        "pattern": "form-submit-spinner",
+        "reducedMotionFallback": "static-loading-label"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoints": [
+      {
+        "query": "(max-width: 768px)",
+        "citation": "src/styles/WaitlistForm.css:184-192",
+        "quote": "@media (max-width: 768px)",
+        "changes": [
+          "form row stacks; submit full width"
+        ]
+      }
+    ]
+  },
+  "assetRoles": [],
+  "fixedAssetRoles": [
+    "icon.ui"
+  ],
+  "fixedAssetRolesNote": "rendered by the section itself (glyphs/filters), not settable from a PageSpec",
+  "composedOf": [
+    "component.waitlist-form"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "component.blueprint-annotation",
+  "kind": "component",
+  "purpose": "Geist Pixel annotation (white title + paper-45 desc) with a 40px leader line and a 4px square dot, placed at 34/50/66% on either side of the monitor; hidden <=1024 in favour of the 2-col annotation grid.",
+  "implementedBy": [
+    {
+      "citation": "src/components/Terminal.jsx:96-122",
+      "quote": "function BpAnno({ side, pos, item })"
+    },
+    {
+      "citation": "src/styles/Terminal.css:40-92",
+      "quote": ".terminal-section .bp-anno {"
+    }
+  ],
+  "tokensUsed": [
+    "typeRole.blueprint",
+    "color.text.bright",
+    "color.paper-45"
+  ],
+  "usedBySections": [
+    "terminal.monitor"
+  ],
+  "composes": []
+}

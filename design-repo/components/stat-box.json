@@ -1,0 +1,26 @@
+{
+  "id": "component.stat-box",
+  "kind": "component",
+  "purpose": "Stat cell: red mono label, Chalet 2.5rem value (weight 400), muted note.",
+  "implementedBy": [
+    {
+      "citation": "src/components/Stats.jsx:9-13",
+      "quote": "<div key={i} className=\"stat-box\">"
+    },
+    {
+      "citation": "src/styles/Stats.css:10-16",
+      "quote": ".stats-strip .stat-box"
+    }
+  ],
+  "tokensUsed": [
+    "typeRole.stat-value",
+    "typeRole.mono-label",
+    "color.border.default"
+  ],
+  "usedBySections": [
+    "stats.strip"
+  ],
+  "composes": [
+    "primitive.mono-label"
+  ]
+}

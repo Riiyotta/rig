@@ -1,0 +1,22 @@
+{
+  "id": "primitive.inline-svg",
+  "kind": "primitive",
+  "purpose": "display:contents wrapper that injects a raw SVG string so SMIL and classes survive (used for every inline SVG asset).",
+  "implementedBy": [
+    {
+      "citation": "src/components/InlineSvg.jsx:4",
+      "quote": "export default function InlineSvg("
+    }
+  ],
+  "tokensUsed": [],
+  "usedBySections": [
+    "shell.overlays",
+    "hero.home",
+    "problem.signal-grid",
+    "intro.shader-diagram",
+    "offline.globe-split",
+    "cta.vortex",
+    "shell.footer",
+    "waitlist.dashboard-view"
+  ]
+}

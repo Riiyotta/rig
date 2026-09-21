@@ -1,0 +1,74 @@
+/* Three-column details — CLONE_SPEC.md §6.
+   `.offline-section` base re-declared, scoped to .three-col-section; `.three-col`
+   hides the centre line so no ::before is declared. Padding stays 0 at every width. */
+.three-col-section.offline-section {
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+.three-col-section .three-col-container {
+  position: relative;
+  padding-left: 0;
+  padding-right: 0;
+}
+.three-col-section .three-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr 1px 1fr;
+  align-items: center;
+  min-width: 0;
+}
+.three-col-section .three-col-grid > div:not(.three-col-divider) {
+  min-width: 0;
+}
+.three-col-section .three-col-grid > div:not(.three-col-divider):first-child {
+  padding-left: 2rem;
+}
+.three-col-section .three-col-grid > div:not(.three-col-divider):last-child {
+  padding-right: 2rem;
+}
+.three-col-section .three-col-cell {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+  justify-content: center;
+  align-items: center;
+}
+.three-col-section .three-col-inner {
+  padding: 2rem 0;
+  text-align: center;
+}
+.three-col-section .three-col-badge {
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.three-col-section .three-col-heading {
+  font-family: Chalet, sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.75rem;
+}
+.three-col-section .three-col-text {
+  color: var(--paper-dim);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.three-col-section .three-col-text--dim {
+  color: var(--paper-dim);
+}
+.three-col-section .three-col-divider {
+  background: var(--border);
+  width: 1px;
+  align-self: stretch;
+}
+
+@media (max-width: 768px) {
+  .three-col-section .three-col-grid {
+    grid-template-columns: 1fr;
+  }
+  .three-col-section .three-col-divider {
+    width: 100%;
+    height: 1px;
+    align-self: auto;
+  }
+}

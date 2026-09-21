@@ -1,0 +1,61 @@
+{
+  "id": "shell.frame-lines",
+  "kind": "section",
+  "category": "layout",
+  "purpose": "Fixed 1px frame verticals (the 1200px frame) that show over main content; homepage only (spec P7.10).",
+  "implementedBy": [
+    {
+      "citation": "src/pages/Home.jsx:26",
+      "quote": "<div className=\"content-lines\" />"
+    },
+    {
+      "citation": "src/index.css:223-230",
+      "quote": "z-index: 9999;"
+    }
+  ],
+  "usedOnRoutes": [
+    "/"
+  ],
+  "constraints": {
+    "onePerPage": true,
+    "homeRouteOnly": true,
+    "mustFollow": "hero.home"
+  },
+  "content": {
+    "type": "object",
+    "properties": {},
+    "required": [],
+    "additionalProperties": false,
+    "description": "no content fields"
+  },
+  "motion": {
+    "allowed": [
+      {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoints": [
+      {
+        "query": "(max-width: 1280px)",
+        "citation": "src/index.css:417-430",
+        "quote": "@media (max-width: 1280px)",
+        "changes": [
+          "lines move to left/right 5%"
+        ]
+      },
+      {
+        "query": "(max-width: 768px)",
+        "citation": "src/index.css:436-454",
+        "quote": "@media (max-width: 768px)",
+        "changes": [
+          "lines move to left/right 1.25rem"
+        ]
+      }
+    ]
+  },
+  "assetRoles": [],
+  "composedOf": []
+}

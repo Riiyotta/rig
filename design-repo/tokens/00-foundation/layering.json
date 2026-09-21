@@ -1,0 +1,54 @@
+{
+  "$description": "z-index ladder (spec §18.3). Hero, CTA and footer sit at 10000 to cover the fixed frame lines (9999); overlays sit above everything.",
+  "zIndex": {
+    "frame-lines": {
+      "$type": "number",
+      "$value": "9999",
+      "measuredFrom": "src/index.css:227",
+      "evidenceQuote": "9999",
+      "$description": ".content-lines (homepage only)"
+    },
+    "shell-cover": {
+      "$type": "number",
+      "$value": "10000",
+      "measuredFrom": "src/styles/Hero.css:11",
+      "evidenceQuote": "10000",
+      "$description": "hero, CTA, footer"
+    },
+    "noise": {
+      "$type": "number",
+      "$value": "10001",
+      "measuredFrom": "src/index.css:193",
+      "evidenceQuote": "10001",
+      "$description": ".noise overlay"
+    },
+    "mobile-menu": {
+      "$type": "number",
+      "$value": "10001",
+      "measuredFrom": "src/styles/Navbar.css:120",
+      "evidenceQuote": "10001",
+      "$description": "full-screen mobile menu"
+    },
+    "scanlines": {
+      "$type": "number",
+      "$value": "10002",
+      "measuredFrom": "src/index.css:183",
+      "evidenceQuote": "10002",
+      "$description": ".scanlines overlay"
+    },
+    "nav-toggle-open": {
+      "$type": "number",
+      "$value": "10002",
+      "measuredFrom": "src/styles/Navbar.css:110",
+      "evidenceQuote": "10002",
+      "$description": "open menu toggle"
+    },
+    "rgb-fringe": {
+      "$type": "number",
+      "$value": "10003",
+      "measuredFrom": "src/index.css:204",
+      "evidenceQuote": "10003",
+      "$description": ".rgb-fringe overlay (topmost)"
+    }
+  }
+}

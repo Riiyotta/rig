@@ -1,0 +1,49 @@
+{
+  "id": "primitive.rect-button",
+  "kind": "primitive",
+  "purpose": "Rectangular (un-chamfered) Chivo buttons on the waitlist dashboard: hardware Save, share buttons (keep the UA underline), dev reset (dashed).",
+  "implementedBy": [
+    {
+      "citation": "src/styles/Waitlist.css:366",
+      "quote": ".waitlist-page .hw-submit {"
+    },
+    {
+      "citation": "src/styles/Waitlist.css:450",
+      "quote": ".waitlist-page .share-button {"
+    },
+    {
+      "citation": "src/styles/Waitlist.css:489",
+      "quote": ".waitlist-page .dev-reset-button {"
+    }
+  ],
+  "tokensUsed": [
+    "color.accent.primary",
+    "color.text.bright",
+    "color.share.x-bg",
+    "color.share.linkedin-bg",
+    "color.border.card"
+  ],
+  "usedBySections": [
+    "waitlist.dashboard-view"
+  ],
+  "variants": {
+    "hw-submit": "src/styles/Waitlist.css:366",
+    "share-x": "src/styles/Waitlist.css:473",
+    "share-linkedin": "src/styles/Waitlist.css:477",
+    "dev-reset": "src/styles/Waitlist.css:489"
+  },
+  "states": [
+    {
+      "state": "hover",
+      "change": "opacity .9 (.2s)",
+      "measuredFrom": "src/styles/Waitlist.css:379",
+      "evidenceQuote": ".waitlist-page .hw-submit:hover {"
+    },
+    {
+      "state": "disabled",
+      "change": "opacity .5 until a select differs from its saved value",
+      "measuredFrom": "src/styles/Waitlist.css:382",
+      "evidenceQuote": ".waitlist-page .hw-submit[disabled] {"
+    }
+  ]
+}

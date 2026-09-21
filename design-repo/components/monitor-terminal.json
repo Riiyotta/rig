@@ -1,0 +1,35 @@
+{
+  "id": "component.monitor-terminal",
+  "kind": "component",
+  "purpose": "Monitor casing (gradient, 10px radius, vents, bezel 16:12) holding a terminal window: title bar with dots + blink dot, 8 boot lines revealed on load, block-letter art, typing prompt with a blinking red block cursor; bottom bezel with LED + model tag.",
+  "implementedBy": [
+    {
+      "citation": "src/components/Terminal.jsx:154-211",
+      "quote": "<div className=\"monitor-casing\">"
+    },
+    {
+      "citation": "src/styles/Terminal.css:100-199",
+      "quote": "border-radius: 10px;"
+    }
+  ],
+  "tokensUsed": [
+    "monitor.casing.radius",
+    "monitor.casing.shadow",
+    "terminal.window.bg",
+    "typeRole.terminal-body",
+    "duration.typing-char",
+    "duration.typing-delete",
+    "duration.typing-hold",
+    "duration.typing-pause",
+    "duration.blink-cursor",
+    "duration.blink-led",
+    "shadow.led-glow",
+    "shadow.bezel-inset"
+  ],
+  "usedBySections": [
+    "terminal.monitor"
+  ],
+  "composes": [
+    "primitive.status-dot"
+  ]
+}

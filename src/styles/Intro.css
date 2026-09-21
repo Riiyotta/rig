@@ -1,0 +1,133 @@
+/* Introducing — CLONE_SPEC.md §4.
+   `.offline-section` base rules are re-declared here, scoped to #intro-rig
+   (the original scoped them per component too). `.three-col` hides ::before,
+   so no centre line is declared. */
+#intro-rig.offline-section {
+  padding: 8rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+#intro-rig .intro-shader-wrap {
+  position: absolute;
+  top: 0;
+  height: 0;
+  left: calc(50% - 600px);
+  right: calc(50% - 600px);
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+  mix-blend-mode: lighten;
+  transform: translateY(-140px);
+}
+#intro-rig .intro-shader-wrap .shader-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#intro-rig .intro-container {
+  position: relative;
+  z-index: 1;
+}
+#intro-rig .intro-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#intro-rig .intro-headline-wrap {
+  text-align: center;
+  max-width: 650px;
+  margin-bottom: 3rem;
+}
+#intro-rig .intro-badge {
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+#intro-rig .intro-title {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  line-height: 0.92;
+  margin-bottom: 1.5rem;
+}
+#intro-rig .intro-desc {
+  color: var(--paper-dim);
+  font-size: 1rem;
+  line-height: 1.6;
+  text-wrap: balance;
+}
+#intro-rig .intro-headline-wrap h2,
+#intro-rig .intro-headline-wrap p,
+#intro-rig .intro-headline-wrap .badge {
+  text-shadow: 0 0 8px var(--ink), 0 0 16px var(--ink), 0 0 32px var(--ink), 0 0 60px var(--ink),
+    0 0 100px var(--ink);
+}
+
+#intro-rig .intro-spacer {
+  height: 2rem;
+}
+#intro-rig .intro-diagram-wrap {
+  width: 100%;
+  max-width: 1000px;
+  position: relative;
+}
+#intro-rig .intro-diagram {
+  width: 100%;
+  display: block;
+}
+#intro-rig svg {
+  will-change: transform;
+  contain: layout style paint;
+  transform: translateZ(0);
+}
+
+/* Diagram card hover (fills/strokes live on SVG attributes; CSS wins). */
+#intro-rig .svg-card {
+  cursor: default;
+}
+#intro-rig .svg-card rect,
+#intro-rig .svg-card .card-title,
+#intro-rig .svg-card .card-sub,
+#intro-rig .svg-card .card-accent,
+#intro-rig .svg-card .card-divider {
+  transition: fill 0.15s ease, stroke 0.15s ease;
+}
+#intro-rig .svg-card:hover rect,
+#intro-rig .svg-card:hover .card-title,
+#intro-rig .svg-card:hover .card-sub,
+#intro-rig .svg-card:hover .card-accent,
+#intro-rig .svg-card:hover .card-divider {
+  transition: fill 0s, stroke 0s;
+}
+#intro-rig .svg-card:hover rect {
+  fill: var(--paper-faint);
+  stroke: var(--border);
+}
+#intro-rig .svg-card:hover .card-title {
+  fill: var(--paper);
+}
+#intro-rig .svg-card:hover .card-sub {
+  fill: #f0ede680;
+}
+#intro-rig .svg-card:hover .card-accent {
+  fill: var(--green);
+}
+#intro-rig .svg-card:hover .card-divider {
+  stroke: #f0ede62e;
+}
+
+@media (max-width: 1280px) {
+  #intro-rig .intro-shader-wrap {
+    left: 5%;
+    right: 5%;
+  }
+}
+@media (max-width: 768px) {
+  #intro-rig.offline-section {
+    padding: 4rem 0;
+  }
+  #intro-rig .intro-shader-wrap {
+    left: 0;
+    right: 0;
+  }
+}

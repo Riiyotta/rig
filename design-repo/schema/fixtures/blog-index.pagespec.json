@@ -1,0 +1,154 @@
+{
+  "pageSpecVersion": "1.0.0",
+  "id": "blog-index",
+  "route": "/blog",
+  "template": "tpl.blog-index",
+  "theme": "dark",
+  "nodes": [
+    {
+      "type": "shell.overlays",
+      "content": {
+        "grainFilter": {
+          "assetRole": "effect.svg-filter"
+        }
+      },
+      "motion": {
+        "pattern": "grain-overlay-smil",
+        "reducedMotionFallback": "static-grain-frame"
+      }
+    },
+    {
+      "type": "shell.header",
+      "variant": "default",
+      "content": {
+        "logo": {
+          "assetRole": "brand.wordmark"
+        },
+        "links": [
+          {
+            "label": "Blog",
+            "target": {
+              "kind": "route",
+              "route": "/blog"
+            }
+          }
+        ],
+        "cta": {
+          "label": "Get Early Access",
+          "target": {
+            "kind": "route",
+            "route": "/waitlist"
+          }
+        }
+      },
+      "motion": {
+        "pattern": "mobile-menu-fade",
+        "reducedMotionFallback": "instant-toggle"
+      }
+    },
+    {
+      "type": "blog.index-list",
+      "content": {
+        "title": "Blog",
+        "posts": [
+          {
+            "title": "What it takes to build a fast local inference engine",
+            "excerpt": "A tour of the runtime that turns a file of weights into a responsive coding agent on an ordinary laptop, one layer at a time.",
+            "date": "2026-04-16",
+            "target": {
+              "kind": "route",
+              "route": "/blog/building-inference-engine"
+            }
+          },
+          {
+            "title": "Fitting a large coding model onto an everyday laptop",
+            "excerpt": "Getting a capable model into a few gigabytes without losing what makes it useful took careful measurement and a lot of patience.",
+            "date": "2026-03-31",
+            "target": {
+              "kind": "route",
+              "route": "/blog/compressing-a-model-to-run-locally"
+            }
+          },
+          {
+            "title": "Teaching a model real work",
+            "excerpt": "Writing a plausible function is easy for a model. Making careful, useful changes inside a real project is a very different skill.",
+            "date": "2026-03-24",
+            "target": {
+              "kind": "route",
+              "route": "/blog/teaching-a-model-to-code"
+            }
+          },
+          {
+            "title": "Why we decided to build Rig on our own",
+            "excerpt": "The tools engineers depend on most have moved off our machines and onto someone else’s meter. We think a coding agent should live where the code lives: on your own hardware.",
+            "date": "2026-03-19",
+            "target": {
+              "kind": "route",
+              "route": "/blog/manifesto"
+            }
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "shell.footer",
+      "content": {
+        "logo": {
+          "assetRole": "brand.wordmark"
+        },
+        "tagline": "On-device AI for engineers who’d rather not depend on the cloud.",
+        "columns": [
+          {
+            "title": "Connect",
+            "links": [
+              {
+                "label": "Twitter",
+                "target": {
+                  "kind": "placeholder"
+                }
+              },
+              {
+                "label": "LinkedIn",
+                "target": {
+                  "kind": "placeholder"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Terms of Service",
+                "target": {
+                  "kind": "route",
+                  "route": "/terms"
+                }
+              },
+              {
+                "label": "Privacy Policy",
+                "target": {
+                  "kind": "route",
+                  "route": "/privacy"
+                }
+              }
+            ]
+          }
+        ],
+        "copyright": "© 2026 Example Company. All rights reserved.",
+        "status": "All systems local",
+        "watermark": {
+          "assetRole": "brand.logo-mark"
+        }
+      },
+      "motion": {
+        "pattern": "status-blink",
+        "reducedMotionFallback": "steady-dot"
+      }
+    }
+  ]
+}

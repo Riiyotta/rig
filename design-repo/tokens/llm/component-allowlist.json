@@ -1,0 +1,649 @@
+{
+  "allowlistVersion": "1.0.0",
+  "$description": "Closed set an AI generator may instantiate or set. Parity with contract files and with the schema's node properties is machine-checked by extraction/verify_all.py.",
+  "sections": [
+    {
+      "id": "blog.index-list",
+      "contract": "sections/blog.index-list.json",
+      "settable": [
+        "type",
+        "content.posts",
+        "content.title",
+        "motion.pattern",
+        "motion.reducedMotionFallback"
+      ],
+      "variants": [],
+      "motionPatterns": [
+        "none"
+      ]
+    },
+    {
+      "id": "capabilities.card-grid",
+      "contract": "sections/capabilities.card-grid.json",
+      "settable": [
+        "type",
+        "content.badge",
+        "content.items",
+        "content.title",
+        "motion.pattern",
+        "motion.reducedMotionFallback"
+      ],
+      "variants": [],
+      "motionPatterns": [
+        "none"
+      ]
+    },
+    {
+      "id": "cta.vortex",
+      "contract": "sections/cta.vortex.json",
+      "settable": [
+        "type",
+        "content.button",
+        "content.fine",
+        "content.lineart",
+        "content.logo",
+        "content.title",
+        "content.vortex",
+        "motion.pattern",
+        "motion.reducedMotionFallback"
+      ],
+      "variants": [],
+      "motionPatterns": [
+        "cta-glitch-glow-pulse"
+      ]
+    },
+    {
+      "id": "early-access.waitlist",
+      "contract": "sections/early-access.waitlist.json",
+      "settable": [
+        "type",
+        "content.badge",
+        "content.desc",
+        "content.form",
+        "content.shader",
+        "content.title",
+        "motion.pattern",
+        "motion.reducedMotionFallback",
+        "motion.shaderPreset"
+      ],
+      "variants": [],
+      "motionPatterns": [
+        "shader-headline-form"
+      ]
+    },
+    {
+      "id": "faq.accordion",
+      "contract": "sections/faq.accordion.json",
+      "settable": [
+        "type",
+        "content.badge",
+        "content.items",
+        "content.title",
+        "motion.pattern",
+        "motion.reducedMotionFallback"
+      ],
+      "variants": [],
+      "motionPatterns": [
+        "faq-grid-rows"
+      ]
+    },
+    {
+      "id": "feature.three-col",
+      "contract": "sections/feature.three-col.json",
+      "settable": [
+        "type",
+        "content.columns",
+        "motion.pattern",
+        "motion.reducedMotionFallback"
+      ],
+      "variants": [],
+      "motionPatterns": [
+        "none"
+      ]
+    },
+    {
+      "id": "hero.home",
+      "contract": "sections/hero.home.json",
+      "settable": [
+        "type",
+        "content.nav",
+        "content.primaryCta",
+        "content.secondaryCta",
+        "content.sub",
+        "content.ticker",
+        "content.titleLines",
+        "content.watermark",
+        "motion.pattern",
+        "motion.reducedMotionFallback"
+      ],
+      "variants": [],
+      "motionPatterns": [
+        "hero-ticker-watermark-glitch"
+      ]
+    },
+    {
+      "id": "how.stepper",
+      "contract": "sections/how.stepper.json",
+      "settable": [
+        "type",
+        "content.badge",
+        "content.body",
+        "content.chart",
+        "content.shader",
+        "content.steps",
+        "content.title",
+        "motion.pattern",
+        "motion.reducedMotionFallback",
+        "motion.shaderPreset"
+      ],
+      "variants": [],
+      "motionPatterns": [
+        "stepper-autoadvance-tween"
+      ]
+    },
+    {
+      "id": "intro.shader-diagram",
+      "contract": "sections/intro.shader-diagram.json",
+      "settable": [
+        "type",
+        "content.badge",
+        "content.desc",
+        "content.diagram",
+        "content.shader",
+        "content.titleLines",
+        "motion.pattern",
+        "motion.reducedMotionFallback",
+        "motion.shaderPreset"
+      ],
+      "variants": [],
+      "motionPatterns": [
+        "shader-headline-smil-diagram"
+      ]
+    },
+    {
+      "id": "layout.section-divider",
+      "contract": "sections/layout.section-divider.json",
+      "settable": [
+        "type",
+        "variant",
+        "motion.pattern",
+        "motion.reducedMotionFallback"
+      ],
+      "variants": [
+        "spacer-top",
+        "rule",
+        "spacer-bottom"
+      ],
+      "motionPatterns": [
+        "none"
+      ]
+    },
+    {
+      "id": "legal.document",
+      "contract": "sections/legal.document.json",
+      "settable": [
+        "type",
+        "content.blocks",
+        "content.title",
+        "motion.pattern",
+        "motion.reducedMotionFallback"
+      ],
+      "variants": [],
+      "motionPatterns": [
+        "none"
+      ]
+    },
+    {
+      "id": "offline.globe-split",
+      "contract": "sections/offline.globe-split.json",
+      "settable": [
+        "type",
+        "content.badge",
+        "content.body",
+        "content.connector",
+        "content.flow",
+        "content.globe",
+        "content.title",
+        "motion.pattern",
+        "motion.reducedMotionFallback"
+      ],
+      "variants": [],
+      "motionPatterns": [
+        "globe-drift-signal-flicker"
+      ]
+    },
+    {
+      "id": "post.article",
+      "contract": "sections/post.article.json",
+      "settable": [
+        "type",
+        "variant",
+        "content.author",
+        "content.backLabel",
+        "content.backTarget",
+        "content.blocks",
+        "content.body",
+        "content.byPrefix",
+        "content.date",
+        "content.excerpt",
+        "content.title",
+        "motion.pattern",
+        "motion.reducedMotionFallback"
+      ],
+      "variants": [
+        "post",
+        "not-found"
+      ],
+      "motionPatterns": [
+        "none"
+      ]
+    },
+    {
+      "id": "post.cta-aside",
+      "contract": "sections/post.cta-aside.json",
+      "settable": [
+        "type",
+        "content.form",
+        "content.lines",
+        "content.title",
+        "motion.pattern",
+        "motion.reducedMotionFallback"
+      ],
+      "variants": [],
+      "motionPatterns": [
+        "form-submit-spinner"
+      ]
+    },
+    {
+      "id": "problem.signal-grid",
+      "contract": "sections/problem.signal-grid.json",
+      "settable": [
+        "type",
+        "content.badge",
+        "content.cards",
+        "content.eye",
+        "content.titleLines",
+        "motion.pattern",
+        "motion.reducedMotionFallback"
+      ],
+      "variants": [],
+      "motionPatterns": [
+        "eye-glitch-tracking-blink"
+      ]
+    },
+    {
+      "id": "shell.footer",
+      "contract": "sections/shell.footer.json",
+      "settable": [
+        "type",
+        "content.columns",
+        "content.copyright",
+        "content.logo",
+        "content.status",
+        "content.tagline",
+        "content.watermark",
+        "motion.pattern",
+        "motion.reducedMotionFallback"
+      ],
+      "variants": [],
+      "motionPatterns": [
+        "status-blink"
+      ]
+    },
+    {
+      "id": "shell.frame-lines",
+      "contract": "sections/shell.frame-lines.json",
+      "settable": [
+        "type",
+        "motion.pattern",
+        "motion.reducedMotionFallback"
+      ],
+      "variants": [],
+      "motionPatterns": [
+        "none"
+      ]
+    },
+    {
+      "id": "shell.header",
+      "contract": "sections/shell.header.json",
+      "settable": [
+        "type",
+        "variant",
+        "content.cta",
+        "content.links",
+        "content.logo",
+        "motion.pattern",
+        "motion.reducedMotionFallback"
+      ],
+      "variants": [
+        "default",
+        "default-no-cta"
+      ],
+      "motionPatterns": [
+        "mobile-menu-fade"
+      ]
+    },
+    {
+      "id": "shell.overlays",
+      "contract": "sections/shell.overlays.json",
+      "settable": [
+        "type",
+        "content.grainFilter",
+        "motion.pattern",
+        "motion.reducedMotionFallback"
+      ],
+      "variants": [],
+      "motionPatterns": [
+        "grain-overlay-smil"
+      ]
+    },
+    {
+      "id": "stats.strip",
+      "contract": "sections/stats.strip.json",
+      "settable": [
+        "type",
+        "content.stats",
+        "motion.pattern",
+        "motion.reducedMotionFallback"
+      ],
+      "variants": [],
+      "motionPatterns": [
+        "none"
+      ]
+    },
+    {
+      "id": "terminal.monitor",
+      "contract": "sections/terminal.monitor.json",
+      "settable": [
+        "type",
+        "content.annotations",
+        "content.asciiArt",
+        "content.badge",
+        "content.bezel",
+        "content.boot",
+        "content.bootOk",
+        "content.command",
+        "content.prompts",
+        "content.ready",
+        "content.title",
+        "content.typingInitial",
+        "content.windowTitle",
+        "motion.pattern",
+        "motion.reducedMotionFallback"
+      ],
+      "variants": [],
+      "motionPatterns": [
+        "terminal-boot-reveal-typing"
+      ]
+    },
+    {
+      "id": "waitlist.dashboard-view",
+      "contract": "sections/waitlist.dashboard-view.json",
+      "settable": [
+        "type",
+        "content.badge",
+        "content.devReset",
+        "content.error",
+        "content.giveaway",
+        "content.heading",
+        "content.joined",
+        "content.loading",
+        "content.positionLabel",
+        "content.referral",
+        "content.referralsLabel",
+        "content.storage",
+        "content.survey",
+        "motion.pattern",
+        "motion.reducedMotionFallback"
+      ],
+      "variants": [],
+      "motionPatterns": [
+        "dashboard-pulse-spin"
+      ]
+    },
+    {
+      "id": "waitlist.form-view",
+      "contract": "sections/waitlist.form-view.json",
+      "settable": [
+        "type",
+        "content.badge",
+        "content.description",
+        "content.featureIcon",
+        "content.features",
+        "content.featuresHeading",
+        "content.form",
+        "content.heading",
+        "motion.pattern",
+        "motion.reducedMotionFallback"
+      ],
+      "variants": [],
+      "motionPatterns": [
+        "form-submit-spinner"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": "component.blueprint-annotation",
+      "contract": "components/blueprint-annotation.json"
+    },
+    {
+      "id": "component.faq-item",
+      "contract": "components/faq-item.json"
+    },
+    {
+      "id": "component.glitch-heading",
+      "contract": "components/glitch-heading.json"
+    },
+    {
+      "id": "component.grid-bg",
+      "contract": "components/grid-bg.json"
+    },
+    {
+      "id": "component.how-overlay-card",
+      "contract": "components/how-overlay-card.json"
+    },
+    {
+      "id": "component.how-step",
+      "contract": "components/how-step.json"
+    },
+    {
+      "id": "component.illust-card",
+      "contract": "components/illust-card.json"
+    },
+    {
+      "id": "component.monitor-terminal",
+      "contract": "components/monitor-terminal.json"
+    },
+    {
+      "id": "component.offline-flow",
+      "contract": "components/offline-flow.json"
+    },
+    {
+      "id": "component.problem-card",
+      "contract": "components/problem-card.json"
+    },
+    {
+      "id": "component.prose",
+      "contract": "components/prose.json"
+    },
+    {
+      "id": "component.shader-canvas",
+      "contract": "components/shader-canvas.json"
+    },
+    {
+      "id": "component.site-nav",
+      "contract": "components/site-nav.json"
+    },
+    {
+      "id": "component.stat-box",
+      "contract": "components/stat-box.json"
+    },
+    {
+      "id": "component.three-col-cell",
+      "contract": "components/three-col-cell.json"
+    },
+    {
+      "id": "component.ticker",
+      "contract": "components/ticker.json"
+    },
+    {
+      "id": "component.waitlist-form",
+      "contract": "components/waitlist-form.json"
+    }
+  ],
+  "primitives": [
+    {
+      "id": "primitive.back-link",
+      "contract": "primitives/back-link.json"
+    },
+    {
+      "id": "primitive.badge",
+      "contract": "primitives/badge.json"
+    },
+    {
+      "id": "primitive.badge-icon",
+      "contract": "primitives/badge-icon.json"
+    },
+    {
+      "id": "primitive.btn-chamfer",
+      "contract": "primitives/btn-chamfer.json"
+    },
+    {
+      "id": "primitive.copy-button",
+      "contract": "primitives/copy-button.json"
+    },
+    {
+      "id": "primitive.diagram-placeholder",
+      "contract": "primitives/diagram-placeholder.json"
+    },
+    {
+      "id": "primitive.inline-svg",
+      "contract": "primitives/inline-svg.json"
+    },
+    {
+      "id": "primitive.mono-label",
+      "contract": "primitives/mono-label.json"
+    },
+    {
+      "id": "primitive.nav-toggle",
+      "contract": "primitives/nav-toggle.json"
+    },
+    {
+      "id": "primitive.rect-button",
+      "contract": "primitives/rect-button.json"
+    },
+    {
+      "id": "primitive.section-title",
+      "contract": "primitives/section-title.json"
+    },
+    {
+      "id": "primitive.status-dot",
+      "contract": "primitives/status-dot.json"
+    },
+    {
+      "id": "primitive.text-input",
+      "contract": "primitives/text-input.json"
+    },
+    {
+      "id": "primitive.wordmark-logo",
+      "contract": "primitives/wordmark-logo.json"
+    }
+  ],
+  "templates": [
+    "tpl.home",
+    "tpl.blog-index",
+    "tpl.blog-post",
+    "tpl.waitlist",
+    "tpl.legal"
+  ],
+  "assetRoles": [
+    "brand.wordmark",
+    "brand.logo-mark",
+    "text.ascii-brand-art",
+    "icon.badge-pixel",
+    "icon.ui",
+    "icon.social-share",
+    "illustration.surveillance-eye",
+    "illustration.flow-diagram",
+    "illustration.globe",
+    "illustration.severed-connector",
+    "image.cta-vortex",
+    "placeholder.blog-diagram",
+    "effect.svg-filter",
+    "effect.dither-shader",
+    "chart.ascii-bars"
+  ],
+  "motionPatterns": [
+    "cta-glitch-glow-pulse",
+    "dashboard-pulse-spin",
+    "eye-glitch-tracking-blink",
+    "faq-grid-rows",
+    "form-submit-spinner",
+    "globe-drift-signal-flicker",
+    "grain-overlay-smil",
+    "hero-ticker-watermark-glitch",
+    "mobile-menu-fade",
+    "none",
+    "shader-headline-form",
+    "shader-headline-smil-diagram",
+    "status-blink",
+    "stepper-autoadvance-tween",
+    "terminal-boot-reveal-typing"
+  ],
+  "shaderPresets": [
+    "headline",
+    "how"
+  ],
+  "badgeIcons": [
+    "problem",
+    "intro",
+    "offline",
+    "unlimited",
+    "privacy",
+    "latency",
+    "approach",
+    "capabilities",
+    "terminal",
+    "early-access",
+    "faq"
+  ],
+  "overridableTokens": {
+    "allowed": [
+      "color.accent.primary",
+      "color.accent.primary-hover",
+      "color.accent.secondary",
+      "color.accent.success",
+      "color.accent.success-hover",
+      "color.border.badge",
+      "color.border.card",
+      "color.border.default",
+      "color.border.dim",
+      "color.glow.brand",
+      "color.selection.bg",
+      "color.selection.fg",
+      "color.share.linkedin-bg",
+      "color.share.x-bg",
+      "color.surface.card-dark",
+      "color.surface.card-faint",
+      "color.surface.footer",
+      "color.surface.glass",
+      "color.surface.hero-brand",
+      "color.surface.input",
+      "color.surface.page",
+      "color.surface.terminal",
+      "color.text.bright",
+      "color.text.error",
+      "color.text.faint",
+      "color.text.muted",
+      "color.text.on-accent",
+      "color.text.on-brand",
+      "color.text.primary",
+      "color.text.prose",
+      "color.text.secondary",
+      "color.text.subtle",
+      "color.text.tertiary"
+    ],
+    "note": "PageSpecs carry no style fields (schema additionalProperties:false). A human-approved theme fork may re-point semantic colour roles to EXISTING foundation colours only; share.* roles are third-party brand colours and may not be re-pointed."
+  }
+}

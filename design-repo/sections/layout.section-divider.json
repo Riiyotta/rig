@@ -1,0 +1,79 @@
+{
+  "id": "layout.section-divider",
+  "kind": "section",
+  "category": "layout",
+  "purpose": "1px frame rule between homepage sections. 'spacer-top' = 65px spacer whose divider sits on its bottom edge (first in main); 'rule' = plain divider; 'spacer-bottom' = closing spacer after the FAQ. The rule directly before how-it-works is DOUBLED (two back-to-back rules) - real, not a mistake.",
+  "implementedBy": [
+    {
+      "citation": "src/pages/Home.jsx:28-57",
+      "quote": "<SectionDivider />"
+    },
+    {
+      "citation": "src/components/SectionDivider.jsx:2",
+      "quote": "export default function SectionDivider"
+    },
+    {
+      "citation": "src/index.css:246-249",
+      "quote": "height: 1px;"
+    }
+  ],
+  "usedOnRoutes": [
+    "/"
+  ],
+  "constraints": {
+    "onePerPage": false,
+    "homeRouteOnly": true,
+    "repeatable": true
+  },
+  "variants": {
+    "spacer-top": {
+      "description": "<div style=padding-bottom:4rem> + divider top:4rem",
+      "measuredFrom": "src/pages/Home.jsx:29"
+    },
+    "rule": {
+      "description": "plain divider",
+      "measuredFrom": "src/pages/Home.jsx:33"
+    },
+    "spacer-bottom": {
+      "description": "<div style=padding-top:4rem> + divider top:-4rem",
+      "measuredFrom": "src/pages/Home.jsx:54"
+    }
+  },
+  "content": {
+    "type": "object",
+    "properties": {},
+    "required": [],
+    "additionalProperties": false,
+    "description": "no content fields"
+  },
+  "motion": {
+    "allowed": [
+      {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoints": [
+      {
+        "query": "(max-width: 1280px)",
+        "citation": "src/index.css:417-430",
+        "quote": "@media (max-width: 1280px)",
+        "changes": [
+          "max-width 90%"
+        ]
+      },
+      {
+        "query": "(max-width: 768px)",
+        "citation": "src/index.css:436-454",
+        "quote": "@media (max-width: 768px)",
+        "changes": [
+          "max-width calc(100% - 2.5rem), margin-inline 1.25rem"
+        ]
+      }
+    ]
+  },
+  "assetRoles": [],
+  "composedOf": []
+}

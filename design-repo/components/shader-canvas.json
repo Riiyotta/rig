@@ -1,0 +1,26 @@
+{
+  "id": "component.shader-canvas",
+  "kind": "component",
+  "purpose": "WebGL dither canvas filling a positioned parent. Closed preset set: 'headline' (intro + early access) and 'how'. One rAF loop; draws only when its section is within 200px of the viewport; mouse tint via bindShaderMouse. GLSL written for the clone (approximates the original's look; not a port).",
+  "implementedBy": [
+    {
+      "citation": "src/components/ShaderCanvas.jsx:11",
+      "quote": "export default function ShaderCanvas("
+    },
+    {
+      "citation": "src/lib/ditherShader.js:274",
+      "quote": "export const SHADER_PRESETS = {"
+    },
+    {
+      "citation": "src/lib/ditherShader.js:3",
+      "quote": "not"
+    }
+  ],
+  "tokensUsed": [],
+  "usedBySections": [
+    "intro.shader-diagram",
+    "how.stepper",
+    "early-access.waitlist"
+  ],
+  "composes": []
+}

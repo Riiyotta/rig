@@ -1,0 +1,245 @@
+{
+  "id": "offline.globe-split",
+  "kind": "section",
+  "category": "content",
+  "purpose": "Show offline operation: left visual (clipped wireframe globe + severed cloud/machine/nothing card flow), right copy (badge, h2, paragraph), split by a centre line.",
+  "implementedBy": [
+    {
+      "citation": "src/components/Offline.jsx:21-53",
+      "quote": "offline-layout"
+    },
+    {
+      "citation": "src/styles/Offline.css:3-217",
+      "quote": ".offline-work"
+    }
+  ],
+  "usedOnRoutes": [
+    "/"
+  ],
+  "constraints": {
+    "onePerPage": true
+  },
+  "content": {
+    "type": "object",
+    "properties": {
+      "badge": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 1,
+            "evidence": {
+              "longestObserved": "Offline",
+              "citation": "src/content.js:63"
+            }
+          },
+          "icon": {
+            "type": "object",
+            "properties": {
+              "assetRole": {
+                "type": "string",
+                "enum": [
+                  "icon.badge-pixel"
+                ]
+              },
+              "iconKey": {
+                "type": "string",
+                "enum": [
+                  "problem",
+                  "intro",
+                  "offline",
+                  "unlimited",
+                  "privacy",
+                  "latency",
+                  "approach",
+                  "capabilities",
+                  "terminal",
+                  "early-access",
+                  "faq"
+                ]
+              }
+            },
+            "required": [
+              "assetRole",
+              "iconKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "label",
+          "icon"
+        ],
+        "additionalProperties": false
+      },
+      "title": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 2,
+        "evidence": {
+          "longestObserved": "Work offline",
+          "citation": "src/content.js:64"
+        }
+      },
+      "body": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 8,
+        "evidence": {
+          "longestObserved": "Planes. Hotel Wi-Fi. Dead routers. Keep shipping anyway.",
+          "citation": "src/content.js:65"
+        }
+      },
+      "flow": {
+        "type": "object",
+        "properties": {
+          "cloud": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 2,
+            "evidence": {
+              "longestObserved": "Cloud servers",
+              "citation": "src/content.js:66"
+            }
+          },
+          "machine": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 2,
+            "evidence": {
+              "longestObserved": "Your machine",
+              "citation": "src/content.js:66"
+            }
+          },
+          "active": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 3,
+            "evidence": {
+              "longestObserved": "Rig model active",
+              "citation": "src/content.js:66"
+            }
+          },
+          "nothing": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 2,
+            "evidence": {
+              "longestObserved": "Nothing leaves",
+              "citation": "src/content.js:66"
+            }
+          },
+          "severed": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 1,
+            "evidence": {
+              "longestObserved": "Severed",
+              "citation": "src/content.js:66"
+            }
+          }
+        },
+        "required": [
+          "cloud",
+          "machine",
+          "active",
+          "nothing",
+          "severed"
+        ],
+        "additionalProperties": false,
+        "description": "3-card severed flow: cloud -x- machine (active) -x- nothing leaves"
+      },
+      "globe": {
+        "type": "object",
+        "properties": {
+          "assetRole": {
+            "type": "string",
+            "enum": [
+              "illustration.globe"
+            ]
+          }
+        },
+        "required": [
+          "assetRole"
+        ],
+        "additionalProperties": false
+      },
+      "connector": {
+        "type": "object",
+        "properties": {
+          "assetRole": {
+            "type": "string",
+            "enum": [
+              "illustration.severed-connector"
+            ]
+          }
+        },
+        "required": [
+          "assetRole"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "badge",
+      "title",
+      "body",
+      "flow",
+      "globe",
+      "connector"
+    ],
+    "additionalProperties": false
+  },
+  "motion": {
+    "allowed": [
+      {
+        "pattern": "globe-drift-signal-flicker",
+        "reducedMotionFallback": "static-globe"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoints": [
+      {
+        "query": "(max-width: 1280px)",
+        "citation": "src/styles/Offline.css:153-163",
+        "quote": "@media (max-width: 1280px)",
+        "changes": [
+          "container 90% with 0 padding",
+          "visual margin 0"
+        ]
+      },
+      {
+        "query": "(max-width: 1024px) and (min-width: 769px)",
+        "citation": "src/styles/Offline.css:164-171",
+        "quote": "@media (max-width: 1024px) and (min-width: 769px)",
+        "changes": [
+          "layout gap 2rem",
+          "visual margin-left 0"
+        ]
+      },
+      {
+        "query": "(max-width: 768px)",
+        "citation": "src/styles/Offline.css:172-217",
+        "quote": "@media (max-width: 768px)",
+        "changes": [
+          "section padding 4rem 0; centre line hidden, replaced by a line centred in the visual",
+          "single column, gap 2rem",
+          "visual bottom border, min-height 300 (inline 560 still wins)",
+          "globe 700x700",
+          "copy centred; badge justify-content center"
+        ]
+      }
+    ]
+  },
+  "assetRoles": [
+    "icon.badge-pixel",
+    "illustration.globe",
+    "illustration.severed-connector"
+  ],
+  "composedOf": [
+    "primitive.badge",
+    "component.offline-flow"
+  ]
+}

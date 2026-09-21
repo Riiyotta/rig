@@ -1,0 +1,545 @@
+/* /waitlist — CLONE_SPEC.md Part 2 §P3 (index.b3kNMUYY.css + index.DGyztNce.css).
+   Everything is scoped under .waitlist-page. */
+
+/* ---- §P3.1 Page frame ---------------------------------------------------- */
+.waitlist-page {
+  min-height: calc(100vh - 200px);
+  padding: 6rem 0;
+  display: flex;
+  align-items: center;
+}
+.waitlist-page .wl-container {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---- §P3.2 Form view ----------------------------------------------------- */
+.waitlist-page .waitlist-content {
+  text-align: center;
+}
+.waitlist-page .page-heading {
+  font-family: Chalet, sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+  color: var(--paper);
+}
+.waitlist-page .page-description {
+  font-size: 1.1rem;
+  color: #f0ede680;
+  margin-bottom: 2.5rem;
+  max-width: 480px;
+  margin-inline: auto;
+  line-height: 1.6;
+}
+.waitlist-page .waitlist-container {
+  margin: 0 auto 3rem;
+}
+.waitlist-page .waitlist-container > div {
+  margin: 0 auto;
+}
+.waitlist-page .features-preview {
+  text-align: left;
+  background: #f0ede60a;
+  border: 1px solid rgba(240, 237, 230, 0.1);
+  padding: 1.5rem;
+}
+.waitlist-page .features-heading {
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  color: #f0ede699;
+}
+.waitlist-page .features-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.waitlist-page .feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #f0ede680;
+  font-size: 0.9rem;
+}
+.waitlist-page .feature-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--red);
+}
+
+/* ---- §P3.3 WaitlistForm (self-contained copy for this page) -------------- */
+.waitlist-page .waitlist-form-wrapper {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.waitlist-page .waitlist-form {
+  width: 100%;
+}
+.waitlist-page .hp-field {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  z-index: -1;
+}
+.waitlist-page .form-row {
+  display: flex;
+  gap: 0.75rem;
+}
+.waitlist-page .email-input {
+  flex: 1;
+  padding: 0.85rem 1.2rem;
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  background: var(--paper-04);
+  border: 1px solid var(--paper-15);
+  color: var(--paper);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.waitlist-page .email-input:focus {
+  border-color: var(--paper-35);
+}
+.waitlist-page .email-input::placeholder {
+  color: var(--paper-30);
+}
+/* Specificity above preflight's button[type=submit] reset and the ≤768
+   .btn-chamfer padding/font rule (the original's is cid-scoped). */
+.waitlist-page .submit-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.5rem;
+  background: var(--red);
+  color: var(--ink);
+  border: none;
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.waitlist-page .submit-button:hover:not(:disabled) {
+  background: #d93d26;
+}
+.waitlist-page .submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.waitlist-page .button-loading,
+.waitlist-page .submit-button[data-loading='true'] .button-text {
+  display: none;
+}
+.waitlist-page .submit-button[data-loading='true'] .button-loading {
+  display: block;
+}
+.waitlist-page .submit-button .spinner {
+  width: 18px;
+  height: 18px;
+  animation: wl-spin 1s linear infinite;
+}
+.waitlist-page .form-error {
+  color: #ff6b6b;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  min-height: 1rem;
+}
+.waitlist-page .form-error:empty {
+  display: none;
+}
+/* Turnstile is not cloned: empty div, 16px top margin, 0 height (§P7.5). */
+.waitlist-page .turnstile-container {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+/* ---- §P3.4 Dashboard: loading / error ----------------------------------- */
+.waitlist-page .loading-state {
+  padding: 4rem 0;
+}
+.waitlist-page .loading-state .spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(240, 237, 230, 0.1);
+  border-top-color: var(--red);
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  animation: spin 1s linear infinite;
+}
+.waitlist-page .loading-state p {
+  color: #f0ede680;
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.8rem;
+}
+.waitlist-page .error-state {
+  padding: 4rem 0;
+}
+.waitlist-page .error-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.5rem;
+  color: var(--red);
+}
+.waitlist-page .error-icon svg {
+  width: 100%;
+  height: 100%;
+}
+.waitlist-page .error-heading {
+  font-family: Chalet, sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--paper);
+}
+.waitlist-page .error-message {
+  color: #f0ede680;
+}
+
+/* ---- §P3.4 Dashboard: success ------------------------------------------- */
+.waitlist-page .dashboard-header {
+  text-align: center;
+}
+.waitlist-page .status-badge {
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #ed462d1a;
+  color: var(--red);
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.waitlist-page .badge-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--red);
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+.waitlist-page .dashboard-heading {
+  font-family: Chalet, sans-serif;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 2rem;
+  color: var(--paper);
+}
+
+.waitlist-page .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.waitlist-page .stat-card {
+  background: #f0ede60a;
+  border: 1px solid rgba(240, 237, 230, 0.1);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.waitlist-page .stat-label {
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #f0ede666;
+}
+.waitlist-page .stat-value {
+  font-family: Chalet, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--red);
+  line-height: 1;
+}
+
+/* Global `.card` in the original sheet; only used here. */
+.waitlist-page .card {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background: #f0ede60a;
+  border: 1px solid rgba(240, 237, 230, 0.1);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.waitlist-page .card-body {
+  color: var(--paper-dim);
+}
+.waitlist-page .card-body p {
+  line-height: 150%;
+}
+.waitlist-page .card-body p + p {
+  margin-top: 1rem;
+}
+
+.waitlist-page .referral-section,
+.waitlist-page .hw-survey {
+  background: #f0ede60a;
+  border: 1px solid rgba(240, 237, 230, 0.1);
+  padding: 1.5rem;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+.waitlist-page .referral-heading,
+.waitlist-page .hw-heading {
+  font-family: Chalet, sans-serif;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--paper);
+}
+.waitlist-page .referral-description,
+.waitlist-page .hw-description {
+  color: #f0ede680;
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+/* Hardware survey */
+.waitlist-page .hw-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.waitlist-page .hw-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.waitlist-page .hw-label,
+.waitlist-page .referral-link-label {
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #f0ede666;
+}
+.waitlist-page .hw-input {
+  -webkit-appearance: none;
+  appearance: none;
+  border: 1px solid rgba(240, 237, 230, 0.1);
+  background: #f0ede60a
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23f0ede6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")
+    no-repeat right 0.85rem center / 12px 12px;
+  color: var(--paper);
+  font-size: 0.9rem;
+  font-family: 'Chivo Mono', monospace;
+  padding: 1rem;
+  outline: none;
+}
+.waitlist-page .hw-input::placeholder {
+  color: #f0ede640;
+}
+.waitlist-page .hw-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+.waitlist-page .hw-submit {
+  padding: 0.6rem 1.25rem;
+  background: var(--red);
+  border: none;
+  color: #fff;
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.waitlist-page .hw-submit:hover {
+  opacity: 0.9;
+}
+.waitlist-page .hw-submit[disabled] {
+  opacity: 0.5;
+  cursor: default;
+}
+.waitlist-page .hw-submit-loading {
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.75rem;
+  color: #f0ede680;
+}
+.waitlist-page .hw-success {
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--red);
+}
+
+/* Referral link */
+.waitlist-page .referral-link-container {
+  margin-bottom: 1.25rem;
+}
+.waitlist-page .referral-link-label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.waitlist-page .referral-link-row {
+  display: flex;
+  gap: 0.5rem;
+}
+.waitlist-page .referral-link-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(240, 237, 230, 0.1);
+  background: #f0ede60a;
+  color: var(--paper);
+  font-size: 0.8rem;
+  font-family: 'Chivo Mono', monospace;
+}
+.waitlist-page .copy-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border: 1px solid rgba(240, 237, 230, 0.1);
+  background: #f0ede60a;
+  color: #f0ede680;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.waitlist-page .copy-button:hover {
+  color: var(--red);
+  border-color: var(--red);
+}
+.waitlist-page .copy-button svg {
+  width: 18px;
+  height: 18px;
+}
+.waitlist-page .copy-button .check-icon {
+  color: var(--red);
+}
+
+/* Share buttons: rectangles that keep the UA underline (§P7.7) — preflight
+   resets `a{text-decoration:inherit}`, so it is restored here. */
+.waitlist-page .share-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+.waitlist-page .share-button {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-family: 'Chivo Mono', monospace;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: underline;
+  transition: opacity 0.2s;
+}
+.waitlist-page .share-button:hover {
+  opacity: 0.9;
+}
+.waitlist-page .share-button svg {
+  width: 16px;
+  height: 16px;
+}
+.waitlist-page .share-twitter {
+  background: #000;
+  border: 1px solid rgba(240, 237, 230, 0.1);
+}
+.waitlist-page .share-linkedin {
+  background: #0077b5;
+}
+
+.waitlist-page .joined-date {
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.75rem;
+  color: #f0ede64d;
+}
+.waitlist-page #joined-date {
+  color: #f0ede680;
+}
+.waitlist-page .dev-reset-button {
+  margin-top: 1.5rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px dashed rgba(240, 237, 230, 0.2);
+  color: #f0ede64d;
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.waitlist-page .dev-reset-button:hover {
+  color: var(--red);
+  border-color: var(--red);
+}
+
+/* ---- Breakpoints --------------------------------------------------------- */
+@media (max-width: 768px) {
+  .waitlist-page .form-row {
+    flex-direction: column;
+  }
+  .waitlist-page .submit-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+@media (max-width: 480px) {
+  .waitlist-page .page-heading {
+    font-size: 2rem;
+  }
+  .waitlist-page .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .waitlist-page .share-buttons {
+    flex-direction: column;
+  }
+  .waitlist-page .stat-value {
+    font-size: 2rem;
+  }
+}
+
+/* ---- Page-only keyframes (§P5 `spin`, `pulse-dot`; original names, not in
+   index.css). Identical to the originals. -------------------------------- */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pulse-dot {
+  0%,
+  to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}

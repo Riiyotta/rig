@@ -1,0 +1,363 @@
+{
+  "id": "hero.home",
+  "kind": "section",
+  "category": "hero",
+  "purpose": "Drive waitlist sign-ups from first paint: red full-bleed hero with the embedded hero-variant header, two-line Chalet headline, sub, two chamfer CTAs (#early-access, #our-approach), faded logo watermark and a pixel-font ticker.",
+  "implementedBy": [
+    {
+      "citation": "src/components/Hero.jsx:14-54",
+      "quote": "<Navbar variant=\"hero\" />"
+    },
+    {
+      "citation": "src/styles/Hero.css:2-87",
+      "quote": "background: var(--red);"
+    }
+  ],
+  "usedOnRoutes": [
+    "/"
+  ],
+  "constraints": {
+    "onePerPage": true,
+    "homeRouteOnly": true,
+    "mustFollow": "shell.overlays"
+  },
+  "content": {
+    "type": "object",
+    "properties": {
+      "nav": {
+        "type": "object",
+        "properties": {
+          "logo": {
+            "type": "object",
+            "properties": {
+              "assetRole": {
+                "type": "string",
+                "enum": [
+                  "brand.wordmark"
+                ]
+              }
+            },
+            "required": [
+              "assetRole"
+            ],
+            "additionalProperties": false
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxWords": 1,
+                  "evidence": {
+                    "longestObserved": "Blog",
+                    "citation": "src/content.js:5"
+                  }
+                },
+                "target": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "kind": {
+                          "const": "route"
+                        },
+                        "route": {
+                          "type": "string",
+                          "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                        }
+                      },
+                      "required": [
+                        "kind",
+                        "route"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ],
+                  "x-allowedKinds": [
+                    "route"
+                  ]
+                }
+              },
+              "required": [
+                "label",
+                "target"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 1
+          },
+          "cta": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "maxWords": 3,
+                "evidence": {
+                  "longestObserved": "Get Early Access",
+                  "citation": "src/content.js:6"
+                }
+              },
+              "target": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "const": "route"
+                      },
+                      "route": {
+                        "type": "string",
+                        "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "route"
+                    ],
+                    "additionalProperties": false
+                  }
+                ],
+                "x-allowedKinds": [
+                  "route"
+                ]
+              }
+            },
+            "required": [
+              "label",
+              "target"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "logo",
+          "links",
+          "cta"
+        ],
+        "additionalProperties": false,
+        "description": "Header, hero variant (black logo, ink links, btn-dark CTA). Embedded in the hero: the homepage has no standalone shell.header node."
+      },
+      "watermark": {
+        "type": "object",
+        "properties": {
+          "assetRole": {
+            "type": "string",
+            "enum": [
+              "brand.logo-mark"
+            ]
+          }
+        },
+        "required": [
+          "assetRole"
+        ],
+        "additionalProperties": false
+      },
+      "titleLines": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxWords": 4,
+          "evidence": {
+            "longestObserved": "Your code, your machine.",
+            "citation": "src/content.js:10",
+            "lineConstraint": "CLONE_SPEC.md:343"
+          }
+        },
+        "minItems": 2,
+        "maxItems": 2,
+        "description": "h1: exactly two lines separated by <br>"
+      },
+      "sub": {
+        "type": "string",
+        "minLength": 1,
+        "maxWords": 16,
+        "evidence": {
+          "longestObserved": "A full coding agent that lives on your laptop. Nothing to call home. Nothing to meter.",
+          "citation": "src/content.js:11",
+          "lineConstraint": "CLONE_SPEC.md:344"
+        }
+      },
+      "primaryCta": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 2,
+            "evidence": {
+              "longestObserved": "Join Waitlist",
+              "citation": "src/content.js:12"
+            }
+          },
+          "target": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "fragment"
+                  },
+                  "id": {
+                    "type": "string",
+                    "enum": [
+                      "early-access",
+                      "our-approach"
+                    ]
+                  }
+                },
+                "required": [
+                  "kind",
+                  "id"
+                ],
+                "additionalProperties": false
+              }
+            ],
+            "x-allowedKinds": [
+              "fragment"
+            ]
+          }
+        },
+        "required": [
+          "label",
+          "target"
+        ],
+        "additionalProperties": false
+      },
+      "secondaryCta": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxWords": 2,
+            "evidence": {
+              "longestObserved": "Our Approach",
+              "citation": "src/content.js:13"
+            }
+          },
+          "target": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "fragment"
+                  },
+                  "id": {
+                    "type": "string",
+                    "enum": [
+                      "early-access",
+                      "our-approach"
+                    ]
+                  }
+                },
+                "required": [
+                  "kind",
+                  "id"
+                ],
+                "additionalProperties": false
+              }
+            ],
+            "x-allowedKinds": [
+              "fragment"
+            ]
+          }
+        },
+        "required": [
+          "label",
+          "target"
+        ],
+        "additionalProperties": false
+      },
+      "ticker": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxWords": 4,
+          "evidence": {
+            "longestObserved": "Your box, your call",
+            "citation": "src/content.js:18"
+          }
+        },
+        "minItems": 7,
+        "maxItems": 7,
+        "description": "7 phrases; rendered twice with bullet separators (27 spans, trailing bullet dropped)"
+      }
+    },
+    "required": [
+      "nav",
+      "watermark",
+      "titleLines",
+      "sub",
+      "primaryCta",
+      "secondaryCta",
+      "ticker"
+    ],
+    "additionalProperties": false
+  },
+  "motion": {
+    "allowed": [
+      {
+        "pattern": "hero-ticker-watermark-glitch",
+        "reducedMotionFallback": "static-ticker-no-glitch"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoints": [
+      {
+        "query": "(max-width: 1280px)",
+        "citation": "src/styles/Hero.css:91-96",
+        "quote": "@media (max-width: 1280px)",
+        "changes": [
+          "hero-content max-width 90%, padding-inline 0"
+        ]
+      },
+      {
+        "query": "(max-width: 1024px)",
+        "citation": "src/styles/Hero.css:97-101",
+        "quote": "@media (max-width: 1024px)",
+        "changes": [
+          "hero-content padding 0 2rem"
+        ]
+      },
+      {
+        "query": "(max-width: 768px)",
+        "citation": "src/styles/Hero.css:102-128",
+        "quote": "@media (max-width: 768px)",
+        "changes": [
+          "hero-content padding 0 1.25rem",
+          "h1 clamp(3.5rem,12vw,7rem)",
+          "sub 1rem",
+          "actions wrap; each button full-width (flex 1 1 100%), padding 1.25rem 2rem, 1rem text",
+          "ticker gap 2rem",
+          "watermark width 80%, right -10%"
+        ]
+      },
+      {
+        "query": "(max-width: 768px)",
+        "citation": "src/styles/Navbar.css:99-143",
+        "quote": "@media (max-width: 768px)",
+        "changes": [
+          "embedded header switches to the mobile toggle + full-screen menu"
+        ]
+      }
+    ]
+  },
+  "assetRoles": [
+    "brand.logo-mark",
+    "brand.wordmark"
+  ],
+  "composedOf": [
+    "component.site-nav",
+    "component.ticker",
+    "primitive.btn-chamfer"
+  ]
+}

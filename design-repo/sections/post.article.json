@@ -1,0 +1,436 @@
+{
+  "id": "post.article",
+  "kind": "section",
+  "category": "article",
+  "purpose": "Blog post article: title block (h1 + By-author + long date), excerpt lead, typed rich-text blocks in .prose, and a back link. Variant 'not-found' is the unknown-slug state of the same template.",
+  "implementedBy": [
+    {
+      "citation": "src/pages/BlogPost.jsx:79-119",
+      "quote": "className=\"blog-post\""
+    },
+    {
+      "citation": "src/styles/BlogPost.css:6-255",
+      "quote": ".blog-post"
+    }
+  ],
+  "usedOnRoutes": [
+    "/blog/manifesto",
+    "/blog/building-inference-engine",
+    "/blog/compressing-a-model-to-run-locally",
+    "/blog/teaching-a-model-to-code",
+    "/blog/:unknown-slug"
+  ],
+  "constraints": {
+    "onePerPage": true
+  },
+  "variants": {
+    "post": {
+      "description": "known slug",
+      "measuredFrom": "src/pages/BlogPost.jsx:88"
+    },
+    "not-found": {
+      "description": "unknown slug: 'Post not found' h1 + body, no meta/excerpt/CTA aside",
+      "measuredFrom": "src/pages/BlogPost.jsx:111"
+    }
+  },
+  "contentByVariant": {
+    "post": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxWords": 10,
+          "evidence": {
+            "longestObserved": "What it takes to build a fast local inference engine",
+            "citation": "src/blog.js:41",
+            "lineConstraint": "CLONE_SPEC.md:883"
+          }
+        },
+        "author": {
+          "type": "string",
+          "minLength": 1,
+          "maxWords": 2,
+          "evidence": {
+            "longestObserved": "Rig Engineers",
+            "citation": "src/blog.js:40"
+          }
+        },
+        "byPrefix": {
+          "type": "string",
+          "minLength": 1,
+          "maxWords": 1,
+          "evidence": {
+            "longestObserved": "By",
+            "citation": "src/blog.js:16"
+          }
+        },
+        "date": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "excerpt": {
+          "type": "string",
+          "minLength": 1,
+          "maxWords": 31,
+          "evidence": {
+            "longestObserved": "The tools engineers depend on most have moved off our machines and onto someone else’s meter. We think a coding agent should live where the code lives: on your own hardware.",
+            "citation": "src/blog.js:325"
+          }
+        },
+        "blocks": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "p"
+                  },
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 182,
+                    "evidence": {
+                      "longestObserved": "Those dependencies look unimportant until suddenly they are the only thing that matters: a type defined at the top of a file, a constant imported from elsewhere, a comment explaining why a check exists. The approach we kept is more conservative. The agent itself decides which files to keep in view, using the same tools a developer would use to navigate a project, such as search, go-to-definition and reading a file in sections. The runtime never silently forgets anything; the model is simply given a smaller, more relevant window to begin with, and it can always read a file again if it needs to. In practice this keeps the context focused and small without losing the details that long edits depend on. It also means the context the model sees is easy for a person to inspect, because it is made of whole files and clear tool results rather than an opaque selection of cached fragments. When something goes wrong, we can look at exactly what the model had in front of it and understand why it made the choice it did.",
+                      "citation": "src/blog.js:206"
+                    },
+                    "description": "inline markup: **strong**, *em*, [label](/internal-route)"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "text"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "h2"
+                  },
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 11,
+                    "evidence": {
+                      "longestObserved": "Small habits that turn out to matter more than anything clever",
+                      "citation": "src/blog.js:253"
+                    }
+                  }
+                },
+                "required": [
+                  "kind",
+                  "text"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "h3"
+                  },
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 4,
+                    "evidence": {
+                      "longestObserved": "Choosing what to keep",
+                      "citation": "src/blog.js:203"
+                    }
+                  }
+                },
+                "required": [
+                  "kind",
+                  "text"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "ul"
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxWords": 49,
+                      "evidence": {
+                        "longestObserved": "**Prefill dominates.** Reading a large context takes far longer than writing the answer, so time to first token is the number users feel most. A request that carries three open files and a test log can spend most of its life in prefill before a single visible character appears.",
+                        "citation": "src/blog.js:60"
+                      }
+                    },
+                    "minItems": 1,
+                    "maxItems": 5
+                  }
+                },
+                "required": [
+                  "kind",
+                  "items"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "ol"
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxWords": 36,
+                      "evidence": {
+                        "longestObserved": "**Speculative decoding** with a tiny draft model, to cut the cost of predictable tokens such as closing brackets, repeated identifiers and boilerplate imports that the main model would otherwise generate one expensive step at a time.",
+                        "citation": "src/blog.js:135"
+                      }
+                    },
+                    "minItems": 1,
+                    "maxItems": 5
+                  }
+                },
+                "required": [
+                  "kind",
+                  "items"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "blockquote"
+                  },
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 47,
+                    "evidence": {
+                      "longestObserved": "A quick note before we start. This is the second post in a series about how Rig runs entirely on your own hardware. If you have not read [the first one](/blog/manifesto), it explains why we care about that at all and what we are trying to build.",
+                      "citation": "src/blog.js:156"
+                    }
+                  }
+                },
+                "required": [
+                  "kind",
+                  "text"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "figure"
+                  },
+                  "alt": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxWords": 3,
+                    "evidence": {
+                      "longestObserved": "Inference request flow",
+                      "citation": "src/blog.js:110"
+                    }
+                  },
+                  "asset": {
+                    "type": "object",
+                    "properties": {
+                      "assetRole": {
+                        "type": "string",
+                        "enum": [
+                          "placeholder.blog-diagram"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "assetRole"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "kind",
+                  "alt",
+                  "asset"
+                ],
+                "additionalProperties": false,
+                "description": "origin image 502s; always the neutral placeholder box"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "hr"
+                  }
+                },
+                "required": [
+                  "kind"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 65
+        },
+        "backLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxWords": 2,
+          "evidence": {
+            "longestObserved": "All Posts",
+            "citation": "src/blog.js:17"
+          }
+        },
+        "backTarget": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "route"
+                },
+                "route": {
+                  "type": "string",
+                  "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                }
+              },
+              "required": [
+                "kind",
+                "route"
+              ],
+              "additionalProperties": false
+            }
+          ],
+          "x-allowedKinds": [
+            "route"
+          ]
+        }
+      },
+      "required": [
+        "title",
+        "author",
+        "byPrefix",
+        "date",
+        "excerpt",
+        "blocks",
+        "backLabel",
+        "backTarget"
+      ],
+      "additionalProperties": false
+    },
+    "not-found": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxWords": 3,
+          "evidence": {
+            "longestObserved": "Post not found",
+            "citation": "src/blog.js:18"
+          }
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1,
+          "maxWords": 17,
+          "evidence": {
+            "longestObserved": "There is no post at this address. It may have moved, or the link may be mistyped.",
+            "citation": "src/blog.js:19"
+          }
+        },
+        "backLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxWords": 2,
+          "evidence": {
+            "longestObserved": "All Posts",
+            "citation": "src/blog.js:17"
+          }
+        },
+        "backTarget": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "route"
+                },
+                "route": {
+                  "type": "string",
+                  "pattern": "^/$|^/blog$|^/blog/[a-z0-9-]+$|^/waitlist$|^/privacy$|^/terms$"
+                }
+              },
+              "required": [
+                "kind",
+                "route"
+              ],
+              "additionalProperties": false
+            }
+          ],
+          "x-allowedKinds": [
+            "route"
+          ]
+        }
+      },
+      "required": [
+        "title",
+        "body",
+        "backLabel",
+        "backTarget"
+      ],
+      "additionalProperties": false,
+      "description": "unknown slug: same article template, no meta/excerpt/CTA aside"
+    }
+  },
+  "motion": {
+    "allowed": [
+      {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoints": [
+      {
+        "query": "(max-width: 768px)",
+        "citation": "src/styles/BlogPost.css:191-195",
+        "quote": "@media (max-width: 768px)",
+        "changes": [
+          "diagram placeholder aspect-ratio 3/4"
+        ]
+      },
+      {
+        "query": "(max-width: 400px)",
+        "citation": "src/styles/BlogPost.css:196-200",
+        "quote": "@media (max-width: 400px)",
+        "changes": [
+          "diagram placeholder aspect-ratio 4/3"
+        ]
+      }
+    ],
+    "note": "Article padding stays 4rem 1.5rem at every width (no responsive override, spec P2.2)."
+  },
+  "assetRoles": [
+    "placeholder.blog-diagram"
+  ],
+  "fixedAssetRoles": [
+    "icon.ui"
+  ],
+  "fixedAssetRolesNote": "rendered by the section itself (glyphs/filters), not settable from a PageSpec",
+  "composedOf": [
+    "component.prose",
+    "primitive.back-link",
+    "primitive.diagram-placeholder"
+  ]
+}

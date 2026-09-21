@@ -1,0 +1,2920 @@
+{
+  "pageSpecVersion": "1.0.0",
+  "id": "legal-privacy",
+  "route": "/privacy",
+  "template": "tpl.legal",
+  "theme": "dark",
+  "nodes": [
+    {
+      "type": "shell.overlays",
+      "content": {
+        "grainFilter": {
+          "assetRole": "effect.svg-filter"
+        }
+      },
+      "motion": {
+        "pattern": "grain-overlay-smil",
+        "reducedMotionFallback": "static-grain-frame"
+      }
+    },
+    {
+      "type": "shell.header",
+      "variant": "default",
+      "content": {
+        "logo": {
+          "assetRole": "brand.wordmark"
+        },
+        "links": [
+          {
+            "label": "Blog",
+            "target": {
+              "kind": "route",
+              "route": "/blog"
+            }
+          }
+        ],
+        "cta": {
+          "label": "Get Early Access",
+          "target": {
+            "kind": "route",
+            "route": "/waitlist"
+          }
+        }
+      },
+      "motion": {
+        "pattern": "mobile-menu-fade",
+        "reducedMotionFallback": "instant-toggle"
+      }
+    },
+    {
+      "type": "legal.document",
+      "content": {
+        "title": "Privacy Policy",
+        "blocks": [
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "bold",
+                "text": "Placeholder text for a design clone — not a real policy."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "bold",
+                "text": "Privacy Policy"
+              }
+            ],
+            "align": "center"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "bold",
+                "text": "Last Revised: 1/1/26"
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "This paragraph is placeholder copy that stands in for a"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "bold",
+                "text": "Rig AI Inc."
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "real clause while the layout is being reviewed. Nothing written"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "bold",
+                "text": "we"
+              },
+              {
+                "kind": "text",
+                "text": ", "
+              },
+              {
+                "kind": "bold",
+                "text": "us"
+              },
+              {
+                "kind": "text",
+                "text": " or "
+              },
+              {
+                "kind": "bold",
+                "text": "our"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "here describes an"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "bold",
+                "text": "Service"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "link",
+                "text": "rig.ai",
+                "target": {
+                  "kind": "route",
+                  "route": "/"
+                }
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "bold",
+                "text": "Policy"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "link",
+                "text": "this page",
+                "target": {
+                  "kind": "route",
+                  "route": "/privacy"
+                }
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "bold",
+                "text": "About this notice"
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "bold",
+                "text": "Changes to this sample policy"
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in such documents. Links, underlined phrases and bold lead-ins appear where the layout."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "bold",
+                "text": "Category of sample data"
+              }
+            ],
+            "align": "center"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "bold",
+                "text": "Examples shown for each category"
+              }
+            ],
+            "align": "center"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "bold",
+                "text": "Placeholder reasons a real policy might list"
+              }
+            ],
+            "align": "center"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "bold",
+                "text": "Placeholder note on how long it might be kept"
+              }
+            ],
+            "align": "center"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Contact details and identifiers"
+              }
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Examples may include:"
+              }
+            ]
+          },
+          {
+            "kind": "ul",
+            "items": [
+              [
+                {
+                  "kind": "text",
+                  "text": "Name or preferred handle"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Email address"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Account ID"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "A reference code created when you join the list"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "City or region, if provided"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Sign-up"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Running the service"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Answering support requests"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Sending occasional product updates by email"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Improving the sample experience"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Security checks"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Meeting legal requirements"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Internal analytics"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Record keeping"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Other purposes described elsewhere on this page"
+                }
+              ]
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Account information"
+              }
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Examples may include:"
+              }
+            ]
+          },
+          {
+            "kind": "ul",
+            "items": [
+              [
+                {
+                  "kind": "text",
+                  "text": "Sign-in method"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Settings you choose when setting up a sample account"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Plan or tier names"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Sign-up"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Running the service"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Answering support requests"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Sending occasional product updates by email"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Improving the sample experience"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Security checks"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Meeting legal requirements"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Internal analytics"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Record keeping"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Other purposes described elsewhere on this page"
+                }
+              ]
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Device and usage information"
+              }
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Examples may include:"
+              }
+            ]
+          },
+          {
+            "kind": "ul",
+            "items": [
+              [
+                {
+                  "kind": "text",
+                  "text": "Browser type"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Operating system"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Screen size"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Language setting"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Time zone"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Referring page"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Pages viewed in a session, recorded as rough counts only"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Approximate timing of visits, rounded so that no single visit stands out"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Sign-up"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Running the service"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Answering support requests"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Sending occasional product updates by email"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Improving the sample experience"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Security checks"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Meeting legal requirements"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Internal analytics"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Record keeping"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Other purposes described elsewhere on this page"
+                }
+              ]
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Hardware survey answers"
+              }
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Examples may include:"
+              }
+            ]
+          },
+          {
+            "kind": "ul",
+            "items": [
+              [
+                {
+                  "kind": "text",
+                  "text": "Chip family"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Memory size you selected in the survey"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Operating system choice, where one was given"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Model year"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Free-text notes about your setup, if any were added"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Sign-up"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Running the service"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Answering support requests"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Sending occasional product updates by email"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Improving the sample experience"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Security checks"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Meeting legal requirements"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Internal analytics"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Record keeping"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Other purposes described elsewhere on this page"
+                }
+              ]
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Support messages"
+              }
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Examples may include:"
+              }
+            ]
+          },
+          {
+            "kind": "ul",
+            "items": [
+              [
+                {
+                  "kind": "text",
+                  "text": "Message text"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Attachments"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Sign-up"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Running the service"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Answering support requests"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Sending occasional product updates by email"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Improving the sample experience"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Security checks"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Meeting legal requirements"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Internal analytics"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Record keeping"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Other purposes described elsewhere on this page"
+                }
+              ]
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Referral activity"
+              }
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Examples may include:"
+              }
+            ]
+          },
+          {
+            "kind": "ul",
+            "items": [
+              [
+                {
+                  "kind": "text",
+                  "text": "Referral link"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Referral count"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Queue position"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Signup date"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Share button clicks"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Sign-up"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Running the service"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Answering support requests"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Sending occasional product updates by email"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Improving the sample experience"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Security checks"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Meeting legal requirements"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Internal analytics"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Record keeping"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Other purposes described elsewhere on this page"
+                }
+              ]
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Preferences and settings"
+              }
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Examples may include:"
+              }
+            ]
+          },
+          {
+            "kind": "ul",
+            "items": [
+              [
+                {
+                  "kind": "text",
+                  "text": "Email preferences"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Display theme and similar choices"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Opt-outs"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Language"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Sign-up"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Running the service"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Answering support requests"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Sending occasional product updates by email"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Improving the sample experience"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Security checks"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Meeting legal requirements"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Internal analytics"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Record keeping"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Other purposes described elsewhere on this page"
+                }
+              ]
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Waitlist status information"
+              }
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Examples may include:"
+              }
+            ]
+          },
+          {
+            "kind": "ul",
+            "items": [
+              [
+                {
+                  "kind": "text",
+                  "text": "Invite status"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Joined date shown on the dashboard"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Beta build channel and the date an invite was sent"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Sign-up"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Running the service"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Answering support requests"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Sending occasional product updates by email"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Improving the sample experience"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Security checks"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Meeting legal requirements"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Internal analytics"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Record keeping"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Other purposes described elsewhere on this page"
+                }
+              ]
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Sample inferences drawn from other listed data"
+              }
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Examples may include:"
+              }
+            ]
+          },
+          {
+            "kind": "ul",
+            "items": [
+              [
+                {
+                  "kind": "text",
+                  "text": "Likely interests"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Rough preferences"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Sign-up"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Running the service"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Answering support requests"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Sending occasional product updates by email"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Improving the sample experience"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Security checks"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Meeting legal requirements"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Internal analytics"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Record keeping"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Other purposes described elsewhere on this page"
+                }
+              ]
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Other information you choose to share with us"
+              }
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Examples may include:"
+              }
+            ]
+          },
+          {
+            "kind": "ul",
+            "items": [
+              [
+                {
+                  "kind": "text",
+                  "text": "Survey responses written in your own words and sent through a form"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Feedback notes shared with the team during a closed test"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Sign-up"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Running the service"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Answering support requests"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Sending occasional product updates by email"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Improving the sample experience"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Security checks"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Meeting legal requirements"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Internal analytics"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Record keeping"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Other purposes described elsewhere on this page"
+                }
+              ]
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "bold",
+                "text": "Rig AI"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in such documents. Links, underlined phrases and bold lead-ins appear where the layout calls for them, not where meaning requires. Any resemblance between this filler and a"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "link",
+                "text": "settings",
+                "target": {
+                  "kind": "route",
+                  "route": "/"
+                }
+              },
+              {
+                "kind": "text",
+                "text": " or "
+              },
+              {
+                "kind": "link",
+                "text": "contact",
+                "target": {
+                  "kind": "route",
+                  "route": "/"
+                }
+              },
+              {
+                "kind": "text",
+                "text": "."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "underline",
+                "text": "Sample note."
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "bold",
+                "text": "you"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "underline",
+                "text": "Definitions"
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc."
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "bold",
+                "text": "Service"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "ul",
+            "items": [
+              [
+                {
+                  "kind": "bold",
+                  "text": "Sample basis."
+                },
+                {
+                  "kind": "text",
+                  "text": " "
+                },
+                {
+                  "kind": "text",
+                  "text": "and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated."
+                }
+              ],
+              [
+                {
+                  "kind": "bold",
+                  "text": "Another basis."
+                },
+                {
+                  "kind": "text",
+                  "text": " "
+                },
+                {
+                  "kind": "text",
+                  "text": "as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the."
+                }
+              ],
+              [
+                {
+                  "kind": "bold",
+                  "text": "Third basis."
+                },
+                {
+                  "kind": "text",
+                  "text": " "
+                },
+                {
+                  "kind": "text",
+                  "text": "mix of brief notices and longer explanations found in such documents. Links, underlined phrases and bold lead-ins appear where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a."
+                }
+              ]
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "link",
+                "text": "here",
+                "target": {
+                  "kind": "route",
+                  "route": "/privacy"
+                }
+              },
+              {
+                "kind": "text",
+                "text": "."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "bold",
+                "text": "How sample data might be shared"
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Nothing in this text creates rights for anyone, and."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "ul",
+            "items": [
+              [
+                {
+                  "kind": "bold",
+                  "text": "Placeholder service providers and vendors."
+                },
+                {
+                  "kind": "text",
+                  "text": " "
+                },
+                {
+                  "kind": "text",
+                  "text": "no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page."
+                }
+              ],
+              [
+                {
+                  "kind": "bold",
+                  "text": "Placeholder professional advisers."
+                },
+                {
+                  "kind": "text",
+                  "text": " "
+                },
+                {
+                  "kind": "text",
+                  "text": "exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of."
+                }
+              ],
+              [
+                {
+                  "kind": "bold",
+                  "text": "Placeholder related companies."
+                },
+                {
+                  "kind": "text",
+                  "text": " "
+                },
+                {
+                  "kind": "text",
+                  "text": "brief notices and longer explanations found in such documents. Links, underlined phrases and bold lead-ins appear."
+                }
+              ],
+              [
+                {
+                  "kind": "bold",
+                  "text": "Placeholder partners."
+                },
+                {
+                  "kind": "text",
+                  "text": " "
+                },
+                {
+                  "kind": "text",
+                  "text": "where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from."
+                }
+              ],
+              [
+                {
+                  "kind": "bold",
+                  "text": "Placeholder authorities and regulators."
+                },
+                {
+                  "kind": "text",
+                  "text": " "
+                },
+                {
+                  "kind": "text",
+                  "text": "structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the."
+                }
+              ],
+              [
+                {
+                  "kind": "bold",
+                  "text": "Placeholder parties to a business transfer."
+                },
+                {
+                  "kind": "text",
+                  "text": " "
+                },
+                {
+                  "kind": "text",
+                  "text": "visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder."
+                }
+              ]
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "bold",
+                "text": "How long sample data is kept"
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable."
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "underline",
+                "text": "a sample retention period"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Others are short, which mirrors the mix of brief notices and longer explanations found in such documents. Links, underlined phrases and bold lead-ins appear where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Nothing written here describes an actual."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "ul",
+            "items": [
+              [
+                {
+                  "kind": "text",
+                  "text": "The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects."
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context."
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on."
+                }
+              ]
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "underline",
+                "text": "Sample security."
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in such documents. Links, underlined phrases and bold lead-ins appear where the layout calls for them, not where meaning requires. Any resemblance between this filler and a."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "bold",
+                "text": "Choices a real policy would describe here"
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "ul",
+            "items": [
+              [
+                {
+                  "kind": "text",
+                  "text": "Section numbers, headings and list markers are included only to demonstrate the visual hierarchy."
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The."
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox."
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Dates, figures and time periods shown on this page are illustrative and should not be relied upon."
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Each block keeps roughly the same length as its counterpart."
+                }
+              ]
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "link",
+                "text": "settings",
+                "target": {
+                  "kind": "route",
+                  "route": "/"
+                }
+              },
+              {
+                "kind": "text",
+                "text": "."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Until then, the words on this"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "bold",
+                "text": "Rig"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in such documents. Links, underlined phrases and bold lead-ins appear where the"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "link",
+                "text": "this page",
+                "target": {
+                  "kind": "route",
+                  "route": "/privacy"
+                }
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Nothing written here describes an actual practice, promise or obligation of any company or product."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "underline",
+                "text": "Regional notes"
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "bold",
+                "text": "Requests and how to make them"
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "A production version would be drafted with care, reviewed by counsel and updated as practices change."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "ul",
+            "items": [
+              [
+                {
+                  "kind": "text",
+                  "text": "Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long."
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Others are short, which mirrors the mix of brief notices and longer explanations found in such documents."
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Links, underlined phrases and bold lead-ins appear where the layout calls for them, not where meaning requires."
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Any resemblance between this filler and a real."
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "The design clone renders this content from structured blocks rather than from pasted markup."
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed."
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Nothing written here describes an actual practice, promise or obligation of any company or product."
+                }
+              ]
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "The sample wording is long enough to wrap across several lines so that justified text"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "link",
+                "text": "placeholder@example.com",
+                "target": {
+                  "kind": "email-placeholder",
+                  "address": "placeholder@example.com"
+                }
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "bold",
+                "text": "Sample regional rights"
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "underline",
+                "text": "First region."
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "underline",
+                "text": "Second region placeholder note."
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in such documents. Links, underlined phrases and bold lead-ins appear where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "underline",
+                "text": "Third region placeholder."
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "bold",
+                "text": "Additional placeholder notes for residents of other regions"
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "The sample wording is long enough to wrap across several"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "bold",
+                "text": "A"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "lines so that justified text can be checked. Readers should"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "bold",
+                "text": "B"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "treat each sentence as"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "bold",
+                "text": "C"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "bold",
+                "text": "D"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "covered, when it applies and who it affects. Terms such"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "bold",
+                "text": "E"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "as service, account and content are used loosely here and carry no defined meaning."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "link",
+                "text": "placeholder@example.com",
+                "target": {
+                  "kind": "email-placeholder",
+                  "address": "placeholder@example.com"
+                }
+              },
+              {
+                "kind": "text",
+                "text": "."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "A production version would be drafted with care, reviewed by counsel and updated as practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which mirrors the mix of brief notices and longer explanations found in such documents."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "underline",
+                "text": "Sample category heading"
+              },
+              {
+                "kind": "text",
+                "text": " and "
+              },
+              {
+                "kind": "underline",
+                "text": "another sample category"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "Links, underlined phrases and bold lead-ins appear where the layout calls for."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "underline",
+                "text": "A further sample category heading"
+              },
+              {
+                "kind": "text",
+                "text": " and "
+              },
+              {
+                "kind": "underline",
+                "text": "its companion category"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Sample: Yes."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Sample: No."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Terms such as service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Sample: No."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height stays comparable."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "ul",
+            "items": [
+              [
+                {
+                  "kind": "text",
+                  "text": "Identifiers and contact details"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Account data"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Usage data"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Device data"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Survey answers"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Support messages sent to us"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Referral and queue details"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Stated preferences"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Inferences drawn from the items above"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Anything else you chose to send us"
+                }
+              ]
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "A production version would be drafted with care, reviewed by counsel and updated as practices"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "underline",
+                "text": "a placeholder request form"
+              },
+              {
+                "kind": "text",
+                "text": " below."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "ul",
+            "items": [
+              [
+                {
+                  "kind": "text",
+                  "text": "Contact details used when joining"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Account information"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Survey answers"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Usage and device information collected"
+                }
+              ],
+              [
+                {
+                  "kind": "text",
+                  "text": "Referral data"
+                }
+              ]
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Placeholder: none."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page can be evaluated. Others are short, which."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "underline",
+                "text": "Sample right one"
+              },
+              {
+                "kind": "text",
+                "text": " and "
+              },
+              {
+                "kind": "underline",
+                "text": "sample right two here"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "mirrors the mix of brief notices and longer explanations found in such documents."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "underline",
+                "text": "How to send a placeholder request to the team"
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "text",
+                "text": "Links, underlined phrases and bold lead-ins appear where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement is coincidental and should be disregarded. The design clone renders"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "link",
+                "text": "placeholder@example.com",
+                "target": {
+                  "kind": "email-placeholder",
+                  "address": "placeholder@example.com"
+                }
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance."
+              }
+            ],
+            "align": "justify"
+          },
+          {
+            "kind": "ul",
+            "items": [
+              [
+                {
+                  "kind": "bold",
+                  "text": "Access."
+                },
+                {
+                  "kind": "text",
+                  "text": " "
+                },
+                {
+                  "kind": "text",
+                  "text": "In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as."
+                }
+              ],
+              [
+                {
+                  "kind": "bold",
+                  "text": "Correction."
+                },
+                {
+                  "kind": "text",
+                  "text": " "
+                },
+                {
+                  "kind": "text",
+                  "text": "service, account and content are used loosely here and carry no defined meaning. Section numbers, headings and list markers are included only to demonstrate the."
+                }
+              ],
+              [
+                {
+                  "kind": "bold",
+                  "text": "Deletion."
+                },
+                {
+                  "kind": "text",
+                  "text": " "
+                },
+                {
+                  "kind": "text",
+                  "text": "visual hierarchy. Where a real policy would list exceptions, this version simply repeats neutral statements."
+                }
+              ],
+              [
+                {
+                  "kind": "bold",
+                  "text": "Portability of data."
+                },
+                {
+                  "kind": "text",
+                  "text": " "
+                },
+                {
+                  "kind": "text",
+                  "text": "of similar length. The placeholder company is called Rig AI Inc. purely so that a name appears in context. Questions about this sample can be sent to placeholder@example.com, which is not a monitored inbox. Dates, figures and time periods shown on this page are illustrative and should not be relied upon. Each block keeps roughly the same length as its counterpart so that the page height."
+                }
+              ],
+              [
+                {
+                  "kind": "bold",
+                  "text": "Objection."
+                },
+                {
+                  "kind": "text",
+                  "text": " "
+                },
+                {
+                  "kind": "text",
+                  "text": "stays comparable. Nothing in this text creates rights for anyone, and no part of it is intended to be enforceable. A production version would be drafted with care, reviewed by counsel and updated as."
+                }
+              ],
+              [
+                {
+                  "kind": "bold",
+                  "text": "Restriction."
+                },
+                {
+                  "kind": "text",
+                  "text": " "
+                },
+                {
+                  "kind": "text",
+                  "text": "practices change. Until then, the words on this page exist to exercise typography, spacing, alignment and indentation. Some paragraphs are intentionally long so that the rhythm of a dense legal page."
+                }
+              ],
+              [
+                {
+                  "kind": "bold",
+                  "text": "Withdrawing consent."
+                },
+                {
+                  "kind": "text",
+                  "text": " "
+                },
+                {
+                  "kind": "text",
+                  "text": "can be evaluated. Others are short, which mirrors the mix."
+                }
+              ],
+              [
+                {
+                  "kind": "bold",
+                  "text": "Complaints to a regulator."
+                },
+                {
+                  "kind": "text",
+                  "text": " "
+                },
+                {
+                  "kind": "text",
+                  "text": "of brief notices and longer explanations found in such documents. Links, underlined phrases and bold lead-ins appear where the layout calls for them, not where meaning requires. Any resemblance between this filler and a real agreement"
+                },
+                {
+                  "kind": "text",
+                  "text": " "
+                },
+                {
+                  "kind": "link",
+                  "text": "here",
+                  "target": {
+                    "kind": "route",
+                    "route": "/privacy"
+                  }
+                },
+                {
+                  "kind": "text",
+                  "text": "."
+                }
+              ]
+            ]
+          },
+          {
+            "kind": "p",
+            "runs": [
+              {
+                "kind": "underline",
+                "text": "Contacting the sample team"
+              },
+              {
+                "kind": "text",
+                "text": " by "
+              },
+              {
+                "kind": "underline",
+                "text": "email"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "is coincidental and should be"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "underline",
+                "text": "or post"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "text",
+                "text": "disregarded. The design clone renders this content from structured blocks rather than from pasted markup. This paragraph is placeholder copy that stands in for a real clause while the layout is being reviewed. Nothing written here describes an actual practice, promise or obligation of any company or product. The sample wording is long enough to wrap across several lines so that justified text can be checked. Readers should treat each sentence as filler and consult a qualified professional for genuine guidance. In a finished document this space would explain what is covered, when it applies and who it affects. Terms such as service, account and content are used loosely here and carry no defined"
+              },
+              {
+                "kind": "text",
+                "text": " "
+              },
+              {
+                "kind": "link",
+                "text": "placeholder@example.com",
+                "target": {
+                  "kind": "email-placeholder",
+                  "address": "placeholder@example.com"
+                }
+              },
+              {
+                "kind": "text",
+                "text": "."
+              }
+            ],
+            "align": "justify"
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "shell.footer",
+      "content": {
+        "logo": {
+          "assetRole": "brand.wordmark"
+        },
+        "tagline": "On-device AI for engineers who’d rather not depend on the cloud.",
+        "columns": [
+          {
+            "title": "Connect",
+            "links": [
+              {
+                "label": "Twitter",
+                "target": {
+                  "kind": "placeholder"
+                }
+              },
+              {
+                "label": "LinkedIn",
+                "target": {
+                  "kind": "placeholder"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Terms of Service",
+                "target": {
+                  "kind": "route",
+                  "route": "/terms"
+                }
+              },
+              {
+                "label": "Privacy Policy",
+                "target": {
+                  "kind": "route",
+                  "route": "/privacy"
+                }
+              }
+            ]
+          }
+        ],
+        "copyright": "© 2026 Example Company. All rights reserved.",
+        "status": "All systems local",
+        "watermark": {
+          "assetRole": "brand.logo-mark"
+        }
+      },
+      "motion": {
+        "pattern": "status-blink",
+        "reducedMotionFallback": "steady-dot"
+      }
+    }
+  ]
+}

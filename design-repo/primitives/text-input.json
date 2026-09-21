@@ -1,0 +1,38 @@
+{
+  "id": "primitive.text-input",
+  "kind": "primitive",
+  "purpose": "Chivo inputs: email input (paper-04 fill, paper-15 border, focus paper-35), read-only referral link fields, hardware <select> with an inline chevron.",
+  "implementedBy": [
+    {
+      "citation": "src/styles/WaitlistForm.css:26",
+      "quote": ".waitlist-form-wrapper .email-input {"
+    },
+    {
+      "citation": "src/styles/Waitlist.css:344",
+      "quote": ".waitlist-page .hw-input {"
+    },
+    {
+      "citation": "src/styles/Waitlist.css:409",
+      "quote": ".waitlist-page .referral-link-input {"
+    }
+  ],
+  "tokensUsed": [
+    "color.surface.input",
+    "color.border.card",
+    "color.text.primary"
+  ],
+  "usedBySections": [
+    "early-access.waitlist",
+    "post.cta-aside",
+    "waitlist.form-view",
+    "waitlist.dashboard-view"
+  ],
+  "states": [
+    {
+      "state": "focus",
+      "change": "border paper-35",
+      "measuredFrom": "src/styles/WaitlistForm.css:38",
+      "evidenceQuote": ".waitlist-form-wrapper .email-input:focus {"
+    }
+  ]
+}

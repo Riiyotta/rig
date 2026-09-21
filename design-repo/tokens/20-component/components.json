@@ -1,0 +1,147 @@
+{
+  "$description": "Component-scoped token applications (alias + usage citation).",
+  "button.chamfer.cut": {
+    "$value": "{radius.chamfer}",
+    "measuredFrom": "src/index.css:268",
+    "evidenceQuote": "var(--chamfer) 0,",
+    "$description": ".btn-chamfer clip-path corner"
+  },
+  "button.chamfer.easing": {
+    "$value": "{easing.button}",
+    "measuredFrom": "src/index.css:266",
+    "evidenceQuote": "transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);",
+    "$description": ""
+  },
+  "button.cta.bg": {
+    "$value": "{color.accent.primary}",
+    "measuredFrom": "src/index.css:285",
+    "evidenceQuote": "background: var(--red);",
+    "$description": ".btn-cta"
+  },
+  "button.cta.fg": {
+    "$value": "{color.text.on-accent}",
+    "measuredFrom": "src/index.css:286",
+    "evidenceQuote": "color: var(--ink);",
+    "$description": ".btn-cta"
+  },
+  "button.dark.bg": {
+    "$value": "{color.surface.page}",
+    "measuredFrom": "src/index.css:105",
+    "evidenceQuote": "background: var(--ink);",
+    "$description": ".btn-dark / .btn-red"
+  },
+  "button.submit.hover-bg": {
+    "$value": "{color.accent.primary-hover}",
+    "measuredFrom": "src/styles/WaitlistForm.css:64",
+    "evidenceQuote": "#d93d26",
+    "$description": ".submit-button:hover"
+  },
+  "badge.bg": {
+    "$value": "{color.surface.glass}",
+    "measuredFrom": "src/index.css:333",
+    "evidenceQuote": "background: #0a0a0ae0;",
+    "$description": ".badge"
+  },
+  "badge.border": {
+    "$value": "{color.border.badge}",
+    "measuredFrom": "src/index.css:334",
+    "evidenceQuote": "border: 1px solid rgba(237, 70, 45, 0.2);",
+    "$description": ".badge"
+  },
+  "badge.fg": {
+    "$value": "{color.accent.primary}",
+    "measuredFrom": "src/index.css:339",
+    "evidenceQuote": "color: var(--red);",
+    "$description": ".badge"
+  },
+  "badge.blur": {
+    "$value": "{backdrop.glass-blur}",
+    "measuredFrom": "src/index.css:340",
+    "evidenceQuote": "backdrop-filter: blur(8px);",
+    "$description": ".badge"
+  },
+  "how.card.radius": {
+    "$value": "{radius.md}",
+    "measuredFrom": "src/styles/HowItWorks.css:159",
+    "evidenceQuote": "border-radius: 6px;",
+    "$description": "#howCard"
+  },
+  "how.card.bg": {
+    "$value": "{color.surface.glass}",
+    "measuredFrom": "src/styles/HowItWorks.css:157",
+    "evidenceQuote": "#0a0a0ae0",
+    "$description": "#howCard"
+  },
+  "how.card.border": {
+    "$value": "{color.red-hex}",
+    "measuredFrom": "src/styles/HowItWorks.css:158",
+    "evidenceQuote": "solid #ed462d",
+    "$description": "#howCard"
+  },
+  "monitor.casing.radius": {
+    "$value": "{radius.lg}",
+    "measuredFrom": "src/styles/Terminal.css:103",
+    "evidenceQuote": "border-radius: 10px;",
+    "$description": ".monitor-casing"
+  },
+  "monitor.casing.shadow": {
+    "$value": "{shadow.monitor-casing}",
+    "measuredFrom": "src/styles/Terminal.css:104",
+    "evidenceQuote": "box-shadow: 0 2px 0 var(--paper-04)",
+    "$description": ".monitor-casing"
+  },
+  "terminal.window.bg": {
+    "$value": "{color.surface.terminal}",
+    "measuredFrom": "src/styles/Terminal.css:157",
+    "evidenceQuote": "#050505",
+    "$description": ".terminal-window"
+  },
+  "headline.halo": {
+    "$value": "{textShadow.headline-halo}",
+    "measuredFrom": "src/styles/EarlyAccess.css:56",
+    "evidenceQuote": "text-shadow: 0 0 8px var(--ink)",
+    "$description": "intro + early-access headline over shader"
+  },
+  "cta.button.glow": {
+    "$value": "{shadow.cta-glow}",
+    "measuredFrom": "src/styles/Cta.css:133",
+    "evidenceQuote": "box-shadow: 0 0 40px var(--red-glow);",
+    "$description": ".cta-btn"
+  },
+  "footer.bg": {
+    "$value": "{color.surface.footer}",
+    "measuredFrom": "src/styles/Footer.css:9",
+    "evidenceQuote": "background: #0a0a0a;",
+    "$description": "footer"
+  },
+  "prose.body": {
+    "$value": "{color.text.prose}",
+    "measuredFrom": "src/styles/BlogPost.css:50",
+    "evidenceQuote": "var(--paper-60)",
+    "$description": ".prose"
+  },
+  "prose.rule": {
+    "$value": "{color.border.dim}",
+    "measuredFrom": "src/styles/BlogPost.css:18",
+    "evidenceQuote": "var(--border-dim)",
+    "$description": ".prose hr / excerpt rule"
+  },
+  "waitlist.card.bg": {
+    "$value": "{color.surface.card-faint}",
+    "measuredFrom": "src/styles/Waitlist.css:47",
+    "evidenceQuote": "#f0ede60a",
+    "$description": ".card / .stat-card"
+  },
+  "waitlist.card.border": {
+    "$value": "{color.border.card}",
+    "measuredFrom": "src/styles/Waitlist.css:48",
+    "evidenceQuote": "rgba(240, 237, 230, 0.1)",
+    "$description": ".card / .stat-card"
+  },
+  "frame.line": {
+    "$value": "{color.border.default}",
+    "measuredFrom": "src/index.css:236",
+    "evidenceQuote": "background: var(--border);",
+    "$description": ".content-lines / .section-divider"
+  }
+}

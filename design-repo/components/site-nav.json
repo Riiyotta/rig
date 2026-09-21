@@ -1,0 +1,35 @@
+{
+  "id": "component.site-nav",
+  "kind": "component",
+  "purpose": "Header nav in two surfaces: 'hero' (inside the red hero: black logo, ink links, btn-dark CTA) and 'default' (secondary pages: white logo, paper links, red btn-cta CTA; showCta=false on /waitlist).",
+  "implementedBy": [
+    {
+      "citation": "src/components/Navbar.jsx:11-69",
+      "quote": "data-variant={variant}"
+    },
+    {
+      "citation": "src/styles/Navbar.css:2-68",
+      "quote": ".site-nav-links {"
+    }
+  ],
+  "tokensUsed": [
+    "typeRole.nav-link",
+    "container.nav",
+    "duration.nav-link",
+    "duration.mobile-menu",
+    "zIndex.mobile-menu"
+  ],
+  "usedBySections": [
+    "hero.home",
+    "shell.header"
+  ],
+  "variants": {
+    "hero": "src/styles/Navbar.css:61",
+    "default": "src/styles/Navbar.css:9"
+  },
+  "composes": [
+    "primitive.wordmark-logo",
+    "primitive.nav-toggle",
+    "primitive.btn-chamfer"
+  ]
+}

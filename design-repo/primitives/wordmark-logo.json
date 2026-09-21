@@ -1,0 +1,29 @@
+{
+  "id": "primitive.wordmark-logo",
+  "kind": "primitive",
+  "purpose": "The logo <img> slot (60x22 in the nav, 18px tall in the footer) with colour filters per surface. In generated output this slot renders a neutral placeholder mark - never the Rig wordmark (asset role brand.wordmark is must-not-fabricate).",
+  "implementedBy": [
+    {
+      "citation": "src/components/Navbar.jsx:35",
+      "quote": "<img src=\"/assets/rig-wordmark.svg\""
+    },
+    {
+      "citation": "src/styles/Navbar.css:25",
+      "quote": ".site-logo img {"
+    },
+    {
+      "citation": "src/components/Footer.jsx:16",
+      "quote": "className=\"footer-logo\""
+    }
+  ],
+  "tokensUsed": [],
+  "usedBySections": [
+    "hero.home",
+    "shell.header",
+    "shell.footer"
+  ],
+  "variants": {
+    "hero": "src/styles/Navbar.css:31",
+    "default": "src/styles/Navbar.css:25"
+  }
+}

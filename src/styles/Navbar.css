@@ -1,0 +1,143 @@
+/* Header / nav — CLONE_SPEC.md §2 "Header / nav" + Part 2 §P0.2 (default variant) */
+.site-header {
+  display: flex;
+}
+/* Default variant (secondary pages): a plain block in normal flow at the top of
+   the body. Not sticky, no background/border/blur/z-index, scrolls away.
+   Logo (invert(1) brightness(2)), paper links and paper toggle bars are the
+   base rules below; the CTA is .btn-cta (red bg, ink text) from index.css. */
+.site-header[data-variant='default'] {
+  position: static;
+  background: none;
+}
+.site-nav {
+  max-width: calc(1200px + 6rem);
+  margin: 0 auto;
+  padding: 1.5rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+/* Inline + baseline (UA defaults, undoing preflight) with the 60px width
+   attribute intact, so the logo sits on the line box like the original. */
+.site-logo img {
+  display: inline;
+  vertical-align: baseline;
+  height: 22px;
+  filter: invert(1) brightness(2);
+}
+.site-header[data-variant='hero'] .site-logo img {
+  filter: brightness(0);
+}
+.site-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-nav-links a {
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--paper);
+  text-decoration: none;
+  opacity: 0.7;
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s;
+}
+.site-nav-links a:hover {
+  opacity: 1;
+}
+.site-nav-links .site-nav-cta {
+  color: var(--ink);
+  height: 22px;
+  padding: 1.2rem;
+  opacity: 1;
+}
+.site-header[data-variant='hero'] .site-nav-links a {
+  color: var(--ink);
+}
+.site-header[data-variant='hero'] .site-nav-links a.btn-dark {
+  color: var(--paper);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 20;
+}
+.nav-toggle-bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--paper);
+  transition: transform 0.3s, opacity 0.3s;
+  transform-origin: center;
+}
+.site-header[data-variant='hero'] .nav-toggle-bar {
+  background: var(--ink);
+}
+.nav-toggle[aria-expanded='true'] .nav-toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle[aria-expanded='true'] .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle[aria-expanded='true'] .nav-toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .site-nav {
+    padding: 1rem 1.25rem;
+  }
+  .nav-toggle {
+    display: flex;
+  }
+  .nav-toggle[aria-expanded='true'] {
+    position: fixed;
+    top: 1rem;
+    right: 1.25rem;
+    z-index: 10002;
+  }
+  .site-nav-links {
+    position: fixed;
+    inset: 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5rem;
+    background: var(--ink);
+    padding: 2rem;
+    z-index: 10001;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+  .site-nav-links[data-open='true'] {
+    opacity: 1;
+    visibility: visible;
+  }
+  .site-nav-links a {
+    font-size: 1.25rem;
+    opacity: 1;
+  }
+  .site-header[data-variant='hero'] .nav-toggle[aria-expanded='true'] .nav-toggle-bar {
+    background: var(--paper);
+  }
+  .site-header[data-variant='hero'] .site-nav-links a {
+    color: var(--paper);
+  }
+  .site-header[data-variant='hero'] .site-nav-links a.btn-dark {
+    background-color: var(--red);
+    color: var(--ink);
+  }
+}

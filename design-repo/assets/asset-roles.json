@@ -1,0 +1,272 @@
+{
+  "version": "1.0.0",
+  "$description": "Closed assetRole enum. Wired through schema/pagespec.schema.json (per-field enums), tokens/llm/component-allowlist.json assetRoles and the example/fixtures. Asset fields are {assetRole} objects only - never file paths (rule NO_ASSET_URLS).",
+  "generationValues": {
+    "must-reuse-exact": "Use the existing asset/component exactly, for its existing job; do not generate a replacement.",
+    "may-generate-new": "New instances may be composed within the guidance and forbidden list.",
+    "must-not-fabricate": "Render a neutral placeholder only; never generate, trace or source imagery for this role."
+  },
+  "realCompanyPolicy": {
+    "appliesTo": "Every generated PageSpec, copy string and asset decision made from this design-repo.",
+    "context": "The clone reproduces the layout of rig.ai, a real, live company's marketing site. The clone's COPY is original placeholder text written for the clone (src/content.js, src/blog.js, src/legal.js) - but it still uses the real company name 'Rig' / 'Rig AI Inc.', and the clone ships the real wordmark, logo mark and some original SVG artwork as build evidence.",
+    "forbiddenToReproduce": [
+      "The Rig name as a mark: wordmark (public/assets/rig-wordmark.svg), logo mark SVGs (hero/footer watermark, CTA logo/glow/line-art), favicon, RIG ASCII art",
+      "rig.ai's original marketing, blog, waitlist or legal copy (reference/original-site/*.html) - enforced by ORIGINAL_COPY_FINGERPRINT",
+      "The original site's text labels baked into intro-diagram.svg / surveillance-eye.svg, when used as copy",
+      "Real people's names/photos, real customer logos, testimonials",
+      "The original's backend endpoints, Turnstile site key, PostHog keys",
+      "The commercially licensed Chalet font file in production (see fontPolicy)"
+    ],
+    "enforcement": [
+      "asset fields accept only the closed assetRole enum; brand.* / text.ascii-brand-art / placeholder.* are must-not-fabricate",
+      "NO_ASSET_URLS rejects file paths/URLs in content",
+      "ORIGINAL_COPY_FINGERPRINT rejects original-site wording (hash match)",
+      "SOURCE_BRAND_IN_COPY warns on 'Rig' / 'rig.ai' in copy",
+      "NO_EXTERNAL_TARGETS + NO_BACKEND_ENDPOINTS block outbound links and submission endpoints"
+    ],
+    "publication": "Private design-review artifact (status design-review-pending, productionApproved false). Do not publish it or present it as Rig's design system."
+  },
+  "fontPolicy": {
+    "Chalet": {
+      "file": "public/fonts/chalet_londonnineteensixty.woff2",
+      "license": "commercial",
+      "redistributable": false,
+      "guidance": "Chalet London Nineteen Sixty (House Industries) is a commercially licensed font. The clone's copy is build evidence only; a production build must license it or substitute a licensed display face. Generators reference {font.family.display}, never the file.",
+      "measuredFrom": "src/index.css:10"
+    },
+    "Instrument Sans": {
+      "license": "open (SIL OFL upstream) - confirm",
+      "redistributable": true,
+      "measuredFrom": "src/index.css:36"
+    },
+    "Chivo Mono": {
+      "license": "open (SIL OFL upstream) - confirm",
+      "redistributable": true,
+      "measuredFrom": "src/index.css:54"
+    },
+    "Geist Pixel Square": {
+      "license": "believed open (Geist family, SIL OFL) - confirm",
+      "redistributable": true,
+      "measuredFrom": "src/index.css:17"
+    }
+  },
+  "roles": [
+    {
+      "id": "brand.wordmark",
+      "generation": "must-not-fabricate",
+      "description": "Logo slot in the header (60x22) and footer (18px). The clone ships the REAL Rig wordmark (public/assets/rig-wordmark.svg).",
+      "usedBy": [
+        "src/components/Navbar.jsx:35",
+        "src/components/Footer.jsx:16"
+      ],
+      "guidance": "Render a neutral placeholder mark of the same box size (or the client's own logo supplied by a human). Never reuse, trace, recolour or approximate the Rig wordmark.",
+      "forbidden": [
+        "public/assets/rig-wordmark.svg or any derivative",
+        "the word 'Rig' set as a logotype",
+        "any real company's logo"
+      ],
+      "licensing": "Real company trademark (rig.ai). Build evidence only; not licensed for generated output."
+    },
+    {
+      "id": "brand.logo-mark",
+      "generation": "must-not-fabricate",
+      "description": "The Rig logo mark used decoratively: hero watermark, footer watermark, CTA logo + bloom glow, CTA oversized line-art, favicon.",
+      "usedBy": [
+        "src/components/Hero.jsx:4",
+        "src/components/Cta.jsx:8",
+        "src/components/Footer.jsx:4",
+        "index.html:7"
+      ],
+      "guidance": "Leave the slot empty or use a neutral geometric placeholder at the same size/opacity. Never reproduce the Rig mark (hero-watermark.svg, footer-watermark.svg, cta-logo*.svg, cta-oversized-lineart.svg, favicon data URI).",
+      "forbidden": [
+        "src/svg/hero-watermark.svg",
+        "src/svg/footer-watermark.svg",
+        "src/svg/cta-logo.svg",
+        "src/svg/cta-logo-glow.svg",
+        "src/svg/cta-oversized-lineart.svg",
+        "the favicon data-URI mark"
+      ],
+      "licensing": "Real company trademark. Build evidence only."
+    },
+    {
+      "id": "text.ascii-brand-art",
+      "generation": "must-not-fabricate",
+      "description": "Block-letter 'RIG' ASCII art in the terminal boot session (copied from the original markup).",
+      "usedBy": [
+        "src/components/Terminal.jsx:10"
+      ],
+      "guidance": "Render a neutral block-letter placeholder (or the client's name). Never the RIG letters.",
+      "forbidden": [
+        "the RIG block-letter art",
+        "ASCII renderings of any real brand"
+      ],
+      "licensing": "Spells the real company name."
+    },
+    {
+      "id": "icon.badge-pixel",
+      "generation": "must-reuse-exact",
+      "description": "The closed set of 11 16x16 pixel-art badge icons (badgeIcons keys).",
+      "usedBy": [
+        "src/components/Icons.jsx:16"
+      ],
+      "guidance": "Pick one of the 11 iconKey values; never draw a new pixel icon.",
+      "forbidden": [
+        "new pixel icons",
+        "icons imitating another brand's iconography"
+      ],
+      "licensing": "Extracted from the original site's inline SVG markup - review before any production use."
+    },
+    {
+      "id": "icon.ui",
+      "generation": "must-reuse-exact",
+      "description": "UI glyphs: FAQ chevron, copy/check, spinner, success check, error alert, feature check, back arrow, CTA return arrow.",
+      "usedBy": [
+        "src/components/WaitlistForm.jsx:17",
+        "src/components/Faq.jsx:9",
+        "src/pages/BlogPost.jsx:73"
+      ],
+      "guidance": "Reuse the existing glyph for its existing job only.",
+      "forbidden": [
+        "new icon sets",
+        "emoji substitutes"
+      ],
+      "licensing": "Mostly extracted from the original markup; generic shapes."
+    },
+    {
+      "id": "icon.social-share",
+      "generation": "must-reuse-exact",
+      "description": "X and LinkedIn logos inside the dashboard share buttons.",
+      "usedBy": [
+        "src/pages/Waitlist.jsx:23"
+      ],
+      "guidance": "Only inside the share buttons, unmodified, per the networks' brand rules. Never as decoration.",
+      "forbidden": [
+        "other social marks",
+        "recoloured/altered X or LinkedIn logos"
+      ],
+      "licensing": "Third-party trademarks (X Corp., LinkedIn)."
+    },
+    {
+      "id": "illustration.surveillance-eye",
+      "generation": "must-reuse-exact",
+      "description": "480-viewBox surveillance eye (pupil tracking + blink) in the problem section.",
+      "usedBy": [
+        "src/components/Problem.jsx:6"
+      ],
+      "guidance": "Reuse as-is in problem.signal-grid only. Its small text labels are the ORIGINAL site's wording (see findings) - replace them with new copy before production.",
+      "forbidden": [
+        "new illustrations in its place",
+        "photos of real people"
+      ],
+      "licensing": "Extracted from the original site; contains original label text."
+    },
+    {
+      "id": "illustration.flow-diagram",
+      "generation": "must-reuse-exact",
+      "description": "SMIL local-inference flow diagram (intro).",
+      "usedBy": [
+        "src/components/Intro.jsx:7"
+      ],
+      "guidance": "Reuse as-is; labels may only be string-replaced with new copy (src/svg/README.md). Never generate a new diagram that implies real product architecture.",
+      "forbidden": [
+        "invented architecture diagrams",
+        "the original site's other diagrams"
+      ],
+      "licensing": "Extracted from the original site; contains the original's text labels (incl. 'RIG')."
+    },
+    {
+      "id": "illustration.globe",
+      "generation": "must-reuse-exact",
+      "description": "320-viewBox wireframe globe with drifting meridians (offline).",
+      "usedBy": [
+        "src/components/Offline.jsx:5"
+      ],
+      "guidance": "Reuse as-is in offline.globe-split only.",
+      "forbidden": [
+        "maps of real places",
+        "new globe artwork"
+      ],
+      "licensing": "Extracted from the original site."
+    },
+    {
+      "id": "illustration.severed-connector",
+      "generation": "must-reuse-exact",
+      "description": "Red dashed connector + X glyph between offline flow cards.",
+      "usedBy": [
+        "src/components/Offline.jsx:7"
+      ],
+      "guidance": "Reuse as-is.",
+      "forbidden": [
+        "new connector art"
+      ]
+    },
+    {
+      "id": "image.cta-vortex",
+      "generation": "must-reuse-exact",
+      "description": "Red wireframe vortex raster behind the CTA (webp + png fallback, 2106x1307).",
+      "usedBy": [
+        "src/components/Cta.jsx:21"
+      ],
+      "guidance": "Reuse only in cta.vortex, anchored bottom, width 105vw. Do not generate substitute photography.",
+      "forbidden": [
+        "stock photos",
+        "AI-generated replacement art presented as the original"
+      ],
+      "licensing": "Downloaded from the original site - licence unknown; replace before production."
+    },
+    {
+      "id": "placeholder.blog-diagram",
+      "generation": "must-not-fabricate",
+      "description": "Blog post diagram slot. The original image returns 502 at origin; the clone renders a neutral placeholder box (16:9 / 3:4 <=768 / 4:3 <=400).",
+      "usedBy": [
+        "src/pages/BlogPost.jsx:59",
+        "CLONE_SPEC.md:918"
+      ],
+      "guidance": "Always render the neutral placeholder box with the alt text; never generate or source a diagram image.",
+      "forbidden": [
+        "generated diagrams",
+        "screenshots of the original site",
+        "any image URL"
+      ]
+    },
+    {
+      "id": "effect.svg-filter",
+      "generation": "must-reuse-exact",
+      "description": "SVG filter defs: #grainy feTurbulence (overlays) and #bloom (CTA logo).",
+      "usedBy": [
+        "src/components/Overlays.jsx:2",
+        "src/components/Cta.jsx:6"
+      ],
+      "guidance": "Reuse the existing filter definitions; do not add new filters.",
+      "forbidden": [
+        "new filter effects"
+      ]
+    },
+    {
+      "id": "effect.dither-shader",
+      "generation": "must-reuse-exact",
+      "description": "WebGL dither canvas (src/lib/ditherShader.js - GLSL written for the clone). Instantiated only through the closed preset enum.",
+      "usedBy": [
+        "src/lib/ditherShader.js:274"
+      ],
+      "guidance": "Use preset 'headline' (intro, early access) or 'how' (how-it-works) exactly; no custom uniforms from a PageSpec.",
+      "forbidden": [
+        "new shader code",
+        "video/GIF substitutes"
+      ]
+    },
+    {
+      "id": "chart.ascii-bars",
+      "generation": "may-generate-new",
+      "description": "The How overlay card's ASCII bar charts, rendered from data (label, fill 0-20, value, highlight) with █ ░ ▎ glyphs.",
+      "usedBy": [
+        "src/components/HowItWorks.jsx:15"
+      ],
+      "guidance": "New charts may be composed from the typed blocks (caption / bars / lines) within maxWords. Values are illustrative copy, not measurements - never present them as real benchmarks.",
+      "forbidden": [
+        "claims presented as real benchmark data",
+        "the original site's chart values"
+      ]
+    }
+  ]
+}

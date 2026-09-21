@@ -1,0 +1,410 @@
+{
+  "$description": "Curated referenceable tokens for generation: semantic colour roles, component tokens and layout tokens, resolved for the dark theme. Foundation values are deliberately not listed - reference these roles instead.",
+  "tokens": [
+    {
+      "id": "badge.bg",
+      "value": "#0a0a0ae0",
+      "alias": "{color.surface.glass}"
+    },
+    {
+      "id": "badge.blur",
+      "value": "blur(8px)",
+      "alias": "{backdrop.glass-blur}"
+    },
+    {
+      "id": "badge.border",
+      "value": "rgba(237, 70, 45, 0.2)",
+      "alias": "{color.border.badge}"
+    },
+    {
+      "id": "badge.fg",
+      "value": "oklch(0.6329 0.2075 31.49)",
+      "alias": "{color.accent.primary}"
+    },
+    {
+      "id": "button.chamfer.cut",
+      "value": "14px",
+      "alias": "{radius.chamfer}"
+    },
+    {
+      "id": "button.chamfer.easing",
+      "value": "cubic-bezier(0.25, 1, 0.5, 1)",
+      "alias": "{easing.button}"
+    },
+    {
+      "id": "button.cta.bg",
+      "value": "oklch(0.6329 0.2075 31.49)",
+      "alias": "{color.accent.primary}"
+    },
+    {
+      "id": "button.cta.fg",
+      "value": "oklch(0.1448 0 0)",
+      "alias": "{color.text.on-accent}"
+    },
+    {
+      "id": "button.dark.bg",
+      "value": "oklch(0.1448 0 0)",
+      "alias": "{color.surface.page}"
+    },
+    {
+      "id": "button.submit.hover-bg",
+      "value": "#d93d26",
+      "alias": "{color.accent.primary-hover}"
+    },
+    {
+      "id": "color.accent.primary",
+      "value": "oklch(0.6329 0.2075 31.49)",
+      "alias": "{color.red}"
+    },
+    {
+      "id": "color.accent.primary-hover",
+      "value": "#d93d26",
+      "alias": "{color.red-hover}"
+    },
+    {
+      "id": "color.accent.secondary",
+      "value": "oklch(0.5312 0.260273 266.7713)",
+      "alias": "{color.blue}"
+    },
+    {
+      "id": "color.accent.success",
+      "value": "#22c55e",
+      "alias": "{color.green-accent}"
+    },
+    {
+      "id": "color.accent.success-hover",
+      "value": "#4ade80",
+      "alias": "{color.green-hex}"
+    },
+    {
+      "id": "color.border.badge",
+      "value": "rgba(237, 70, 45, 0.2)",
+      "alias": "{color.red-a20}"
+    },
+    {
+      "id": "color.border.card",
+      "value": "rgba(240, 237, 230, 0.1)",
+      "alias": "{color.paper-a10}"
+    },
+    {
+      "id": "color.border.default",
+      "value": "oklch(0.9465 0.0099 87.47 / 14%)",
+      "alias": "{color.border}"
+    },
+    {
+      "id": "color.border.dim",
+      "value": "oklch(0.9465 0.0099 87.47 / 10%)",
+      "alias": "{color.border-dim}"
+    },
+    {
+      "id": "color.glow.brand",
+      "value": "oklch(0.6329 0.2075 31.49 / 40%)",
+      "alias": "{color.red-glow}"
+    },
+    {
+      "id": "color.selection.bg",
+      "value": "#ed462de5",
+      "alias": "{color.selection}"
+    },
+    {
+      "id": "color.selection.fg",
+      "value": "#fffde0",
+      "alias": "{color.selection-fg}"
+    },
+    {
+      "id": "color.share.linkedin-bg",
+      "value": "#0077b5",
+      "alias": "{color.linkedin}"
+    },
+    {
+      "id": "color.share.x-bg",
+      "value": "#000",
+      "alias": "{color.black}"
+    },
+    {
+      "id": "color.surface.card-dark",
+      "value": "rgba(10, 10, 10, 0.95)",
+      "alias": "{color.ink-95}"
+    },
+    {
+      "id": "color.surface.card-faint",
+      "value": "#f0ede60a",
+      "alias": "{color.paper-hex-04}"
+    },
+    {
+      "id": "color.surface.footer",
+      "value": "#0a0a0a",
+      "alias": "{color.ink-solid}"
+    },
+    {
+      "id": "color.surface.glass",
+      "value": "#0a0a0ae0",
+      "alias": "{color.ink-glass}"
+    },
+    {
+      "id": "color.surface.hero-brand",
+      "value": "oklch(0.6329 0.2075 31.49)",
+      "alias": "{color.red}"
+    },
+    {
+      "id": "color.surface.input",
+      "value": "rgba(240, 237, 230, 0.04)",
+      "alias": "{color.paper-04}"
+    },
+    {
+      "id": "color.surface.page",
+      "value": "oklch(0.1448 0 0)",
+      "alias": "{color.ink}"
+    },
+    {
+      "id": "color.surface.terminal",
+      "value": "#050505",
+      "alias": "{color.terminal}"
+    },
+    {
+      "id": "color.text.bright",
+      "value": "#fff",
+      "alias": "{color.white}"
+    },
+    {
+      "id": "color.text.error",
+      "value": "#ff6b6b",
+      "alias": "{color.error}"
+    },
+    {
+      "id": "color.text.faint",
+      "value": "rgba(240, 237, 230, 0.25)",
+      "alias": "{color.paper-25}"
+    },
+    {
+      "id": "color.text.muted",
+      "value": "rgba(240, 237, 230, 0.4)",
+      "alias": "{color.paper-40}"
+    },
+    {
+      "id": "color.text.on-accent",
+      "value": "oklch(0.1448 0 0)",
+      "alias": "{color.ink}"
+    },
+    {
+      "id": "color.text.on-brand",
+      "value": "oklch(0.1448 0 0)",
+      "alias": "{color.ink}"
+    },
+    {
+      "id": "color.text.primary",
+      "value": "oklch(0.9465 0.0099 87.47)",
+      "alias": "{color.paper}"
+    },
+    {
+      "id": "color.text.prose",
+      "value": "rgba(240, 237, 230, 0.6)",
+      "alias": "{color.paper-60}"
+    },
+    {
+      "id": "color.text.secondary",
+      "value": "oklch(0.9465 0.0099 87.47 / 75%)",
+      "alias": "{color.paper-dim}"
+    },
+    {
+      "id": "color.text.subtle",
+      "value": "#f0ede680",
+      "alias": "{color.paper-hex-50}"
+    },
+    {
+      "id": "color.text.tertiary",
+      "value": "rgba(240, 237, 230, 0.35)",
+      "alias": "{color.paper-35}"
+    },
+    {
+      "id": "container.blog",
+      "value": "700px",
+      "alias": null
+    },
+    {
+      "id": "container.cta-heading",
+      "value": "600px",
+      "alias": null
+    },
+    {
+      "id": "container.ea-content",
+      "value": "500px",
+      "alias": null
+    },
+    {
+      "id": "container.fluid",
+      "value": "90%",
+      "alias": null
+    },
+    {
+      "id": "container.form",
+      "value": "480px",
+      "alias": null
+    },
+    {
+      "id": "container.frame",
+      "value": "1200px",
+      "alias": null
+    },
+    {
+      "id": "container.gutter",
+      "value": "3rem",
+      "alias": null
+    },
+    {
+      "id": "container.gutter-lg",
+      "value": "2rem",
+      "alias": null
+    },
+    {
+      "id": "container.gutter-md",
+      "value": "1.25rem",
+      "alias": null
+    },
+    {
+      "id": "container.hero-sub",
+      "value": "540px",
+      "alias": null
+    },
+    {
+      "id": "container.how-card",
+      "value": "380px",
+      "alias": null
+    },
+    {
+      "id": "container.how-intro-body",
+      "value": "620px",
+      "alias": null
+    },
+    {
+      "id": "container.intro-diagram",
+      "value": "1000px",
+      "alias": null
+    },
+    {
+      "id": "container.intro-headline",
+      "value": "650px",
+      "alias": null
+    },
+    {
+      "id": "container.legal",
+      "value": "min(100% - 3rem, 960px)",
+      "alias": null
+    },
+    {
+      "id": "container.nav",
+      "value": "calc(1200px + 6rem)",
+      "alias": null
+    },
+    {
+      "id": "container.post",
+      "value": "720px",
+      "alias": null
+    },
+    {
+      "id": "container.prose",
+      "value": "720px",
+      "alias": null
+    },
+    {
+      "id": "container.terminal",
+      "value": "630px",
+      "alias": null
+    },
+    {
+      "id": "container.waitlist",
+      "value": "640px",
+      "alias": null
+    },
+    {
+      "id": "cta.button.glow",
+      "value": "0 0 40px var(--red-glow)",
+      "alias": "{shadow.cta-glow}"
+    },
+    {
+      "id": "footer.bg",
+      "value": "#0a0a0a",
+      "alias": "{color.surface.footer}"
+    },
+    {
+      "id": "frame.line",
+      "value": "oklch(0.9465 0.0099 87.47 / 14%)",
+      "alias": "{color.border.default}"
+    },
+    {
+      "id": "headline.halo",
+      "value": "0 0 8px var(--ink), 0 0 16px var(--ink), 0 0 32px var(--ink), 0 0 60px var(--ink), 0 0 100px var(--ink)",
+      "alias": "{textShadow.headline-halo}"
+    },
+    {
+      "id": "how.card.bg",
+      "value": "#0a0a0ae0",
+      "alias": "{color.surface.glass}"
+    },
+    {
+      "id": "how.card.border",
+      "value": "#ed462d",
+      "alias": "{color.red-hex}"
+    },
+    {
+      "id": "how.card.radius",
+      "value": "6px",
+      "alias": "{radius.md}"
+    },
+    {
+      "id": "monitor.casing.radius",
+      "value": "10px",
+      "alias": "{radius.lg}"
+    },
+    {
+      "id": "monitor.casing.shadow",
+      "value": "0 2px 0 var(--paper-04), 0 -1px #00000080, 0 20px 60px #0006",
+      "alias": "{shadow.monitor-casing}"
+    },
+    {
+      "id": "prose.body",
+      "value": "rgba(240, 237, 230, 0.6)",
+      "alias": "{color.text.prose}"
+    },
+    {
+      "id": "prose.rule",
+      "value": "oklch(0.9465 0.0099 87.47 / 10%)",
+      "alias": "{color.border.dim}"
+    },
+    {
+      "id": "space.badge-gap",
+      "value": "2rem",
+      "alias": null
+    },
+    {
+      "id": "space.cta",
+      "value": "12rem 0 16rem",
+      "alias": null
+    },
+    {
+      "id": "space.section-y",
+      "value": "8rem",
+      "alias": null
+    },
+    {
+      "id": "space.section-y-md",
+      "value": "4rem",
+      "alias": null
+    },
+    {
+      "id": "terminal.window.bg",
+      "value": "#050505",
+      "alias": "{color.surface.terminal}"
+    },
+    {
+      "id": "waitlist.card.bg",
+      "value": "#f0ede60a",
+      "alias": "{color.surface.card-faint}"
+    },
+    {
+      "id": "waitlist.card.border",
+      "value": "rgba(240, 237, 230, 0.1)",
+      "alias": "{color.border.card}"
+    }
+  ]
+}

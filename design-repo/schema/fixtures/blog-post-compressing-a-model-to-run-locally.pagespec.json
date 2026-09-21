@@ -1,0 +1,419 @@
+{
+  "pageSpecVersion": "1.0.0",
+  "id": "blog-post-compressing-a-model-to-run-locally",
+  "route": "/blog/compressing-a-model-to-run-locally",
+  "template": "tpl.blog-post",
+  "theme": "dark",
+  "nodes": [
+    {
+      "type": "shell.overlays",
+      "content": {
+        "grainFilter": {
+          "assetRole": "effect.svg-filter"
+        }
+      },
+      "motion": {
+        "pattern": "grain-overlay-smil",
+        "reducedMotionFallback": "static-grain-frame"
+      }
+    },
+    {
+      "type": "shell.header",
+      "variant": "default",
+      "content": {
+        "logo": {
+          "assetRole": "brand.wordmark"
+        },
+        "links": [
+          {
+            "label": "Blog",
+            "target": {
+              "kind": "route",
+              "route": "/blog"
+            }
+          }
+        ],
+        "cta": {
+          "label": "Get Early Access",
+          "target": {
+            "kind": "route",
+            "route": "/waitlist"
+          }
+        }
+      },
+      "motion": {
+        "pattern": "mobile-menu-fade",
+        "reducedMotionFallback": "instant-toggle"
+      }
+    },
+    {
+      "type": "post.article",
+      "variant": "post",
+      "content": {
+        "title": "Fitting a large coding model onto an everyday laptop",
+        "author": "Rig Engineers",
+        "byPrefix": "By",
+        "date": "2026-03-31",
+        "excerpt": "Getting a capable model into a few gigabytes without losing what makes it useful took careful measurement and a lot of patience.",
+        "blocks": [
+          {
+            "kind": "blockquote",
+            "text": "A quick note before we start. This is the second post in a series about how Rig runs entirely on your own hardware. If you have not read [the first one](/blog/manifesto), it explains why we care about that at all and what we are trying to build."
+          },
+          {
+            "kind": "p",
+            "text": "The model we train is too large to run on a typical laptop in its original form. Its weights alone would fill most of the memory on a well-equipped machine, leaving nothing for the editor or the build."
+          },
+          {
+            "kind": "p",
+            "text": "So before anything else, we have to make it smaller. This post walks through how we do that, what we measure along the way, and which of the approaches we tried ended up being abandoned, and why."
+          },
+          {
+            "kind": "p",
+            "text": "The short version is that compression is a series of trades."
+          },
+          {
+            "kind": "p",
+            "text": "Each trade gives up a little quality for a lot of space. The whole game is knowing which losses a coding agent can tolerate."
+          },
+          {
+            "kind": "p",
+            "text": "Some losses are invisible in daily use. Others only appear on long edits, where a small drop in accuracy compounds across hundreds of tokens until a function no longer compiles. Telling the two apart is most of the work."
+          },
+          {
+            "kind": "p",
+            "text": "We learned to be suspicious of any result that looked too good. A surprising number of them were measurement mistakes."
+          },
+          {
+            "kind": "p",
+            "text": "Here is what survived."
+          },
+          {
+            "kind": "h2",
+            "text": "The size problem"
+          },
+          {
+            "kind": "p",
+            "text": "A model’s memory footprint is roughly the number of parameters multiplied by the bytes used to store each one. Training usually happens at sixteen bits per parameter."
+          },
+          {
+            "kind": "p",
+            "text": "Most of that precision exists to keep training stable, not because inference needs it. During training, tiny gradient updates accumulate over millions of steps, and rounding them away would stall learning. Once training is finished, the weights stop moving, and the extra precision mostly records noise. That is the headroom compression works with."
+          },
+          {
+            "kind": "p",
+            "text": "On top of the weights sits the working memory needed while the model runs: the cache that holds the conversation so far, the activations for the current step, and a handful of scratch buffers. For long coding contexts, the cache alone can rival the weights, because every token the agent has read stays in memory until the request finishes. A single session that opens a dozen files and a long test log can hold tens of thousands of tokens. Multiply that by every layer, and the working set grows fast."
+          },
+          {
+            "kind": "p",
+            "text": "We set a hard budget early. The complete system, running a realistic context, had to fit comfortably on a machine with sixteen gigabytes of memory while leaving room for everything else a developer keeps open."
+          },
+          {
+            "kind": "p",
+            "text": "That budget ruled out a lot of easy answers. Running a much smaller model would have fit, but it would not have been good enough at the work. Streaming weights from disk would have fit, but it would have been far too slow. We needed the large model, in a small box, at full speed, with nothing leaving the machine."
+          },
+          {
+            "kind": "p",
+            "text": "It also meant compression could not be an afterthought applied to a finished model. It had to shape training from the start."
+          },
+          {
+            "kind": "p",
+            "text": "Every technique below was judged against that budget."
+          },
+          {
+            "kind": "h2",
+            "text": "Measuring before cutting"
+          },
+          {
+            "kind": "p",
+            "text": "The most important decision we made was to build the evaluation before building the compression. It is very easy to shrink a model and convince yourself it still works because it answers a few questions sensibly."
+          },
+          {
+            "kind": "p",
+            "text": "General benchmarks turned out to be poor guides."
+          },
+          {
+            "kind": "p",
+            "text": "A compressed model can hold its score on multiple-choice tests while quietly getting worse at the long, structured output that code requires, such as keeping brackets balanced across a hundred lines or remembering a variable name defined far earlier in the file. Those failures do not show up in a single answer. They show up when the model has to stay consistent for a long time, which is exactly what an agent editing real code has to do."
+          },
+          {
+            "kind": "p",
+            "text": "We built a suite from real tasks instead. It includes editing an existing function without breaking its callers, writing tests that actually run, following a refactor across several files, explaining a stack trace correctly, updating code after a dependency changes its interface, and cleaning up after a failed migration. Each task lives in a small but realistic project with its own build and tests. Each is scored by executing the result, not by comparing text against a reference answer, so a solution that looks different but works still counts, and a solution that looks right but fails does not. The suite has grown to several thousand tasks across a dozen languages, and it is rebuilt from scratch every quarter so that nothing in it goes stale or leaks into training by accident."
+          },
+          {
+            "kind": "p",
+            "text": "Every compression experiment runs the full suite. A change that saves memory but costs more than a small, agreed amount on any task category is rejected, no matter how good it looks elsewhere. The threshold is written down before the experiment starts, so nobody is tempted to move it afterwards."
+          },
+          {
+            "kind": "p",
+            "text": "We also track variance. A model that is right on average but inconsistent from one attempt to the next is frustrating, so every task runs several times and the spread is part of the score."
+          },
+          {
+            "kind": "p",
+            "text": "This was slow. A full run takes hours. It also saved us from shipping at least three configurations that looked fine in casual use and fell apart on longer edits."
+          },
+          {
+            "kind": "h2",
+            "text": "Quantization and pruning"
+          },
+          {
+            "kind": "p",
+            "text": "Quantization stores each weight with fewer bits. Going from sixteen bits to four cuts the size of the weights to a quarter, which on its own gets most of the way to the budget. The question is how much the model notices, and where."
+          },
+          {
+            "kind": "p",
+            "text": "Naive rounding works for most of the network and badly for a small fraction of it."
+          },
+          {
+            "kind": "p",
+            "text": "A few weights in each layer carry far more influence than the rest, and rounding them carelessly does real damage. We split each weight matrix into small groups and give every group its own scale, so a single extreme value only distorts its immediate neighbours. We also look at how each layer is actually used on real prompts and spend extra precision on the channels that matter most. Choosing those channels is an experiment of its own: we quantize one layer at a time, measure how much the output moves, and rank the layers by that sensitivity. The ranking is surprisingly stable across model sizes."
+          },
+          {
+            "kind": "p",
+            "text": "The result is a mixed scheme. Most of the model sits at four bits, while a small set of sensitive layers, mostly near the input and output, stays at higher precision. The overhead is a few percent of the total."
+          },
+          {
+            "kind": "p",
+            "text": "We tried going lower. Three-bit versions fit easily but drifted on long edits in ways that were hard to predict."
+          },
+          {
+            "kind": "p",
+            "text": "For a tool people rely on to change their code, unpredictable is worse than slightly slower, so we stopped at four. Quantization also changes how the runtime must work: packed weights have to be unpacked on the fly, inside the same kernel that uses them, or the memory savings disappear into temporary buffers. That is why compression and the engine were designed together."
+          },
+          {
+            "kind": "p",
+            "text": "Pruning removes weights altogether. We experimented with unstructured pruning, which zeroes individual weights, and structured pruning, which removes whole attention heads or chunks of feed-forward layers. Unstructured pruning looked good on paper and delivered little in practice, because scattered zeros save memory only if the hardware can skip them efficiently, and most laptop chips cannot. Structured pruning was more useful but needed care. Removing capacity always costs something, so every pruned model was retrained briefly to recover the loss."
+          },
+          {
+            "kind": "p",
+            "text": "That retraining is a form of distillation: the smaller model learns to match the outputs of the original on a large set of coding prompts. It learns not only which answer is right but how confident to be about the alternatives."
+          },
+          {
+            "kind": "p",
+            "text": "Distillation turned out to be the most valuable tool of all. A pruned model trained to imitate its larger parent keeps far more of the parent’s behaviour than one trained from scratch on the same data. The prompts matter as much as the method: we draw them from the same kinds of tasks the evaluation suite measures, with long files, multi-step edits and plenty of error output. In the end we pruned modestly, kept the cuts that paid for themselves, and reverted the rest."
+          },
+          {
+            "kind": "h2",
+            "text": "The context problem"
+          },
+          {
+            "kind": "p",
+            "text": "Once the weights fit, the cache became the bottleneck. Coding contexts are long, because the agent needs to see the files it is working on, and the cache grows in direct proportion to the tokens held."
+          },
+          {
+            "kind": "h3",
+            "text": "Compressing the cache"
+          },
+          {
+            "kind": "p",
+            "text": "The cache can be quantized just like the weights. We store it at reduced precision and expand it inside the attention kernel. The loss is smaller than for weights, because each cached value is used briefly and then combined with many others, which averages out much of the rounding error. As with the weights, precision is chosen per layer. Early layers tolerate heavy compression well, while a few later layers need more care, so the scheme is mixed here as well. We measured each layer separately on long coding sessions before settling on the final split."
+          },
+          {
+            "kind": "p",
+            "text": "We also share cache structure across attention heads where the architecture allows it. Several heads read from the same keys and values instead of each keeping a private copy, which cuts cache size by a large factor. The cost is small and measurable, and the evaluation suite considers it acceptable. This decision had to be made before training, since it changes the shape of the model itself, which is another reason compression could not be left until the end."
+          },
+          {
+            "kind": "p",
+            "text": "Together these changes mean a long coding session holds a fraction of the memory it would otherwise need. A context that would have needed several gigabytes of cache in its original form now fits in a few hundred megabytes, and the difference in quality is within the noise of the suite on almost every task category we track. The exceptions are the longest multi-file edits, where we still see a small but consistent gap, and where we are cautious about claiming too much."
+          },
+          {
+            "kind": "p",
+            "text": "We did not get here in one step. The first version of the compressed cache lost too much on long edits, and the second was accurate but slow, because expanding the cache outside the attention kernel doubled the memory traffic. Only when the expansion moved inside the kernel did the numbers line up. Each version went through the full suite, and each failure taught us which layers and which tasks were most sensitive, which in turn shaped the next attempt and the final per-layer choices we ship today."
+          },
+          {
+            "kind": "p",
+            "text": "The cache is now a small part of the total footprint."
+          },
+          {
+            "kind": "h3",
+            "text": "Choosing what to keep"
+          },
+          {
+            "kind": "p",
+            "text": "Not everything in a long context matters equally. A file read twenty steps ago is less important than the function being edited now."
+          },
+          {
+            "kind": "p",
+            "text": "We experimented with dropping old cache entries automatically based on how much attention they receive. Simple versions of this worked for chat and failed for code, because code has long-range dependencies."
+          },
+          {
+            "kind": "p",
+            "text": "Those dependencies look unimportant until suddenly they are the only thing that matters: a type defined at the top of a file, a constant imported from elsewhere, a comment explaining why a check exists. The approach we kept is more conservative. The agent itself decides which files to keep in view, using the same tools a developer would use to navigate a project, such as search, go-to-definition and reading a file in sections. The runtime never silently forgets anything; the model is simply given a smaller, more relevant window to begin with, and it can always read a file again if it needs to. In practice this keeps the context focused and small without losing the details that long edits depend on. It also means the context the model sees is easy for a person to inspect, because it is made of whole files and clear tool results rather than an opaque selection of cached fragments. When something goes wrong, we can look at exactly what the model had in front of it and understand why it made the choice it did."
+          },
+          {
+            "kind": "p",
+            "text": "This shifted part of the compression problem from the runtime to the agent’s behaviour, which in turn shaped how we trained it. The agent learns to read what it needs, keep short notes, and let go of the rest. That story belongs to the next post in the series."
+          },
+          {
+            "kind": "h2",
+            "text": "What did not work"
+          },
+          {
+            "kind": "p",
+            "text": "Plenty of ideas did not make it. Aggressive low-rank factorization saved memory but made the model worse at precise instructions."
+          },
+          {
+            "kind": "p",
+            "text": "Loading experts on demand added pauses mid-edit."
+          },
+          {
+            "kind": "p",
+            "text": "We also tried compressing the vocabulary. Code uses a lot of rare tokens, and trimming the vocabulary made the model split identifiers into awkward pieces, which hurt both speed and accuracy. We tried compressing different parts of the model for different kinds of files, on the theory that prose and code need different things; it worked, but switching between modes cost more time than the memory it saved. Each idea looked promising in isolation and lost once measured against the full suite on real tasks, usually on the longest edits."
+          },
+          {
+            "kind": "p",
+            "text": "We keep a written record of every rejected experiment, including the numbers, because the same ideas come back regularly and the notes save a great deal of time. Several of the ideas above have been proposed again by new people on the team, and the notes let us decide in minutes whether anything has changed enough to try again."
+          },
+          {
+            "kind": "p",
+            "text": "The broader lesson is that a compression technique is only as good as the evaluation that judges it. Almost every idea looks fine when you only test the easy cases."
+          },
+          {
+            "kind": "h2",
+            "text": "Putting it together"
+          },
+          {
+            "kind": "p",
+            "text": "The shipped model combines grouped quantization, modest pruning recovered through distillation, a compressed cache and a context-aware agent."
+          },
+          {
+            "kind": "p",
+            "text": "Combined, they bring the full system comfortably under our sixteen-gigabyte target while keeping quality on the evaluation suite within a few points of the uncompressed original. On most everyday tasks the difference is not noticeable. The combination also turned out to be faster than the original, not just smaller, because reading fewer bytes from memory is the main cost of running a model on a laptop. Startup improved too: the packed weights are mapped from disk rather than converted on load, so the model is ready within seconds, even on a cold machine. There is still a gap on the hardest tasks, particularly very long multi-file refactors, and closing it is active work."
+          },
+          {
+            "kind": "h2",
+            "text": "What comes next"
+          },
+          {
+            "kind": "p",
+            "text": "Compression will keep improving as the research field moves quickly and hardware keeps changing. Our focus for the next few releases is on narrowing the gap on the hardest tasks and on supporting machines with less memory than our current target. Some of that work is about the model and some is about the tooling around it; faster evaluation runs, for example, would let us try more ideas per week."
+          },
+          {
+            "kind": "p",
+            "text": "We also plan to publish more of the evaluation suite."
+          },
+          {
+            "kind": "p",
+            "text": "Others should be able to check our work."
+          },
+          {
+            "kind": "p",
+            "text": "Comparisons between local models should be based on the kind of tasks developers actually do, not on benchmarks that reward short answers. We would rather be measured on real work than on a leaderboard."
+          },
+          {
+            "kind": "p",
+            "text": "If you have a machine you would like supported, tell us."
+          },
+          {
+            "kind": "p",
+            "text": "And if you think we are measuring something badly, we would like to hear about that too."
+          },
+          {
+            "kind": "hr"
+          },
+          {
+            "kind": "p",
+            "text": "*This post is one part of an ongoing series about how Rig works under the hood. The other entries cover [the inference engine](/blog/building-inference-engine) and [training for code](/blog/teaching-a-model-to-code). Each post stands on its own, but they read best in order.*"
+          }
+        ],
+        "backLabel": "All Posts",
+        "backTarget": {
+          "kind": "route",
+          "route": "/blog"
+        }
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "post.cta-aside",
+      "content": {
+        "title": "Want to try it for real?",
+        "lines": [
+          "We’re inviting engineers in small batches every single week.",
+          "Grab your spot in line."
+        ],
+        "form": {
+          "placeholder": "you@company.com",
+          "button": "Join Waitlist",
+          "errorEmpty": "Enter your email to join.",
+          "errorInvalid": "That email doesn’t look right.",
+          "successHeading": "Your spot is saved.",
+          "successPosition": "Queue position: ",
+          "referralLabel": "Share to jump the queue",
+          "copyLabel": "Copy referral link",
+          "dashboardLink": "Track your place in line →",
+          "dashboardTarget": {
+            "kind": "route",
+            "route": "/waitlist"
+          },
+          "submission": {
+            "mode": "local-only"
+          }
+        }
+      },
+      "motion": {
+        "pattern": "form-submit-spinner",
+        "reducedMotionFallback": "static-loading-label"
+      }
+    },
+    {
+      "type": "shell.footer",
+      "content": {
+        "logo": {
+          "assetRole": "brand.wordmark"
+        },
+        "tagline": "On-device AI for engineers who’d rather not depend on the cloud.",
+        "columns": [
+          {
+            "title": "Connect",
+            "links": [
+              {
+                "label": "Twitter",
+                "target": {
+                  "kind": "placeholder"
+                }
+              },
+              {
+                "label": "LinkedIn",
+                "target": {
+                  "kind": "placeholder"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Terms of Service",
+                "target": {
+                  "kind": "route",
+                  "route": "/terms"
+                }
+              },
+              {
+                "label": "Privacy Policy",
+                "target": {
+                  "kind": "route",
+                  "route": "/privacy"
+                }
+              }
+            ]
+          }
+        ],
+        "copyright": "© 2026 Example Company. All rights reserved.",
+        "status": "All systems local",
+        "watermark": {
+          "assetRole": "brand.logo-mark"
+        }
+      },
+      "motion": {
+        "pattern": "status-blink",
+        "reducedMotionFallback": "steady-dot"
+      }
+    }
+  ]
+}

@@ -1,0 +1,912 @@
+{
+  "pageSpecVersion": "1.0.0",
+  "id": "example-home",
+  "route": "/",
+  "template": "tpl.home",
+  "theme": "dark",
+  "nodes": [
+    {
+      "type": "shell.overlays",
+      "content": {
+        "grainFilter": {
+          "assetRole": "effect.svg-filter"
+        }
+      },
+      "motion": {
+        "pattern": "grain-overlay-smil",
+        "reducedMotionFallback": "static-grain-frame"
+      }
+    },
+    {
+      "type": "hero.home",
+      "content": {
+        "nav": {
+          "logo": {
+            "assetRole": "brand.wordmark"
+          },
+          "links": [
+            {
+              "label": "Blog",
+              "target": {
+                "kind": "route",
+                "route": "/blog"
+              }
+            }
+          ],
+          "cta": {
+            "label": "Get Early Access",
+            "target": {
+              "kind": "route",
+              "route": "/waitlist"
+            }
+          }
+        },
+        "watermark": {
+          "assetRole": "brand.logo-mark"
+        },
+        "titleLines": [
+          "Your code, your machine.",
+          "Zero cloud. Zero caps."
+        ],
+        "sub": "A full coding agent that lives on your laptop. Nothing to call home. Nothing to meter.",
+        "primaryCta": {
+          "label": "Join Waitlist",
+          "target": {
+            "kind": "fragment",
+            "id": "early-access"
+          }
+        },
+        "secondaryCta": {
+          "label": "Our Approach",
+          "target": {
+            "kind": "fragment",
+            "id": "our-approach"
+          }
+        },
+        "ticker": [
+          "No telemetry",
+          "Local inference",
+          "Fully offline",
+          "Your box, your call",
+          "No tokens, no meter",
+          "Purpose-built model",
+          "Whole-repo context"
+        ]
+      },
+      "motion": {
+        "pattern": "hero-ticker-watermark-glitch",
+        "reducedMotionFallback": "static-ticker-no-glitch"
+      }
+    },
+    {
+      "type": "shell.frame-lines",
+      "content": {},
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "layout.section-divider",
+      "variant": "spacer-top",
+      "content": {},
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "problem.signal-grid",
+      "content": {
+        "badge": {
+          "label": "The problem",
+          "icon": {
+            "assetRole": "icon.badge-pixel",
+            "iconKey": "problem"
+          }
+        },
+        "titleLines": [
+          "Your AI rents you back.",
+          "And it keeps a log."
+        ],
+        "eye": {
+          "assetRole": "illustration.surveillance-eye"
+        },
+        "cards": [
+          {
+            "label": "Data harvesting",
+            "num": "001",
+            "title": "Your code feeds their model.",
+            "bodyLines": [
+              "Each prompt. Each diff. Each patch.",
+              "It all passes through servers you never see — sharpening a product built to compete with you."
+            ]
+          },
+          {
+            "label": "Metered access",
+            "num": "002",
+            "title": "They ration your output.",
+            "bodyLines": [
+              "Throttles, quotas, surprise bills.",
+              "Just as the work gets interesting, a counter somewhere says stop."
+            ]
+          },
+          {
+            "label": "Quiet swaps",
+            "num": "003",
+            "title": "They swap the model.",
+            "bodyLines": [
+              "When traffic spikes, a lighter model quietly takes over. Same invoice, weaker answers."
+            ]
+          },
+          {
+            "label": "Network reliance",
+            "num": "004",
+            "title": "They set your pace.",
+            "bodyLines": [
+              "Every suggestion waits on a trip to a distant data center.",
+              "Small stalls that add up all day long."
+            ]
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "eye-glitch-tracking-blink",
+        "reducedMotionFallback": "static-eye-no-tracking"
+      }
+    },
+    {
+      "type": "layout.section-divider",
+      "variant": "rule",
+      "content": {},
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "intro.shader-diagram",
+      "content": {
+        "badge": {
+          "label": "Introducing Rig",
+          "icon": {
+            "assetRole": "icon.badge-pixel",
+            "iconKey": "intro"
+          }
+        },
+        "titleLines": [
+          "All on-device.",
+          "Yours to keep."
+        ],
+        "desc": "An end-to-end coding agent that runs on hardware you already own. No quotas. No servers in the loop.",
+        "shader": {
+          "assetRole": "effect.dither-shader"
+        },
+        "diagram": {
+          "assetRole": "illustration.flow-diagram"
+        }
+      },
+      "motion": {
+        "pattern": "shader-headline-smil-diagram",
+        "reducedMotionFallback": "single-shader-frame-static-diagram",
+        "shaderPreset": "headline"
+      }
+    },
+    {
+      "type": "layout.section-divider",
+      "variant": "rule",
+      "content": {},
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "offline.globe-split",
+      "content": {
+        "badge": {
+          "label": "Offline",
+          "icon": {
+            "assetRole": "icon.badge-pixel",
+            "iconKey": "offline"
+          }
+        },
+        "title": "Work offline",
+        "body": "Planes. Hotel Wi-Fi. Dead routers. Keep shipping anyway.",
+        "flow": {
+          "cloud": "Cloud servers",
+          "machine": "Your machine",
+          "active": "Rig model active",
+          "nothing": "Nothing leaves",
+          "severed": "Severed"
+        },
+        "globe": {
+          "assetRole": "illustration.globe"
+        },
+        "connector": {
+          "assetRole": "illustration.severed-connector"
+        }
+      },
+      "motion": {
+        "pattern": "globe-drift-signal-flicker",
+        "reducedMotionFallback": "static-globe"
+      }
+    },
+    {
+      "type": "layout.section-divider",
+      "variant": "rule",
+      "content": {},
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "feature.three-col",
+      "content": {
+        "columns": [
+          {
+            "badge": {
+              "label": "Unlimited",
+              "icon": {
+                "assetRole": "icon.badge-pixel",
+                "iconKey": "unlimited"
+              }
+            },
+            "title": "Lose the meter",
+            "body": "Rewrite an entire module. Chase an idea for hours. Loop agents without watching a bill.",
+            "dim": false
+          },
+          {
+            "badge": {
+              "label": "Privacy",
+              "icon": {
+                "assetRole": "icon.badge-pixel",
+                "iconKey": "privacy"
+              }
+            },
+            "title": "Cut the cord",
+            "body": "Source, keystrokes and files stay on disk. Not scrubbed. Not pooled. Never uploaded.",
+            "dim": false
+          },
+          {
+            "badge": {
+              "label": "Latency",
+              "icon": {
+                "assetRole": "icon.badge-pixel",
+                "iconKey": "latency"
+              }
+            },
+            "title": "Skip the wait",
+            "body": "No detour through a data center. Inference runs locally, in a handful of milliseconds.",
+            "dim": true
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "layout.section-divider",
+      "variant": "rule",
+      "content": {},
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "layout.section-divider",
+      "variant": "rule",
+      "content": {},
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "how.stepper",
+      "content": {
+        "badge": {
+          "label": "Our Approach",
+          "icon": {
+            "assetRole": "icon.badge-pixel",
+            "iconKey": "approach"
+          }
+        },
+        "title": "Focus beats size.",
+        "body": "Rig is one integrated system — model, context, tools and runtime — built together for a single purpose: shipping real code.",
+        "steps": [
+          {
+            "num": "Step 01",
+            "title": "A narrow model, trained only for code.",
+            "body": [
+              "Every weight is spent on coding, planning, tool calls and structured edits. The whole training run targets engineering work and nothing else.",
+              "Tightening the scope puts the capability where it counts — stronger reasoning, cleaner diffs, steadier tool use."
+            ],
+            "cardTitle": "Training Focus"
+          },
+          {
+            "num": "Step 02",
+            "title": "Full reasoning power, compressed to fit your laptop.",
+            "body": [
+              "The model is compressed to run well on everyday hardware — while carefully keeping the reasoning behaviour that matters most intact.",
+              "The payoff is an 8 GB model that sits comfortably in memory on a MacBook. Real reasoning. Local execution. Nothing per token."
+            ],
+            "cardTitle": "Compression"
+          },
+          {
+            "num": "Step 03",
+            "title": "A purpose-built runtime tuned just for Apple Silicon.",
+            "body": [
+              "Inference runs on a bespoke engine tuned closely for Apple Silicon. Model, context engine and tools are all built together as one system.",
+              "That tight coupling is what makes running locally quick, dependable and practical."
+            ],
+            "cardTitle": "Runtime"
+          }
+        ],
+        "chart": {
+          "assetRole": "chart.ascii-bars",
+          "cards": [
+            [
+              {
+                "kind": "caption",
+                "text": "Weights devoted to code"
+              },
+              {
+                "kind": "bars",
+                "rows": [
+                  {
+                    "label": "Rig",
+                    "fill": 20,
+                    "value": "100%",
+                    "highlight": true
+                  },
+                  {
+                    "label": "General models",
+                    "fill": 4,
+                    "value": "~10–20%",
+                    "highlight": false
+                  }
+                ]
+              },
+              {
+                "kind": "lines",
+                "lines": [
+                  [
+                    {
+                      "tone": "dim",
+                      "text": "Broad models divide their capacity"
+                    }
+                  ],
+                  [
+                    {
+                      "tone": "dim",
+                      "text": "between chat, translation, fiction"
+                    }
+                  ],
+                  [
+                    {
+                      "tone": "dim",
+                      "text": "and everything else."
+                    }
+                  ]
+                ]
+              },
+              {
+                "kind": "lines",
+                "lines": [
+                  [
+                    {
+                      "tone": "bright",
+                      "text": "Rig spends every single weight"
+                    }
+                  ],
+                  [
+                    {
+                      "tone": "bright",
+                      "text": "on engineering."
+                    }
+                  ]
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "caption",
+                "text": "Memory footprint (RAM needed)"
+              },
+              {
+                "kind": "bars",
+                "rows": [
+                  {
+                    "label": "Frontier APIs",
+                    "fill": 20,
+                    "value": "200+ GB",
+                    "highlight": false
+                  },
+                  {
+                    "label": "Open models",
+                    "fill": 6,
+                    "value": "30–140 GB",
+                    "highlight": false
+                  },
+                  {
+                    "label": "Rig",
+                    "fill": 0.25,
+                    "value": "8 GB",
+                    "highlight": true
+                  }
+                ]
+              },
+              {
+                "kind": "lines",
+                "lines": [
+                  [
+                    {
+                      "tone": "dim",
+                      "text": "Sits inside 16 GB unified RAM."
+                    }
+                  ],
+                  [
+                    {
+                      "tone": "dim",
+                      "text": "Quality drop: "
+                    },
+                    {
+                      "tone": "green",
+                      "text": "<0.3%"
+                    }
+                  ]
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "caption",
+                "text": "Time to first token"
+              },
+              {
+                "kind": "bars",
+                "rows": [
+                  {
+                    "label": "Rig",
+                    "fill": 0.25,
+                    "value": "300 ms",
+                    "highlight": true
+                  },
+                  {
+                    "label": "Hosted APIs",
+                    "fill": 20,
+                    "value": "400–1,200 ms",
+                    "highlight": false
+                  }
+                ]
+              },
+              {
+                "kind": "caption",
+                "text": "Price per 1K tokens"
+              },
+              {
+                "kind": "bars",
+                "rows": [
+                  {
+                    "label": "Rig",
+                    "fill": null,
+                    "value": "$0.00",
+                    "highlight": true
+                  },
+                  {
+                    "label": "Hosted APIs",
+                    "fill": 20,
+                    "value": "$0.01–0.06",
+                    "highlight": false
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "shader": {
+          "assetRole": "effect.dither-shader"
+        }
+      },
+      "motion": {
+        "pattern": "stepper-autoadvance-tween",
+        "reducedMotionFallback": "manual-steps-no-autoadvance",
+        "shaderPreset": "how"
+      }
+    },
+    {
+      "type": "layout.section-divider",
+      "variant": "rule",
+      "content": {},
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "capabilities.card-grid",
+      "content": {
+        "badge": {
+          "label": "Capabilities",
+          "icon": {
+            "assetRole": "icon.badge-pixel",
+            "iconKey": "capabilities"
+          }
+        },
+        "title": "Your hardware, uncapped.",
+        "items": [
+          {
+            "title": "Grasps your code architecture.",
+            "body": "Builds a linked picture of modules, dependencies and call paths, so that it reasons across many files the way your whole system is actually laid out."
+          },
+          {
+            "title": "Follows every link, avoids breakage.",
+            "body": "Changes that honour function signatures, type boundaries and dependency graphs — fewer bugs, fewer regressions."
+          },
+          {
+            "title": "Plans before it moves.",
+            "body": "Explore → Plan → Execute loops make sure each step is thought through before anything is changed."
+          },
+          {
+            "title": "Handles long multi-step workflows.",
+            "body": "Refactors, test suites, entire new features — it chains together tools, code edits, web lookups and shell commands as the task demands."
+          },
+          {
+            "title": "Sandboxes every agent.",
+            "body": "Each agent gets its own workspace, so experiments stay safe, parallel runs never collide with each other, and code changes wait until you merge them."
+          },
+          {
+            "title": "Runs flat out.",
+            "body": "A custom Rust inference engine tuned for CUDA and Metal — hitting as many as 144 tokens a second on the laptop you already have."
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "layout.section-divider",
+      "variant": "rule",
+      "content": {},
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "stats.strip",
+      "content": {
+        "stats": [
+          {
+            "label": "Latency",
+            "value": "0ms",
+            "note": "No network hop"
+          },
+          {
+            "label": "Privacy",
+            "value": "100%",
+            "note": "Air-gapped by default"
+          },
+          {
+            "label": "Cost / Token",
+            "value": "$0",
+            "note": "Your chip, your tokens"
+          },
+          {
+            "label": "Uptime",
+            "value": "Local",
+            "note": "No cloud to go down"
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "layout.section-divider",
+      "variant": "rule",
+      "content": {},
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "terminal.monitor",
+      "content": {
+        "badge": {
+          "label": "Engineered intelligence",
+          "icon": {
+            "assetRole": "icon.badge-pixel",
+            "iconKey": "terminal"
+          }
+        },
+        "title": "Made for tinkerers",
+        "windowTitle": "rig://127.0.0.1 · offline",
+        "command": "rig init",
+        "asciiArt": {
+          "assetRole": "text.ascii-brand-art"
+        },
+        "boot": [
+          "> Probing hardware...",
+          "> Detected M4 · 16GB RAM",
+          "> Loading RIG model",
+          "> Indexing 1,904 files · 63,550 symbols"
+        ],
+        "bootOk": "OK",
+        "ready": {
+          "mark": "✓",
+          "text": "Ready.",
+          "network": "Network",
+          "telemetry": "Telemetry",
+          "off": "OFF"
+        },
+        "prompts": [
+          "explain this regex to me",
+          "write tests for the auth module",
+          "refactor utils into smaller files",
+          "find the memory leak in server.rs"
+        ],
+        "typingInitial": "explain this regex to ",
+        "bezel": [
+          "Neural Core",
+          "RG-800",
+          "On-Device"
+        ],
+        "annotations": {
+          "left": [
+            {
+              "title": "Custom Model",
+              "desc": "Tuned for everyday hardware"
+            },
+            {
+              "title": "Inference",
+              "desc": "Cross-platform, written in Rust"
+            },
+            {
+              "title": "Context Graph",
+              "desc": "Whole-repo code awareness"
+            }
+          ],
+          "right": [
+            {
+              "title": "Terminal UI",
+              "desc": "Native Rust, instant response"
+            },
+            {
+              "title": "Heavily Tuned",
+              "desc": "Reliable tool calls and plans"
+            },
+            {
+              "title": "Opinionated",
+              "desc": "Built around correct code"
+            }
+          ]
+        }
+      },
+      "motion": {
+        "pattern": "terminal-boot-reveal-typing",
+        "reducedMotionFallback": "all-lines-visible-static-prompt"
+      }
+    },
+    {
+      "type": "layout.section-divider",
+      "variant": "rule",
+      "content": {},
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "early-access.waitlist",
+      "content": {
+        "badge": {
+          "label": "Early access",
+          "icon": {
+            "assetRole": "icon.badge-pixel",
+            "iconKey": "early-access"
+          }
+        },
+        "title": "Rig is nearly here.",
+        "desc": "We’re opening the doors to engineers who want to try it on real projects and steer what ships.",
+        "form": {
+          "placeholder": "you@company.com",
+          "button": "Join Waitlist",
+          "errorEmpty": "Enter your email to join.",
+          "errorInvalid": "That email doesn’t look right.",
+          "successHeading": "Your spot is saved.",
+          "successPosition": "Queue position: ",
+          "referralLabel": "Share to jump the queue",
+          "copyLabel": "Copy referral link",
+          "dashboardLink": "Track your place in line →",
+          "dashboardTarget": {
+            "kind": "route",
+            "route": "/waitlist"
+          },
+          "submission": {
+            "mode": "local-only"
+          }
+        },
+        "shader": {
+          "assetRole": "effect.dither-shader"
+        }
+      },
+      "motion": {
+        "pattern": "shader-headline-form",
+        "reducedMotionFallback": "single-shader-frame",
+        "shaderPreset": "headline"
+      }
+    },
+    {
+      "type": "layout.section-divider",
+      "variant": "rule",
+      "content": {},
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "faq.accordion",
+      "content": {
+        "badge": {
+          "label": "FAQ",
+          "icon": {
+            "assetRole": "icon.badge-pixel",
+            "iconKey": "faq"
+          }
+        },
+        "title": "Common questions.",
+        "items": [
+          {
+            "q": "What is Rig?",
+            "a": "Rig is an on-device AI coding assistant. It pairs an open-source model, post-trained purely for code, with a custom Rust inference engine tuned for Apple Silicon. You get low-latency agentic coding with no API calls, no usage caps, no telemetry and no per-token cost. Your files never leave your computer. macOS is supported today, with Linux and Windows on the roadmap."
+          },
+          {
+            "q": "Which model does Rig run?",
+            "a": "Rig runs an adapted open-source model, reworked to operate only inside the Rig agent harness, context engine and toolset. That focus lets us cut the model’s footprint without giving up reasoning or coding ability."
+          },
+          {
+            "q": "What hardware do I need?",
+            "a": "Right now Rig targets Apple Silicon Macs (M2 or newer) with 32GB of RAM or more. We’re working to bring that requirement down, ideally to 16GB. Windows and Linux builds are on the way."
+          },
+          {
+            "q": "How does it stack up against big cloud models?",
+            "a": "The model is still being trained, so there are no published benchmarks yet. Internal testing suggests that, combined with our context engine and post-training, it will hold its own against leading models."
+          },
+          {
+            "q": "Can Rig browse the web?",
+            "a": "Yes. Rig ships with the tools you’d expect from a coding agent — web search, reading and writing files, a planning mode and more."
+          },
+          {
+            "q": "What will Rig cost?",
+            "a": "We plan to offer a flat monthly or yearly subscription, priced in line with other coding agents — but fully unlimited and offline."
+          },
+          {
+            "q": "Does Rig collect my data?",
+            "a": "No. Privacy is the point. The only network call is a periodic license check, which tolerates time offline. Conversations and source never leave the device."
+          },
+          {
+            "q": "When can I use it?",
+            "a": "A closed beta is rolling out now — watch your inbox for an invite to test builds and the community Slack. A broader launch is planned for Q3 2026. Our focus is building an assistant that real engineers can trust on the work that matters most."
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "faq-grid-rows",
+        "reducedMotionFallback": "instant-toggle"
+      }
+    },
+    {
+      "type": "layout.section-divider",
+      "variant": "rule",
+      "content": {},
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "layout.section-divider",
+      "variant": "spacer-bottom",
+      "content": {},
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      }
+    },
+    {
+      "type": "cta.vortex",
+      "content": {
+        "title": "Take back your tools",
+        "button": {
+          "label": "Request Early Access",
+          "target": {
+            "kind": "fragment",
+            "id": "early-access"
+          }
+        },
+        "fine": "No card required. No meter running.",
+        "vortex": {
+          "assetRole": "image.cta-vortex"
+        },
+        "logo": {
+          "assetRole": "brand.logo-mark"
+        },
+        "lineart": {
+          "assetRole": "brand.logo-mark"
+        }
+      },
+      "motion": {
+        "pattern": "cta-glitch-glow-pulse",
+        "reducedMotionFallback": "static-heading-static-glow"
+      }
+    },
+    {
+      "type": "shell.footer",
+      "content": {
+        "logo": {
+          "assetRole": "brand.wordmark"
+        },
+        "tagline": "On-device AI for engineers who’d rather not depend on the cloud.",
+        "columns": [
+          {
+            "title": "Connect",
+            "links": [
+              {
+                "label": "Twitter",
+                "target": {
+                  "kind": "placeholder"
+                }
+              },
+              {
+                "label": "LinkedIn",
+                "target": {
+                  "kind": "placeholder"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Terms of Service",
+                "target": {
+                  "kind": "route",
+                  "route": "/terms"
+                }
+              },
+              {
+                "label": "Privacy Policy",
+                "target": {
+                  "kind": "route",
+                  "route": "/privacy"
+                }
+              }
+            ]
+          }
+        ],
+        "copyright": "© 2026 Example Company. All rights reserved.",
+        "status": "All systems local",
+        "watermark": {
+          "assetRole": "brand.logo-mark"
+        }
+      },
+      "motion": {
+        "pattern": "status-blink",
+        "reducedMotionFallback": "steady-dot"
+      }
+    }
+  ]
+}

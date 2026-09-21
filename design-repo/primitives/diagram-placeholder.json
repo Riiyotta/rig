@@ -1,0 +1,21 @@
+{
+  "id": "primitive.diagram-placeholder",
+  "kind": "primitive",
+  "purpose": "Neutral block box standing in for the blog diagram whose origin PNGs return 502: full column width, 6px radius, 2rem margin, aspect 16:9 / 3:4 (<=768) / 4:3 (<=400).",
+  "implementedBy": [
+    {
+      "citation": "src/pages/BlogPost.jsx:59-67",
+      "quote": "case 'figure':"
+    },
+    {
+      "citation": "src/styles/BlogPost.css:172",
+      "quote": ".blog-post .prose .prose-diagram {"
+    }
+  ],
+  "tokensUsed": [
+    "radius.md"
+  ],
+  "usedBySections": [
+    "post.article"
+  ]
+}

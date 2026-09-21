@@ -1,0 +1,315 @@
+/* §11 Terminal (section.terminal-section.grid-bg). .grid-bg itself is shared (index.css). */
+.terminal-section {
+  padding: 8rem 0;
+  position: relative;
+  clip-path: inset(0 calc(50% - 600px));
+}
+.terminal-section .term-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.terminal-section .term-badge {
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.terminal-section .term-title {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  line-height: 0.92;
+}
+.terminal-section .terminal-artifact {
+  position: relative;
+  max-width: 630px;
+  margin: 0 auto;
+}
+
+/* Blueprint annotations */
+.terminal-section .terminal-blueprint-left,
+.terminal-section .terminal-blueprint-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  pointer-events: none;
+}
+.terminal-section .terminal-blueprint-left {
+  left: -220px;
+}
+.terminal-section .terminal-blueprint-right {
+  right: -220px;
+}
+.terminal-section .bp-anno {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.terminal-section .terminal-blueprint-left .bp-anno {
+  right: 0;
+}
+.terminal-section .terminal-blueprint-right .bp-anno {
+  left: 0;
+}
+.terminal-section .bp-at-34 {
+  top: 34%;
+}
+.terminal-section .bp-at-50 {
+  top: 50%;
+}
+.terminal-section .bp-at-66 {
+  top: 66%;
+}
+.terminal-section .bp-text {
+  font-family: 'Geist Pixel Square', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+.terminal-section .terminal-blueprint-left .bp-text {
+  text-align: right;
+}
+.terminal-section .terminal-blueprint-right .bp-text {
+  text-align: left;
+}
+.terminal-section .bp-title {
+  color: #fff;
+}
+.terminal-section .bp-desc {
+  color: var(--paper-45);
+}
+.terminal-section .bp-line-left,
+.terminal-section .bp-line-right {
+  width: 40px;
+  height: 1px;
+  background: var(--paper-15);
+}
+.terminal-section .bp-line-left {
+  margin-left: 12px;
+}
+.terminal-section .bp-line-right {
+  margin-right: 12px;
+}
+.terminal-section .bp-dot {
+  width: 4px;
+  height: 4px;
+  border: 1px solid var(--text-faint);
+  background: none;
+}
+
+/* Monitor */
+.terminal-section .monitor-casing {
+  background: linear-gradient(160deg, #1a1a1a, #111, #0d0d0d);
+  padding: 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 0 var(--paper-04), 0 -1px #00000080, 0 20px 60px #0006;
+  border: 1px solid var(--paper-06);
+  position: relative;
+}
+.terminal-section .monitor-vents {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 0.75rem;
+}
+.terminal-section .monitor-vent {
+  height: 3px;
+  flex-grow: 1;
+  background: var(--paper-04);
+  border-radius: 1px;
+}
+.terminal-section .monitor-screen-bezel {
+  border: 2px solid var(--paper-06);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 8px #00000080;
+  aspect-ratio: 16 / 12;
+  display: flex;
+  flex-direction: column;
+}
+.terminal-section .monitor-bezel-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  border-top: 1px solid var(--paper-04);
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.terminal-section .monitor-bezel-bottom .model-tag {
+  color: var(--red);
+  opacity: 0.5;
+}
+.terminal-section .monitor-led {
+  width: 4px;
+  height: 4px;
+  background: var(--red);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--red-glow);
+  animation: blink 3s ease-in-out infinite;
+}
+
+/* Terminal window */
+.terminal-section .terminal-window {
+  background: #050505;
+  overflow: hidden;
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.terminal-section .terminal-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--paper-06);
+  background: var(--paper-02);
+}
+.terminal-section .terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+.terminal-section .terminal-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-dim);
+}
+.terminal-section .terminal-title {
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--paper-30);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.terminal-section .terminal-body {
+  padding: 1.75rem;
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  flex: 1;
+}
+.terminal-section .term-line-gap-sm {
+  padding-top: 0.5rem;
+}
+.terminal-section .term-line-gap {
+  padding-top: 0.75rem;
+}
+.terminal-section .term-ascii {
+  margin: 0;
+  font-family: 'Chivo Mono', monospace;
+  font-size: 0.6rem;
+  line-height: 1.3;
+  color: var(--paper-20);
+}
+.terminal-section .term-off {
+  color: var(--red);
+}
+
+/* Line reveal: runs once on page load (not scroll), staggered by nth-child. */
+.terminal-section .term-line {
+  opacity: 0;
+  animation: terminalLineIn 0.01s step-end forwards;
+}
+.terminal-section .term-line:nth-child(1) { animation-delay: 0.4s; }
+.terminal-section .term-line:nth-child(2) { animation-delay: 1s; }
+.terminal-section .term-line:nth-child(3) { animation-delay: 1.8s; }
+.terminal-section .term-line:nth-child(4) { animation-delay: 2.4s; }
+.terminal-section .term-line:nth-child(5) { animation-delay: 3.2s; }
+.terminal-section .term-line:nth-child(6) { animation-delay: 3.6s; }
+.terminal-section .term-line:nth-child(7) { animation-delay: 4.2s; }
+.terminal-section .term-line:nth-child(8) { animation-delay: 4.8s; }
+
+.terminal-section .terminal-body .prompt { color: var(--red); }
+.terminal-section .terminal-body .cmd { color: var(--paper); }
+.terminal-section .terminal-body .flag { color: var(--blue); }
+.terminal-section .terminal-body .output { color: var(--text-muted); }
+.terminal-section .terminal-body .success { color: var(--red); }
+.terminal-section .terminal-body .info {
+  color: var(--text-faint);
+  font-size: 0.75rem;
+}
+.terminal-section .terminal-body .cursor-block {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background: var(--red);
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+}
+
+/* Tablet / mobile annotation grid */
+.terminal-section .terminal-annotations-grid {
+  display: none;
+}
+.terminal-section .terminal-anno-item {
+  text-align: center;
+  padding: 1.25rem 0.75rem;
+}
+.terminal-section .terminal-anno-title {
+  font-family: 'Geist Pixel Square', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+.terminal-section .terminal-anno-desc {
+  font-family: 'Geist Pixel Square', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--paper-45);
+  line-height: 1.5;
+}
+
+@media (max-width: 1280px) {
+  .terminal-section {
+    clip-path: inset(0 5%);
+  }
+}
+@media (max-width: 1024px) {
+  .terminal-section .terminal-blueprint-left,
+  .terminal-section .terminal-blueprint-right {
+    display: none !important;
+  }
+  .terminal-section .terminal-annotations-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 2rem;
+    border: 1px solid var(--border);
+  }
+  .terminal-section .terminal-anno-item {
+    border-bottom: 1px solid var(--border);
+  }
+  .terminal-section .terminal-anno-item:nth-child(odd) {
+    border-right: 1px solid var(--border);
+  }
+  .terminal-section .terminal-anno-item:nth-last-child(-n + 2) {
+    border-bottom: none;
+  }
+}
+@media (max-width: 768px) {
+  .terminal-section {
+    padding: 4rem 0;
+    clip-path: inset(0 1.25rem);
+  }
+  .terminal-section .terminal-body {
+    padding: 1rem;
+    font-size: 0.75rem;
+  }
+  .terminal-section .terminal-body .info {
+    font-size: 0.65rem;
+  }
+  .terminal-section .monitor-screen-bezel {
+    aspect-ratio: auto;
+  }
+  .terminal-section .terminal-annotations-grid {
+    margin-top: 1.5rem;
+  }
+}

@@ -1,0 +1,128 @@
+/* Hero — CLONE_SPEC.md §2 */
+.hero {
+  min-height: 50vh;
+  background: var(--red);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  z-index: 10000;
+}
+
+.hero-watermark {
+  position: absolute;
+  right: -5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 55%;
+  opacity: 0.08;
+  pointer-events: none;
+  animation: watermark-glitch 4s infinite linear;
+}
+
+.hero-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 3rem;
+  max-width: calc(1200px + 6rem);
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+.hero h1 {
+  font-family: Chalet, Inter, sans-serif;
+  font-weight: 700;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  line-height: 0.88;
+  color: var(--ink);
+  letter-spacing: -0.04em;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.hero-sub {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  opacity: 0.85;
+  max-width: 540px;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.hero-ticker {
+  border-top: 1px solid rgba(10, 10, 10, 0.15);
+  padding: 0.75rem 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+/* Gotcha §2/§18.5: this flex row is only viewport-wide, so -50% is half the
+   viewport, not half the content — the loop visibly jumps. Intentional. */
+.hero-ticker-inner {
+  display: flex;
+  gap: 4rem;
+  animation: ticker 18s linear infinite;
+  white-space: nowrap;
+  font-family: 'Geist Pixel Square', monospace;
+  font-size: 0.8rem;
+  color: var(--ink);
+  opacity: 0.7;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  -webkit-text-stroke: 0.5px var(--ink);
+}
+
+.hero:not(.is-visible) .hero-watermark,
+.hero:not(.is-visible) .hero-ticker-inner {
+  animation-play-state: paused;
+}
+
+@media (max-width: 1280px) {
+  .hero-content {
+    max-width: 90%;
+    padding-inline: 0;
+  }
+}
+@media (max-width: 1024px) {
+  .hero-content {
+    padding: 0 2rem;
+  }
+}
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 0 1.25rem;
+  }
+  .hero h1 {
+    font-size: clamp(3.5rem, 12vw, 7rem);
+  }
+  .hero-sub {
+    font-size: 1rem;
+  }
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+  .hero-actions .btn-chamfer {
+    flex: 1 1 100%;
+    justify-content: center;
+    padding: 1.25rem 2rem;
+    font-size: 1rem;
+  }
+  .hero-ticker-inner {
+    gap: 2rem;
+  }
+  .hero-watermark {
+    width: 80%;
+    right: -10%;
+  }
+}
