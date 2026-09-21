@@ -123,7 +123,7 @@
       "id": "real-company",
       "claim": "rig.ai is a live company. The clone ships its real wordmark/logo marks as build evidence; generated output must never reproduce them (asset roles brand.* must-not-fabricate), and Chalet London Nineteen Sixty is commercially licensed.",
       "citations": [
-        "CLONE_ASSETS.json:12",
+        "public/assets/rig-wordmark.svg",
         "src/index.css:10"
       ]
     }
